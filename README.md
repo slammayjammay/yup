@@ -15,8 +15,8 @@ I will make a yelp clone. Users can:
 - [ ] Rate and review businesses
 - [ ] Edit ratings and reviews
 
-[Schema][schema]
-[Wireframes][wireframes]
+* [DB schema][schema]
+* [Wireframes][wireframes]
 
 [wireframes]: ./wireframes
 [schema]: ./schema.md
