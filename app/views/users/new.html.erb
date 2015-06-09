@@ -1,19 +1,17 @@
-<h1>Sign Up!</h1>
+<div class="sign-in">
+  <h1>Sign Up!</h1><br>
 
-<form action="<%= users_url %>" method="post">
-  <%= auth_token %>
-    
-  <label id="first-name">First Name:</label>
-  <input type="text" name="user[first_name]" id="first-name">
+  <form class="col-md-4" action="<%= users_url %>" method="post">
+    <%= auth_token %>
 
-  <label id="last-name">Last Name:</label>
-  <input type="text" name="user[last_name]" id="last-name">
+    <input class="form-control first-name" type="text" name="user[first_name]" id="first-name" placeholder="First Name">
 
-  <label id="email">Email:</label>
-  <input type="text" name="user[email]" id="email">
+    <input class="form-control last-name" type="text" name="user[last_name]" id="last-name" placeholder="Last Name">
 
-  <label id="password">Password:</label>
-  <input type="password" name="user[password]" id="password">
+    <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
 
-  <input type="submit" value="Sign up!">
-</form>
+    <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
+
+    <input class="btn-success" type="submit" value="Sign up!">
+  </form>
+</div>
