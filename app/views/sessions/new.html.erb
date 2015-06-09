@@ -1,12 +1,12 @@
 <div class="sign-in">
   <h1>Log In</h1>
 
-  <form class="col-md-4" action="<%= users_url %>" method="post">
+  <form class="col-md-4" action="<%= session_url %>" method="post">
     <%= auth_token %>
 
     <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
     <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
 
-    <input class="btn-success" type="submit" value="Sign up!">
+    <input class="btn-success" type="submit" value="Log in!">
   </form>
 </div>
