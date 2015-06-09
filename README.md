@@ -10,7 +10,8 @@ I will make a yelp clone. Users can:
 - [ ] Rate and review businesses
 - [ ] Edit ratings and reviews
 
-* [Schema][./schema.md]
+* [Schema][schema]
+[schema]: ./schema.md
 
 ## Implementation Timeline
 ### PHASE 1: User authentication, seed data for businesses (1 day)
@@ -64,9 +65,9 @@ show page.
 * Filter businesses by distance
 * Allow users to add pictures to businesses
 
-* [phase-1][./phases/phase1_details.md]
-* [phase-2][./phases/phase2_details.md]
-* [phase-3][./phases/phase3_details.md]
-* [phase-4][./phases/phase4_details.md]
-* [phase-5][./phases/phase5_details.md]
-* [phase-6][./phases/phase6_details.md]
+* [phase-1]: ./phases/phase1_details.md
+* [phase-2]: ./phases/phase2_details.md
+* [phase-3]: ./phases/phase3_details.md
+* [phase-4]: ./phases/phase4_details.md
+* [phase-5]: ./phases/phase5_details.md
+* [phase-6]: ./phases/phase6_details.md
