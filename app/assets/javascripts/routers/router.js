@@ -7,12 +7,6 @@ YelpClone.Routers.Router = Backbone.Router.extend({
     "": "userShow"
   },
 
-  // index: function () {
-    // var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
-    // user.fetch();
-    // var view = new YelpClone.Views.
-  // },
-
   userShow: function () {
     var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
     user.fetch();

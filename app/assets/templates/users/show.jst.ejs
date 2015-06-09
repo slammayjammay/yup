@@ -1,1 +1,12 @@
-<%= user.escape('first_name') %><%= user.escape('last_name') %>
+<h1>
+  <%= user.escape('first_name') + " " %>
+  <%= user.escape('last_name') + "'s profile" %>
+</h1>
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="#">Profile Home</a></li>
+  <li role="presentation"><a href="#">Reviews</a></li>
+  <li class="pull-right" role="presentation"><a href="#">Edit</a></li>
+</ul>
+
+<div class="profile-sidebar"></div>
