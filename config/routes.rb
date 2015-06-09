@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#new'
+  root 'static_pages#root'
   resources :users
   resource :session
 end
