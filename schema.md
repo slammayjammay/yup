@@ -32,19 +32,4 @@ column name   | data type | details
   content     | string    | not null
   price       | integer   |
   business_id | integer   | not null, foreign key (references businesses)
-
-
-## reviewings
-column name | data type | details
-------------|-----------|-------------------------
-  id        | integer   | not null, primary key
-  review_id | integer   | not null, foreign key (references reviews)
-  user_id   | integer   | not null, foreign key (references users)
-
-
-## images
-column name   | data type | details
---------------|-----------|-------------------------
-  id          |  integer  | not null, primary key
-  image_url   |  string   | not null
-  business_id |  integer  | not null, foreign key (references businesses)
+  user_id     | integer   | not null, foreign key (references users)
