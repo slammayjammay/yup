@@ -17,4 +17,6 @@
 
 class Business < ActiveRecord::Base
   validates :name, :category, :address, :city, :state, presence: true
+  has_many :reviews
+  has_many :reviewers, through: :reviews, source: :user
 end

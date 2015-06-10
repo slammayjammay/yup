@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_many :reviews
+  has_many :reviewed_businesses, through: :reviews, source: :business
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
