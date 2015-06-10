@@ -1,0 +1,59 @@
+img {
+  width: 200px;
+  height: 200px;
+  float: right;
+}
+
+.stars {
+  float: left;
+  margin-left: 40px;
+  width:  230px;
+  height: 75px;
+}
+
+.star {
+  position: relative;
+  float: left;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+
+.star img {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  left: 10%;
+  top: 10%;
+}
+
+.category {
+  float: left;
+}
+
+.business-reviews {
+  float: left;
+  width: 750px;
+  height: 400px;
+  margin-top: 50px;
+}
+
+.review-company {
+  width: 700px;
+}
+.review {
+  float: right;
+  width: 200px;
+  height: 50px;
+  margin-top: 15px;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}

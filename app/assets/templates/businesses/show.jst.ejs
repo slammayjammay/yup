@@ -1,3 +1,33 @@
-<h1><%= business.escape('name') %></h1>
-<a href="#nothing"><%= business.escape('category') %></a>
-<img src="<%= business.get('image_url') %>">
+<h1>
+  <%= business.escape('name') %>
+  <img src="<%= business.get('image_url') %>">
+</h1>
+
+<div class="review-company group">
+  <div class="stars">
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+  </div>
+
+  <button class="review btn btn-danger">Review this Company!</button>
+</div>
+
+<button class="category"><%= business.escape('category') %></button>
+
+<br>
+<h1>Reviews</h1>
+<h1>Reviews</h1>
+<h1>Reviews</h1>

@@ -1,4 +1,4 @@
-YelpClone.Views.BusinessShow = Backbone.View.extend({
+YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   template: JST['businesses/show'],
 
   initialize: function () {
