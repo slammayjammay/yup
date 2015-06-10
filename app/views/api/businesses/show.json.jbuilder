@@ -1,1 +1,1 @@
-json.extract! @business, :name, :category, :address, :city, :state
+json.extract! @business, :name, :category, :address, :city, :state, :image_url
