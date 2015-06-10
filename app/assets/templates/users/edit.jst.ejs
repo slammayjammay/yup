@@ -6,7 +6,7 @@
   <input class="form-control"
     id="first-name"
     type="text"
-    name="user[first_name]"
+    name="first_name"
     id="first-name"
     placeholder="<%= user.escape('first_name') %>">
 
@@ -16,7 +16,7 @@
   <input class="form-control"
     id="last-name"
     type="text"
-    name="user[last_name]"
+    name="last_name"
     placeholder="<%= user.escape('last_name') %>">
 
   <br>
@@ -24,10 +24,16 @@
   <label id="email">Change email:</label>
   <input class="form-control"
     id="email"
-    name="user[email]"
+    name="email"
     placeholder="<%= user.escape('email') %>">
 
   <br>
-  
+
+  <label id="image-url">Change avatar:</label>
+  <input class="form-control"
+    id="image-url"
+    name="image_url"
+    placeholder="Enter image url">
+
   <input class="btn btn-success" type="submit" value="Update!">
 </form>

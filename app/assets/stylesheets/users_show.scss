@@ -1,14 +1,18 @@
 .user-sidebar {
-  border-right: 1px solid gray;
+  float: left;
   margin-top: 20px;
   margin-left: 20px;
   width: 250px;
-  height: 600px;
+  height: 100%x;
 
   img {
     height: 200px;
     width: 200px;
     display: block;
+  }
+
+  p {
+    font-size: 20px;
   }
 }
 
@@ -21,7 +25,6 @@
 }
 
 .user-main input {
-  clear: both;
   width: 60%;
   margin-bottom: 5px;
 }
