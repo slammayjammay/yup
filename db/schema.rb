@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20150609195017) do
     t.string   "city",       null: false
     t.string   "state",      null: false
     t.string   "url"
-    t.integer  "phone"
-    t.integer  "image_url"
+    t.string   "phone"
+    t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

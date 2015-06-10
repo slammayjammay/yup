@@ -7,8 +7,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :city, null: false
       t.string :state, null: false
       t.string :url
-      t.integer :phone
-      t.integer :image_url
+      t.string :phone
+      t.string :image_url
 
       t.timestamps null: false
     end

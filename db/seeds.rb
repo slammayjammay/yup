@@ -1,4 +1,4 @@
-categories = %w(tech, food, business, sports, recreational)
+categories = %w(tech food business sports recreational)
 
 20.times do
   Business.create!(
