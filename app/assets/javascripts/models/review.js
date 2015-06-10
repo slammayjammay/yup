@@ -1,3 +1,3 @@
-// YelpClone.Models.Review = Backbone.Model.extend({
-//   url
-// });
+YelpClone.Models.Review = Backbone.Model.extend({
+  urlRoot: '/api/likes'
+});
