@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'backbone-on-rails'
+gem 'faker'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 

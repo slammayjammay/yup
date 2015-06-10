@@ -18,7 +18,9 @@ column name | data type | details
 id          | integer   | not null, primary key
 name        | string    | not null, unique
 category    | string    | not null
-location    | string    | not null
+address     | string    | not null
+city        | string    | not null
+state       | string    | not null
 phone       | integer   |
 url         | string    | unique
 image_url   | string    |
