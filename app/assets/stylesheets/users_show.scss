@@ -4,19 +4,20 @@
   margin-top: 20px;
   margin-left: 20px;
   width: 200px;
+
+  img {
+    height: 100px;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
-img {
-  height: 100px;
-  width: 100px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.test {
-  height: 200px;
-  width: 200px;
-  display: block;
+.user-main {
+  margin-top: 20px;
+  margin-left: 20px;
+  background: gray;
   float: left;
-  background: black;
+  width: 500px;
+  height: 400px;
 }
