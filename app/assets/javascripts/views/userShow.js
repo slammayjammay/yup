@@ -1,7 +1,9 @@
 YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   events: {
-    "click li.edit": "renderEdit"
+    "click li.edit": "renderEdit",
+    "click li.home": "renderHome",
+    "click li.reviews": "renderReviews"
   },
 
   initialize: function () {
@@ -10,14 +12,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview('.user-sidebar', this._mainView, true);
-  },
-
-  renderEdit: function (event) {
-    var view = new YelpClone.Views.UserEdit({
-      model: this.model
-    });
-    this.addSubview('.user-main', view, true);
-    this._swapMainContent(view);
+    this.renderHome();
   },
 
   render: function () {
@@ -25,6 +20,30 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
+  },
+
+  renderEdit: function () {
+    var view = new YelpClone.Views.UserEdit({
+      model: this.model
+    });
+    this.addSubview('.user-main', view, true);
+    this._swapMainContent(view);
+  },
+
+  renderHome: function () {
+    var view = new YelpClone.Views.UserHome({
+      model: this.model
+    });
+    this.addSubview('.user-main', view, true);
+    this._swapMainContent(view);
+  },
+
+  renderReviews: function () {
+    var view = new YelpClone.Views.UserReviews({
+      model: this.model
+    });
+    this.addSubview('.user-main', view, true);
+    this._swapMainContent(view);
   },
 
   _swapMainContent: function (view) {
