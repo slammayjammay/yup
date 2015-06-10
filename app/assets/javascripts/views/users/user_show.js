@@ -22,7 +22,6 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log("show render");
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
