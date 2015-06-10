@@ -1,16 +1,14 @@
 .user-sidebar {
-  float: left;
   border-right: 1px solid gray;
   margin-top: 20px;
   margin-left: 20px;
-  width: 200px;
+  width: 250px;
   height: 600px;
 
   img {
-    height: 100px;
-    width: 100px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: 200px;
+    width: 200px;
+    display: block;
   }
 }
 

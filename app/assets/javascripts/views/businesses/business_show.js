@@ -1,4 +1,5 @@
 YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
+  className: "business-show",
   template: JST['businesses/show'],
 
   initialize: function () {
