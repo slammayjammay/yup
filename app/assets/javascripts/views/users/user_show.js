@@ -3,7 +3,8 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   events: {
     "click li.edit": "renderEdit",
     "click li.home": "renderHome",
-    "click li.reviews": "renderReviews"
+    "click li.reviews": "renderReviews",
+    "submit form": "edit"
   },
 
   initialize: function () {
@@ -13,6 +14,11 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.user-sidebar', this._mainView, true);
     this.renderHome();
+  },
+
+  edit: function (event) {
+    event.preventDefault();
+    var data = $(event.currentTarget).serializeJSON();
   },
 
   render: function () {

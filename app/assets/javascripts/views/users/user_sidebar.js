@@ -6,6 +6,7 @@ YelpClone.Views.UserSidebar = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    console.log('test');
     var content = this.template({ user: this.model });
     this.$el.html(content);
     return this;

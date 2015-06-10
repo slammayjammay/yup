@@ -1,1 +1,33 @@
-<h1>I'm in Edit</h1>
+<h1>Edit!</h1>
+<br>
+
+<form>
+  <label id="first-name">Enter your first name:</label>
+  <input class="form-control"
+    id="first-name"
+    type="text"
+    name="user[first_name]"
+    id="first-name"
+    placeholder="<%= user.escape('first_name') %>">
+
+  <br>
+
+  <label id="last-name">Enter your last name:</label>
+  <input class="form-control"
+    id="last-name"
+    type="text"
+    name="user[last_name]"
+    placeholder="<%= user.escape('last_name') %>">
+
+  <br>
+
+  <label id="email">Change email:</label>
+  <input class="form-control"
+    id="email"
+    name="user[email]"
+    placeholder="<%= user.escape('email') %>">
+
+  <br>
+  
+  <input class="btn btn-success" type="submit" value="Update!">
+</form>

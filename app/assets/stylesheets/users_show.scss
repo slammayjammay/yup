@@ -4,6 +4,7 @@
   margin-top: 20px;
   margin-left: 20px;
   width: 200px;
+  height: 600px;
 
   img {
     height: 100px;
@@ -16,8 +17,13 @@
 .user-main {
   margin-top: 20px;
   margin-left: 20px;
-  background: gray;
   float: left;
   width: 500px;
   height: 400px;
+}
+
+.user-main input {
+  clear: both;
+  width: 60%;
+  margin-bottom: 5px;
 }

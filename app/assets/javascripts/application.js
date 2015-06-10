@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require jquery.serializejson
 //= require composite_view
 //= require yelp_clone
 //= require_tree ../templates
