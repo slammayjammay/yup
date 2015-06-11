@@ -2,17 +2,17 @@
   height: 100%;
 
   .business-image {
-    width: 200px;
-    height: 200px;
     float: right;
+    height: 200px;
+    width: 200px;
   }
 }
 
 .stars {
   float: left;
+  height: 75px;
   margin-left: 40px;
   width:  230px;
-  height: 75px;
 }
 
 .star {
@@ -24,29 +24,14 @@
   height: 40px;
   margin-top: 20px;
   margin-right: 5px;
-}
 
-.review-item .stars {
-  width: 100%;
-  height: 100%;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-  .star {
-    width: 20px;
-    height: 20px;
-    margin-top: 0px;
-    margin-right: 3px;
+  img {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    top: 10%;
   }
-}
-
-.star img {
-  position: absolute;
-  height: 80%;
-  width: 80%;
-  left: 10%;
-  top: 10%;
 }
 
 .category {
@@ -74,17 +59,32 @@
 
 .business-reviews {
   float: left;
-  width: 750px;
+  width: 75%;
   margin-top: 50px;
-  margin-left: 40px
+  margin-left: 40px;
 }
 
 .review-item {
-  margin-bottom: 50px;
+  height: 100px;
+  margin-bottom: 40px;
+  margin-top: 25px;
+
+  .stars {
+    float: left;
+    height: 40%;
+
+    .star {
+      height: 20px;
+      margin-right: 3px;
+      margin-top: 0px;
+      width: 20px;
+    }
+  }
 
   .review-info {
-    display: inline-block;
-    margin-left: 30px;
+    float: left;
+    padding-left: 30px;
+    width: 80%;
   }
 
   .user-image {
