@@ -1,1 +1,1 @@
-json.extract! @business, :name, :category, :address, :city, :state, :image_url, :reviews
+json.extract! @business, :id, :name, :category, :address, :city, :state, :image_url, :reviews
