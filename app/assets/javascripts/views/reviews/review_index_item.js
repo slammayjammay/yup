@@ -3,7 +3,7 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
   template: JST['reviews/index_item'],
 
   initialize: function () {
-    this.user = new YelpClone.Models.User({ id: this.model.get('id') });
+    this.user = new YelpClone.Models.User({ id: this.model.get('user_id') });
     this.user.fetch();
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.user, "sync", this.render);

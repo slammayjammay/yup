@@ -17,6 +17,10 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
     var that = this;
     review.save({}, { success: function () {
       that.model.reviews().add(review);
+      Backbone.history.navigate(
+        "businesses/" + that.model.get('id'),
+        { trigger: true }
+      );
     }});
   },
 

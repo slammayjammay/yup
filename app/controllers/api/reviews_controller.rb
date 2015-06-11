@@ -13,6 +13,6 @@ class Api::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:business_id, :rating, :content)
+    params.permit(:business_id, :rating, :content, :price)
   end
 end

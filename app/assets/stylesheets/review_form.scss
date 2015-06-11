@@ -5,7 +5,7 @@
     margin-top: 30px;
   }
 
-  input#rating {
+  input#rating, input#price {
     width: 20%;
     margin-bottom: 50px;
   }
@@ -21,10 +21,3 @@
     height: 50px;
   }
 }
-
-
-
-// .review-form input#review-content {
-//   max-width: 50%;
-//   height: 200px;
-// }
