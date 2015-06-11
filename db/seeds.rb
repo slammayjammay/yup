@@ -1,4 +1,12 @@
-categories = %w(tech food business sports recreational)
+categories = []
+10.times do
+  word = Faker::Hacker.adjective
+  while categories.include? word
+    word = Faker::Hacker.adjective
+  end
+
+  categories.push(word)
+end
 
 20.times do
   Business.create(

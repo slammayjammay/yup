@@ -2,6 +2,7 @@
   <%= business.escape('name') %>
   <img class="business-image" src="<%= business.get('image_url') %>">
 </h1>
+<button class="category btn btn-primary"><%= business.escape('category') %></button>
 
 <div class="stars">
   <div class="star">
@@ -26,6 +27,5 @@
   </button>
 </div>
 
-<button class="category"><%= business.escape('category') %></button>
 
 <div class="business-reviews"></div>

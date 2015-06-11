@@ -30,7 +30,11 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   home: function () {
-    var view = new YelpClone.Views.HomeIndex();
+    var businesses = new YelpClone.Collections.Businesses();
+    businesses.fetch();
+    var view = new YelpClone.Views.HomeIndex({
+      collection: businesses
+    });
     this._swapView(view);
   },
 
