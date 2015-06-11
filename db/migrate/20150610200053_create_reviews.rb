@@ -1,7 +1,7 @@
 class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
-      t.integer :rating, null: false
+      t.float :rating, null: false
       t.string :content, null: false
       t.integer :price
       t.integer :business_id, null: false

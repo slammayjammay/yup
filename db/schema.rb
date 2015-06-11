@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150610200053) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating",      null: false
+    t.float    "rating",      null: false
     t.string   "content",     null: false
     t.integer  "price"
     t.integer  "business_id", null: false
