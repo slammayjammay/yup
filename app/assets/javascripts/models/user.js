@@ -17,5 +17,4 @@ YelpClone.Models.User = Backbone.Model.extend({
 
     return this._reviews;
   }
-
 });

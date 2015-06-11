@@ -26,7 +26,6 @@
   margin-right: 5px;
 }
 
-
 .star img {
   position: absolute;
   height: 80%;
@@ -40,19 +39,12 @@
   margin-left: 40px;
 }
 
-.business-reviews {
-  float: left;
-  width: 750px;
-  margin-top: 50px;
-  margin-left: 40px
-}
-
 .review-company {
   width: 700px;
   height: 80px;
 }
 
-.review {
+.add-review {
   float: right;
   width: 200px;
   height: 50px;
@@ -63,4 +55,15 @@
   content: "";
   clear: both;
   display: block;
+}
+
+.business-reviews {
+  float: left;
+  width: 750px;
+  margin-top: 50px;
+  margin-left: 40px
+}
+
+.review-item {
+  margin-bottom: 10px;
 }
