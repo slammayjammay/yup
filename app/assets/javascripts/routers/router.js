@@ -4,6 +4,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    "home": "home",
     "userShow": "userShow",
     "businesses/:id": "businessShow",
     "businesses/:id/review": "businessReview"
@@ -25,6 +26,11 @@ YelpClone.Routers.Router = Backbone.Router.extend({
       model: business
     });
 
+    this._swapView(view);
+  },
+
+  home: function () {
+    var view = new YelpClone.Views.HomeIndex();
     this._swapView(view);
   },
 
