@@ -1,7 +1,10 @@
 <h1><%= business.escape('name') %></h1>
-<form>
-  <input class="form-control" type="text" name="rating">
+<form class="review-form">
+  <label id="rating"> Rating: </label>
+  <input class="form-control" type="text" name="rating" id="rating">
 
-  <textarea class="form-control"></textarea>
-  <input type="submit" value="Review!">
+  <label id="review-content"> Write your review! </label><br>
+  <input id="review-content" class="form-control" name="content">
+
+  <button type="submit" class="btn btn-danger">Review!</button>
 </form>
