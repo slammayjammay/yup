@@ -4,7 +4,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "home": "userShow",
+    "userShow": "userShow",
     "businesses/:id": "businessShow",
     "businesses/:id/review": "businessReview"
   },
