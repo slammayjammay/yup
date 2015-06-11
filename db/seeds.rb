@@ -28,12 +28,15 @@ end
   )
 end
 
+user_ids = (User.first.id..User.last.id).to_a
+business_ids = (Business.first.id..Business.last.id).to_a
+
 100.times do
   Review.create(
     rating: (1..5).to_a.sample,
     content: Faker::Hacker.say_something_smart,
     price: (1..4).to_a.sample,
-    business_id: (0...20).to_a.sample,
-    user_id: (0...50).to_a.sample
+    business_id: business_ids.sample,
+    user_id: user_ids.sample
   )
 end

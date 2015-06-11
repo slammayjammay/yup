@@ -1,3 +1,25 @@
-Rating: <%= review.escape('rating') %><br>
-Review: <%= review.escape('content') %><br>
-Price: <%= review.escape('price') %>
+<img class="user-image" src="<%= user.escape('image_url') %>">
+
+<div class="review-info">
+  <div class="stars">
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+    <div class="star">
+      <img src="https://s-media-cache-ak0.pinimg.com/236x/e6/bf/d1/e6bfd1eeef6d96c98338afe8af0a2668.jpg">
+    </div>
+  </div>
+
+  Rating: <%= review.escape('rating') %><br>
+  Review: <%= review.escape('content') %><br>
+  Price: <%= review.escape('price') %><br>
+</div>
