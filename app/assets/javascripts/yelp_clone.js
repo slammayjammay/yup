@@ -8,6 +8,11 @@ window.YelpClone = {
       $rootEl: $('#content')
     });
 
+    var navbar = new YelpClone.Views.Navbar({
+      router: router
+    });
+
+    $('#navbar').html(navbar.render().$el);
     Backbone.history.start();
   }
 };
