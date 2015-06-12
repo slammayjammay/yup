@@ -17,16 +17,18 @@ ActiveRecord::Schema.define(version: 20150610200053) do
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "category",   null: false
-    t.string   "address",    null: false
-    t.string   "city",       null: false
-    t.string   "state",      null: false
+    t.string   "name",                       null: false
+    t.float    "rating",       default: 0.0, null: false
+    t.integer  "review_count", default: 0,   null: false
+    t.string   "category",                   null: false
+    t.string   "address",                    null: false
+    t.string   "city",                       null: false
+    t.string   "state",                      null: false
     t.string   "url"
     t.string   "phone"
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "reviews", force: :cascade do |t|

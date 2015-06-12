@@ -2,6 +2,8 @@ class CreateBusinesses < ActiveRecord::Migration
   def change
     create_table :businesses do |t|
       t.string :name, null: false
+      t.float  :rating, null: false, default: 0
+      t.integer :review_count, null: false, default: 0
       t.string :category, null: false
       t.string :address, null: false
       t.string :city, null: false
