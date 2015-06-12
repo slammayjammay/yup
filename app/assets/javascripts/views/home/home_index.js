@@ -1,10 +1,15 @@
 YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
   template: JST['home/home_index'],
+  events: {
+    "click .category-index-item": "switchBusinesses"
+  },
 
   initialize: function () {
+    this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
+                       'bars', 'coffee', 'health'];
     this.renderCategories();
     this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "sync", this.renderBusinesses);
+    this.listenTo(this.collection, "sync", this.addBusinesses.bind(this, 'restaurants'));
   },
 
   render: function () {
@@ -14,26 +19,38 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
     return this;
   },
 
-  renderBusinesses: function () {
-    debugger
+  addBusinesses: function (category) {
     var that = this;
     this.collection.each(function (business) {
-      var view = new YelpClone.Views.BusinessIndexItem({
-        model: business
-      });
-      that.addSubview('.businesses', view);
+      if (business.get('category') === category) {
+        var view = new YelpClone.Views.BusinessIndexItem({
+          model: business
+        });
+        that.addSubview('.businesses', view);
+      }
     });
+
+    this.render();
   },
 
   renderCategories: function () {
-    var categories = ['Restaurants', 'Food', 'Nightlife', 'Shopping',
-                       'Bars', 'Coffee', 'Health'];
     var that = this;
-    categories.forEach(function (category) {
+    this.categories.forEach(function (category) {
       var view = new YelpClone.Views.CategoryIndexItem({
         category: category
       });
       that.addSubview('.categories', view);
     });
+  },
+
+  switchBusinesses: function (event) {
+    var category = $(event.currentTarget).text().trim();
+    var subviews = _.map(this.subviews('.businesses'), _.clone);
+    var that = this;
+    subviews[0].forEach(function (view) {
+      that.removeSubview('.businesses', view);
+    });
+
+    this.addBusinesses(category);
   }
 });

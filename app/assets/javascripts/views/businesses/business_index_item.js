@@ -14,7 +14,6 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   },
 
   displayRating: function () {
-    debugger
     var rating = this.model.get('rating');
     rating = (Math.round(rating * 2) / 2).toFixed(1);
     this.$("#input-id").rating({ disabled: true });
