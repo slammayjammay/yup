@@ -15,6 +15,14 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
       user: this.user
     });
     this.$el.html(content);
+    this.displayRating();
     return this;
+  },
+
+  displayRating: function () {
+    var rating = this.model.get('rating');
+    rating = (Math.round(rating * 2) / 2).toFixed(1);
+    this.$("#input-id").rating({ disabled: true });
+    this.$("#input-id").rating('update', rating);
   }
 });

@@ -1,6 +1,6 @@
 <img class="user-image" src="<%= user.escape('image_url') %>">
 
 <div class="review-info">
+  <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
   Review: <%= review.escape('content') %><br>
-  Price: <%= review.escape('price') %>
 </div>
