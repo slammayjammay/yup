@@ -1,0 +1,36 @@
+.categories {
+  float: left;
+  margin-top: 30px;
+
+  .category-index-item {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    font-size: 18px;
+    padding: 5px;
+    height: auto;
+    width: auto;
+  }
+
+  .category-index-item:last-child {
+    border-bottom: 1px solid black;
+  }
+
+  .category-index-item:hover {
+    background: #8EE5EE;
+  }
+}
+
+.businesses {
+  float: left;
+  margin-top: 30px;
+
+  .business-index-item {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 18px;
+    padding: 5px;
+    height: auto;
+    width: auto;
+  }
+}
