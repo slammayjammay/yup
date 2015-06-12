@@ -3,8 +3,10 @@
   margin-top: 30px;
 
   .category-index-item {
+    float: left;
     border-top: 1px solid black;
     border-left: 1px solid black;
+    border-bottom: 1px solid black;
     font-size: 18px;
     padding: 5px;
     height: auto;
@@ -12,7 +14,7 @@
   }
 
   .category-index-item:last-child {
-    border-bottom: 1px solid black;
+    border-right: 1px solid black;
   }
 
   .category-index-item:hover {
@@ -22,15 +24,17 @@
 
 .businesses {
   float: left;
-  margin-top: 30px;
+  // margin-top: 30px;
 
   .business-index-item {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    box-shadow: 6px 4px 9px 0px rgba(0,0,0,0.63);
+    // border-left: 1px solid black;
+    // border-right: 1px solid black;
     font-size: 18px;
     padding: 5px;
-    min-height: 200px;
-    min-width: 500px;
 
     .image {
       float: left;
@@ -46,7 +50,10 @@
 
     h4 {
       margin-left: 120px;
-      margin-top: 30px;
+    }
+
+    p {
+      margin-left: 100px;
     }
   }
 
