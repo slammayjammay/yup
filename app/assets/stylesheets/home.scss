@@ -1,12 +1,11 @@
 .categories {
-  float: left;
-  margin-top: 30px;
+  height: 10px;
 
   .category-index-item {
     float: left;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
     font-size: 18px;
     padding: 5px;
     height: auto;
@@ -26,15 +25,20 @@
   float: left;
   // margin-top: 30px;
 
+  .begin {
+    transform: translateX(75%);
+  }
+
   .business-index-item {
+    transition: 400ms;
     border: 1px solid black;
     border-radius: 3px;
     margin: 10px;
-    box-shadow: 6px 4px 9px 0px rgba(0,0,0,0.63);
-    // border-left: 1px solid black;
-    // border-right: 1px solid black;
+    margin-left: 40px;
+    box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+    min-height: 170px;
     font-size: 18px;
-    padding: 5px;
+    padding: 15px;
 
     .image {
       float: left;
@@ -42,22 +46,28 @@
       width: 80px;
     }
 
-    .small-star {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-    }
-
     h4 {
-      margin-left: 120px;
+      float: right;
+      margin-top: -34px;
+      margin-right: 150px;
     }
 
     p {
       margin-left: 100px;
     }
+
+    small {
+      float: right;
+    }
   }
 
   .business-index-item:first-child{
     border-top: 1px solid black;
+  }
+
+  .business-index-item:hover {
+    background: #d3d3d3;
+    transition: background 150ms linear;
+    cursor: pointer;
   }
 }
