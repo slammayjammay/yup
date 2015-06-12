@@ -8,7 +8,6 @@ categories.each do |category|
       name: results.businesses[num].name,
       category: category,
       rating: results.businesses[num].rating,
-      review_count: results.businesses[num].review_count,
       address: results.businesses[num].location.display_address.join(" "),
       city: results.businesses[num].location.city,
       state: results.businesses[num].location.country_code,
@@ -47,5 +46,7 @@ business_ids = (Business.first.id..Business.last.id).to_a
     user_id: user_ids.sample
   )
   business.review_count += 1
-  business.rating += (rating / business.review_count)
+  diff = rating - business.rating
+  business.rating += diff / business.review_count
+  business.save
 end

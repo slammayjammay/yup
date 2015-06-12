@@ -24,7 +24,8 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   displayRating: function () {
-    $("#input-id").rating();
-    $("#input-id").rating({'size':'lg'});
+    $("#input-id").rating({ disabled: true });
+    $("#input-id").rating('update', 4);
+    // $("#input-id").rating({'size':'lg'});
   }
 });
