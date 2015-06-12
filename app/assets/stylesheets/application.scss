@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require star-rating
  *= require_self
  */
 
@@ -22,3 +23,4 @@
 
  @import "bootstrap";
  @import "bootstrap-sprockets";
+ @import 'bootstrap/glyphicons';

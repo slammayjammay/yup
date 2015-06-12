@@ -51,6 +51,9 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -187,6 +190,7 @@ DEPENDENCIES
   annotate
   backbone-on-rails
   bcrypt
+  bootstrap-glyphicons
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
