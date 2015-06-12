@@ -1,8 +1,24 @@
+nav.navbar.navbar-default {
+  height: 100px;
+  margin-bottom: 0px;
+  background-color: #b30000;
+}
+
 .navbar .navbar-form {
   width: 440px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .navbar input.form-control {
   width: 335px;
+  height: 50px;
+}
+
+.navbar button.btn {
+  background: white;
+}
+
+.navbar button.btn:hover {
+  background: #dbdbdb;
 }
