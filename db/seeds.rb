@@ -48,5 +48,5 @@ business_ids = (Business.first.id..Business.last.id).to_a
   business.review_count += 1
   diff = rating - business.rating
   business.rating += diff / business.review_count
-  business.save
+  business.save!
 end
