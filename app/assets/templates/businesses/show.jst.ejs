@@ -3,12 +3,9 @@
   <img class="business-image" src="<%= business.get('image_url') %>">
 </h1>
 <button class="category btn btn-primary"><%= business.escape('category') %></button>
+<button class="add-review btn btn-danger">
+  Review this Company!
+</button>
 
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="md" >
-
-  <button class="add-review btn btn-danger">
-    Review this Company!
-  </button>
-</div>
-
 <div class="business-reviews"></div>

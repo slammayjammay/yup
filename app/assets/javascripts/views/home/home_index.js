@@ -15,6 +15,7 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
   },
 
   renderBusinesses: function () {
+    debugger
     var that = this;
     this.collection.each(function (business) {
       var view = new YelpClone.Views.BusinessIndexItem({

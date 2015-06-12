@@ -1,3 +1,5 @@
 YelpClone.Collections.Businesses = Backbone.Collection.extend({
-  url: "/api/businesses"
+  url: "/api/businesses",
+
+  model: YelpClone.Models.Business
 });
