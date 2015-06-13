@@ -1,14 +1,16 @@
 YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
-  className: "begin business-index-item",
+  className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
     "click": "redirect"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.index = options.index;
+    this.$el.attr('style', 'transform: translateX(' + (50 + this.index * 50) + '%);')
     this.listenTo(this.model, "sync", this.render);
     setTimeout(function () {
-      this.$el.removeClass('begin');
+      this.$el.removeAttr('style');
     }.bind(this), 0);
   },
 
