@@ -32,16 +32,20 @@
 }
 
 .business-reviews {
-  float: left;
-  width: 75%;
+  float: right;
+  width: 57%;
   margin-top: 50px;
   margin-left: 40px;
 }
 
 .review-item {
   height: 100px;
-  margin-bottom: 40px;
   margin-top: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 8px;
+  min-height: 115px;
+  max-width: 670px;
 }
 
 .review-info {
@@ -54,4 +58,9 @@
   float: left;
   width: 100px;
   height: 100px;
+}
+
+.business-show h1 {
+  margin-top: 0px;
+  padding-top: 45px;
 }
