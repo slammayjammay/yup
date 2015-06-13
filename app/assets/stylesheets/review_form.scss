@@ -10,7 +10,7 @@
 }
 
 .review-form {
-  transition: 1s;
+  transition: 500ms;
   opacity: 1;
   position: absolute;
   padding-left: 33px;
@@ -24,6 +24,11 @@
   width: 37%;
   background: white;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+
+  button.close {
+    margin-right: 15px;
+    margin-top: -65px;
+  }
 
   label#review-content {
     margin-top: 40px;

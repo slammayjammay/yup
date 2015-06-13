@@ -2,7 +2,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   className: "business-show",
   template: JST['businesses/show'],
   events: {
-    "click button": "renderForm"
+    "click .add-review": "renderForm",
   },
 
   initialize: function () {
