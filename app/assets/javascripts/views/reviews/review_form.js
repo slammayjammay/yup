@@ -16,6 +16,9 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
   render: function () {
     var content = this.template({ business: this.model });
     this.$el.html(content);
+    setTimeout(function () {
+      this.$('form').attr('class', 'review-form');
+    }.bind(this), 0);
     this.displayRating();
     return this;
   },

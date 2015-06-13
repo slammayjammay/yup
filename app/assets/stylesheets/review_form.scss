@@ -5,7 +5,13 @@
   width: 100%;
 }
 
+.begin {
+  opacity: 0;
+}
+
 .review-form {
+  transition: 1s;
+  opacity: 1;
   position: absolute;
   padding-left: 33px;
   padding-top: 20px;
