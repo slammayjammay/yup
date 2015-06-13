@@ -37,6 +37,6 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     var view = new YelpClone.Views.ReviewForm({
       model: this.model
     });
-    this.$el.prepend(view.render().$el);
+    $('body').prepend(view.render().$el);
   }
 });

@@ -1,5 +1,5 @@
 YelpClone.Views.ReviewForm = Backbone.View.extend({
-  className: "review-form",
+  className: "backdrop",
   template: JST['reviews/form'],
   events: {
     "submit form": "save"

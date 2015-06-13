@@ -1,15 +1,23 @@
-.review-form {
+.backdrop {
   position: fixed;
+  background: rgba(157, 157, 157, 0.29);
+  height: 100%;
+  width: 100%;
+}
+
+.review-form {
+  position: absolute;
   padding-left: 33px;
   padding-top: 20px;
-  margin-left: 275px;
-  margin-top: 50px;
+  left: 30%;
+  top: 15%;
   z-index: 100;
   border: 1px solid black;
   border-radius: 4px;
   height: 45%;
   width: 37%;
   background: white;
+  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
 
   label#review-content {
     margin-top: 40px;
