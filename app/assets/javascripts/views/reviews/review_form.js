@@ -1,4 +1,5 @@
 YelpClone.Views.ReviewForm = Backbone.View.extend({
+  className: "review-form",
   template: JST['reviews/form'],
   events: {
     "submit form": "save"
@@ -6,6 +7,17 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+  },
+
+  displayRating: function () {
+    this.$("#input-id").rating();
+  },
+
+  render: function () {
+    var content = this.template({ business: this.model });
+    this.$el.html(content);
+    this.displayRating();
+    return this;
   },
 
   save: function (event) {
@@ -22,11 +34,5 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
         { trigger: true }
       );
     }});
-  },
-
-  render: function () {
-    var content = this.template({ business: this.model });
-    this.$el.html(content);
-    return this;
   }
 });

@@ -1,23 +1,29 @@
-// 
-// .review-form {
-//   label {
-//     display: block;
-//     margin-top: 30px;
-//   }
-//
-//   input#rating, input#price {
-//     width: 20%;
-//     margin-bottom: 50px;
-//   }
-//
-//   input#review-content {
-//     max-width: 50%;
-//     height: 200px;
-//   }
-//
-//   button.btn {
-//     margin-top: 30px;
-//     width: 180px;
-//     height: 50px;
-//   }
-// }
+.review-form {
+  position: fixed;
+  padding-left: 33px;
+  padding-top: 20px;
+  margin-left: 275px;
+  margin-top: 50px;
+  z-index: 100;
+  border: 1px solid black;
+  border-radius: 4px;
+  height: 45%;
+  width: 37%;
+  background: white;
+
+  label#review-content {
+    margin-top: 40px;
+  }
+
+  textarea {
+    width: 500px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+
+  button.btn-danger {
+    width: 175px;
+    height: 50px;
+    margin-left: 162px;
+  }
+}

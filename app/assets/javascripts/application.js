@@ -19,7 +19,6 @@
 //= require jquery.serializejson
 //= require composite_view
 //= require yelp_clone
-//= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
