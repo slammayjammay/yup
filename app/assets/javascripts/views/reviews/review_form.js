@@ -2,16 +2,17 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
   className: "backdrop",
   template: JST['reviews/form'],
   events: {
-    "click button.submit": "save",
+    "submit form": "save",
     "click button.close": "close"
-  },
-
-  close: function () {
-    this.remove();
   },
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+  },
+
+  close: function (event) {
+    event.preventDefault();
+    this.remove();
   },
 
   displayRating: function () {
@@ -21,6 +22,11 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
   render: function () {
     var content = this.template({ business: this.model });
     this.$el.html(content);
+    this.$('#input-id').on('rating.change', function (e, v, c) {
+      debugger
+      this.rating = parseFloat(v);
+    }.bind(this));
+
     setTimeout(function () {
       this.$('form').attr('class', 'review-form');
     }.bind(this), 0);
@@ -30,10 +36,10 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
 
   save: function (event) {
     event.preventDefault();
-    var data = $(event.currentTarget).serializeJSON();
-    var review = new YelpClone.Models.Review(data);
+    var review = new YelpClone.Models.Review({ rating: this.rating });
+    review.set('content', this.$('textarea').val());
     review.set('business_id', this.model.get('id'));
-
+    debugger
     var that = this;
     review.save({}, { success: function () {
       that.model.reviews().add(review);
