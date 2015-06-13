@@ -7,7 +7,14 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.reviews(), "add", this.addReview);
     this.listenTo(this.model, "sync", this.renderReviews);
+  },
+
+  addReview: function (review) {
+    var view = new YelpClone.Views.ReviewIndexItem({ model: review });
+    this.addSubview('.business-reviews', view);
+    // this.attachSubview;
   },
 
   displayRating: function () {

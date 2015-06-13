@@ -23,7 +23,6 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
     var content = this.template({ business: this.model });
     this.$el.html(content);
     this.$('#input-id').on('rating.change', function (e, v, c) {
-      debugger
       this.rating = parseFloat(v);
     }.bind(this));
 
@@ -39,10 +38,11 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
     var review = new YelpClone.Models.Review({ rating: this.rating });
     review.set('content', this.$('textarea').val());
     review.set('business_id', this.model.get('id'));
-    debugger
+
     var that = this;
     review.save({}, { success: function () {
       that.model.reviews().add(review);
+      that.remove();
       Backbone.history.navigate(
         "businesses/" + that.model.get('id'),
         { trigger: true }
