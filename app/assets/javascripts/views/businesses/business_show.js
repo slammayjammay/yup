@@ -1,10 +1,20 @@
 YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   className: "business-show",
   template: JST['businesses/show'],
+  events: {
+    "click button": "review"
+  },
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.renderReviews);
+  },
+
+  displayRating: function () {
+    var rating = this.model.get('rating');
+    rating = (Math.round(rating * 2) / 2).toFixed(1);
+    $("#input-id").rating({ disabled: true });
+    $("#input-id").rating('update', rating);
   },
 
   render: function () {
@@ -23,10 +33,10 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     });
   },
 
-  displayRating: function () {
-    var rating = this.model.get('rating');
-    rating = (Math.round(rating * 2) / 2).toFixed(1);
-    $("#input-id").rating({ disabled: true });
-    $("#input-id").rating('update', rating);
+  review: function () {
+    var view = new YelpClone.Views.ReviewForm({
+      model: this.model
+    });
+    this.$('.review-form').html(view.render().$el);
   }
 });

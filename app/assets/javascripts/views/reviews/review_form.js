@@ -1,14 +1,14 @@
 YelpClone.Views.ReviewForm = Backbone.View.extend({
   template: JST['reviews/form'],
   events: {
-    "submit form": "makeReview"
+    "submit form": "save"
   },
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
   },
 
-  makeReview: function (event) {
+  save: function (event) {
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
     var review = new YelpClone.Models.Review(data);
