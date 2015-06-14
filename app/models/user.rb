@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :reviews
-  has_many :reviewed_businesses, through: :reviews, source: :business
+  # has_many :reviewed_businesses, through: :reviews, source: :business
 
   has_many :followings, foreign_key: :followed_id
   has_many :followeds, class_name: 'Following', foreign_key: :follower_id
