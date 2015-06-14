@@ -2,7 +2,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   events: {
     "click li.edit": "renderEdit",
-    "click li.followers": "renderHome",
+    "click li.followers": "renderFollowers",
     "click li.reviews": "renderReviews",
     "submit form": "edit"
   },
@@ -43,7 +43,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     this._swapMainContent(view);
   },
 
-  renderHome: function () {
+  renderFollowers: function () {
     var view = new YelpClone.Views.UserFollowers({
       model: this.model
     });
