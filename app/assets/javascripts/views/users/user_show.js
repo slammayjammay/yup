@@ -2,7 +2,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   events: {
     "click li.edit": "renderEdit",
-    "click li.home": "renderHome",
+    "click li.followers": "renderHome",
     "click li.reviews": "renderReviews",
     "submit form": "edit"
   },
