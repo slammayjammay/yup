@@ -1,4 +1,5 @@
 YelpClone.Views.UserIndexItem = Backbone.View.extend({
+  className: "user-index-item",
   template: JST['users/index_item'],
 
   initialize: function () {
