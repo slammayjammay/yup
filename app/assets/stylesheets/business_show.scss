@@ -18,11 +18,11 @@
 }
 
 .add-review {
-  float: right;
-  margin-right: 100px;
+  // float: right;
+  margin-left: 92px;
   width: 200px;
   height: 50px;
-  margin-top: 15px;
+  margin-top: 300px;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
 }
 
@@ -68,11 +68,11 @@
   margin-top: -35px;
 }
 
-.business-show h5 {
-  margin-left: 30px;
-}
-
 .business-show h1 {
   margin-top: 0px;
   padding-top: 45px;
+
+  small {
+    font-size: 18px;
+  }
 }

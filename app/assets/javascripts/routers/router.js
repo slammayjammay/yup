@@ -23,7 +23,8 @@ YelpClone.Routers.Router = Backbone.Router.extend({
     var business = new YelpClone.Models.Business({ id: id });
     business.fetch();
     var view = new YelpClone.Views.BusinessShow({
-      model: business
+      model: business,
+      collection: business.reviews()
     });
 
     this._swapView(view);

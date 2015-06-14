@@ -1,10 +1,12 @@
 <h1>
   <%= business.escape('name') %>
-<button class="add-review btn btn-danger">Review!</button>
+  <small><%= reviews.length %> reviews</small>
 </h1>
+
 
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="md" >
 <h5><%= business.escape('address') %></h5>
 
 <div id="map-canvas"></div>
+<button class="add-review btn btn-danger">Review this business!</button>
 <div class="business-reviews"></div>

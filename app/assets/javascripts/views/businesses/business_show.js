@@ -8,8 +8,8 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.renderReviews);
-    this.listenTo(this.model, "sync", this.doThing);
-    this.listenTo(this.model.reviews(), "add", this.addReview);
+    this.listenTo(this.model, "sync", this.renderMap);
+    this.listenTo(this.collection, "add", this.addReview);
   },
 
   addReview: function (review) {
@@ -24,31 +24,15 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     this.$("#input-id").rating('update', rating);
   },
 
-  doThing: function () {
+  renderMap: function () {
     new YelpClone.Views.MapShow({ model: this.model });
   },
 
-  // mapInit: function () {
-  //   var business = this.model;
-  //   var mapOptions = {
-  //     center: {
-  //       lat: business.get('latitude'),
-  //       lng: business.get('longitude')
-  //     },
-  //     zoom: 16
-  //   };
-  //
-  //   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  //   var marker = new google.maps.Marker({
-  //     position: { lat: business.get('latitude'),
-  //               lng: business.get('longitude') },
-  //     map: map,
-  //     title: business.get('name')
-  //   });
-  // },
-
   render: function () {
-    var content = this.template({ business: this.model });
+    var content = this.template({
+      business: this.model,
+      reviews: this.collection
+    });
     this.$el.html(content);
     this.displayRating();
     return this;
@@ -61,14 +45,9 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     $('body').prepend(view.render().$el);
   },
 
-  // renderMap: function () {
-    // google.maps.event.addDomListener(window, 'load', this.mapInit.bind(this));
-    // this.mapInit();
-  // },
-
   renderReviews: function () {
     var that = this;
-    this.model.reviews().each(function (review, index) {
+    this.collection.each(function (review, index) {
       var view = new YelpClone.Views.ReviewIndexItem({
         model: review,
         index: index
