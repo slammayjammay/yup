@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- <link href="/vendor/assets/stylesheets/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-  <script src="/vendor/assets/javascripts/star-rating.min.js" type="text/javascript"></script> -->
+  <style type="text/css">
+    html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+  </style>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js">
+  </script>
+  <script type="text/javascript">
+    function initialize() {
+      var mapOptions = {
+        center: { lat: -34.397, lng: 150.644},
+        zoom: 8
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 
   <title>YelpClone</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
@@ -18,9 +33,5 @@
 
 <%= yield %>
 
-<% if current_user %>
-  <br>
-  <%= button_to "Sign out", session_url(current_user), method: :delete, class: "sign-out btn btn-primary" %>
-<% end %>
 </body>
 </html>
