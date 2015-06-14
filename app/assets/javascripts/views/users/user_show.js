@@ -12,7 +12,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview('.user-sidebar', this._sidebar);
-    this.renderHome();
+    this.renderFollowers();
     this.listenTo(this.model, "sync change", this.render);
   },
 
@@ -23,7 +23,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     var that = this;
     this.model.save(data, {
       success: function () {
-        that.renderHome();
+        that.renderFollowers();
       }
     });
   },
