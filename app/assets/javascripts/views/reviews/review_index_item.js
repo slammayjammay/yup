@@ -24,7 +24,7 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     this.$("#input-id").rating({ disabled: true });
     this.$("#input-id").rating('update', rating);
   },
-  
+
   render: function () {
     var content = this.template({
       review: this.model,
@@ -35,4 +35,10 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     return this;
   },
 
+  redirectToBusiness: function (event) {
+    Backbone.history.navigate(
+      "businesses/" + this.model.get('business_id'),
+      { trigger: true }
+    );
+  }
 });
