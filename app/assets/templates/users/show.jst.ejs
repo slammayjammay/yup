@@ -1,13 +1,13 @@
-<h1>
+<div class="title">
   <%= user.escape('first_name') + " " %>
   <%= user.escape('last_name') + "'s profile" %>
-</h1>
+</div class="title">
 
 <ul class="nav nav-tabs">
   <li class="home" role="presentation"><a href="#users/<%= user.get('id') %>">Home</a></li>
   <li class="reviews" role="presentation"><a href="#users/<%= user.get('id') %>">Reviews</a></li>
   <% if (user.get('id') == CURRENT_USER_ID) { %>
-    <li class="pull-right edit" role="presentation">
+    <li class="edit" role="presentation">
       <a href="#users/<%= user.get('id') %>"=>Edit Profile</a>
     </li>
   <% } %>
