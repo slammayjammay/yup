@@ -16,7 +16,7 @@ categories.each do |category|
       longitude: business.location.coordinate.longitude,
       phone: (business.phone if business.respond_to?(:phone)),
       url: business.url,
-      image_url: business.image_url
+      image_url: Faker::Company.logo
     )
   end
 end
@@ -51,7 +51,7 @@ end
 
   review = Review.create(
     rating: rating,
-    content: Faker::Lorem.paragraphs(rating),
+    content: Faker::Lorem.paragraphs((1..4).to_a.sample),
     business_id: business.id,
     user_id: user_ids.sample
   )
