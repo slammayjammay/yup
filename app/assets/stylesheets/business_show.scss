@@ -39,9 +39,11 @@
 }
 
 .review-item {
+  transition: 1s;
   height: 100px;
   margin-top: 25px;
   border: 1px solid black;
+  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
   border-radius: 5px;
   padding: 8px;
   min-height: 115px;
@@ -58,6 +60,11 @@
   float: left;
   width: 100px;
   height: 100px;
+}
+
+.user-name {
+  float: right;
+  margin-top: -35px;
 }
 
 .business-show h1 {
