@@ -9,7 +9,7 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     this.listenTo(this.user, "sync", this.render);
 
     this.index = options.index;
-    this.$el.attr('style', 'transform: translateX(' + (50 - this.index * 100) + '%);');
+    this.$el.attr('style', 'transform: translateX(' + (50 + this.index * 50) + '%);');
     setTimeout(function () {
       this.$el.removeAttr('style');
     }.bind(this), 0);
