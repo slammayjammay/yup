@@ -1,6 +1,9 @@
 YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
   className: "review-item",
   template: JST['reviews/index_item'],
+  events: {
+    "click": "redirectToBusiness"
+  },
 
   initialize: function (options) {
     this.user = new YelpClone.Models.User({ id: this.model.get('user_id') });
@@ -15,6 +18,13 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     }.bind(this), 0);
   },
 
+  displayRating: function () {
+    var rating = this.model.get('rating');
+    rating = (Math.round(rating * 2) / 2).toFixed(1);
+    this.$("#input-id").rating({ disabled: true });
+    this.$("#input-id").rating('update', rating);
+  },
+  
   render: function () {
     var content = this.template({
       review: this.model,
@@ -25,10 +35,4 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     return this;
   },
 
-  displayRating: function () {
-    var rating = this.model.get('rating');
-    rating = (Math.round(rating * 2) / 2).toFixed(1);
-    this.$("#input-id").rating({ disabled: true });
-    this.$("#input-id").rating('update', rating);
-  }
 });
