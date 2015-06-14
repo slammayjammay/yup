@@ -8,8 +8,8 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.renderReviews);
+    this.listenTo(this.model, "sync", this.renderMap);
     this.listenTo(this.model.reviews(), "add", this.addReview);
-    this.renderMap();
   },
 
   addReview: function (review) {
@@ -22,6 +22,24 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     rating = (Math.round(rating * 2) / 2).toFixed(1);
     this.$("#input-id").rating({ disabled: true });
     this.$("#input-id").rating('update', rating);
+  },
+
+  mapInit: function () {
+    var business = this.model;
+    var mapOptions = {
+      center: {
+        lat: business.get('latitude'),
+        lng: business.get('longitude')
+      },
+      zoom: 16
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    var marker = new google.maps.Marker({
+      position: { lat: business.get('latitude'),
+                lng: business.get('longitude') },
+      map: map,
+      title: business.get('name')
+    });
   },
 
   render: function () {
@@ -39,15 +57,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
-    function initialize() {
-      var mapOptions = {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 5
-      };
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
-          mapOptions);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', this.mapInit.bind(this));
   },
 
   renderReviews: function () {
