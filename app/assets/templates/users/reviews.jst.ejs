@@ -1,5 +1,15 @@
 <div class="user-reviews">
-  <% if (user.reviews().length == 0) { %>
-    <h1>You have no reviews!</h1>
+  <% if (user.get('id') == CURRENT_USER_ID) { %>
+    <% if (user.reviews().length == 0) { %>
+      <h1>You have no reviews!</h1>
+    <% } else { %>
+      <h1>Your reviews:</h1>
+    <% } %>
+  <% } else { %>
+    <% if (user.reviews().length == 0) { %>
+      <h1><%= user.escape('first_name') %> has no reviews!</h1>
+    <% } else { %>
+      <h1><%= user.escape('first_name') %>'s reviews:</h1>
+    <% } %>
   <% } %>
 </div>

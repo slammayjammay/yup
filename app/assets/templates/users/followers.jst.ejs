@@ -1,1 +1,9 @@
+<h1>
+  <% if (user.get('id') == CURRENT_USER_ID) { %>
+    Users you are following:
+  <% } else { %>
+    Users <%= user.get('first_name') %> is following:
+  <% } %>
+</h1>
+
 <div class="followers"></div>
