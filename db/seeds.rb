@@ -32,8 +32,18 @@ end
   )
 end
 
+users = User.all
 user_ids = (User.first.id..User.last.id).to_a
 business_ids = (Business.first.id..Business.last.id).to_a
+
+users.each do |user|
+  5.times do |num|
+    Following.create(
+      follower_id: user.id,
+      followed_id: user_ids.sample
+    )
+  end
+end
 
 100.times do
   business = Business.find(business_ids.sample)
