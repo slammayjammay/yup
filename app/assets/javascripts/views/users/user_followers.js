@@ -3,12 +3,12 @@ YelpClone.Views.UserFollowers = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, "sync", this.addFollowers);
-    this.addFollowers();
+    this.listenTo(this.model, "sync", this.addFollows);
+    this.addFollows();
   },
 
-  addFollowers: function () {
-    this.model.followers().each(function (follower) {
+  addFollows: function () {
+    this.model.follows().each(function (follower) {
       var view = new YelpClone.Views.UserIndexItem({ model: follower });
       this.addSubview('.followers', view);
     }.bind(this));

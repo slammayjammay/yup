@@ -26,7 +26,7 @@ end
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    image_url: Faker::Company.logo,
+    image_url: Faker::Avatar.image,
     password_digest: "password",
     session_token: "password"
   )
@@ -51,12 +51,12 @@ end
 
   review = Review.create(
     rating: rating,
-    content: Faker::Hacker.say_something_smart,
+    content: Faker::Lorem.paragraphs(rating),
     business_id: business.id,
     user_id: user_ids.sample
   )
   business.review_count += 1
   diff = rating - business.rating
-  business.rating += diff.fidv(business.review_count)
+  business.rating += diff.fdiv(business.review_count)
   business.save!
 end

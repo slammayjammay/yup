@@ -1,8 +1,16 @@
 <h1>
   <% if (user.get('id') == CURRENT_USER_ID) { %>
-    Users you are following:
+    <% if (user.reviews().length == 0) { %>
+      <h1>You're not following anybody!</h1>
+    <% } else { %>
+      <h1>People you're following:</h1>
+    <% } %>
   <% } else { %>
-    Users <%= user.get('first_name') %> is following:
+    <% if (user.reviews().length == 0) { %>
+      <h1><%= user.escape('first_name') %> is not following anybody!</h1>
+    <% } else { %>
+      <h1>Users <%= user.escape('first_name') %>is following:</h1>
+    <% } %>
   <% } %>
 </h1>
 
