@@ -2,7 +2,7 @@
   <h1>Sign Up!</h1>
   <br>
 
-  <form class="col-md-4" action="<%= users_url %>" method="post">
+  <form class="auth col-md-4" action="<%= users_url %>" method="post">
     <%= auth_token %>
 
     <input class="form-control first-name" type="text" name="user[first_name]" id="first-name" placeholder="First Name">
@@ -15,4 +15,6 @@
 
     <input class="btn btn-success" type="submit" value="Sign up!">
   </form>
+
+  <h1>Or <%= link_to "Sign In!", new_session_url %></h1>
 </div>
