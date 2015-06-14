@@ -63,6 +63,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     this._mainView && this.removeSubview('.user-main', this._mainView);
     this._mainView = view;
     this.attachSubviews();
-    this.$('.user-main').html(view.render().$el)
+    this.$('.user-main').html(view.$el)
+    view.render();
   }
 });

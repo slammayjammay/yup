@@ -1,4 +1,3 @@
 <img src="<%= user.escape("image_url") %>">
 
-<p>First name: <%= user.escape('first_name') %></p>
-<p>Last name: <%= user.escape('last_name') %></p>
+<%= user.followers().length %> followers
