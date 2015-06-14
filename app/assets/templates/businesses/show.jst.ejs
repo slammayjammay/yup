@@ -1,6 +1,6 @@
 <h1>
   <%= business.escape('name') %>
-  <small><%= reviews.length %> reviews</small>
+  <small><%= business.get('review_count') %> reviews</small>
   <img class="logo" src="<%= business.escape('image_url')%>">
 </h1>
 

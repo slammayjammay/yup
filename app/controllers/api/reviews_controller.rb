@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.save
+    @review.save!
 
     business = Business.find(@review.business_id)
     rating = @review.rating
