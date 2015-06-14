@@ -57,6 +57,6 @@ end
   )
   business.review_count += 1
   diff = rating - business.rating
-  business.rating += diff / business.review_count
+  business.rating += diff.fidv(business.review_count)
   business.save!
 end

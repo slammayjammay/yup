@@ -41,6 +41,7 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
 
     var that = this;
     review.save({}, { success: function () {
+      that.model.fetch();
       that.model.reviews().add(review);
       that.remove();
       Backbone.history.navigate(
