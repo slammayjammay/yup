@@ -25,6 +25,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   mapInit: function () {
+    debugger
     var business = this.model;
     var mapOptions = {
       center: {
@@ -33,6 +34,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
       },
       zoom: 16
     };
+
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     var marker = new google.maps.Marker({
       position: { lat: business.get('latitude'),
@@ -57,7 +59,9 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
-    google.maps.event.addDomListener(window, 'load', this.mapInit.bind(this));
+    debugger
+    // google.maps.event.addDomListener(window, 'load', this.mapInit.bind(this));
+    this.mapInit();
   },
 
   renderReviews: function () {

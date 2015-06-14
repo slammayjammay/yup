@@ -1,6 +1,8 @@
 #map-canvas {
   position: absolute;
-  height: 40%;
+  border: 1px solid black;
+  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+  height: 30%;
   width: 25%;
-  margin-top: 20px;
+  margin-top: 31px;
 }
