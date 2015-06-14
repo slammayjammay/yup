@@ -27,8 +27,8 @@ end
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     image_url: Faker::Company.logo,
-    password_digest: "nothing",
-    session_token: "nothing"
+    password_digest: "password",
+    session_token: "password"
   )
 end
 

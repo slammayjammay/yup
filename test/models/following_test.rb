@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: reviews
+# Table name: followings
 #
 #  id          :integer          not null, primary key
-#  rating      :float            not null
-#  content     :string           not null
-#  business_id :integer          not null
-#  user_id     :integer          not null
+#  follower_id :integer          not null
+#  followed_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class ReviewTest < ActiveSupport::TestCase
+class FollowingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

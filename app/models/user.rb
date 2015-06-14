@@ -6,10 +6,9 @@
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  email           :string           not null
-#  location        :string
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  image_url       :string
+#  image_url       :string           default("https://s-media-cache-ak0.pinimg.com/originals/2b/ed/51/2bed513bc5f13733cf9a8a12c4e1a971.gif"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -22,6 +21,12 @@ class User < ActiveRecord::Base
 
   has_many :reviews
   has_many :reviewed_businesses, through: :reviews, source: :business
+
+  has_many :followings, foreign_key: :followed_id
+  has_many :followeds, class_name: 'Following', foreign_key: :follower_id
+
+  has_many :followers, through: :followings, source: :follower
+  has_many :follows, through: :followeds, source: :followed
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64
