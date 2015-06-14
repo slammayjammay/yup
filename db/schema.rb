@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150610200053) do
   create_table "reviews", force: :cascade do |t|
     t.float    "rating",      null: false
     t.string   "content",     null: false
-    t.integer  "price"
     t.integer  "business_id", null: false
     t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
@@ -45,17 +44,14 @@ ActiveRecord::Schema.define(version: 20150610200053) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.string   "email",           null: false
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "image_url"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "first_name",                                                                                                               null: false
+    t.string   "last_name",                                                                                                                null: false
+    t.string   "email",                                                                                                                    null: false
+    t.string   "password_digest",                                                                                                          null: false
+    t.string   "session_token",                                                                                                            null: false
+    t.string   "image_url",       default: "https://s-media-cache-ak0.pinimg.com/originals/2b/ed/51/2bed513bc5f13733cf9a8a12c4e1a971.gif", null: false
+    t.datetime "created_at",                                                                                                               null: false
+    t.datetime "updated_at",                                                                                                               null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

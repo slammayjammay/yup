@@ -4,11 +4,13 @@
 </h1>
 
 <ul class="nav nav-tabs">
-  <li class="home" role="presentation"><a href="#userShow">Home</a></li>
-  <li class="reviews" role="presentation"><a href="#userShow">Reviews</a></li>
-  <li class="pull-right edit" role="presentation">
-    <a href="#userShow"=>Edit Profile</a>
-  </li>
+  <li class="home" role="presentation"><a href="#users/<%= user.get('id') %>">Home</a></li>
+  <li class="reviews" role="presentation"><a href="#users/<%= user.get('id') %>">Reviews</a></li>
+  <% if (user.get('id') == CURRENT_USER_ID) { %>
+    <li class="pull-right edit" role="presentation">
+      <a href="#users/<%= user.get('id') %>"=>Edit Profile</a>
+    </li>
+  <% } %>
 </ul>
 
 <div class="user-sidebar"></div>

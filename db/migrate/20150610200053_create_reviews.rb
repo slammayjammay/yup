@@ -3,7 +3,6 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.float :rating, null: false
       t.string :content, null: false
-      t.integer :price
       t.integer :business_id, null: false
       t.integer :user_id, null: false
 

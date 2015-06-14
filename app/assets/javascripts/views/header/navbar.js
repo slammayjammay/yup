@@ -1,8 +1,8 @@
 YelpClone.Views.Navbar = Backbone.View.extend({
   template: JST['header/navbar'],
-  events: {
-    "submit form": "search"
-  },
+  // events: {
+  //   "submit form": "search"
+  // },
 
   render: function () {
     var content = this.template();
@@ -10,7 +10,8 @@ YelpClone.Views.Navbar = Backbone.View.extend({
     return this;
   },
 
-  search: function (event) {
-    event.preventDefault();
-  }
+  // search: function (event) {
+  //   event.preventDefault();
+  //   var searchKeys = $(event.currentTarget).find('input').val();
+  // }
 });

@@ -5,7 +5,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "home": "home",
-    "userShow": "userShow",
+    "users/:id": "userShow",
     "businesses/:id": "businessShow",
     "businesses/:id/review": "businessReview"
   },
@@ -39,7 +39,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
-    var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
+    var user = new YelpClone.Models.User({ id: id });
     user.fetch();
     var view = new YelpClone.Views.UserShow({
       model: user
