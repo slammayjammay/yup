@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150610200053) do
     t.string   "address",                    null: false
     t.string   "city",                       null: false
     t.string   "state",                      null: false
+    t.float    "latitude",                   null: false
+    t.float    "longitude",                  null: false
     t.string   "url"
     t.string   "phone"
     t.string   "image_url"

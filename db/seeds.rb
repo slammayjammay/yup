@@ -4,16 +4,19 @@ categories.each do |category|
   results = Yelp.client.search('San Francisco', params)
 
   5.times do |num|
+    business = results.businesses[num]
     Business.create(
-      name: results.businesses[num].name,
+      name: business.name,
       category: category,
-      rating: results.businesses[num].rating,
-      address: results.businesses[num].location.display_address.join(" "),
-      city: results.businesses[num].location.city,
-      state: results.businesses[num].location.country_code,
-      # phone: results.businesses[num].phone,
-      url: results.businesses[num].url,
-      image_url: results.businesses[num].image_url
+      rating: business.rating,
+      address: business.location.display_address.join(" "),
+      city: business.location.city,
+      state: business.location.country_code,
+      latitude: business.location.coordinate.latitude,
+      longitude: business.location.coordinate.longitude,
+      phone: (business.phone if business.respond_to?(:phone)),
+      url: business.url,
+      image_url: business.image_url
     )
   end
 end
