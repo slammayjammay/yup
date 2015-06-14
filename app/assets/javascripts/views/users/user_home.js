@@ -1,5 +1,5 @@
-YelpClone.Views.UserHome = Backbone.View.extend({
-  template: JST['users/home'],
+YelpClone.Views.UserFollowers = Backbone.View.extend({
+  template: JST['users/followers'],
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);

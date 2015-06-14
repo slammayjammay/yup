@@ -44,7 +44,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderHome: function () {
-    var view = new YelpClone.Views.UserHome({
+    var view = new YelpClone.Views.UserFollowers({
       model: this.model
     });
     this.addSubview('.user-main', view, true);
