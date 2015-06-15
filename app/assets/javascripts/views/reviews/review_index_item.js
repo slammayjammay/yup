@@ -1,8 +1,7 @@
 YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
-  className: "review-item",
   template: JST['reviews/index_item'],
   events: {
-    "click": "redirectToBusiness"
+    "click": "redirect"
   },
 
   initialize: function (options) {
@@ -35,10 +34,17 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     return this;
   },
 
-  redirectToBusiness: function (event) {
-    Backbone.history.navigate(
-      "businesses/" + this.model.get('business_id'),
-      { trigger: true }
-    );
+  redirect: function (event) {
+    if (this.$el.hasClass('user')) {
+      Backbone.history.navigate(
+        "users/" + this.model.get('user_id'),
+        { trigger: true }
+      );
+    } else if (this.$el.hasClass('business')) {
+      Backbone.history.navigate(
+        "businesses/" + this.model.get('business_id'),
+        { trigger: true }
+      );
+    }
   }
 });

@@ -19,7 +19,7 @@ YelpClone.Views.UserReviews = Backbone.CompositeView.extend({
       var view = new YelpClone.Views.ReviewIndexItem({
         model: review,
         index: index,
-        className: "clickable review-item"
+        className: "business review-item"
       });
 
       that.addSubview('.user-reviews', view);

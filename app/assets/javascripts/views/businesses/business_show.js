@@ -7,17 +7,16 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    // this.listenTo(this.model, "sync", this.renderReviews);
     this.listenTo(this.model, "sync", this.renderMap);
-    this.listenTo(this.collection, "add", function () {
-      console.log('what is happening...?');
-    });
     this.listenTo(this.collection, "add", this.addReview);
     this.listenTo(this.collection, "add", this.displayRating);
   },
 
   addReview: function (review) {
-    var view = new YelpClone.Views.ReviewIndexItem({ model: review });
+    var view = new YelpClone.Views.ReviewIndexItem({
+      model: review,
+      className: "user review-item"
+    });
     this.unshiftSubview('.business-reviews', view);
   },
 
@@ -49,15 +48,4 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     });
     $('body').prepend(view.render().$el);
   },
-
-  // renderReviews: function () {
-  //   var that = this;
-  //   this.collection.each(function (review, index) {
-  //     var view = new YelpClone.Views.ReviewIndexItem({
-  //       model: review,
-  //       index: index
-  //     });
-  //     that.unshiftSubview('.business-reviews', view);
-  //   });
-  // },
 });
