@@ -1,5 +1,7 @@
-<img src="<%= user.escape("image_url") %>">
+<img src="<%= user.escape('image_url') %>">
 
 <div><%= user.followers().length %> followers</div>
 <div><%= user.follows().length %> following</div>
-<button class="follow btn btn-primary">Follow <%= user.escape('first_name') %></button>
+<% if (user.get('id') != CURRENT_USER_ID) { %>
+  <button class="follow btn btn-primary">Follow <%= user.escape('first_name') %></button>
+<% } %>
