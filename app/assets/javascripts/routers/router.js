@@ -21,7 +21,9 @@ YelpClone.Routers.Router = Backbone.Router.extend({
 
   home: function () {
     var businesses = new YelpClone.Collections.Businesses();
-    businesses.fetch();
+    businesses.fetch({
+      data: { page: 1 }
+    });
     var view = new YelpClone.Views.HomeIndex({
       collection: businesses
     });

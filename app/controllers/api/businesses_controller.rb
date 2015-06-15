@@ -1,6 +1,6 @@
 class Api::BusinessesController < ApplicationController
   def index
-    @businesses = Business.all
+    @businesses = Business.all.page(params[:page]).per(10)
     render :index
   end
 

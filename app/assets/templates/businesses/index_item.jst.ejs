@@ -4,6 +4,8 @@
 <img class="image" src="<%= business.escape('image_url') %>">
 <% if (review) { %>
   <p>"<%= review.escape('content') %>"</p>
+<% } else { %>
+  <p>This company has not been reviewed</p>
 <% } %>
 
 <small>

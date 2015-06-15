@@ -25,7 +25,7 @@
   float: left;
 
   .business-index-item {
-    transition: 1s;
+    transition: 500ms;
     border: 1px solid black;
     border-radius: 3px;
     margin: 10px;
@@ -49,6 +49,7 @@
 
     p {
       margin-left: 100px;
+      min-width: 500px;
     }
   }
 

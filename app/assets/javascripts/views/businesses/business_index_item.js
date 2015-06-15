@@ -34,7 +34,6 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    // debugger
     var content = this.template({
       business: this.model,
       review: this.review,
