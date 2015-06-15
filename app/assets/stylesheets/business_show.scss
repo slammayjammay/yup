@@ -33,9 +33,14 @@
 
 .business-reviews {
   float: right;
-  width: 57%;
-  margin-top: 50px;
-  margin-left: 40px;
+  width: 60%;
+  margin-top: -320px;
+}
+
+.business-show:after {
+  content: "";
+  clear: both;
+  display: block;
 }
 
 .review-item {
@@ -83,4 +88,8 @@
     margin-top: -33px;
     margin-right: 33px;
   }
+}
+
+.gold {
+  background: yellow;
 }

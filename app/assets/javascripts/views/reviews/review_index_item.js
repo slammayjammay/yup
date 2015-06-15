@@ -44,6 +44,9 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
   },
 
   render: function () {
+    if (this.user.get('follow_id')) {
+      this.$el.addClass('gold');
+    }
     var content = this.template({
       review: this.model,
       user: this.user,
