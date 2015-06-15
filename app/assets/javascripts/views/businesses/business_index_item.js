@@ -6,12 +6,20 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   },
 
   initialize: function (options) {
+    this.review = options.review;
+    this.user = new YelpClone.Models.User();
+    if (this.review) {
+      this.user.set('id', this.review.get('user_id'));
+      this.user.fetch({ success: function () {
+        this.render();
+      }.bind(this)});
+    }
+
     this.index = options.index;
     this.$el.attr('style', 'transform: translateX(' + (50 + this.index * 50) + '%);')
     setTimeout(function () {
       this.$el.removeAttr('style');
     }.bind(this), 0);
-    this.listenTo(this.model, "sync", this.render);
   },
 
   displayRating: function () {
@@ -26,8 +34,11 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   },
 
   render: function () {
+    // debugger
     var content = this.template({
-      business: this.model
+      business: this.model,
+      review: this.review,
+      user: this.user
     });
 
     this.$el.html(content);

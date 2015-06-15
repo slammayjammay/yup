@@ -2,10 +2,10 @@
 <h4><%= business.escape('name') %></h4>
 
 <img class="image" src="<%= business.escape('image_url') %>">
-<% if (business.reviews().length !== 0) { %>
-  <p>"<%= business.reviews().first().escape('content') %>"</p>
+<% if (review) { %>
+  <p>"<%= review.escape('content') %>"</p>
 <% } %>
 
 <small>
-  -reviewer's name
+  <%= user.escape('first_name') %> <%= user.escape('last_name') %>
 </small>
