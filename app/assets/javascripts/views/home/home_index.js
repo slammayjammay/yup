@@ -8,8 +8,8 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
                        'bars', 'coffee', 'health'];
     this.renderCategories();
-    this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "sync", this.addBusinesses.bind(this, 'restaurants'));
+    this.listenTo(this.collection, "sync add", this.render);
+    this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
   },
 
   render: function () {
@@ -22,13 +22,13 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
   addBusinesses: function (category) {
     var that = this;
     this.collection.each(function (business) {
-      if (business.get('category') === category) {
+      // if (business.get('category') === category) {
         var view = new YelpClone.Views.BusinessIndexItem({
           model: business,
           review: business.reviews().first()
         });
         that.addSubview('.businesses', view);
-      }
+      // }
     });
 
     this.render();
