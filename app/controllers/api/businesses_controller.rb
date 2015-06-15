@@ -1,13 +1,11 @@
 class Api::BusinessesController < ApplicationController
   def index
-    @businesses = Business.all.page(params[:page]).per(10)
+    if params[:searchKeys]
+      @businesses = Business.where(name: params[:searchKeys])
+    else
+      @businesses = Business.all
+    end
     render :index
-  end
-
-  def search
-    p params
-    @businesses = Business.where(name: params[:searchKeys])
-    render '/api/businesses/search.json.jbuilder'
   end
 
   def show
