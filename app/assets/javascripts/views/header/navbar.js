@@ -1,7 +1,12 @@
 YelpClone.Views.Navbar = Backbone.View.extend({
   template: JST['header/navbar'],
   events: {
+    "click button.home": "redirectToHome",
     "click button.sign-out": "signOut"
+  },
+
+  redirectToHome: function () {
+    Backbone.history.navigate("#home", { trigger: true });
   },
 
   render: function () {
@@ -13,9 +18,4 @@ YelpClone.Views.Navbar = Backbone.View.extend({
   signOut: function () {
     $.ajax({ url: "/session", type: "delete" });
   }
-
-  // search: function (event) {
-  //   event.preventDefault();
-  //   var searchKeys = $(event.currentTarget).find('input').val();
-  // }
 });

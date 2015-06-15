@@ -1,6 +1,6 @@
 <h1>
   <% if (user.get('id') == CURRENT_USER_ID) { %>
-    <% if (user.reviews().length == 0) { %>
+    <% if (user.follows().length == 0) { %>
       <h1>You're not following anybody!</h1>
     <% } else { %>
       <h1>People you're following:</h1>
