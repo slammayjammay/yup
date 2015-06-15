@@ -6,7 +6,7 @@ categories.each do |category|
   5.times do |num|
     business = results.businesses[num]
     Business.create(
-      name: business.name,
+      name: business.name.downcase,
       category: category,
       rating: business.rating,
       address: business.location.display_address.join(" "),

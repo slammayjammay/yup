@@ -1,7 +1,7 @@
 class Api::BusinessesController < ApplicationController
   def index
     if params[:searchKeys]
-      @businesses = Business.where(name: params[:searchKeys])
+      @businesses = Business.where('name LIKE ?', '%' + params[:searchKeys] + '%').all
     else
       @businesses = Business.all
     end
