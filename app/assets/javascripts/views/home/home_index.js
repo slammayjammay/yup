@@ -4,7 +4,8 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
     "click .category-index-item": "switchBusinesses"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.router = options.router;
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
                        'bars', 'coffee', 'health'];
     this.renderCategories();
@@ -46,12 +47,14 @@ YelpClone.Views.HomeIndex = Backbone.CompositeView.extend({
 
   switchBusinesses: function (event) {
     var category = $(event.currentTarget).text().trim();
-    var subviews = _.map(this.subviews('.businesses'), _.clone);
-    var that = this;
-    subviews[0].forEach(function (view) {
-      that.removeSubview('.businesses', view);
-    });
-
-    this.addBusinesses(category);
+    Backbone.history.navigate("search");
+    this.router._search(category);
+    // var subviews = _.map(this.subviews('.businesses'), _.clone);
+    // var that = this;
+    // subviews[0].forEach(function (view) {
+    //   that.removeSubview('.businesses', view);
+    // });
+    //
+    // this.addBusinesses(category);
   }
 });
