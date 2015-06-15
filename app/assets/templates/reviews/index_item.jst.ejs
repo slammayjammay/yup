@@ -2,8 +2,8 @@
 
 <div class="review-info">
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
-  <p class="user-name">
-    -<%= user.escape('first_name') %>
+  <p class="context">
+    -<%= user.escape('first_name') %>, about <strong><%= business.get('name') %></strong>
   </p>
   <p><%= review.escape('content') %></p>
 </div>

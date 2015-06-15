@@ -47,6 +47,10 @@
   padding: 8px;
   min-height: 115px;
   max-width: 670px;
+
+  img {
+    margin-right: 5px;
+  }
 }
 
 .review-info {
@@ -59,7 +63,7 @@
   height: 100px;
 }
 
-.user-name {
+.context {
   float: right;
   margin-top: -35px;
 }
