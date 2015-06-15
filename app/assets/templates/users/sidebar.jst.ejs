@@ -3,5 +3,5 @@
 <div><%= user.followers().length %> followers</div>
 <div><%= user.follows().length %> following</div>
 <% if (user.get('id') != CURRENT_USER_ID) { %>
-  <button class="follow btn btn-primary">Follow <%= user.escape('first_name') %></button>
+  <button class="btn btn-primary"></button>
 <% } %>

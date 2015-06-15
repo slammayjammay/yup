@@ -2,7 +2,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   events: {
     "click li.edit": "renderEdit",
-    "click li.followers": "renderFollows",
+    "click li.followers": "renderFollowings",
     "click li.reviews": "renderReviews",
     "submit form": "edit"
   },
@@ -12,7 +12,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview('.user-sidebar', this._sidebar);
-    this.renderFollows();
+    this.renderFollowings();
     this.listenTo(this.model, "sync change", this.render);
   },
 
@@ -23,7 +23,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     var that = this;
     this.model.save(data, {
       success: function () {
-        that.renderFollows();
+        that.renderFollowings();
       }
     });
   },
@@ -43,7 +43,7 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     this._swapMainContent(view);
   },
 
-  renderFollows: function () {
+  renderFollowings: function () {
     var view = new YelpClone.Views.UserFollowers({
       model: this.model
     });

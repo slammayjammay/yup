@@ -7,14 +7,14 @@ YelpClone.Models.User = Backbone.Model.extend({
       delete response.reviews;
     }
 
-    if (response.follows) {
-      this.follows().set(response.follows)
-      delete response.follows;
-    }
-
     if (response.followers) {
       this.followers().set(response.followers)
       delete response.followers;
+    }
+
+    if (response.follows) {
+      this.follows().set(response.follows)
+      delete response.follows;
     }
 
     return response;
