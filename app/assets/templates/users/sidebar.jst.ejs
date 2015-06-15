@@ -1,5 +1,5 @@
 <img src="<%= user.escape("image_url") %>">
 
-<%= user.followers().length %> followers
-<br>
-<%= user.follows().length %> following
+<div><%= user.followers().length %> followers</div>
+<div><%= user.follows().length %> following</div>
+<button class="follow btn btn-primary">Follow <%= user.escape('first_name') %></button>
