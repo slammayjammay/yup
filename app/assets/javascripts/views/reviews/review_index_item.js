@@ -4,7 +4,7 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     "click": "redirect"
   },
 
-  initialize: function (options) {
+  initialize: function () {
     this.user = new YelpClone.Models.User({ id: this.model.get('user_id') });
     this.user.fetch();
 
@@ -15,8 +15,7 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     this.listenTo(this.business, "sync", this.render);
     this.listenTo(this.user, "sync", this.render);
 
-    this.index = options.index;
-    this.$el.attr('style', 'transform: translateX(' + (50 + this.index * 50) + '%);');
+    this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
     setTimeout(function () {
       this.$el.removeAttr('style');
     }.bind(this), 0);

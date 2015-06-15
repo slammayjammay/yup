@@ -47,5 +47,5 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
       model: this.model
     });
     $('body').prepend(view.render().$el);
-  },
+  }
 });

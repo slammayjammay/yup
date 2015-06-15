@@ -16,7 +16,7 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
     }
 
     this.index = options.index;
-    this.$el.attr('style', 'transform: translateX(' + (50 + this.index * 50) + '%);')
+    this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
     setTimeout(function () {
       this.$el.removeAttr('style');
     }.bind(this), 0);
