@@ -23,7 +23,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   home: function () {
     var businesses = new YelpClone.Collections.Businesses();
     businesses.fetch({
-      url: '/api/businesses/search'
+      // url: '/api/businesses/search'
     });
     var view = new YelpClone.Views.HomeIndex({
       collection: businesses
@@ -47,7 +47,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
       url: 'api/businesses',
       data: { searchKeys: query }
     });
-    var view = new YelpClone.Views.SearchShow({
+    var view = new YelpClone.Views.HomeIndex({
       collection: businesses
     });
     this._swapView(view);

@@ -22,14 +22,13 @@
 }
 
 .businesses {
-  float: left;
-
+  margin-top: 65px;
+  
   .business-index-item {
     transition: 500ms;
     border: 1px solid black;
     border-radius: 3px;
-    margin: 10px;
-    margin-left: 40px;
+    margin: 10px auto;
     box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
     min-height: 170px;
     width: 70%;
