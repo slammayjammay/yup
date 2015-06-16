@@ -4,16 +4,7 @@ YelpClone.Views.MapShow = Backbone.View.extend({
   },
 
   mapInit: function () {
-    var mapOptions = {
-      center: {
-        lat: 37.7532501,
-        lng: -122.4067001
-      }
-    };
-
-    if (this.model) {
-      var business = this.model;
-    } else if (this.collection.length === 0) {
+    if (!this.model && (!this.collection || this.collection.length == 0)) {
       var mapOptions = {
         center: {
           lat: 37.7532501,
@@ -32,19 +23,23 @@ YelpClone.Views.MapShow = Backbone.View.extend({
       bounds.extend(lng);
 
       this.map.fitBounds(bounds);
+      return
+    }
 
+    if (this.model) {
+      var business = this.model;
     } else {
       var business = this.collection.first();
-      var mapOptions = {
-        center: {
-          lat: business.get('latitude'),
-          lng: business.get('longitude')
-        }
-      };
-
-      this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      this.setMarkers();
     }
+    var mapOptions = {
+      center: {
+        lat: business.get('latitude'),
+        lng: business.get('longitude')
+      }
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    this.setMarkers();
   },
 
   renderMap: function () {
