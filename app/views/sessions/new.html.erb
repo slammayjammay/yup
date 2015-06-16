@@ -1,13 +1,24 @@
-<div class="sign-in">
-  <h1>Log In</h1>
+<div class="backdrop">
+  <div class="sign-in sign-up popup">
+    <h1>Log In</h1>
 
-  <form class="auth col-md-4" action="<%= session_url %>" method="post">
-    <%= auth_token %>
+    <form class="auth col-md-4" action="<%= session_url %>" method="post">
+      <%= auth_token %>
 
-    <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
-    <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
+      <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
+      <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
 
-    <input class="btn-success" type="submit" value="Log in!">
-  </form>
-<h1>Or <%= link_to "Sign up!", new_user_url %></h1>
+      <input class="btn btn-success" type="submit" value="Log in!">
+    </form>
+
+    <form class="auth col-md-4" action="<%= session_url %>" method="post">
+      <%= auth_token %>
+
+      <input type="hidden" name="user[email]" value="example@email.com">
+      <input type="hidden" name="user[password]" value="password">
+
+      <input class="btn btn-primary" type="submit" value="Or sign in as guest">
+    </form>
+
+  </div>
 </div>

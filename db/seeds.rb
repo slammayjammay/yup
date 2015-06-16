@@ -5,7 +5,7 @@ categories.each do |category|
 
   5.times do |num|
     business = results.businesses[num]
-    Business.create(
+    Business.create!(
       name: business.name.downcase,
       category: category,
       rating: business.rating,
@@ -22,7 +22,7 @@ categories.each do |category|
 end
 
 50.times do
-  User.create(
+  User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -38,7 +38,7 @@ business_ids = (Business.first.id..Business.last.id).to_a
 
 users.each do |user|
   5.times do |num|
-    Following.create(
+    Following.create!(
       follower_id: user.id,
       followed_id: user_ids.sample
     )
@@ -49,7 +49,7 @@ end
   business = Business.find(business_ids.sample)
   rating = (0..5).to_a.sample
 
-  review = Review.create(
+  review = Review.create!(
     rating: rating,
     content: Faker::Lorem.paragraphs((1..4).to_a.sample),
     business_id: business.id,
@@ -60,3 +60,11 @@ end
   business.rating += diff.fdiv(business.review_count)
   business.save!
 end
+
+User.create!(
+  first_name: 'Guest',
+  last_name: 'User',
+  email: 'example@email.com',
+  password_digest: BCrypt::Password.create('password'),
+  session_token: 'session_token'
+)

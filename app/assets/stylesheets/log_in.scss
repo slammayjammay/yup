@@ -25,17 +25,22 @@
     width: 49%;
   }
 
-  input.btn-success {
+  input.btn {
     border-radius: 5px;
+    margin-bottom: 8px;
     height: 50px;
     width: 100%;
+  }
+
+  input.btn-primary {
+    width: 50%;
+    margin-left: 25%;
   }
 }
 
 .backdrop {
   position: fixed;
   z-index: 50;
-  // background: rgba(157, 157, 157, 0.29);
   background: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%;
@@ -55,4 +60,8 @@
   width: 37%;
   background: white;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+}
+
+.sign-up {
+  height: 35%;
 }
