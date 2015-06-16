@@ -1,30 +1,14 @@
-.backdrop {
-  position: fixed;
-  z-index: 50;
-  background: rgba(157, 157, 157, 0.29);
-  height: 100%;
-  width: 100%;
-}
-
 .begin {
   opacity: 0;
 }
 
+.business-show .backdrop {
+  background: rgba(157, 157, 157, 0.29);
+}
+
 .review-form {
-  transition: 500ms;
   opacity: 1;
-  position: absolute;
   padding-left: 33px;
-  padding-top: 20px;
-  left: 30%;
-  top: 15%;
-  z-index: 100;
-  border: 1px solid black;
-  border-radius: 4px;
-  height: 45%;
-  width: 37%;
-  background: white;
-  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
 
   button.close {
     margin-right: 15px;

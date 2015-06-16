@@ -1,20 +1,21 @@
-<div class="sign-in">
-  <h1>Sign Up!</h1>
-  <br>
+<div class="backdrop">
+  <div class="sign-in popup">
+    <h1>Sign Up!</h1>
+    <br>
 
-  <form class="auth col-md-4" action="<%= users_url %>" method="post">
-    <%= auth_token %>
+    <form class="auth col-md-4" action="<%= users_url %>" method="post">
+      <%= auth_token %>
 
-    <input class="form-control first-name" type="text" name="user[first_name]" id="first-name" placeholder="First Name">
+      <input class="form-control first-name" type="text" name="user[first_name]" id="first-name" placeholder="First Name">
 
-    <input class="form-control last-name" type="text" name="user[last_name]" id="last-name" placeholder="Last Name">
+      <input class="form-control last-name" type="text" name="user[last_name]" id="last-name" placeholder="Last Name">
 
-    <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
+      <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
 
-    <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
+      <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
 
-    <input class="btn btn-success" type="submit" value="Sign up!">
-  </form>
+      <input class="btn btn-success" type="submit" value="Sign up!">
+    </form>
 
-  <h1>Or <%= link_to "Sign In!", new_session_url %></h1>
+  </div>
 </div>

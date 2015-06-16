@@ -27,7 +27,7 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
     }.bind(this));
 
     setTimeout(function () {
-      this.$('form').attr('class', 'review-form');
+      this.$('form').addClass('popup review-form');
     }.bind(this), 0);
     this.displayRating();
     return this;
