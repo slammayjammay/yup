@@ -1,8 +1,17 @@
-#map-canvas {
+.business-show #map-canvas {
   position: absolute;
   border: 1px solid black;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
   height: 30%;
   width: 25%;
   margin-top: 1px;
+}
+
+.search-show #map-canvas {
+  float: right;
+  border: 1px solid black;
+  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+  height: 360px;
+  width: 400px;
+  margin-top: 75px;
 }

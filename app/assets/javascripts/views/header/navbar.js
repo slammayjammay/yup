@@ -1,7 +1,7 @@
 YelpClone.Views.Navbar = Backbone.View.extend({
   template: JST['header/navbar'],
   events: {
-    "click button.home": "redirectToHome",
+    "click button.search": "redirectToSearch",
     "submit form": "search",
     "click button.sign-out": "signOut"
   },
@@ -10,8 +10,8 @@ YelpClone.Views.Navbar = Backbone.View.extend({
     this.router = options.router;
   },
 
-  redirectToHome: function () {
-    Backbone.history.navigate("#home", { trigger: true });
+  redirectToSearch: function () {
+    Backbone.history.navigate("#search", { trigger: true });
   },
 
   render: function () {

@@ -28,10 +28,10 @@
     transition: 500ms;
     border: 1px solid black;
     border-radius: 3px;
-    margin: 10px auto;
+    margin: 10px;
     box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
     min-height: 170px;
-    width: 70%;
+    width: 85%;
     font-size: 18px;
     padding: 15px;
 
@@ -49,11 +49,16 @@
     p {
       margin-left: 100px;
       min-width: 500px;
+      min-height: 80px;
     }
   }
 
   .business-index-item:first-child{
     border-top: 1px solid black;
+  }
+
+  .business-index-item:nth-child(-n+2) {
+    width: 60%;
   }
 
   .business-index-item:hover {
