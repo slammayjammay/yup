@@ -8,7 +8,6 @@ categories.each do |category|
     Business.create!(
       name: business.name.downcase,
       category: category,
-      rating: business.rating,
       address: business.location.display_address.join(" "),
       city: business.location.city,
       state: business.location.country_code,

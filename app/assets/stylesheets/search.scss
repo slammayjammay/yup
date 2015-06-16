@@ -2,9 +2,26 @@
   text-align: center;
 }
 
+.filters {
+  width: 35%;
+  height: 40px;
+  float: right;
+
+  p {
+    font-size: 20px;
+  }
+
+  .filter {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .filter:hover, form input {
+    cursor: pointer;
+  }
+}
+
 .categories {
-  width: 1000px;
-  margin: auto;
   height: 50px;
 
   .category-index-item {

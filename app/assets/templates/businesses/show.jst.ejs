@@ -10,4 +10,8 @@
 
 <div id="map-canvas"></div>
 <button class="add-review btn btn-danger">Review this business!</button>
-<div class="business-reviews"></div>
+<div class="business-reviews">
+  <% if (business.reviews().length === 0) { %>
+    <h1>Be the first to review this company!</h1>
+  <% } %>
+</div>

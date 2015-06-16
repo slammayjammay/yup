@@ -6,7 +6,8 @@ YelpClone.Views.UserReviews = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.renderReviews();
+    this.listenTo(this.model, "sync", this.renderReviews);
+    // this.renderReviews();
   },
 
   redirectToSearch: function () {

@@ -2,7 +2,11 @@ class Api::BusinessesController < ApplicationController
   def index
     if params[:searchKeys]
       wildcard = "%#{params[:searchKeys]}%"
+      order = params[:order] || 'rating'
+      dir = order == 'name' ? 'ASC' : 'DESC'
+      
       @businesses = Business.where('name LIKE ? OR category LIKE ?', wildcard, wildcard)
+      .order("#{order} #{dir}")
     else
       @businesses = Business.all
     end

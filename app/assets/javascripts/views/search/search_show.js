@@ -1,8 +1,9 @@
 YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   className: 'search-show',
-  template: JST['search/home_index'],
+  template: JST['search/search_show'],
   events: {
-    "click .category-index-item": "switchBusinesses"
+    "click .category-index-item": "switchBusinesses",
+    "click .filter": "filter"
   },
 
   initialize: function (options) {
@@ -11,9 +12,16 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
     this.renderCategories();
+
     this.listenTo(this.collection, "sync add", this.render);
     this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
     this.listenTo(this.collection, "sync", this.renderMap);
+  },
+
+  filter: function (event) {
+    var order = $(event.currentTarget).find('input').attr('class');
+    Backbone.history.navigate("search");
+    this.router.search(this.query, order);
   },
 
   render: function () {
@@ -56,6 +64,6 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   switchBusinesses: function (event) {
     var category = $(event.currentTarget).text().trim();
     Backbone.history.navigate("search");
-    this.router._search(category);
+    this.router.search(category);
   }
 });
