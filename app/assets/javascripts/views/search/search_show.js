@@ -1,14 +1,15 @@
 YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   className: 'search-show',
-  template: JST['home/home_index'],
+  template: JST['search/home_index'],
   events: {
     "click .category-index-item": "switchBusinesses"
   },
 
   initialize: function (options) {
     this.router = options.router;
+    this.query = options.query;
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
-                       'bars', 'coffee', 'health'];
+      'bars', 'coffee', 'health', 'automotive', 'entertainment', 'pets'];
     this.renderCategories();
     this.listenTo(this.collection, "sync add", this.render);
     this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
@@ -16,13 +17,16 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({ businesses: this.collection });
+    var content = this.template({
+      businesses: this.collection,
+      query: this.query
+    });
     this.$el.html(content);
     this.attachSubviews();
     return this;
   },
 
-  addBusinesses: function (category) {
+  addBusinesses: function () {
     var that = this;
     this.collection.each(function (business) {
         var view = new YelpClone.Views.BusinessIndexItem({

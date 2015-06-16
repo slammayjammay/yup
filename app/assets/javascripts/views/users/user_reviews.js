@@ -1,9 +1,16 @@
 YelpClone.Views.UserReviews = Backbone.CompositeView.extend({
   template: JST['users/reviews'],
+  events: {
+    "click button": "redirectToSearch"
+  },
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.renderReviews();
+  },
+
+  redirectToSearch: function () {
+    Backbone.history.navigate("search", { trigger: true });
   },
 
   render: function () {

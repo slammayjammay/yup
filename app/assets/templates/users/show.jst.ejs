@@ -4,8 +4,8 @@
 </div class="title">
 
 <ul class="nav nav-tabs">
-  <li class="followers" role="presentation"><a href="#users/<%= user.get('id') %>">Followers</a></li>
   <li class="reviews" role="presentation"><a href="#users/<%= user.get('id') %>">Reviews</a></li>
+  <li class="followers" role="presentation"><a href="#users/<%= user.get('id') %>">Followers</a></li>
   <% if (user.get('id') == CURRENT_USER_ID) { %>
     <li class="edit" role="presentation">
       <a href="#users/<%= user.get('id') %>"=>Edit Profile</a>

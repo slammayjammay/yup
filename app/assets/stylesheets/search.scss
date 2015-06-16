@@ -1,15 +1,21 @@
+.query {
+  text-align: center;
+}
+
 .categories {
-  height: 10px;
+  width: 1000px;
+  margin: auto;
+  height: 50px;
 
   .category-index-item {
     float: left;
     border: 1px solid black;
+    box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.63);
     border-radius: 5px;
     margin: 5px;
     font-size: 18px;
     padding: 5px;
     height: auto;
-    width: auto;
   }
 
   .category-index-item:last-child {
@@ -17,12 +23,13 @@
   }
 
   .category-index-item:hover {
-    background: #8EE5EE;
+    background: #d3d3d3;
+    cursor: pointer;
   }
 }
 
 .businesses {
-  margin-top: 65px;
+  margin-top: 20px;
 
   .business-index-item {
     transition: 500ms;
