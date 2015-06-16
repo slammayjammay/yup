@@ -14,8 +14,7 @@ YelpClone.Views.MapShow = Backbone.View.extend({
       center: {
         lat: business.get('latitude'),
         lng: business.get('longitude')
-      },
-      zoom: 16
+      }
     };
 
     this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
