@@ -9,7 +9,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     this.router = options.router;
     this.query = options.query;
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
-      'bars', 'coffee', 'health', 'automotive', 'entertainment', 'pets'];
+      'bars', 'coffee', 'health'];
     this.renderCategories();
     this.listenTo(this.collection, "sync add", this.render);
     this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
