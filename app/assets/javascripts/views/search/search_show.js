@@ -12,6 +12,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     this.renderCategories();
     this.listenTo(this.collection, "sync add", this.render);
     this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
+    this.listenTo(this.collection, "sync", this.renderMap);
   },
 
   render: function () {
@@ -24,13 +25,11 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   addBusinesses: function (category) {
     var that = this;
     this.collection.each(function (business) {
-      // if (business.get('category') === category) {
         var view = new YelpClone.Views.BusinessIndexItem({
           model: business,
           review: business.reviews().first()
         });
         that.addSubview('.businesses', view);
-      // }
     });
 
     this.render();
@@ -46,16 +45,13 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     });
   },
 
+  renderMap: function () {
+    new YelpClone.Views.MapShow({ collection: this.collection });
+  },
+
   switchBusinesses: function (event) {
     var category = $(event.currentTarget).text().trim();
     Backbone.history.navigate("search");
     this.router._search(category);
-    // var subviews = _.map(this.subviews('.businesses'), _.clone);
-    // var that = this;
-    // subviews[0].forEach(function (view) {
-    //   that.removeSubview('.businesses', view);
-    // });
-    //
-    // this.addBusinesses(category);
   }
 });
