@@ -50,16 +50,15 @@
   transition: 500ms;
   opacity: 1;
   position: absolute;
-  padding-top: 20px;
   left: 30%;
   top: 15%;
   z-index: 100;
   border: 1px solid black;
   border-radius: 4px;
-  height: 45%;
-  width: 37%;
+  height: 400px;
+  width: 560px;
   background: white;
-  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+  box-shadow: 1px 3px 9px 3px rgba(0, 0, 0, 0.63);
 }
 
 .sign-up {

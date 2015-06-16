@@ -2,7 +2,7 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
-    "click": "redirect"
+    "click": "redirectToBusiness"
   },
 
   initialize: function (options) {
@@ -29,8 +29,8 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
     this.$("#input-id").rating('update', rating);
   },
 
-  redirect: function () {
-    Backbone.history.navigate("#businesses/" + this.model.get('id'), { trigger: true });
+  redirectToBusiness: function () {
+    Backbone.history.navigate("#businesses/" + this.model.get('id'), { trigger: true});
   },
 
   render: function () {

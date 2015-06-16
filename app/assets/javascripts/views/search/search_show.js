@@ -7,6 +7,9 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+    setTimeout(function () {
+      this.renderMap();
+    }.bind(this), 150);
     this.router = options.router;
     this.query = options.query;
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
@@ -15,7 +18,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
 
     this.listenTo(this.collection, "sync add", this.render);
     this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
-    this.listenTo(this.collection, "sync", this.renderMap);
+    // this.listenTo(this.collection, "sync", this.renderMap);
   },
 
   filter: function (event) {

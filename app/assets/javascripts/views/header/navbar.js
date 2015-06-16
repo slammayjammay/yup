@@ -23,8 +23,7 @@ YelpClone.Views.Navbar = Backbone.View.extend({
   search: function (event) {
     event.preventDefault();
     var searchKeys = $(event.currentTarget).find('.form-control').val();
-    Backbone.history.navigate("#search");
-    this.router.search(searchKeys);
+    Backbone.history.navigate("#search/" + searchKeys, { trigger: true });
   },
 
   signOut: function () {
