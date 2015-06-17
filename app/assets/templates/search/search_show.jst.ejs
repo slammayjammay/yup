@@ -2,9 +2,23 @@
   <p>Narrow your search:</p>
 
   <form>
-    <div class="filter">Alphabetically <input class="name" type="checkbox"></div>
-    <div class="filter">Most reviewed <input class="review_count" type="checkbox"></div>
-    <div class="filter">Highest rated <input class="rating" type="checkbox"></div>
+    <div class="filter">Alphabetically <input class="name" type="checkbox"
+      <% if (order == "name") { %>
+        checked
+      <% } %>>
+    </div>
+
+    <div class="filter">Most reviewed <input class="review_count" type="checkbox"
+      <% if (order == "review_count") { %>
+        checked
+      <% } %>>
+    </div>
+
+    <div class="filter">Highest rated <input class="rating" type="checkbox"
+      <% if (order == "rating") { %>
+        checked
+      <% } %>>
+    </div>
   </form>
 </div>
 <div class="categories"></div>

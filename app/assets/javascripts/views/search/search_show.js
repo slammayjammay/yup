@@ -13,6 +13,8 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     }.bind(this), 500);
     this.router = options.router;
     this.query = options.query;
+    this.order = options.order;
+
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
     this.renderCategories();
@@ -30,7 +32,8 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({
       businesses: this.collection,
-      query: this.query
+      query: this.query,
+      order: this.order
     });
     this.$el.html(content);
     this.attachSubviews();

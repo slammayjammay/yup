@@ -40,6 +40,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
     var view = new YelpClone.Views.SearchShow({
       router: this,
       query: query,
+      order: order,
       collection: businesses
     });
     this._swapView(view);
