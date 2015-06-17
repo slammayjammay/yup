@@ -5,31 +5,42 @@ nav.navbar.navbar-default {
 }
 
 .navbar .navbar-form {
-  width: 440px;
+  width: 500px;
   margin: 20px auto;
 }
 
 .navbar input.form-control {
   width: 335px;
   height: 50px;
+  font-size: 20px;
 }
 
-.navbar button.btn {
+.navbar button {
   background: white;
 }
 
+button.search {
+  transition: 500ms;
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
+}
+
 .navbar button.btn:hover {
+  transition: 500ms;
   background: #dbdbdb;
 }
 
-.search {
+.navbar button.btn.to-search {
   float: left;
-  margin-top: 10px;
-  margin-left: 10px;
+  height: 37px;
+  margin-top: 50px;
+  margin-left: -57px;
 }
 
-.sign-out {
+.navbar button.sign-out {
   float: right;
+  height: 37px;
   margin-right: 10px;
   margin-top: -37px;
 }

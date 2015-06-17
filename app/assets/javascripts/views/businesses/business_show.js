@@ -8,7 +8,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     setTimeout(function () {
       this.renderMap();
-    }.bind(this), 150);
+    }.bind(this), 500);
     this.listenTo(this.model, "sync", this.render);
     // this.listenTo(this.model, "sync", this.renderMap);
     this.listenTo(this.collection, "add", this.addReview);
