@@ -2,11 +2,16 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
-    "click": "redirectToBusiness"
+    "click": "redirectToBusiness",
+    "mouseenter": "startBounce",
+    "mouseleave": "endBounce"
   },
 
   initialize: function (options) {
     this.review = options.review;
+    this.searchPage = options.searchPage;
+    this.index = options.index;
+
     this.user = new YelpClone.Models.User();
     if (this.review) {
       this.user.set('id', this.review.get('user_id'));
@@ -29,6 +34,10 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
     this.$("#input-id").rating('update', rating);
   },
 
+  endBounce: function () {
+    this.searchPage.map.endBounce(this.index);
+  },
+
   redirectToBusiness: function () {
     Backbone.history.navigate("#businesses/" + this.model.get('id'), { trigger: true});
   },
@@ -43,5 +52,9 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
     this.$el.html(content);
     this.displayRating();
     return this;
+  },
+
+  startBounce: function () {
+    this.searchPage.map.startBounce(this.index);
   }
 });

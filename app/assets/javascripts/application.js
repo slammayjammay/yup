@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require gmaps
 //= require star-rating
 //= require bootstrap
 //= require underscore
