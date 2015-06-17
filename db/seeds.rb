@@ -67,3 +67,17 @@ User.create!(
   password_digest: BCrypt::Password.create('password'),
   session_token: 'session_token'
 )
+
+10.times do
+  Review.create!(
+    rating: (0..5).to_a.sample,
+    content: Faker::Lorem.paragraphs((1..4).to_a.sample),
+    business_id: business_ids.sample,
+    user_id: User.last.id
+  )
+
+  Following.create!(
+    follower_id: User.last.id,
+    followed_id: user_ids.sample
+  )
+end

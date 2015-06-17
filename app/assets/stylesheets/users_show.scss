@@ -35,10 +35,14 @@
 
 .user-main {
   margin-top: 20px;
-  margin-left: 20px;
-  float: left;
+  margin-left: 27%;
   width: 65%;
-  height: 400px;
+}
+
+.user-main:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .user-main input {
