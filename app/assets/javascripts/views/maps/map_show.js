@@ -1,5 +1,6 @@
 YelpClone.Views.MapShow = Backbone.View.extend({
   initialize: function () {
+    this.markers = [];
     this.renderMap();
   },
 
@@ -54,13 +55,16 @@ YelpClone.Views.MapShow = Backbone.View.extend({
       this.collection = new YelpClone.Collections.Businesses([this.model]);
     }
 
-    this.collection.each(function (business) {
-      new google.maps.Marker({
+    this.collection.each(function (business, index) {
+      var marker = new google.maps.Marker({
         position: { lat: business.get('latitude'),
                   lng: business.get('longitude') },
         map: this.map,
+        animation: google.maps.Animation.DROP,
         title: business.get('name')
       });
+
+      this.markers.push(marker);
 
       var bound = new google.maps.LatLng(business.get('latitude'), business.get('longitude'));
       bounds.extend(bound);
