@@ -56,23 +56,35 @@ YelpClone.Views.MapShow = Backbone.View.extend({
     if (this.model) {
       this.collection = new YelpClone.Collections.Businesses([this.model]);
     }
+    var that = this;
 
     this.collection.each(function (business, index) {
       var marker = new google.maps.Marker({
         position: { lat: business.get('latitude'),
                   lng: business.get('longitude') },
-        map: this.map,
+        map: that.map,
         animation: google.maps.Animation.DROP,
         title: business.get('name')
       });
 
       this._markers.push(marker);
+      google.maps.event.addListener(marker, 'click', function (event) {
+        that.showInfoWindow(event, marker);
+      });
 
       var bound = new google.maps.LatLng(business.get('latitude'), business.get('longitude'));
       bounds.extend(bound);
     }.bind(this));
 
     this.map.fitBounds(bounds);
+  },
+
+  showInfoWindow: function (event, marker) {
+    var infoWindow = new google.maps.InfoWindow({
+      content: marker.title
+    });
+
+    infoWindow.open(this.map, marker);
   },
 
   startBounce: function (index) {

@@ -1,6 +1,9 @@
 
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
-<h4><%= business.escape('name') %></h4>
+<h4>
+  <%= business.escape('name') %><br>
+  <small>(<%= business.get('review_count') %> reviews)</small>
+</h4>
 
 <img class="image" src="<%= business.escape('image_url') %>">
 <% if (review) { %>

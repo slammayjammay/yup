@@ -92,8 +92,9 @@
   }
 
   .business-index-item:hover {
-    background: #d3d3d3;
+    // background: #d3d3d3;
     transition: 150ms;
     cursor: pointer;
+    box-shadow: 1px 3px 9px 9px rgba(0,0,0,0.63);
   }
 }
