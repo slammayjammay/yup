@@ -43,6 +43,7 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
     review.save({}, { success: function () {
       that.model.fetch();
       that.remove();
+      Backbone.history.navigate("#redirecting...");
       Backbone.history.navigate(
         "businesses/" + that.model.get('id'),
         { trigger: true }
