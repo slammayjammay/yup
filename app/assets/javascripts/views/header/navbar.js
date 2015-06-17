@@ -2,8 +2,8 @@ YelpClone.Views.Navbar = Backbone.View.extend({
   template: JST['header/navbar'],
   events: {
     "click button.search": "redirectToSearch",
-    "submit form": "search",
-    "click button.sign-out": "signOut"
+    "click button.sign-out": "signOut",
+    "submit form.navbar-form": "search"
   },
 
   initialize: function (options) {
@@ -26,7 +26,9 @@ YelpClone.Views.Navbar = Backbone.View.extend({
     Backbone.history.navigate("#search/" + searchKeys, { trigger: true });
   },
 
-  signOut: function () {
-    $.ajax({ url: "/session", type: "DELETE" });
+  signOut: function (event) {
+    event.preventDefault();
+    $.ajax({ url: 'api/users/' + CURRENT_USER_ID, type: 'DELETE' });
+    window.location = "session/new";
   }
 });

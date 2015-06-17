@@ -9,4 +9,10 @@ class Api::UsersController < ApplicationController
     @user.update(user_params)
     render :show
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    log_out
+    render :show
+  end
 end
