@@ -9,9 +9,9 @@
 <h5><%= business.escape('address') %></h5>
 
 <div class="map"></div>
-<button class="add-review btn btn-danger">Review this business!</button>
 <div class="business-reviews">
   <% if (business.get('review_count') === 0) { %>
     <h1>Be the first to review this company!</h1>
   <% } %>
 </div>
+<button class="add-review btn btn-danger">Review this business!</button>
