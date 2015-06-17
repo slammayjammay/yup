@@ -21,7 +21,6 @@ YelpClone.Views.MapShow = Backbone.View.extend({
       var bounds = new google.maps.LatLngBounds();
       var lat = new google.maps.LatLng(37.7532501, -122.4067001);
       var lng = new google.maps.LatLng(37.794079, -122.423538);
-
       bounds.extend(lat);
       bounds.extend(lng);
 
@@ -34,7 +33,7 @@ YelpClone.Views.MapShow = Backbone.View.extend({
     } else {
       var business = this.collection.first();
     }
-    
+
     var mapOptions = {
       center: {
         lat: business.get('latitude'),

@@ -6,9 +6,9 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    setTimeout(function () {
-      this.renderMap();
-    }.bind(this), 500);
+    this.map = new YelpClone.Views.MapTest();
+
+    // google.maps.event.addDomListener(window, 'load', this.renderMap);
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.collection, "add", this.addReview);
     this.listenTo(this.collection, "add", this.displayRating);
@@ -30,7 +30,6 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
-    new YelpClone.Views.MapShow({ model: this.model });
   },
 
   render: function () {

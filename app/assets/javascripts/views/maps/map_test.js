@@ -1,37 +1,42 @@
-YelpClone.Views.MapShow = Backbone.View.extend({
+YelpClone.Views.MapTest = Backbone.View.extend({
+  attributes: {
+    id: 'what'
+  },
+
   initialize: function () {
     this._markers = [];
-    if (this.model) {
-      this.businessMap();
-    } else if (this.collection && this.collection.length > 0){
-      this.searchMap();
-    } else {
-      this.defaultMap();
-    }
   },
 
   endBounce: function (index) {
     this._markers[index].setAnimation(null);
   },
 
-  businessMap: function () {
+  init: function () {
     var mapOptions = {
       center: {
-        lat: this.model.get('latitude'),
-        lng: this.model.get('longitude'),
-        zoom: 16
-      }
+        lat: 37.7833,
+        lng: -122.4167
+      },
+      zoom: 16
     };
+    this.map = new google.maps.Map(this.$el, mapOptions);
+  //
+  //   if (this.model) {
+  //     var marker = new google.maps.Marker({
+  //       position: { lat: this.model.get('latitude'),
+  //                 lng: this.model.get('longitude') },
+  //       map: this.map,
+  //       animation: google.maps.Animation.DROP,
+  //       title: this.model.get('name')
+  //     });
+  //   } else {
+  //     this.addMarkers();
+  //   }
+  },
 
-    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  businessMap: function () {
 
-    var marker = new google.maps.Marker({
-      position: { lat: this.model.get('latitude'),
-                lng: this.model.get('longitude') },
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      title: business.get('name')
-    });
+
 
     this._markers.push(marker);
     google.maps.event.addListener(marker, 'click', function (event) {
