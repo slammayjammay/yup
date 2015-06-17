@@ -3,7 +3,8 @@ YelpClone.Views.Navbar = Backbone.View.extend({
   events: {
     "click button.sign-out": "signOut",
     "submit form.navbar-form": "search",
-    "click .to-search": "redirectToSearch"
+    "click .to-search": "redirectToSearch",
+    "click .to-account": "redirectToProfile"
   },
 
   initialize: function (options) {
@@ -14,6 +15,10 @@ YelpClone.Views.Navbar = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  redirectToProfile: function () {
+    Backbone.history.navigate("#users/" + CURRENT_USER_ID, { trigger: true });
   },
 
   redirectToSearch: function () {
