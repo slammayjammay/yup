@@ -1,4 +1,4 @@
-.business-show #map-canvas {
+.business-show #map {
   position: absolute;
   border: 1px solid black;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
@@ -7,7 +7,7 @@
   margin-top: 1px;
 }
 
-.search-show #map-canvas {
+.search-show #map {
   float: right;
   border: 1px solid black;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);

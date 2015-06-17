@@ -61,7 +61,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
-    this.map = new YelpClone.Views.MapShow({ collection: this.collection });
+    this.map = new YelpClone.Views.MapShow({ collection: this.collection }).map;
   },
 
   switchBusinesses: function (event) {
