@@ -1,7 +1,7 @@
 class Api::FollowingsController < ApplicationController
   def create
     @following = Following.new(following_params)
-    @following.save!
+    @following.save
     render :show
   end
 

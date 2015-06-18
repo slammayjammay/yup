@@ -2,13 +2,23 @@
   opacity: 0;
 }
 
+.review-errors {
+  color: red;
+
+  li {
+    transition: 1s;
+    float: left;
+    margin-right: 40px;
+  }
+}
+
 .business-show .backdrop {
   background: rgba(157, 157, 157, 0.29);
 }
 
 .review-form {
   opacity: 1;
-  padding: 15px;  
+  padding: 15px;
 
   #input-id {
     margin: auto;

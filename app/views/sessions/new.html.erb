@@ -1,5 +1,8 @@
+
 <div class="backdrop">
   <div class="sign-in sign-up popup">
+    <div class="errors"><%= flash[:errors] %></div>
+    
     <h1>Log In</h1>
 
     <form class="auth col-md-4" action="<%= session_url %>" method="post">

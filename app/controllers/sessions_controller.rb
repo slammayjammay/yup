@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       log_in @user
       redirect_to "#search"
     else
-      flash.now[:errors] = ["Invalid credentials"]
+      flash.now[:errors] = "Invalid credentials"
       render :new
     end
   end
