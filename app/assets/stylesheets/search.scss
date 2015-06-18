@@ -50,7 +50,9 @@
 }
 
 .businesses {
+  position: relative;
   margin-top: 20px;
+  width: 700px;
 
   .business-index-item {
     transition: 500ms;
@@ -59,7 +61,7 @@
     margin: 10px;
     box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
     min-height: 170px;
-    width: 60%;
+    width: 100%;
     font-size: 18px;
     padding: 15px;
 

@@ -1,6 +1,7 @@
 .map {
-  position: relative;
-  display: inline-block;
+  right: -430px;
+  width: 400px;
+  position: absolute;
 }
 
 .business-show #map {
@@ -18,6 +19,4 @@
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
   height: 360px;
   width: 400px;
-  top: 248px;
-  right: 240px;
 }
