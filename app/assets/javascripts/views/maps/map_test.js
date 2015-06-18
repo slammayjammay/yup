@@ -28,6 +28,10 @@ YelpClone.Views.MapTest = Backbone.View.extend({
       animation: google.maps.Animation.DROP,
       title: this.model.get('name')
     });
+
+    google.maps.event.addListener(marker, 'click', function (event) {
+      this.showInfoWindow(event, marker);
+    }.bind(this));
   },
 
   initSearchMap: function () {

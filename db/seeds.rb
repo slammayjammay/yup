@@ -1,9 +1,9 @@
 categories = %w(restaurants food nightlife shopping bars coffee health)
 categories.each do |category|
-  params = { category_filter: category, limit: 5 }
+  params = { category_filter: category, limit: 20 }
   results = Yelp.client.search('San Francisco', params)
 
-  5.times do |num|
+  20.times do |num|
     business = results.businesses[num]
     Business.create!(
       name: business.name.downcase,
@@ -44,7 +44,7 @@ users.each do |user|
   end
 end
 
-100.times do
+200.times do
   business = Business.find(business_ids.sample)
   rating = (0..5).to_a.sample
 
