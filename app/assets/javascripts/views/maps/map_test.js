@@ -34,20 +34,28 @@ YelpClone.Views.MapTest = Backbone.View.extend({
     }.bind(this));
   },
 
-  initSearchMap: function () {
-    var business = this.collection.first();
-    if (business) {
-      var lat = business.get('latitiude');
-      var lng = business.get('longitude');
-    } else {
-      var lat = 0;
-      var lng = 0;
-    }
-
+  initDefaultMap: function () {
     var mapOptions = {
       center: {
-        lat: lat,
-        lng: lng
+        lat: 37.7532501,
+        lng: -122.4067001,
+      },
+      zoom: 11
+    };
+
+    this.map = new google.maps.Map(this.el, mapOptions);
+  },
+
+  initSearchMap: function () {
+    var business = this.collection.first();
+    if (!business) {
+      this.initDefaultMap();
+      return
+    }
+    var mapOptions = {
+      center: {
+        lat: business.get('latitude'),
+        lng: business.get('longitude')
       }
     };
 
