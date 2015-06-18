@@ -1,7 +1,11 @@
-.map {
+.search-show .map {
   right: -434px;
   width: 400px;
   position: absolute;
+}
+
+.map {
+  display: inline-block;
 }
 
 .business-show #map {
