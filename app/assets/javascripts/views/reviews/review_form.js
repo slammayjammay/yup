@@ -22,13 +22,13 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
 
   parseErrors: function(model, response) {
     var errors = response.responseJSON;
-    var $errors = this.$('ul');
+    var $errors = this.$('ul').empty();
     for (var prop in errors) {
       errors[prop].forEach( function (errorMsg) {
         var $error = $('<li>').addClass('begin');
         $error.text(prop + " " + errorMsg);
         $errors.append($error);
-        
+
         setTimeout(function () {
           $error.removeClass('begin');
         }, 0);
