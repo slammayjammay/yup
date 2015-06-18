@@ -1,8 +1,5 @@
 YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
   template: JST['reviews/index_item'],
-  events: {
-    "click": "redirect"
-  },
 
   initialize: function () {
     this.user = new YelpClone.Models.User({ id: this.model.get('user_id') });
@@ -26,21 +23,6 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     rating = (Math.round(rating * 2) / 2).toFixed(1);
     this.$("#input-id").rating({ disabled: true });
     this.$("#input-id").rating('update', rating);
-  },
-
-  redirect: function (event) {
-    if (this.$el.hasClass('user')) {
-      Backbone.history.navigate(
-        "users/" + this.model.get('user_id'),
-        { trigger: true }
-      );
-
-    } else if (this.$el.hasClass('business')) {
-      Backbone.history.navigate(
-        "businesses/" + this.model.get('business_id'),
-        { trigger: true }
-      );
-    }
   },
 
   render: function () {

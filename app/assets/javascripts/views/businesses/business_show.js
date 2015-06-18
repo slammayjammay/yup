@@ -33,9 +33,6 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
     this.$("#input-id").rating('update', rating);
   },
 
-  renderMap: function () {
-  },
-
   render: function () {
     var content = this.template({
       business: this.model,
