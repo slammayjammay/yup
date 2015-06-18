@@ -36,10 +36,18 @@ YelpClone.Views.MapTest = Backbone.View.extend({
 
   initSearchMap: function () {
     var business = this.collection.first();
+    if (business) {
+      var lat = business.get('latitiude');
+      var lng = business.get('longitude');
+    } else {
+      var lat = 0;
+      var lng = 0;
+    }
+
     var mapOptions = {
       center: {
-        lat: business.get('latitude'),
-        lng: business.get('longitude')
+        lat: lat,
+        lng: lng
       }
     };
 

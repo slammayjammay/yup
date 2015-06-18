@@ -1,6 +1,6 @@
 class Api::BusinessesController < ApplicationController
   def index
-    wildcard = "%#{params[:searchKeys]}%"
+    wildcard = "%#{params[:searchKeys].downcase}%"
     order = params[:order] || 'id'
     dir = order == 'name' ? 'ASC' : 'DESC'
 

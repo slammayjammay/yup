@@ -50,7 +50,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
     var businesses = new YelpClone.Collections.Businesses();
     businesses.fetch({
       url: 'api/businesses',
-      data: { searchKeys: query, order: order, page: 1 }
+      data: { searchKeys: query, order: order }
     });
     var view = new YelpClone.Views.SearchShow({
       router: this,
