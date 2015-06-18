@@ -1,5 +1,5 @@
 YelpClone.Views.UserIndexItem = Backbone.View.extend({
-  className: "user-index-item",
+  className: "begin",
   template: JST['users/index_item'],
   events: {
     "click": "redirectToUser"
@@ -7,11 +7,14 @@ YelpClone.Views.UserIndexItem = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.$el.addClass('user-index-item');
+    setTimeout(function () {
+      this.$el.removeClass('begin');
+    }.bind(this), 0)
   },
 
   redirectToUser: function (event) {
     Backbone.history.navigate("users/" + this.model.get('id'), { trigger: true });
-    // TODO: is this view still in memory?
   },
 
   render: function () {

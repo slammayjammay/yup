@@ -36,11 +36,9 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   renderNextPage: function () {
-    var that = this;
-    debugger
-    that._currentView.collection.fetch({
+    this._currentView.collection.fetch({
       remove: false,
-      data: { page: that._currentView.collection.page + 1 }
+      data: { page: 6 }
     });
   },
 
