@@ -16,7 +16,7 @@ class Api::ReviewsController < ApplicationController
       INNER JOIN reviews ON reviews.user_id = followings.followed_id
       INNER JOIN users AS reviewer ON followings.followed_id = reviewer.id
       INNER JOIN businesses ON reviews.business_id = businesses.id
-      WHERE users.id = 51
+      WHERE users.id = #{current_user.id}
       ORDER BY reviews.created_at DESC
       LIMIT 10;"
     )

@@ -2,11 +2,11 @@
 <small>-<%= $.timeago(review.get('created_at')) %></small>
 <h4>
   <a href="#users/<%= review.get('user_id') %>">
-    <%= review.get('first_name') %> <%= review.get('last_name') %>
+    <strong><%= review.get('first_name') %> <%= review.get('last_name') %></strong>
   </a>
   wrote a review about
   <a href="#businesses/<%= review.get('business_id') %>">
-    <%= review.get('business_name') %>
+    <strong><%= review.get('business_name') %></strong>
   </a>:
 </h4>
 <img src="<%= review.get('image_url') %>">
