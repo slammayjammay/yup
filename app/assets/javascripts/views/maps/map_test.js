@@ -105,6 +105,12 @@ YelpClone.Views.MapTest = Backbone.View.extend({
         animation: google.maps.Animation.DROP,
         title: business.name
       });
+
+      this._markers.push(marker);
+      google.maps.event.addListener(marker, 'click', function (event) {
+        this.showInfoWindow(event, marker);
+      });
+
     }.bind(this));
   },
 
