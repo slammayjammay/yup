@@ -20,11 +20,10 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
       }.bind(this)});
     }
 
-    this.index = options.index;
     this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
     setTimeout(function () {
       this.$el.removeAttr('style');
-    }.bind(this), 0);
+    }.bind(this), 90);
   },
 
   displayRating: function () {

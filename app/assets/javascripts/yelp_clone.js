@@ -11,8 +11,13 @@ window.YelpClone = {
     var navbar = new YelpClone.Views.Navbar({
       router: router
     });
+
+    router.on('route', function() {
+      $(document).scrollTop(0);
+    });
+
     $('#navbar').html(navbar.render().$el);
-    
+
     Backbone.history.start();
   }
 };

@@ -10,7 +10,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     this.map = new YelpClone.Views.MapTest({ collection: this.collection });
     setTimeout(function () {
       this.$('.businesses').prepend($('<div>').addClass('map'));
-      this.$('div.map').html(this.map.$el);
+      this.$('.map').html(this.map.$el);
       this.map.initSearchMap();
     }.bind(this), 1000);
 
@@ -22,8 +22,8 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
       'bars', 'coffee', 'health'];
     this.renderCategories();
 
-    this.listenTo(this.collection, "sync add", this.render);
-    this.listenTo(this.collection, "sync", this.addBusinesses.bind(this));
+    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.collection, "add", this.addBusiness.bind(this));
   },
 
   filter: function (event) {
@@ -41,6 +41,17 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
+  },
+
+  addBusiness: function (business) {
+    var view = new YelpClone.Views.BusinessIndexItem({
+      model: business,
+      review: business.reviews().first(),
+      searchPage: this,
+      index: this.collection.indexOf(business)
+    });
+
+    this.addSubview('.businesses', view);
   },
 
   addBusinesses: function () {
@@ -66,10 +77,6 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
       });
       that.addSubview('.categories', view);
     });
-  },
-
-  renderMap: function () {
-    this.map = new YelpClone.Views.MapShow({ collection: this.collection });
   },
 
   switchBusinesses: function (event) {

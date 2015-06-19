@@ -3,8 +3,7 @@ YelpClone.Collections.Businesses = Backbone.Collection.extend({
   model: YelpClone.Models.Business,
 
   parse: function (response) {
-    this.page = response.page;
-    // this.total_pages = response.total_pages;
+    this.page = parseInt(response.page);
     return response.businesses;
   }
 });

@@ -1,11 +1,11 @@
 YelpClone.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-    // $(window).scroll(function() {
-    //   if($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-    //     this.renderNextPage();
-    //   }
-    // }.bind(this));
+    $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+        this.renderNextPage();
+      }
+    }.bind(this));
   },
 
   routes: {
@@ -36,19 +36,27 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   renderNextPage: function () {
-    this._currentView.collection.fetch({
-      remove: false,
-      data: { page: 6 }
-    });
+    if ($('.page').length == 0) {
+      var $button = $('<button>').text('IM A BUTTON').addClass('btn btn-primary page');
+      this._currentView.$el.append($button);
+    }
+
+    // this._currentView.collection.fetch({
+    //   remove: false,
+    //   data: { searchKeys: this.query,
+    //           order: this.order,
+    //           page: this._currentView.collection.page + 1
+    //         }
+    // });
   },
 
   search: function (query, order) {
-    query = query || 'restaurants';
-    order = order || 'id';
+    this.query = query || 'restaurants';
+    this.order = order || 'id';
     var businesses = new YelpClone.Collections.Businesses();
     businesses.fetch({
       url: 'api/businesses',
-      data: { searchKeys: query, order: order }
+      data: { searchKeys: this.query, order: this.order }
     });
     var view = new YelpClone.Views.SearchShow({
       router: this,
