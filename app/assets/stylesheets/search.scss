@@ -94,4 +94,12 @@
     transition: 150ms;
     cursor: pointer;
   }
+
+  .business-index-item:last-child {
+    margin-bottom: 600px;
+  }
+}
+
+.prev-page, .next-page {
+  margin: 10px;
 }

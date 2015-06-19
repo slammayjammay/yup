@@ -36,18 +36,23 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   renderNextPage: function () {
-    if ($('.page').length == 0) {
-      var $button = $('<button>').text('IM A BUTTON').addClass('btn btn-primary page');
-      this._currentView.$el.append($button);
-    }
+    // if ($('.next-page').length == 0) {
+    //   var $next = $('<button>').text('Previous Page').addClass('btn btn-primary next-page');
+    //   var $prev = $('<button>').text('Next Page').addClass('btn btn-primary prev-page');
+    //   this._currentView.$el.append($next);
+    //   this._currentView.$el.append($prev);
+    // }
 
-    // this._currentView.collection.fetch({
-    //   remove: false,
-    //   data: { searchKeys: this.query,
-    //           order: this.order,
-    //           page: this._currentView.collection.page + 1
-    //         }
-    // });
+    this._currentView.collection.fetch({
+      remove: false,
+      data: { searchKeys: this.query,
+              order: this.order,
+              page: this._currentView.collection.page + 1
+            },
+      success: function (model, response) {
+        this._currentView.map.showNewResults(response.businesses);
+      }.bind(this)
+    });
   },
 
   search: function (query, order) {
