@@ -93,10 +93,6 @@ YelpClone.Views.MapTest = Backbone.View.extend({
   },
 
   showNewResults: function (businesses) {
-    for (var i = 0; i < this._markers.length; i++) {
-        this._markers[i].setMap(null);
-    }
-
     businesses.forEach(function (business) {
       var marker = new google.maps.Marker({
         position: { lat: business.latitude,
@@ -109,7 +105,7 @@ YelpClone.Views.MapTest = Backbone.View.extend({
       this._markers.push(marker);
       google.maps.event.addListener(marker, 'click', function (event) {
         this.showInfoWindow(event, marker);
-      });
+      }.bind(this));
 
     }.bind(this));
   },
