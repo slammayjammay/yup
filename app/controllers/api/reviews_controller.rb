@@ -4,6 +4,7 @@ class Api::ReviewsController < ApplicationController
       "SELECT
         reviews.rating,
         reviews.content,
+        reviewer.id AS user_id,
         reviewer.first_name,
         reviewer.last_name,
         reviewer.image_url,

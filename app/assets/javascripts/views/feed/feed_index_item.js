@@ -1,9 +1,13 @@
 YelpClone.Views.FeedIndexItem = Backbone.View.extend({
-  className: 'feed-index-item',
+  className: 'begin',
   template: JST['feed/index_item'],
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+    setTimeout(function () {
+      this.$el.addClass('feed-index-item');
+      this.$el.removeClass('begin');
+    }.bind(this), 0);
   },
 
   displayRating: function () {
