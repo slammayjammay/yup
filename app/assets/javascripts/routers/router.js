@@ -9,6 +9,7 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    "": "feed",
     "users/:id": "userShow",
     "businesses/:id": "businessShow",
     "search(/:query)(/:order)": "search"
@@ -24,6 +25,13 @@ YelpClone.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  feed: function () {
+    var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
+    user.fetch();
+    var view = new YelpClone.Views.FeedShow({ model: user });
+    this._swapView(view);
+  },
+
   userShow: function (id) {
     var user = new YelpClone.Models.User({ id: id });
     user.fetch();
@@ -36,13 +44,6 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   renderNextPage: function () {
-    // if ($('.next-page').length == 0) {
-    //   var $next = $('<button>').text('Previous Page').addClass('btn btn-primary next-page');
-    //   var $prev = $('<button>').text('Next Page').addClass('btn btn-primary prev-page');
-    //   this._currentView.$el.append($next);
-    //   this._currentView.$el.append($prev);
-    // }
-
     this._currentView.collection.fetch({
       remove: false,
       data: { searchKeys: this.query,

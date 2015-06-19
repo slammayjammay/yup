@@ -1,4 +1,18 @@
 class Api::ReviewsController < ApplicationController
+  def index
+    @reviews = yelp_clone_development.execute(<<-SQL)
+      SELECT reviews.rating
+      FROM followings
+      INNER JOIN users ON users.id = followings.follower_id
+      INNER JOIN reviews ON reviews.user_id = followings.followed_id
+      WHERE users.id = 51
+      ORDER BY reviews.created_at DESC
+      LIMIT 10;
+    SQL
+
+    render :index
+  end
+
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id

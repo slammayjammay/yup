@@ -7,10 +7,8 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.map = new YelpClone.Views.MapTest({ collection: this.collection });
+    this.map = new YelpClone.Views.MapShow({ collection: this.collection });
     setTimeout(function () {
-      // this.$('.businesses').prepend($('<div>').addClass('map'));
-      // this.$('.map').html(this.map.$el);
       this.map.initSearchMap();
     }.bind(this), 1000);
 
