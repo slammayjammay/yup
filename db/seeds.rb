@@ -48,7 +48,7 @@ end
 
 2000.times do
   business = Business.find(business_ids.sample)
-  rating = (0..5).to_a.sample
+  rating = (1..5).to_a.sample
 
   review = Review.create!(
     rating: rating,
