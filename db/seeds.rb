@@ -1,22 +1,24 @@
 categories = %w(restaurants food nightlife shopping bars coffee health)
 categories.each do |category|
-  params = { category_filter: category, limit: 20 }
-  results = Yelp.client.search('San Francisco', params)
+  5.times do |offset|
+    params = { category_filter: category, limit: 20, offset: 20 * offset }
+    results = Yelp.client.search('San Francisco', params)
 
-  20.times do |num|
-    business = results.businesses[num]
-    Business.create!(
-      name: business.name.downcase,
-      category: category,
-      address: business.location.display_address.join(" "),
-      city: business.location.city,
-      state: business.location.country_code,
-      latitude: business.location.coordinate.latitude,
-      longitude: business.location.coordinate.longitude,
-      phone: (business.phone if business.respond_to?(:phone)),
-      url: business.url,
-      image_url: Faker::Company.logo
-    )
+    20.times do |num|
+      business = results.businesses[num]
+      Business.create!(
+        name: business.name.downcase,
+        category: category,
+        address: business.location.display_address.join(" "),
+        city: business.location.city,
+        state: business.location.country_code,
+        latitude: business.location.coordinate.latitude,
+        longitude: business.location.coordinate.longitude,
+        phone: (business.phone if business.respond_to?(:phone)),
+        url: business.url,
+        image_url: Faker::Company.logo
+      )
+    end
   end
 end
 
@@ -44,7 +46,7 @@ users.each do |user|
   end
 end
 
-200.times do
+2000.times do
   business = Business.find(business_ids.sample)
   rating = (0..5).to_a.sample
 

@@ -12,7 +12,7 @@ class Api::BusinessesController < ApplicationController
       'name LIKE ? OR category LIKE ?',
       wildcard,
       wildcard
-    ).order("#{order} #{dir}")#.page(params[:page]).per(5)
+    ).order("#{order} #{dir}").page(params[:page]).per(10)
     render :index
   end
 
