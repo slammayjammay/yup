@@ -1,11 +1,11 @@
 YelpClone.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-    // $(window).scroll(function() {
-    //   if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-    //     this.renderNextPage();
-    //   }
-    // }.bind(this));
+    $(window).scroll(function() {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+        this.renderNextPage();
+      }
+    }.bind(this));
   },
 
   routes: {
@@ -44,16 +44,18 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   renderNextPage: function () {
-    this._currentView.collection.fetch({
-      remove: false,
-      data: { searchKeys: this.query,
-              order: this.order,
-              page: this._currentView.collection.page + 1
-            },
-      success: function (model, response) {
-        this._currentView.map.showNewResults(response.businesses);
-      }.bind(this)
-    });
+    if (this._currentView.$el.attr('class') == 'search-show') {
+      this._currentView.collection.fetch({
+        remove: false,
+        data: { searchKeys: this.query,
+                order: this.order,
+                page: this._currentView.collection.page + 1
+              },
+        success: function (model, response) {
+          this._currentView.map.showNewResults(response.businesses);
+        }.bind(this)
+      });
+    }
   },
 
   search: function (query, order) {

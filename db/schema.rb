@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 20150614185431) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "businesses", ["category"], name: "index_businesses_on_category", using: :btree
+  add_index "businesses", ["name"], name: "index_businesses_on_name", using: :btree
+  add_index "businesses", ["rating"], name: "index_businesses_on_rating", using: :btree
+
   create_table "followings", force: :cascade do |t|
     t.integer  "follower_id", null: false
     t.integer  "followed_id", null: false
@@ -64,6 +68,6 @@ ActiveRecord::Schema.define(version: 20150614185431) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
 
 end

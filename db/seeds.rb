@@ -1,23 +1,25 @@
 categories = %w(restaurants food nightlife shopping bars coffee health)
 categories.each do |category|
-  5.times do |offset|
+  10.times do |offset|
     params = { category_filter: category, limit: 20, offset: 20 * offset }
     results = Yelp.client.search('San Francisco', params)
 
     20.times do |num|
       business = results.businesses[num]
-      Business.create!(
-        name: business.name.downcase,
-        category: category,
-        address: business.location.display_address.join(" "),
-        city: business.location.city,
-        state: business.location.country_code,
-        latitude: business.location.coordinate.latitude,
-        longitude: business.location.coordinate.longitude,
-        phone: (business.phone if business.respond_to?(:phone)),
-        url: business.url,
-        image_url: Faker::Company.logo
-      )
+      if business.respond_to?(:phone) && business.location.respond_to?(:coordinate)
+        Business.create!(
+          name: business.name.downcase,
+          category: category,
+          address: business.location.display_address.join(" "),
+          city: business.location.city,
+          state: business.location.country_code,
+          latitude: business.location.coordinate.latitude,
+          longitude: business.location.coordinate.longitude,
+          phone: business.phone,
+          url: business.url,
+          image_url: Faker::Company.logo
+        )
+      end
     end
   end
 end
@@ -49,10 +51,14 @@ end
 2000.times do
   business = Business.find(business_ids.sample)
   rating = (1..5).to_a.sample
+  content = Faker::Hacker.say_something_smart
+  (0..10).to_a.sample.times do |num|
+    content += " #{Faker::Hacker.say_something_smart}"
+  end
 
   review = Review.create!(
     rating: rating,
-    content: Faker::Lorem.paragraphs((1..4).to_a.sample),
+    content: content,
     business_id: business.id,
     user_id: user_ids.sample
   )
@@ -71,9 +77,14 @@ User.create!(
 )
 
 10.times do
+  content = Faker::Hacker.say_something_smart
+  (0..10).to_a.sample.times do |num|
+    content += " #{Faker::Hacker.say_something_smart}"
+  end
+
   Review.create!(
     rating: (0..5).to_a.sample,
-    content: Faker::Lorem.paragraphs((1..4).to_a.sample),
+    content: content,
     business_id: business_ids.sample,
     user_id: User.last.id
   )
