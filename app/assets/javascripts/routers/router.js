@@ -26,9 +26,9 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   feed: function () {
-    var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
-    user.fetch();
-    var view = new YelpClone.Views.FeedShow({ model: user });
+    var reviews = new YelpClone.Collections.Reviews();
+    reviews.fetch();
+    var view = new YelpClone.Views.FeedShow({ collection: reviews });
     this._swapView(view);
   },
 

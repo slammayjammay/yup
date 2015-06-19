@@ -1,14 +1,13 @@
 class Api::ReviewsController < ApplicationController
   def index
-    @reviews = yelp_clone_development.execute(<<-SQL)
-      SELECT reviews.rating
+    @reviews = Review.find_by_sql("
+      SELECT reviews.rating, reviews.content
       FROM followings
       INNER JOIN users ON users.id = followings.follower_id
       INNER JOIN reviews ON reviews.user_id = followings.followed_id
       WHERE users.id = 51
       ORDER BY reviews.created_at DESC
-      LIMIT 10;
-    SQL
+      LIMIT 10;")
 
     render :index
   end

@@ -1,1 +1,4 @@
 <h1>You are in FeedShow</h1>
+<% reviews.each(function (review) { %>
+  <%= review.get('content') %><br>
+<% }) %>
