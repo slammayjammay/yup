@@ -3,10 +3,12 @@
   <a href="#users/<%= review.get('user_id') %>">
     <strong><%= review.get('first_name') %> <%= review.get('last_name') %></strong>
   </a>
+
   wrote a review about
   <a href="#businesses/<%= review.get('business_id') %>">
     <strong><%= review.get('business_name') %></strong>
   </a>
+  
   (<%= $.timeago(review.get('created_at')) %>):
 </h4>
 <img src="<%= review.get('image_url') %>">
