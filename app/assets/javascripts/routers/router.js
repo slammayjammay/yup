@@ -1,11 +1,11 @@
 YelpClone.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-    $(window).scroll(function() {
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-        this.renderNextPage();
-      }
-    }.bind(this));
+    // $(window).scroll(function() {
+    //   if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+    //     this.renderNextPage();
+    //   }
+    // }.bind(this));
   },
 
   routes: {

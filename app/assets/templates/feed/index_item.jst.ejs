@@ -1,0 +1,11 @@
+<input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+<h4>
+  <%= review.get('first_name') %> <%= review.get('last_name') %>
+  wrote a review about
+  <a href="businesses/<%= review.get('business_id') %>">
+    <%= review.get('business_name') %>
+  </a>:
+</h4>
+<img src="<%= review.get('image_url') %>">
+<p><%= review.get('content') %></p>
+<h1><%= review.get('created_at') %></h1>
