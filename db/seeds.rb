@@ -28,8 +28,8 @@ end
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     image_url: Faker::Avatar.image,
-    password_digest: "password",
-    session_token: "password"
+    password_digest: BCrypt::Password.create('password'),
+    session_token: User.generate_session_token
   )
 end
 
