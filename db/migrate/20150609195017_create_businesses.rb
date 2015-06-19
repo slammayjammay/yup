@@ -17,6 +17,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :businesses, :name, :rating, :category
+    add_index :businesses, :name
+    add_index :businesses, :rating
+    add_index :businesses, :category
   end
 end
