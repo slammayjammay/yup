@@ -83,7 +83,7 @@ User.create!(
   end
 
   Review.create!(
-    rating: (0..5).to_a.sample,
+    rating: (1..5).to_a.sample,
     content: content,
     business_id: business_ids.sample,
     user_id: User.last.id
