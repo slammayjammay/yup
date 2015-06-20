@@ -1,8 +1,7 @@
 class Api::ReviewsController < ApplicationController
   def index
     @reviews = Review.find_by_sql(
-      "
-      SELECT DISTINCT
+      "SELECT DISTINCT
         users.id AS user_id,
         users.first_name,
         users.last_name,
@@ -21,6 +20,24 @@ class Api::ReviewsController < ApplicationController
       LIMIT 10;"
     )
 
+    if @reviews.length == 0
+      @reviews = Review.find_by_sql(
+        "SELECT DISTINCT
+          users.id AS user_id,
+          users.first_name,
+          users.last_name,
+          users.image_url,
+          reviews.created_at,
+          reviews.rating,
+          reviews.content,
+          reviews.business_id
+        FROM
+          reviews
+        INNER JOIN users on reviews.user_id = users.id
+        ORDER BY reviews.created_at DESC
+        LIMIT 10;"
+      )
+    end
     render :index
   end
 

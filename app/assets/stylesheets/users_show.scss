@@ -1,3 +1,18 @@
+.edit-success {
+  opacity: 1;
+  transition: 1s;
+  font-size: 22px;
+  float: left;
+  margin-top: -20px;
+  margin-left: 40px;
+  color: green;
+}
+
+.invisible {
+  opacity: 0;
+  transition: 1s;
+}
+
 .title {
   font-size: 24px;
   padding-top: 15px;

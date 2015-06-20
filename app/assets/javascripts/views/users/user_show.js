@@ -20,11 +20,13 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
 
-    var that = this;
     this.model.save(data, {
       success: function () {
-        that.renderReviews();
-      }
+        this.renderReviews();
+        setTimeout(function () {
+          this.renderSuccess();
+        }.bind(this), 0);
+      }.bind(this)
     });
   },
 
@@ -58,6 +60,11 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.user-main', view, true);
     this._swapMainContent(view);
+  },
+
+  renderSuccess: function () {
+    this.$('.edit-success').removeClass('invisible');
+    this.$('.edit-success').text('-Successfully updated your profile');
   },
 
   _swapMainContent: function (view) {
