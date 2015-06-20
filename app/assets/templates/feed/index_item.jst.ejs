@@ -6,9 +6,9 @@
 
   wrote a review about
   <a href="#businesses/<%= review.get('business_id') %>">
-    <strong><%= review.get('business_name') %></strong>
+    <strong><%= business.get('name') %></strong>
   </a>
-  
+
   (<%= $.timeago(review.get('created_at')) %>):
 </h4>
 <img src="<%= review.get('image_url') %>">

@@ -3,7 +3,13 @@ YelpClone.Views.FeedIndexItem = Backbone.View.extend({
   template: JST['feed/index_item'],
 
   initialize: function () {
+    this.business = new YelpClone.Models.Business({
+      id: this.model.get('business_id')
+    });
+    this.business.fetch();
+
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.business, 'sync', this.render);
     setTimeout(function () {
       this.$el.addClass('feed-index-item');
       this.$el.removeClass('begin');
@@ -18,7 +24,10 @@ YelpClone.Views.FeedIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ review: this.model });
+    var content = this.template({
+      review: this.model,
+      business: this.business
+    });
     this.$el.html(content);
     this.displayRating();
     return this;

@@ -2,20 +2,18 @@ class Api::ReviewsController < ApplicationController
   def index
     @reviews = Review.find_by_sql(
       "SELECT
+        reviews.created_at,
         reviews.rating,
         reviews.content,
+        reviews.business_id,
         reviewer.id AS user_id,
         reviewer.first_name,
         reviewer.last_name,
-        reviewer.image_url,
-        businesses.id AS business_id,
-        businesses.name AS business_name,
-        reviews.created_at
+        reviewer.image_url
       FROM followings
       INNER JOIN users ON users.id = followings.follower_id
       INNER JOIN reviews ON reviews.user_id = followings.followed_id
       INNER JOIN users AS reviewer ON followings.followed_id = reviewer.id
-      INNER JOIN businesses ON reviews.business_id = businesses.id
       WHERE users.id = #{current_user.id}
       ORDER BY reviews.created_at DESC
       LIMIT 10;"
