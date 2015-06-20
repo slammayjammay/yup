@@ -7,9 +7,9 @@
     about <strong>
       <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
     </strong>
-  </p>
     <small>
       (<%= $.timeago(review.get('created_at')) %>)
     </small>
+  </p>
   <p><%= review.escape('content') %></p>
 </div>

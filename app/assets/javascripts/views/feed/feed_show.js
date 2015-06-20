@@ -12,6 +12,7 @@ YelpClone.Views.FeedShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    debugger
     var content = this.template({ reviews: this.collection });
     this.$el.html(content);
     this.attachSubviews();

@@ -1,3 +1,7 @@
+h1.activity {
+  margin: 15px;
+}
+
 .feed-index-item {
   transition: 1s;
   margin: 10px;
@@ -10,6 +14,7 @@
 
   img {
     float: left;
+    margin-right: 10px;
     width: 100px;
     height: 100px;
   }

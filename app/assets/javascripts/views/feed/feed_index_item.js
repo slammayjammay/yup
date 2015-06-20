@@ -13,7 +13,7 @@ YelpClone.Views.FeedIndexItem = Backbone.View.extend({
     setTimeout(function () {
       this.$el.addClass('feed-index-item');
       this.$el.removeClass('begin');
-    }.bind(this), 0);
+    }.bind(this), 100);
   },
 
   displayRating: function () {

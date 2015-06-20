@@ -57,24 +57,24 @@
   }
 
   small {
-    float: right;
     margin-top: -15px;
   }
-}
 
-.review-info {
-  padding-left: 30px;
-}
+  .review-info {
+    padding-left: 30px;
+  }
 
-.user-image {
-  float: left;
-  width: 100px;
-  height: 100px;
-}
+  .user-image {
+    float: left;
+    width: 100px;
+    height: 100px;
+  }
 
-.context {
-  float: right;
-  margin-top: -35px;
+  .context {
+    float: right;
+    max-width: 300px;
+    margin-top: -35px;
+  }
 }
 
 .business-show h1 {
@@ -95,5 +95,5 @@
 }
 
 .gold {
-  background: #ffe776;
+  background: #D7CFA2;
 }

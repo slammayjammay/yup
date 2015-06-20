@@ -17,8 +17,8 @@ class Api::ReviewsController < ApplicationController
         WHERE followings.follower_id = #{current_user.id}) AS sq
       INNER JOIN reviews ON reviews.user_id = sq.followed_id OR reviews.user_id = sq.follower_id
       INNER JOIN users on reviews.user_id = users.id
-      ORDER BY reviews.created_at DESC;
-      "
+      ORDER BY reviews.created_at DESC
+      LIMIT 10;"
     )
 
     render :index
