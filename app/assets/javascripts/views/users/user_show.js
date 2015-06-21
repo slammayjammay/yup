@@ -65,6 +65,9 @@ YelpClone.Views.UserShow = Backbone.CompositeView.extend({
   renderSuccess: function () {
     this.$('.edit-success').removeClass('invisible');
     this.$('.edit-success').text('-Successfully updated your profile');
+    setTimeout(function () {
+      this.$('.edit-success').addClass('invisible');
+    }.bind(this), 3000);
   },
 
   _swapMainContent: function (view) {
