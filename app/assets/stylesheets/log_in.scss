@@ -14,7 +14,6 @@
 
   h3 {
     text-align: center;
-    // margin-top: 270px;
   }
 
   .auth {
@@ -62,7 +61,8 @@
   transition: 500ms;
   opacity: 1;
   position: absolute;
-  left: 30%;
+  left: 25%;
+  right: 25%;
   top: 15%;
   z-index: 100;
   border: 1px solid black;
