@@ -2,7 +2,6 @@ YelpClone.Views.UserFollowers = Backbone.CompositeView.extend({
   template: JST['users/followers'],
 
   initialize: function () {
-    // this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.addFollows);
     this.addFollows();
   },

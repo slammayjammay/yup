@@ -38,7 +38,10 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
   },
 
   redirectToBusiness: function () {
-    Backbone.history.navigate("#businesses/" + this.model.get('id'), { trigger: true});
+    Backbone.history.navigate(
+      "#businesses/" + this.model.get('id'),
+      { trigger: true }
+    );
   },
 
   render: function () {

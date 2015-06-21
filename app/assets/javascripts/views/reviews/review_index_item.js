@@ -5,7 +5,9 @@ YelpClone.Views.ReviewIndexItem = Backbone.View.extend({
     this.user = new YelpClone.Models.User({ id: this.model.get('user_id') });
     this.user.fetch();
 
-    this.business = new YelpClone.Models.Business({ id: this.model.get('business_id') });
+    this.business = new YelpClone.Models.Business({
+      id: this.model.get('business_id')
+    });
     this.business.fetch();
 
     this.listenTo(this.model, "sync", this.render);

@@ -75,6 +75,7 @@ YelpClone.Views.ReviewForm = Backbone.View.extend({
 
       error: function (model, response) {
         this.parseErrors(model, response);
-      }.bind(this)});
+      }.bind(this)
+    });
   }
 });
