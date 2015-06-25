@@ -67,11 +67,11 @@ show page.
 ## BONUS FEATURES
 - [x] Pagination
 - [x] Friending / Following
-* Type-ahead search bar
-* Feedback for reviews
-* Filter reviews
-* Filter businesses by distance
-* Allow users to add pictures to businesses
+- [ ] Type-ahead search bar
+- [ ] Feedback for reviews
+- [ ] Filter reviews
+- [ ] Filter businesses by distance
+- [ ] Allow users to add pictures to businesses
 
 [phase-1]: ./phases/phase1_details.md
 [phase-2]: ./phases/phase2_details.md
