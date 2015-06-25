@@ -5,14 +5,14 @@
 
 ## Minimum Viable Product
 I will make a yelp clone. Users can:
-- [ ] Create accounts and sign in
-- [ ] Add a profile picture
-- [ ] Edit profile information
-- [ ] View businesses
-- [ ] Browse businesses by category
-- [ ] Search for businesses
-- [ ] Filter search results
-- [ ] Rate and review businesses
+- [x] Create accounts and sign in
+- [x] Add a profile picture
+- [x] Edit profile information
+- [x] View businesses
+- [x] Browse businesses by category
+- [x] Search for businesses
+- [x] Filter search results
+- [x] Rate and review businesses
 - [ ] Edit ratings and reviews
 
 * [DB schema][schema]
@@ -65,8 +65,8 @@ show page.
 * [Phase 6 Details][phase-6]
 
 ## BONUS FEATURES
-* Pagination
-* Friending / Following
+- [x] Pagination
+- [x] Friending / Following
 * Type-ahead search bar
 * Feedback for reviews
 * Filter reviews
