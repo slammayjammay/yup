@@ -13,10 +13,17 @@ nav.navbar.navbar-default {
 
 .navbar .logo {
   float: left;
-  color: white;
-  font-size: 40px;
+  margin-right: 30px;
   left: 20px;
   top: 4px;
+}
+
+.yup {
+  font-size: 40px;
+  float: left;
+  color: white;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
 .navbar .logo-pic {

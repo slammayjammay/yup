@@ -72,6 +72,7 @@ User.create!(
   first_name: 'Guest',
   last_name: 'User',
   email: 'example@email.com',
+  image_url: 'http://s3.amazonaws.com/rapgenius/Steven%20Seagal%20StevenSeagal3.jpg',
   password_digest: BCrypt::Password.create('password'),
   session_token: 'session_token'
 )
