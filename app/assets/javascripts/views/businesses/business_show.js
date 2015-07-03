@@ -8,7 +8,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.map = new YelpClone.Views.MapShow({ model: this.model });
     setTimeout(function () {
-      this.$('.map').html(this.map.$el);
+      this.$('.map').prepend(this.map.$el);
       this.map.initBusinessMap();
     }.bind(this), 1000);
 
