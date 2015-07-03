@@ -22,12 +22,9 @@
 
 body {
   height: 100%;
+  background-color: #EFEFEF;
 }
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
 @import 'bootstrap/glyphicons';
-
-body {
-  background: #d3d3d3;
-}
