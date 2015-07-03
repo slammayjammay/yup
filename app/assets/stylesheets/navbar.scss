@@ -18,6 +18,10 @@ nav.navbar.navbar-default {
   top: 4px;
 }
 
+.navbar .logo:hover {
+  cursor: pointer;
+}
+
 .yup {
   font-size: 40px;
   float: left;
@@ -37,7 +41,7 @@ nav.navbar.navbar-default {
 .navbar input.form-control {
   width: 335px;
   height: 40px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .navbar button {
@@ -62,7 +66,6 @@ button.search {
 .navbar button.btn.to-feed {
   float: left;
   height: 37px;
-  // margin-left: 6%;
   margin-top: 37px;
   margin-right: 5px;
 }

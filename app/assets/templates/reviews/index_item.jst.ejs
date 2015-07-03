@@ -1,12 +1,18 @@
-<img class="user-image" src="<%= user.escape('image_url') %>">
+<input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+<div class="user-info">
+  <img class="user-image" src="<%= user.escape('image_url') %>"><br>
+  <strong>
+    <a href="#users/<%= user.get('id') %>">
+      -<%= user.escape('first_name') %>
+    </a>
+  </strong>
+</div>
 
 <div class="review-info">
-  <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
   <p class="context">
-    -<strong><a href="#users/<%=user.get('id') %>"><%= user.escape('first_name') %></strong></a>,
-    about <strong>
-      <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
-    </strong>
+  <strong>
+    <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
+  </strong>
     <small>
       (<%= $.timeago(review.get('created_at')) %>)
     </small>
