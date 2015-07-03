@@ -3,6 +3,7 @@ YelpClone.Views.Navbar = Backbone.View.extend({
   events: {
     "click button.sign-out": "signOut",
     "submit form.navbar-form": "search",
+    "click .logo": "redirectToFeed",
     "click .to-feed": "redirectToFeed",
     "click .to-account": "redirectToProfile"
   },

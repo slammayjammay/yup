@@ -20,11 +20,11 @@
    padding: 0;
 }
 
+@import "bootstrap";
+@import "bootstrap-sprockets";
+@import 'bootstrap/glyphicons';
+
 body {
   height: 100%;
   background-color: #EFEFEF;
 }
-
-@import "bootstrap";
-@import "bootstrap-sprockets";
-@import 'bootstrap/glyphicons';
