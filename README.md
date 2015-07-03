@@ -1,7 +1,7 @@
 # Yelp Clone
 
-[Heroku Link][heroku]
-[heroku]: http://enigmatic-plains-4368.herokuapp.com/
+[live][live]
+[live]: http://scottyup.com/
 
 ## Minimum Viable Product
 I will make a yelp clone. Users can:
