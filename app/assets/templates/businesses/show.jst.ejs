@@ -3,10 +3,10 @@
   <img class="logo" src="<%= business.escape('image_url')%>">
 </h1>
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="md" >
-<p class="address">(<%= business.get('review_count') %> reviews)</p>
+<p class="review-count">(<%= business.get('review_count') %> reviews)</p>
 
 <br>
-<p><%= business.escape('address') %></p>
+<p class="address"><%= business.escape('address') %></p>
 <div class="content-container">
   <div class="map">
     <button class="add-review btn">Review this business!</button>
