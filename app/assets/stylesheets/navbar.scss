@@ -1,5 +1,6 @@
 nav.navbar.navbar-default {
-  height: 100px;
+  min-width: 1300px;
+  height: 80px;
   margin-bottom: 0px;
   background-color: #b30000;
 }
@@ -11,45 +12,46 @@ nav.navbar.navbar-default {
 
 .navbar input.form-control {
   width: 335px;
-  height: 50px;
+  height: 40px;
   font-size: 20px;
 }
 
 .navbar button {
   transition: 500ms;
-  background: white;
+  background: #b30000;
+  color: white;
 }
 
 button.search {
   transition: 500ms;
   width: 100px;
-  height: 50px;
-  font-size: 18px;
+  height: 35px;
+  font-size: 16px;
 }
 
 .navbar button.btn:hover {
   transition: 500ms;
-  background: #dbdbdb;
+  background: #8E0606;
+  color: white;
 }
 
 .navbar button.btn.to-feed {
   float: left;
   height: 37px;
-  margin-top: 50px;
-  margin-left: -57px;
-  margin-right: 65px;
+  margin-left: 6%;
+  margin-top: 37px;
+  margin-right: 5px;
 }
 
 .navbar button.btn.to-account {
   float: left;
   height: 37px;
-  margin-top: 50px;
-  margin-left: -57px;
+  margin-top: 37px;
 }
 
 .navbar button.sign-out {
   float: right;
   height: 37px;
   margin-right: 10px;
-  margin-top: -37px;
+  margin-top: -43px;
 }
