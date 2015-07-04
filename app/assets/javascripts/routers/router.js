@@ -2,7 +2,9 @@ Yup.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.sidebarRight = new Yup.Views.SidebarRight({
-      router: this,
+      query: this.query,
+      order: this.order,
+      collection: new Yup.Collections.Businesses(),
       map: new Yup.Views.MapShow()
     });
     $('#sidebar-right').html(this.sidebarRight.render().$el);
@@ -69,13 +71,18 @@ Yup.Routers.Router = Backbone.Router.extend({
     this.order = order || 'id';
     var businesses = new Yup.Collections.Businesses();
     businesses.fetch({
-      url: 'api/businesses',
-      data: { searchKeys: this.query, order: this.order }
+      data: { searchKeys: this.query, order: this.order },
+      success: function () {
+        for (var i = 0; i < businesses.models.length; i++) {
+          this.sidebarRight.collection.add(businesses.models[i]);
+        }
+      }.bind(this)
     });
+
     var view = new Yup.Views.SearchShow({
       router: this,
-      query: query,
-      order: order,
+      query: this.query,
+      order: this.order,
       collection: businesses
     });
 
