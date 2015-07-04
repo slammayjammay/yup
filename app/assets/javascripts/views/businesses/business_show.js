@@ -1,4 +1,4 @@
-YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
+yup.Views.BusinessShow = Backbone.CompositeView.extend({
   className: "business-show",
   template: JST['businesses/show'],
   events: {
@@ -6,7 +6,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.map = new YelpClone.Views.MapShow({ model: this.model });
+    this.map = new yup.Views.MapShow({ model: this.model });
     setTimeout(function () {
       this.$('.map').prepend(this.map.$el);
       this.map.initBusinessMap();
@@ -18,7 +18,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   addReview: function (review) {
-    var view = new YelpClone.Views.ReviewIndexItem({
+    var view = new yup.Views.ReviewIndexItem({
       model: review,
       className: "user review-item"
     });
@@ -44,7 +44,7 @@ YelpClone.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderForm: function () {
-    var view = new YelpClone.Views.ReviewForm({
+    var view = new yup.Views.ReviewForm({
       model: this.model
     });
     $('body').prepend(view.render().$el);

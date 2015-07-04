@@ -1,4 +1,4 @@
-YelpClone.Views.FeedShow = Backbone.CompositeView.extend({
+yup.Views.FeedShow = Backbone.CompositeView.extend({
   template: JST['feed/show'],
 
   initialize: function () {
@@ -7,7 +7,7 @@ YelpClone.Views.FeedShow = Backbone.CompositeView.extend({
   },
 
   addReview: function (review) {
-    var view = new YelpClone.Views.FeedIndexItem({ model: review });
+    var view = new yup.Views.FeedIndexItem({ model: review });
     this.addSubview('.feed-items', view);
   },
 

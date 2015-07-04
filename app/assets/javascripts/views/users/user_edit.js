@@ -1,4 +1,4 @@
-YelpClone.Views.UserEdit = Backbone.View.extend({
+yup.Views.UserEdit = Backbone.View.extend({
   className: 'begin',
   template: JST['users/edit'],
 

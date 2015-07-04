@@ -1,6 +1,6 @@
-YelpClone.Collections.Businesses = Backbone.Collection.extend({
+yup.Collections.Businesses = Backbone.Collection.extend({
   url: "/api/businesses",
-  model: YelpClone.Models.Business,
+  model: yup.Models.Business,
 
   parse: function (response) {
     this.page = parseInt(response.page);

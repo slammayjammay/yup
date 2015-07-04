@@ -1,4 +1,4 @@
-YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
+yup.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
@@ -12,7 +12,7 @@ YelpClone.Views.BusinessIndexItem = Backbone.View.extend({
     this.searchPage = options.searchPage;
     this.index = options.index;
 
-    this.user = new YelpClone.Models.User();
+    this.user = new yup.Models.User();
     if (this.review) {
       this.user.set('id', this.review.get('user_id'));
       this.user.fetch({ success: function () {

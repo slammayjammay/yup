@@ -1,3 +1,3 @@
-YelpClone.Models.Following = Backbone.Model.extend({
+yup.Models.Following = Backbone.Model.extend({
   urlRoot: "api/followings"
 });

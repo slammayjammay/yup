@@ -1,4 +1,4 @@
-YelpClone.Views.Navbar = Backbone.View.extend({
+yup.Views.Navbar = Backbone.View.extend({
   template: JST['header/navbar'],
   events: {
     "click button.sign-out": "signOut",

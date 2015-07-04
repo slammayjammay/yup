@@ -1,4 +1,4 @@
-YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
+yup.Views.SearchShow = Backbone.CompositeView.extend({
   className: 'search-show',
   template: JST['search/search_show'],
   events: {
@@ -7,7 +7,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.map = new YelpClone.Views.MapShow({ collection: this.collection });
+    this.map = new yup.Views.MapShow({ collection: this.collection });
     setTimeout(function () {
       this.map.initSearchMap();
     }.bind(this), 1000);
@@ -48,7 +48,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   addBusiness: function (business) {
-    var view = new YelpClone.Views.BusinessIndexItem({
+    var view = new yup.Views.BusinessIndexItem({
       model: business,
       review: business.reviews().first(),
       searchPage: this,
@@ -61,7 +61,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   addBusinesses: function () {
     var that = this;
     this.collection.each(function (business, index) {
-      var view = new YelpClone.Views.BusinessIndexItem({
+      var view = new yup.Views.BusinessIndexItem({
         model: business,
         review: business.reviews().first(),
         searchPage: that,
@@ -76,7 +76,7 @@ YelpClone.Views.SearchShow = Backbone.CompositeView.extend({
   renderCategories: function () {
     var that = this;
     this.categories.forEach(function (category) {
-      var view = new YelpClone.Views.CategoryIndexItem({
+      var view = new yup.Views.CategoryIndexItem({
         category: category
       });
       that.addSubview('.categories', view);

@@ -1,4 +1,4 @@
-YelpClone.Views.UserSidebar = Backbone.CompositeView.extend({
+yup.Views.UserSidebar = Backbone.CompositeView.extend({
   template: JST['users/sidebar'],
   events: {
     "click .follow": "follow",
@@ -22,7 +22,7 @@ YelpClone.Views.UserSidebar = Backbone.CompositeView.extend({
 
   follow: function () {
     this.$('button').removeClass('follow');
-    var follow = new YelpClone.Models.Following({
+    var follow = new yup.Models.Following({
       follower_id: CURRENT_USER_ID,
       followed_id: this.model.get('id')
     });
@@ -43,7 +43,7 @@ YelpClone.Views.UserSidebar = Backbone.CompositeView.extend({
 
   unfollow: function () {
     this.$('button').removeClass('unfollow');
-    var following = new YelpClone.Models.Following({
+    var following = new yup.Models.Following({
       id: this.model.get('follow_id')
     });
     following.fetch({ success: function () {

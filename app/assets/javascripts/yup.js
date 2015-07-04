@@ -1,19 +1,19 @@
-window.YelpClone = {
+window.yup = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    var router = new YelpClone.Routers.Router({
+    var router = new yup.Routers.Router({
       $rootEl: $('#content')
     });
 
-    var navbar = new YelpClone.Views.Navbar({
+    var navbar = new yup.Views.Navbar({
       router: router
     });
-    var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
+    var user = new yup.Models.User({ id: CURRENT_USER_ID });
     user.fetch();
-    var sidebarLeft = new YelpClone.Views.SidebarLeft({
+    var sidebarLeft = new yup.Views.SidebarLeft({
       router: router,
       model: user
     });
@@ -30,5 +30,5 @@ window.YelpClone = {
 };
 
 $(document).ready(function(){
-  YelpClone.initialize();
+  yup.initialize();
 });

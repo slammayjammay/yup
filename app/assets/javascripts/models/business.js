@@ -1,4 +1,4 @@
-YelpClone.Models.Business = Backbone.Model.extend({
+yup.Models.Business = Backbone.Model.extend({
   urlRoot: "/api/businesses",
 
   parse: function (response) {
@@ -12,7 +12,7 @@ YelpClone.Models.Business = Backbone.Model.extend({
 
   reviews: function () {
     if (!this._reviews) {
-      this._reviews = new YelpClone.Collections.Reviews();
+      this._reviews = new yup.Collections.Reviews();
     }
 
     return this._reviews;

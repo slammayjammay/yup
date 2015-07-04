@@ -1,9 +1,9 @@
-YelpClone.Views.FeedIndexItem = Backbone.View.extend({
+yup.Views.FeedIndexItem = Backbone.View.extend({
   className: 'begin',
   template: JST['feed/index_item'],
 
   initialize: function () {
-    this.business = new YelpClone.Models.Business({
+    this.business = new yup.Models.Business({
       id: this.model.get('business_id')
     });
     this.business.fetch();

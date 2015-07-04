@@ -1,4 +1,4 @@
-YelpClone.Views.SidebarLeft = Backbone.View.extend({
+yup.Views.SidebarLeft = Backbone.View.extend({
   template: JST['header/sidebar_left'],
 
   initialize: function () {

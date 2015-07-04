@@ -1,4 +1,4 @@
-YelpClone.Collections.Users = Backbone.Collection.extend({
+yup.Collections.Users = Backbone.Collection.extend({
   url: "api/users",
-  model: YelpClone.Models.User
+  model: yup.Models.User
 });

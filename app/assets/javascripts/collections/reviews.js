@@ -1,4 +1,4 @@
-YelpClone.Collections.Reviews = Backbone.Collection.extend({
+yup.Collections.Reviews = Backbone.Collection.extend({
   url: 'api/reviews',
-  model: YelpClone.Models.Review
+  model: yup.Models.Review
 });

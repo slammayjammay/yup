@@ -1,4 +1,4 @@
-YelpClone.Views.MapShow = Backbone.View.extend({
+yup.Views.MapShow = Backbone.View.extend({
   attributes: {
     id: 'map'
   },

@@ -1,4 +1,4 @@
-YelpClone.Routers.Router = Backbone.Router.extend({
+yup.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     $(window).scroll(function() {
@@ -16,9 +16,9 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   businessShow: function (id) {
-    var business = new YelpClone.Models.Business({ id: id });
+    var business = new yup.Models.Business({ id: id });
     business.fetch();
-    var view = new YelpClone.Views.BusinessShow({
+    var view = new yup.Views.BusinessShow({
       model: business,
       collection: business.reviews()
     });
@@ -26,16 +26,16 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   },
 
   feed: function () {
-    var reviews = new YelpClone.Collections.Reviews();
+    var reviews = new yup.Collections.Reviews();
     reviews.fetch();
-    var view = new YelpClone.Views.FeedShow({ collection: reviews });
+    var view = new yup.Views.FeedShow({ collection: reviews });
     this._swapView(view);
   },
 
   userShow: function (id) {
-    var user = new YelpClone.Models.User({ id: id });
+    var user = new yup.Models.User({ id: id });
     user.fetch();
-    var view = new YelpClone.Views.UserShow({
+    var view = new yup.Views.UserShow({
       model: user,
       collection: user.reviews()
     });
@@ -61,12 +61,12 @@ YelpClone.Routers.Router = Backbone.Router.extend({
   search: function (query, order) {
     this.query = query || 'restaurants';
     this.order = order || 'id';
-    var businesses = new YelpClone.Collections.Businesses();
+    var businesses = new yup.Collections.Businesses();
     businesses.fetch({
       url: 'api/businesses',
       data: { searchKeys: this.query, order: this.order }
     });
-    var view = new YelpClone.Views.SearchShow({
+    var view = new yup.Views.SearchShow({
       router: this,
       query: query,
       order: order,
