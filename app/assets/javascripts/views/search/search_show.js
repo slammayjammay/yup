@@ -7,10 +7,10 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.map = new Yup.Views.MapShow({ collection: this.collection });
-    setTimeout(function () {
-      this.map.initSearchMap();
-    }.bind(this), 1000);
+    // this.map = new Yup.Views.MapShow({ collection: this.collection });
+    // setTimeout(function () {
+    //   this.map.initSearchMap();
+    // }.bind(this), 1000);
 
     this.router = options.router;
     this.query = options.query;
@@ -39,10 +39,10 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
 
-    if (this.$('.map').length === 0) {
-      this.$('.businesses').prepend($('<div>').addClass('map'));
-      this.$('.map').html(this.map.$el);
-    }
+    // if (this.$('.map').length === 0) {
+    //   this.$('.businesses').prepend($('<div>').addClass('map'));
+    //   this.$('.map').html(this.map.$el);
+    // }
 
     return this;
   },

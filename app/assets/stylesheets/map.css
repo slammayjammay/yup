@@ -1,8 +1,8 @@
-.search-show .map {
+/*.search-show .map {
   left: 735px;
   width: 400px;
   position: absolute;
-}
+}*/
 
 .map {
   display: inline-block;
@@ -17,7 +17,7 @@
   margin-top: 1px;
 }
 
-.search-show #map {
+#sidebar-right #map {
   position: fixed !important;
   border: 1px solid black;
   box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);

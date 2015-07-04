@@ -50,7 +50,7 @@ Yup.Views.MapShow = Backbone.View.extend({
     var business = this.collection.first();
     if (!business) {
       this.initDefaultMap();
-      return
+      return;
     }
     var mapOptions = {
       center: {

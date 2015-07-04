@@ -18,7 +18,8 @@ window.Yup = {
       model: user
     });
     var sidebarRight = new Yup.Views.SidebarRight({
-      router: router
+      router: router,
+      map: new Yup.Views.MapShow()
     });
 
     router.on('route', function() {
