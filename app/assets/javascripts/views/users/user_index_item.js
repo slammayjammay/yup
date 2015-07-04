@@ -1,4 +1,4 @@
-yup.Views.UserIndexItem = Backbone.View.extend({
+Yup.Views.UserIndexItem = Backbone.View.extend({
   className: "begin",
   template: JST['users/index_item'],
   events: {

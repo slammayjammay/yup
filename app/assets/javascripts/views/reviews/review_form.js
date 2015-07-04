@@ -1,4 +1,4 @@
-yup.Views.ReviewForm = Backbone.View.extend({
+Yup.Views.ReviewForm = Backbone.View.extend({
   className: "backdrop",
   template: JST['reviews/form'],
   events: {
@@ -57,7 +57,7 @@ yup.Views.ReviewForm = Backbone.View.extend({
 
   save: function (event) {
     event.preventDefault();
-    var review = new yup.Models.Review({ rating: this.rating });
+    var review = new Yup.Models.Review({ rating: this.rating });
     review.set('content', this.$('textarea').val());
     review.set('business_id', this.model.get('id'));
 

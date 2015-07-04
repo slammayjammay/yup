@@ -1,7 +1,7 @@
 # Yelp Clone
 
 [live][live]
-[live]: http://scottyup.com/
+[live]: http://scottYup.com/
 
 ## Minimum Viable Product
 I will make a yelp clone. Users can:

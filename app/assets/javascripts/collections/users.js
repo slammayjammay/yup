@@ -1,4 +1,4 @@
-yup.Collections.Users = Backbone.Collection.extend({
+Yup.Collections.Users = Backbone.Collection.extend({
   url: "api/users",
-  model: yup.Models.User
+  model: Yup.Models.User
 });

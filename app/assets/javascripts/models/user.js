@@ -1,4 +1,4 @@
-yup.Models.User = Backbone.Model.extend({
+Yup.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users",
 
   parse: function (response) {
@@ -22,7 +22,7 @@ yup.Models.User = Backbone.Model.extend({
 
   followers: function () {
     if (!this._followers) {
-      this._followers = new yup.Collections.Users();
+      this._followers = new Yup.Collections.Users();
     }
 
     return this._followers;
@@ -30,7 +30,7 @@ yup.Models.User = Backbone.Model.extend({
 
   follows: function () {
     if (!this._follows) {
-      this._follows = new yup.Collections.Users();
+      this._follows = new Yup.Collections.Users();
     }
 
     return this._follows;
@@ -38,7 +38,7 @@ yup.Models.User = Backbone.Model.extend({
 
   reviews: function () {
     if (!this._reviews) {
-      this._reviews = new yup.Collections.Reviews();
+      this._reviews = new Yup.Collections.Reviews();
     }
 
     return this._reviews;

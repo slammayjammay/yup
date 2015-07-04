@@ -1,4 +1,4 @@
-yup.Views.BusinessShow = Backbone.CompositeView.extend({
+Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   className: "business-show",
   template: JST['businesses/show'],
   events: {
@@ -6,7 +6,7 @@ yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.map = new yup.Views.MapShow({ model: this.model });
+    this.map = new Yup.Views.MapShow({ model: this.model });
     setTimeout(function () {
       this.$('.map').prepend(this.map.$el);
       this.map.initBusinessMap();
@@ -18,7 +18,7 @@ yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   addReview: function (review) {
-    var view = new yup.Views.ReviewIndexItem({
+    var view = new Yup.Views.ReviewIndexItem({
       model: review,
       className: "user review-item"
     });
@@ -44,7 +44,7 @@ yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderForm: function () {
-    var view = new yup.Views.ReviewForm({
+    var view = new Yup.Views.ReviewForm({
       model: this.model
     });
     $('body').prepend(view.render().$el);

@@ -1,3 +1,3 @@
-yup.Models.Following = Backbone.Model.extend({
+Yup.Models.Following = Backbone.Model.extend({
   urlRoot: "api/followings"
 });

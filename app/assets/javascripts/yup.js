@@ -1,19 +1,19 @@
-window.yup = {
+window.Yup = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    var router = new yup.Routers.Router({
+    var router = new Yup.Routers.Router({
       $rootEl: $('#content')
     });
 
-    var navbar = new yup.Views.Navbar({
+    var navbar = new Yup.Views.Navbar({
       router: router
     });
-    var user = new yup.Models.User({ id: CURRENT_USER_ID });
+    var user = new Yup.Models.User({ id: CURRENT_USER_ID });
     user.fetch();
-    var sidebarLeft = new yup.Views.SidebarLeft({
+    var sidebarLeft = new Yup.Views.SidebarLeft({
       router: router,
       model: user
     });
@@ -30,5 +30,5 @@ window.yup = {
 };
 
 $(document).ready(function(){
-  yup.initialize();
+  Yup.initialize();
 });

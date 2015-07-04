@@ -1,11 +1,11 @@
-yup.Views.ReviewIndexItem = Backbone.View.extend({
+Yup.Views.ReviewIndexItem = Backbone.View.extend({
   template: JST['reviews/index_item'],
 
   initialize: function () {
-    this.user = new yup.Models.User({ id: this.model.get('user_id') });
+    this.user = new Yup.Models.User({ id: this.model.get('user_id') });
     this.user.fetch();
 
-    this.business = new yup.Models.Business({
+    this.business = new Yup.Models.Business({
       id: this.model.get('business_id')
     });
     this.business.fetch();

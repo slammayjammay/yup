@@ -1,3 +1,3 @@
-yup.Models.Review = Backbone.Model.extend({
+Yup.Models.Review = Backbone.Model.extend({
   urlRoot: '/api/reviews'
 });

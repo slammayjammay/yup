@@ -1,4 +1,4 @@
-yup.Views.UserShow = Backbone.CompositeView.extend({
+Yup.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   events: {
     "click li.edit": "renderEdit",
@@ -8,7 +8,7 @@ yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this._sidebar = new yup.Views.UserSidebar({
+    this._sidebar = new Yup.Views.UserSidebar({
       model: this.model
     });
     this.addSubview('.user-sidebar', this._sidebar);
@@ -38,7 +38,7 @@ yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderEdit: function () {
-    var view = new yup.Views.UserEdit({
+    var view = new Yup.Views.UserEdit({
       model: this.model
     });
     this.addSubview('.user-main', view, true);
@@ -46,7 +46,7 @@ yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderFollowings: function () {
-    var view = new yup.Views.UserFollowers({
+    var view = new Yup.Views.UserFollowers({
       model: this.model
     });
     this.addSubview('.user-main', view, true);
@@ -54,7 +54,7 @@ yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderReviews: function () {
-    var view = new yup.Views.UserReviews({
+    var view = new Yup.Views.UserReviews({
       model: this.model,
       collection: this.collection
     });

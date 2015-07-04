@@ -1,4 +1,4 @@
-yup.Views.MapShow = Backbone.View.extend({
+Yup.Views.MapShow = Backbone.View.extend({
   attributes: {
     id: 'map'
   },

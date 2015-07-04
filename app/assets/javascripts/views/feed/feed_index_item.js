@@ -1,9 +1,9 @@
-yup.Views.FeedIndexItem = Backbone.View.extend({
+Yup.Views.FeedIndexItem = Backbone.View.extend({
   className: 'begin',
   template: JST['feed/index_item'],
 
   initialize: function () {
-    this.business = new yup.Models.Business({
+    this.business = new Yup.Models.Business({
       id: this.model.get('business_id')
     });
     this.business.fetch();

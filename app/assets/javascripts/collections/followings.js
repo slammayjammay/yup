@@ -1,4 +1,4 @@
-yup.Collections.Followings = Backbone.Collection.extend({
+Yup.Collections.Followings = Backbone.Collection.extend({
   url: "api/followings",
-  model: yup.Models.Following
+  model: Yup.Models.Following
 });

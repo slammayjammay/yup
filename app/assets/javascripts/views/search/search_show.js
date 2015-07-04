@@ -1,4 +1,4 @@
-yup.Views.SearchShow = Backbone.CompositeView.extend({
+Yup.Views.SearchShow = Backbone.CompositeView.extend({
   className: 'search-show',
   template: JST['search/search_show'],
   events: {
@@ -7,7 +7,7 @@ yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.map = new yup.Views.MapShow({ collection: this.collection });
+    this.map = new Yup.Views.MapShow({ collection: this.collection });
     setTimeout(function () {
       this.map.initSearchMap();
     }.bind(this), 1000);
@@ -48,7 +48,7 @@ yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   addBusiness: function (business) {
-    var view = new yup.Views.BusinessIndexItem({
+    var view = new Yup.Views.BusinessIndexItem({
       model: business,
       review: business.reviews().first(),
       searchPage: this,
@@ -61,7 +61,7 @@ yup.Views.SearchShow = Backbone.CompositeView.extend({
   addBusinesses: function () {
     var that = this;
     this.collection.each(function (business, index) {
-      var view = new yup.Views.BusinessIndexItem({
+      var view = new Yup.Views.BusinessIndexItem({
         model: business,
         review: business.reviews().first(),
         searchPage: that,
@@ -76,7 +76,7 @@ yup.Views.SearchShow = Backbone.CompositeView.extend({
   renderCategories: function () {
     var that = this;
     this.categories.forEach(function (category) {
-      var view = new yup.Views.CategoryIndexItem({
+      var view = new Yup.Views.CategoryIndexItem({
         category: category
       });
       that.addSubview('.categories', view);

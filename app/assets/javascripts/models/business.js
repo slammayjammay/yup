@@ -1,4 +1,4 @@
-yup.Models.Business = Backbone.Model.extend({
+Yup.Models.Business = Backbone.Model.extend({
   urlRoot: "/api/businesses",
 
   parse: function (response) {
@@ -12,7 +12,7 @@ yup.Models.Business = Backbone.Model.extend({
 
   reviews: function () {
     if (!this._reviews) {
-      this._reviews = new yup.Collections.Reviews();
+      this._reviews = new Yup.Collections.Reviews();
     }
 
     return this._reviews;

@@ -1,4 +1,4 @@
-yup.Views.FeedShow = Backbone.CompositeView.extend({
+Yup.Views.FeedShow = Backbone.CompositeView.extend({
   template: JST['feed/show'],
 
   initialize: function () {
@@ -7,7 +7,7 @@ yup.Views.FeedShow = Backbone.CompositeView.extend({
   },
 
   addReview: function (review) {
-    var view = new yup.Views.FeedIndexItem({ model: review });
+    var view = new Yup.Views.FeedIndexItem({ model: review });
     this.addSubview('.feed-items', view);
   },
 

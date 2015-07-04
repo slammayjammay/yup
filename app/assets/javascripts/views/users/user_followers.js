@@ -1,4 +1,4 @@
-yup.Views.UserFollowers = Backbone.CompositeView.extend({
+Yup.Views.UserFollowers = Backbone.CompositeView.extend({
   template: JST['users/followers'],
 
   initialize: function () {
@@ -8,7 +8,7 @@ yup.Views.UserFollowers = Backbone.CompositeView.extend({
 
   addFollows: function () {
     this.model.follows().each(function (follower) {
-      var view = new yup.Views.UserIndexItem({ model: follower });
+      var view = new Yup.Views.UserIndexItem({ model: follower });
       this.addSubview('.followers', view);
     }.bind(this));
 

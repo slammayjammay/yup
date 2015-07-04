@@ -1,4 +1,4 @@
-yup.Views.BusinessIndexItem = Backbone.View.extend({
+Yup.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
@@ -12,7 +12,7 @@ yup.Views.BusinessIndexItem = Backbone.View.extend({
     this.searchPage = options.searchPage;
     this.index = options.index;
 
-    this.user = new yup.Models.User();
+    this.user = new Yup.Models.User();
     if (this.review) {
       this.user.set('id', this.review.get('user_id'));
       this.user.fetch({ success: function () {

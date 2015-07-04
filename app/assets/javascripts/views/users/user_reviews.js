@@ -1,4 +1,4 @@
-yup.Views.UserReviews = Backbone.CompositeView.extend({
+Yup.Views.UserReviews = Backbone.CompositeView.extend({
   template: JST['users/reviews'],
   events: {
     "click button": "redirectToSearch"
@@ -24,7 +24,7 @@ yup.Views.UserReviews = Backbone.CompositeView.extend({
   renderReviews: function () {
     var that = this;
     this.collection.each(function (review, index) {
-      var view = new yup.Views.ReviewIndexItem({
+      var view = new Yup.Views.ReviewIndexItem({
         model: review,
         className: "business review-item"
       });

@@ -1,4 +1,4 @@
-yup.Views.CategoryIndexItem = Backbone.View.extend({
+Yup.Views.CategoryIndexItem = Backbone.View.extend({
   className: "category-index-item",
   template: JST['search/category_index_item'],
 

@@ -1,4 +1,4 @@
-yup.Collections.Reviews = Backbone.Collection.extend({
+Yup.Collections.Reviews = Backbone.Collection.extend({
   url: 'api/reviews',
-  model: yup.Models.Review
+  model: Yup.Models.Review
 });
