@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YelpClone</title>
+  <title>Yup!</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,7 @@
   </script>
   <script>
     <% if current_user %>
-      window.CURRENT_USER_ID = "<%= current_user.id %>"
+      window.CURRENT_USER_ID = "<%= current_user.id %>";
     <% end %>
   </script>
 </head>
