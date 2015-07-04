@@ -1,16 +1,20 @@
 
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 <h4>
-  <%= business.escape('name') %><br>
+  <strong><a href="#businesses/<%= business.get('id') %>">
+    <%= business.escape('name') %><br>
+  </a></strong>
   <small>(<%= business.get('review_count') %> reviews)</small>
 </h4>
 
 <img class="image" src="<%= business.escape('image_url') %>">
 <% if (review) { %>
   <p>"<%= review.escape('content') %>"</p>
-  <small>
-    -<%= user.escape('first_name') %> <%= user.escape('last_name') %>
-  </small>
+  <small><strong>
+    <a href="#users/<%= user.get('id') %>">
+      -<%= user.escape('first_name') %> <%= user.escape('last_name') %>
+    </a>
+  </strong></small>
 <% } else { %>
   <p><i>(This company has not been reviewed)</i></p>
 <% } %>

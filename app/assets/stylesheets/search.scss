@@ -65,6 +65,11 @@
     width: 100%;
     font-size: 18px;
     padding: 15px;
+    padding-top: 0px;
+
+    .rating-container {
+      font-size: .7em;
+    }
 
     .image {
       float: left;
@@ -74,7 +79,7 @@
 
     h4 {
       float: right;
-      margin-top: -45px;
+      margin-top: -35px;
       margin-bottom: 0px;
       max-width: 50%;
     }
@@ -93,7 +98,6 @@
   .business-index-item:hover {
     background: #d3d3d3;
     transition: 150ms;
-    cursor: pointer;
   }
 
   .business-index-item:last-child {

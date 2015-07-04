@@ -19,7 +19,7 @@
 //= require backbone
 //= require jquery.serializejson
 //= require composite_view
-//= require Yup
+//= require yup
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
