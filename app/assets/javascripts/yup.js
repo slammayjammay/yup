@@ -17,10 +17,6 @@ window.Yup = {
       router: router,
       model: user
     });
-    var sidebarRight = new Yup.Views.SidebarRight({
-      router: router,
-      map: new Yup.Views.MapShow()
-    });
 
     router.on('route', function() {
       $(document).scrollTop(0);
@@ -28,7 +24,6 @@ window.Yup = {
 
     $('#navbar').html(navbar.render().$el);
     $('#sidebar-left').html(sidebarLeft.render().$el);
-    $('#sidebar-right').html(sidebarRight.render().$el);
 
     Backbone.history.start();
   }

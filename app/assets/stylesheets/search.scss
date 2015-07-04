@@ -6,30 +6,6 @@
   width: 60%;
 }
 
-.categories {
-  height: 50px;
-
-  .category-index-item {
-    float: left;
-    border: 1px solid black;
-    box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.63);
-    border-radius: 5px;
-    margin: 5px;
-    font-size: 18px;
-    padding: 5px;
-    height: auto;
-  }
-
-  .category-index-item:last-child {
-    border-right: 1px solid black;
-  }
-
-  .category-index-item:hover {
-    background: #d3d3d3;
-    cursor: pointer;
-  }
-}
-
 .businesses {
   position: relative;
   margin-top: 20px;

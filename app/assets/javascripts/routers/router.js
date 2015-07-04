@@ -1,6 +1,12 @@
 Yup.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+    this.sidebarRight = new Yup.Views.SidebarRight({
+      router: this,
+      map: new Yup.Views.MapShow()
+    });
+    $('#sidebar-right').html(this.sidebarRight.render().$el);
+
     $(window).scroll(function() {
       if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
         this.renderNextPage();
