@@ -18,7 +18,7 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
 
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
-    this.renderCategories();
+    // this.renderCategories();
 
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
