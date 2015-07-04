@@ -8,10 +8,31 @@
   min-height: 900px;
 }
 
+#sidebar-left {
+  float: left;
+  margin-top: 50px;
+  margin-left: 50px;
+  min-width: 240px;
+  border-right: 1px solid rgb(197, 189, 189);
+  
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .user-info {
+    float: left;
+  }
+}
+
 form.button_to {
   float: left;
 }
 
 .welcome, .summary {
   text-align: center;
+}
+
+.main {
+  display: flex;
 }

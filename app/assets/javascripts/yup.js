@@ -11,9 +11,11 @@ window.YelpClone = {
     var navbar = new YelpClone.Views.Navbar({
       router: router
     });
-
+    var user = new YelpClone.Models.User({ id: CURRENT_USER_ID });
+    user.fetch();
     var sidebarLeft = new YelpClone.Views.SidebarLeft({
-      router: router
+      router: router,
+      model: user
     });
 
     router.on('route', function() {
