@@ -27,6 +27,30 @@
   }
 }
 
+#sidebar-right {
+  padding: 10px;
+
+  .filters {
+    position: fixed;
+    top: 545px;;
+    height: 40px;
+
+    form {
+      min-width: 440px;
+    }
+
+    .filter {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .filter:hover, form input {
+      cursor: pointer;
+    }
+  }
+}
+
 form.button_to {
   float: left;
 }
