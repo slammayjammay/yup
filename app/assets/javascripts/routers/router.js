@@ -73,6 +73,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     businesses.fetch({
       data: { searchKeys: this.query, order: this.order },
       success: function () {
+        this.sidebarRight.collection.reset();
         for (var i = 0; i < businesses.models.length; i++) {
           this.sidebarRight.collection.add(businesses.models[i]);
         }
@@ -80,11 +81,14 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new Yup.Views.SearchShow({
-      router: this,
       query: this.query,
       order: this.order,
       collection: businesses
     });
+
+    var view = new Yup.Views.SidebarRight({
+
+    })
 
     this._swapView(view);
   },

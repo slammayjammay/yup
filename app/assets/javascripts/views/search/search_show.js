@@ -11,8 +11,6 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     // setTimeout(function () {
     //   this.map.initSearchMap();
     // }.bind(this), 1000);
-
-    this.router = options.router;
     this.query = options.query;
     this.order = options.order;
 
@@ -25,9 +23,8 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   filter: function (event) {
-    var order = $(event.currentTarget).find('input').attr('class');
-    Backbone.history.navigate("search/");
-    this.router.search(this.query, order);
+    this.order = $(event.currentTarget).find('input').attr('class');
+    Backbone.history.navigate("search/" + this.query + "/" + this.order);
   },
 
   render: function () {

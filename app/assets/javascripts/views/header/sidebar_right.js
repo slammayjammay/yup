@@ -19,12 +19,6 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
     this.renderCategories();
-
-    this.listenTo(this.collection, 'add', this.addBusinessMarkers);
-  },
-
-  addBusinessMarkers: function () {
-    
   },
 
   filter: function (event) {
