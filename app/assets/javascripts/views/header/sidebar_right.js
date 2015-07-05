@@ -2,16 +2,19 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   template: JST['header/sidebar_right'],
 
   events: {
-    // 'click .filter': 'filter',
+    'click .filter': 'filter',
     'click .category-index-item': 'search'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.query = options.query;
+    this.order = options.order;
+
     this.map = new Yup.Views.MapShow({
       collection: this.collection
     });
     this.addSubview('.map', this.map);
-    
+
     setTimeout(function () {
       this.map.initDefaultMap();
       this.$('.map').html(this.map.$el);
@@ -23,12 +26,15 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   },
 
   filter: function (event) {
-    var order = $(event.currentTarget).find('input').attr('class');
-    this.search(this.query, order);
+    this.order = $(event.currentTarget).find('input').attr('class');
+    Backbone.history.navigate(
+      "search/" + this.query + "/" + this.order,
+      { trigger: true }
+    );
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({ order: this.order });
     this.$el.html(content);
     this.attachSubviews();
     return this;

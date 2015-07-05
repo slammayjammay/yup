@@ -69,7 +69,9 @@ Yup.Routers.Router = Backbone.Router.extend({
 
     this.sidebarRight && this.sidebarRight.remove();
     this.sidebarRight = new Yup.Views.SidebarRight({
-      collection: businesses
+      collection: businesses,
+      query: query,
+      order: order
     });
     $('#sidebar-right').html(this.sidebarRight.render().$el);
 

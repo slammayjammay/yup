@@ -1,18 +1,24 @@
+<h1>Right Sidebar!</h1>
 <div class="map"></div>
 <div class="filters">
   <form>
-    <div class="filter">
-      Alphabetically <input class="name" type="checkbox">
+    <div class="filter">Alphabetically <input class="name" type="checkbox"
+      <% if (order == "name") { %>
+        checked
+      <% } %>>
     </div>
 
-    <div class="filter">
-      Most reviewed <input class="review_count" type="checkbox">
+    <div class="filter">Most reviewed <input class="review_count" type="checkbox"
+      <% if (order == "review_count") { %>
+        checked
+      <% } %>>
     </div>
 
-    <div class="filter">
-      Highest rated <input class="rating" type="checkbox">
+    <div class="filter">Highest rated <input class="rating" type="checkbox"
+      <% if (order == "rating") { %>
+        checked
+      <% } %>>
     </div>
   </form>
-</div><br>
-
+</div>
 <div class="categories"></div>

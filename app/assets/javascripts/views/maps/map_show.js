@@ -5,9 +5,8 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
-    // this.initDefaultMap();
     this.listenTo(this.collection, 'sync', function () {
-      setTimeout(this.addBusinessMarkers.bind(this), 1000);
+      setTimeout(this.addBusinessMarkers.bind(this), 0);
     });
   },
 
