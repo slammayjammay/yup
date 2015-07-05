@@ -41,6 +41,14 @@ Yup.Routers.Router = Backbone.Router.extend({
       collection: user.reviews()
     });
 
+    this.sidebarRight && this.sidebarRight.remove();
+    this.sidebarRight = new Yup.Views.SidebarRight({
+      collection: new Yup.Collections.Businesses()
+      // query: query,
+      // order: order
+    });
+    $('#sidebar-right').html(this.sidebarRight.render().$el);
+
     this._swapView(view);
   },
 
