@@ -29,13 +29,21 @@
 #sidebar-right {
   padding: 10px;
 
+  h1.title {
+    font-size: 17px;
+    width: 553px;
+    margin-bottom: 0px;
+  }
+
   .filters {
     position: fixed;
-    top: 72px;;
+    top: 83px;
     height: 40px;
+    width: 553px;
 
     form {
-      min-width: 440px;
+      width: 553px;
+      text-align: center;
     }
 
     .filter {
@@ -52,9 +60,16 @@
     }
   }
 
+  h2.title {
+    position: fixed;
+    top: 540px;
+    width: 553px;
+    font-size: 21px;
+  }
+
   .categories {
     position: fixed;
-    top: 575px;
+    top: 592px;
     height: 50px;
 
     .category-index-item {
