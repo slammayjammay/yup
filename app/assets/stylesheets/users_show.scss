@@ -60,10 +60,6 @@
   clear: both;
 }
 
-.user-main input {
-  width: 60%;
-  margin-bottom: 5px;
-}
 
 .user-index-item {
   transition: 1s;
@@ -101,4 +97,17 @@
 .user-edit {
   transition: 1s;
   opacity: 1;
+
+  label {
+    margin-left: 5px;
+  }
+
+  input {
+    width: 500px;
+    margin-bottom: 5px;
+  }
+
+  form {
+    margin-left: 50px;
+  }
 }
