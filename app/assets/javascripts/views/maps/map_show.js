@@ -5,6 +5,35 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
+    // this.initDefaultMap();
+    this.listenTo(this.collection, 'sync', function () {
+      setTimeout(this.addBusinessMarkers.bind(this), 1000);
+    });
+  },
+
+  addBusinessMarkers: function () {
+    this.removeMarkers();
+    var bounds = new google.maps.LatLngBounds();
+
+    this.collection.each(function (business) {
+      var marker = new google.maps.Marker({
+        position: { lat: business.get('latitude'),
+                  lng: business.get('longitude') },
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        title: business.get('name')
+      });
+
+      this._markers.push(marker);
+      google.maps.event.addListener(marker, 'click', function (event) {
+        this.showInfoWindow(event, marker);
+      }.bind(this));
+
+      var bound = new google.maps.LatLng(business.get('latitude'), business.get('longitude'));
+      bounds.extend(bound);
+    }.bind(this));
+
+    this.map.fitBounds(bounds);
   },
 
   endBounce: function (index) {
@@ -81,6 +110,13 @@ Yup.Views.MapShow = Backbone.View.extend({
     }.bind(this));
 
     this.map.fitBounds(bounds);
+  },
+
+  removeMarkers: function () {
+    for (var i = 0; i < this._markers.length; i++) {
+      this._markers[i].setMap(null);
+    }
+    this._markers = [];
   },
 
 

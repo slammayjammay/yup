@@ -1,13 +1,6 @@
 Yup.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-    this.sidebarRight = new Yup.Views.SidebarRight({
-      query: this.query,
-      order: this.order,
-      collection: new Yup.Collections.Businesses(),
-      map: new Yup.Views.MapShow()
-    });
-    $('#sidebar-right').html(this.sidebarRight.render().$el);
 
     $(window).scroll(function() {
       if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
@@ -71,26 +64,29 @@ Yup.Routers.Router = Backbone.Router.extend({
     this.order = order || 'id';
     var businesses = new Yup.Collections.Businesses();
     businesses.fetch({
-      data: { searchKeys: this.query, order: this.order },
-      success: function () {
-        this.sidebarRight.collection.reset();
-        for (var i = 0; i < businesses.models.length; i++) {
-          this.sidebarRight.collection.add(businesses.models[i]);
-        }
-      }.bind(this)
+      data: { searchKeys: this.query, order: this.order }
     });
-
     var view = new Yup.Views.SearchShow({
       query: this.query,
       order: this.order,
       collection: businesses
     });
 
-    var view = new Yup.Views.SidebarRight({
+    this.sidebarRight && this.sidebarRight.remove();
 
-    })
+    this.sidebarRight = new Yup.Views.SidebarRight({
+      collection: businesses
+    });
+    $('#sidebar-right').html(this.sidebarRight.render().$el);
 
     this._swapView(view);
+    // this._swapSidebar(sidebar);
+  },
+
+  _swapSidebar: function (sidebar) {
+    this.sidebarRight && this.sidebarRight.remove();
+    this.sidebarRight = sidebar;
+    $('#sidebar-right').html(this.sidebarRight.render().$el);
   },
 
   _swapView: function (view) {

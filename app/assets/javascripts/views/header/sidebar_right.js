@@ -6,15 +6,15 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     'click .category-index-item': 'search'
   },
 
-  initialize: function (options) {
-    this.query = options.query;
-    this.order = options.order;
-
-    this.map = options.map;
+  initialize: function () {
+    this.map = new Yup.Views.MapShow({
+      collection: this.collection
+    });
+    this.addSubview('.map', this.map);
     setTimeout(function () {
       this.map.initDefaultMap();
       this.$('.map').html(this.map.$el);
-    }.bind(this), 1000);
+    }.bind(this), 0);
 
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
