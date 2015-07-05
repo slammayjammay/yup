@@ -24,6 +24,7 @@ Yup.Routers.Router = Backbone.Router.extend({
       collection: business.reviews()
     });
     this._swapView(view);
+    this.sidebarRight && this.sidebarRight.remove();
   },
 
   feed: function () {
@@ -31,6 +32,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     reviews.fetch();
     var view = new Yup.Views.FeedShow({ collection: reviews });
     this._swapView(view);
+    this._swapSidebar({ collection: new Yup.Collections.Businesses() });
   },
 
   userShow: function (id) {
