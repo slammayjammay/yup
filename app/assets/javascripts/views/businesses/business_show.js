@@ -6,10 +6,13 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.map = new Yup.Views.MapShow({ model: this.model });
+    this.map = new Yup.Views.MapShow({
+      collection: new Yup.Collections.Businesses([this.model])
+    });
     setTimeout(function () {
       this.$('.map').prepend(this.map.$el);
-      this.map.initBusinessMap();
+      this.map.initDefaultMap();
+      this.map.addBusinessMarkers();
     }.bind(this), 1000);
 
     this.listenTo(this.model, "sync", this.render);
