@@ -31,7 +31,7 @@
 
   .filters {
     position: fixed;
-    top: 545px;;
+    top: 72px;;
     height: 40px;
 
     form {
@@ -42,10 +42,13 @@
       display: inline-block;
       margin-right: 10px;
       font-size: 18px;
+      border-radius: 4px;
+      padding: 5px;
     }
 
     .filter:hover, form input {
       cursor: pointer;
+      background-color: rgb(202, 202, 202);
     }
   }
 
