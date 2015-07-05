@@ -66,28 +66,28 @@ Yup.Routers.Router = Backbone.Router.extend({
     businesses.fetch({
       data: { searchKeys: this.query, order: this.order }
     });
-    var view = new Yup.Views.SearchShow({
-      query: this.query,
-      order: this.order,
-      collection: businesses
-    });
 
     this.sidebarRight && this.sidebarRight.remove();
-
     this.sidebarRight = new Yup.Views.SidebarRight({
       collection: businesses
     });
     $('#sidebar-right').html(this.sidebarRight.render().$el);
 
+    var view = new Yup.Views.SearchShow({
+      query: this.query,
+      order: this.order,
+      collection: businesses,
+      map: this.sidebarRight.map
+    });
+
     this._swapView(view);
-    // this._swapSidebar(sidebar);
   },
 
-  _swapSidebar: function (sidebar) {
-    this.sidebarRight && this.sidebarRight.remove();
-    this.sidebarRight = sidebar;
-    $('#sidebar-right').html(this.sidebarRight.render().$el);
-  },
+  // _swapSidebar: function (sidebar) {
+  //   this.sidebarRight && this.sidebarRight.remove();
+  //   this.sidebarRight = sidebar;
+  //   $('#sidebar-right').html(this.sidebarRight.render().$el);
+  // },
 
   _swapView: function (view) {
     this._currentView && this._currentView.remove();

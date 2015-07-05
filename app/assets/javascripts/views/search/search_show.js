@@ -13,6 +13,7 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     // }.bind(this), 1000);
     this.query = options.query;
     this.order = options.order;
+    this.map = options.map;
 
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];

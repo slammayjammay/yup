@@ -11,6 +11,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
       collection: this.collection
     });
     this.addSubview('.map', this.map);
+    
     setTimeout(function () {
       this.map.initDefaultMap();
       this.$('.map').html(this.map.$el);
