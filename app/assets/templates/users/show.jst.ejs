@@ -1,10 +1,5 @@
 <div class="edit-success invisible"></div>
 
-<div class="title">
-  <%= user.escape('first_name') + " " %>
-  <%= user.escape('last_name') + "'s profile" %>
-</div class="title">
-
 <ul class="nav nav-tabs">
   <li class="reviews" role="presentation"><a href="#users/<%= user.get('id') %>">Reviews</a></li>
   <li class="followers" role="presentation"><a href="#users/<%= user.get('id') %>">Followed Users</a></li>
