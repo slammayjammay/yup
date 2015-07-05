@@ -33,6 +33,7 @@ Yup.Views.MapShow = Backbone.View.extend({
     }.bind(this));
 
     this.map.fitBounds(bounds);
+    this.map.setOptions({ maxZoom: 16 });
   },
 
   endBounce: function (index) {
