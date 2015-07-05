@@ -3,7 +3,7 @@
   border: none;
   padding: 20px 20px 40px 30px;
   width: 43%;
-  min-width: 640px;
+  min-width: 600px;
   height: 100%;
   min-height: 900px;
 }
@@ -31,7 +31,7 @@
 
   h1.title {
     font-size: 17px;
-    width: 553px;
+    width: 554px;
     margin-bottom: 0px;
   }
 
@@ -39,10 +39,10 @@
     position: fixed;
     top: 83px;
     height: 40px;
-    width: 553px;
+    width: 554px;
 
     form {
-      width: 553px;
+      width: 554px;
       text-align: center;
     }
 
@@ -63,7 +63,7 @@
   h2.title {
     position: fixed;
     top: 540px;
-    width: 553px;
+    width: 554px;
     font-size: 21px;
   }
 
@@ -71,6 +71,7 @@
     position: fixed;
     top: 592px;
     height: 50px;
+    min-width: 554px;
 
     .category-index-item {
       float: left;
