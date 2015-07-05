@@ -11,6 +11,9 @@ Yup.Views.MapShow = Backbone.View.extend({
   },
 
   addBusinessMarkers: function () {
+    if (this.collection.length == 0) {
+      return;
+    }
     this.removeMarkers();
     var bounds = new google.maps.LatLngBounds();
 
