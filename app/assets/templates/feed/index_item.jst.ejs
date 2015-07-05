@@ -8,8 +8,8 @@
   <a href="#businesses/<%= review.get('business_id') %>">
     <strong><%= business.get('name') %></strong>
   </a>
-
-  (<%= $.timeago(review.get('created_at')) %>):
+  <br>
+  <small>(<%= $.timeago(review.get('created_at')) %>):</small>
 </h4>
 <img src="<%= review.get('image_url') %>">
 <p><%= review.get('content') %></p>
