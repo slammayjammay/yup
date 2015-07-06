@@ -9,7 +9,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.query = options.query;
     this.order = options.order;
-    
+
     this.map = new Yup.Views.MapShow({
       collection: this.collection
     });
