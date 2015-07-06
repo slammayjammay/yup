@@ -3,7 +3,7 @@
   <img class="user-image" src="<%= user.escape('image_url') %>"><br>
   <strong>
     <a href="#users/<%= user.get('id') %>">
-      -<%= user.escape('first_name') %>
+      -<%= user.escape('first_name') %> <%= user.escape('last_name') %>
     </a>
   </strong>
 </div>
