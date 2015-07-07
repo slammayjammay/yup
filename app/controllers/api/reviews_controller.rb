@@ -14,7 +14,7 @@ class Api::ReviewsController < ApplicationController
         (SELECT *
         FROM followings
         WHERE followings.follower_id = #{current_user.id}) AS sq
-      INNER JOIN reviews ON reviews.user_id = sq.followed_id OR reviews.user_id = sq.follower_id
+      INNER JOIN reviews ON reviews.user_id = sq.followed_id
       INNER JOIN users on reviews.user_id = users.id
       ORDER BY reviews.created_at DESC
       LIMIT 10;"

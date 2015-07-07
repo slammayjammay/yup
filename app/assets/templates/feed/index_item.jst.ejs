@@ -9,7 +9,9 @@
     <strong><%= business.get('name') %></strong>
   </a>
   <br>
-  <small>(<%= $.timeago(review.get('created_at')) %>):</small>
+  <small>(<%= $.timeago(review.get('created_at')) %>)</small>
+  <br>
+  <span class="glyphicon glyphicon-ok">followed</span>
 </h4>
 <img src="<%= review.get('image_url') %>">
 <p><%= review.get('content') %></p>

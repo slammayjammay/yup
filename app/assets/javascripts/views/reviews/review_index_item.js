@@ -29,7 +29,7 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
 
   render: function () {
     if (this.user.get('follow_id')) {
-      this.$el.addClass('followed');
+      this.$('user-info').prepend('<div>').addClass('glyphicon glyphicon-ok');
     }
     var content = this.template({
       review: this.model,
