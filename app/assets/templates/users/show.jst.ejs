@@ -1,11 +1,23 @@
 <div class="edit-success invisible"></div>
 
 <ul class="nav nav-tabs">
-  <li class="reviews" role="presentation"><a href="#users/<%= user.get('id') %>">Reviews</a></li>
-  <li class="followers" role="presentation"><a href="#users/<%= user.get('id') %>">Followed Users</a></li>
+  <li class="reviews" role="presentation">
+    <a href="#users/<%= user.get('id') %>">
+      <div class="glyphicon glyphicon-star"></div> Reviews
+    </a>
+  </li>
+
+  <li class="followers" role="presentation">
+    <a href="#users/<%= user.get('id') %>">
+      <div class="glyphicon glyphicon-user"></div> Followed Users
+    </a>
+  </li>
+
   <% if (user.get('id') == CURRENT_USER_ID) { %>
     <li class="edit" role="presentation">
-      <a href="#users/<%= user.get('id') %>"=>Edit Profile</a>
+      <a href="#users/<%= user.get('id') %>">
+        <div class="glyphicon glyphicon-wrench"></div> Edit Profile
+      </a>
     </li>
   <% } %>
 </ul>
