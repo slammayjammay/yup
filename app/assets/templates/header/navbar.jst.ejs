@@ -3,24 +3,26 @@
     <img class="logo-pic" src="<%= LOGO_SOURCE %>">
   </div>
 
-  <button class="btn to-feed">
-    <div class="glyphicon glyphicon-globe"></div> Feed
+  <div class="search-forms">
+    <form class="navbar-form" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search: e.g. pizza">
+      </div>
+      <button type="submit" class="search btn">
+        <div class="glyphicon glyphicon-search"></div>
+      </button>
+    </form>
+  </div>
+
+  <button class="sign-out btn">
+    <div class="glyphicon glyphicon-log-out"></div> Sign out
   </button>
 
   <button class="btn to-account">
     <div class="glyphicon glyphicon-user"></div> Profile
   </button>
 
-  <button class="sign-out btn">
-    <div class="glyphicon glyphicon-log-out"></div> Sign out
+  <button class="btn to-feed">
+    <div class="glyphicon glyphicon-globe"></div> Feed
   </button>
-
-  <div class="search-forms">
-    <form class="navbar-form" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search: e.g. pizza">
-      </div>
-      <button type="submit" class="search btn">Search</button>
-    </form>
-  </div>
 </nav>

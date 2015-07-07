@@ -1,14 +1,14 @@
 nav.navbar.navbar-default {
-  min-width: 1400px;
   height: 80px;
+  min-width: 1000px;
   margin-bottom: 0px;
   background-color: #b30000;
 }
 
 .navbar .navbar-form {
   width: 500px;
-  margin-left: 42%;
   margin-top: 28px;
+  float: left;
 }
 
 .navbar .logo {
@@ -37,7 +37,7 @@ nav.navbar.navbar-default {
 }
 
 .navbar input.form-control {
-  width: 335px;
+  width: 400px;
   height: 40px;
   font-size: 17px;
 }
@@ -50,7 +50,6 @@ nav.navbar.navbar-default {
 
 button.search {
   transition: 500ms;
-  width: 100px;
   height: 35px;
   font-size: 16px;
 }
@@ -62,20 +61,20 @@ button.search {
 }
 
 .navbar button.btn.to-feed {
-  float: left;
+  float: right;
   height: 37px;
   margin-top: 37px;
   margin-right: 5px;
 }
 
 .navbar button.btn.to-account {
-  float: left;
+  float: right;
   height: 37px;
   margin-top: 37px;
 }
 
 .navbar button.sign-out {
-  float: left;
+  float: right;
   height: 37px;
   margin-right: 10px;
   margin-top: 37px;
