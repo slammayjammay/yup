@@ -1,20 +1,20 @@
 #content {
   background-color: #EFEFEF;
   border: none;
-  padding: 20px 20px 40px 30px;
+  padding: 20px 20px 40px 20px;
   width: 43%;
-  min-width: 600px;
+  min-width: 400px;
   height: 100%;
   min-height: 900px;
 }
 
 #sidebar-left {
   float: left;
-  margin-top: 50px;
-  margin-left: 50px;
-  min-width: 240px;
-  max-width: 240px;
-  border-right: 1px solid rgb(197, 189, 189);
+  margin-top: 20px;
+  margin-left: 20px;
+  min-width: 225px;
+  max-width: 225px;
+  border-right: 1px solid #c5bdbd;
 
   img {
     width: 200px;
