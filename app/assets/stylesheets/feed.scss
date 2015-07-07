@@ -6,9 +6,9 @@ h1.activity {
 }
 
 .feed-index-item {
+  transition: opacity 1s;
   color: #777;
   margin-bottom: 18px;
-  transition: 1s;
   margin: 10px;
   background-color: #FFF;
   border: 1px solid #CCC;
