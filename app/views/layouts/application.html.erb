@@ -9,7 +9,6 @@
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js">
   </script>
-  <script type="text/javascript"></script>
 
   <script type="text/javascript">
      jQuery(document).ready(function() {
@@ -17,6 +16,7 @@
      });
   </script>
   <script>
+    window.LOGO_SOURCE = "<%= image_path('yup-logo.png') %>"
     <% if current_user %>
       window.CURRENT_USER_ID = "<%= current_user.id %>";
     <% end %>
