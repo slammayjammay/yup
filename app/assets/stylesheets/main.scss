@@ -111,3 +111,7 @@ form.button_to {
   font-size: 12px;
   color: green;
 }
+
+.glyphicon::before {
+  margin-right: 5px;
+}

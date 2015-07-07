@@ -1,7 +1,7 @@
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 <div class="user-info">
 <% if (user.get('follow_id')) { %>
-  <span class="glyphicon glyphicon-ok-sign">Followed</span><br>
+  <span class="glyphicon glyphicon-ok-sign">followed</span><br>
 <% } %>
   <img class="user-image" src="<%= user.escape('image_url') %>"><br>
   <strong>
