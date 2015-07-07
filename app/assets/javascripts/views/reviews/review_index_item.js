@@ -14,10 +14,10 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     this.listenTo(this.business, "sync", this.render);
     this.listenTo(this.user, "sync", this.render);
 
-    this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
+    this.$el.addClass('begin');
     setTimeout(function () {
-      this.$el.removeAttr('style');
-    }.bind(this), 0);
+      this.$el.removeClass('begin');
+    }.bind(this), 100);
   },
 
   displayRating: function () {

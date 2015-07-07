@@ -7,17 +7,9 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    // this.map = new Yup.Views.MapShow({ collection: this.collection });
-    // setTimeout(function () {
-    //   this.map.initSearchMap();
-    // }.bind(this), 1000);
     this.query = options.query;
     this.order = options.order;
     this.map = options.map;
-
-    this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
-      'bars', 'coffee', 'health'];
-    // this.renderCategories();
 
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));

@@ -8,10 +8,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    // this._sidebar = new Yup.Views.UserSidebar({
-    //   model: this.model
-    // });
-    // this.addSubview('.user-sidebar', this._sidebar);
     this.renderReviews();
     this.listenTo(this.model, "sync change", this.render);
   },

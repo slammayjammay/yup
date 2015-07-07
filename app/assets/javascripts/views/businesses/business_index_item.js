@@ -2,7 +2,6 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
   events: {
-    "click": "redirectToBusiness",
     "mouseenter": "startBounce",
     "mouseleave": "endBounce"
   },
@@ -35,13 +34,6 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
 
   endBounce: function () {
     this.searchPage.map.endBounce(this.index);
-  },
-
-  redirectToBusiness: function () {
-    Backbone.history.navigate(
-      "#businesses/" + this.model.get('id'),
-      { trigger: true }
-    );
   },
 
   render: function () {
