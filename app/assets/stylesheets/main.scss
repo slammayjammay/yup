@@ -36,31 +36,6 @@
     margin-bottom: 0px;
   }
 
-  .filters {
-    position: fixed;
-    top: 83px;
-    height: 40px;
-    width: 554px;
-
-    form {
-      width: 554px;
-      text-align: center;
-    }
-
-    .filter {
-      display: inline-block;
-      margin-right: 10px;
-      font-size: 18px;
-      border-radius: 4px;
-      padding: 5px;
-    }
-
-    .filter:hover, form input {
-      cursor: pointer;
-      background-color: rgb(202, 202, 202);
-    }
-  }
-
   h2.title {
     position: fixed;
     top: 95px;

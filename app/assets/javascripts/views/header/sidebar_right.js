@@ -2,7 +2,6 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   template: JST['header/sidebar_right'],
 
   events: {
-    'click .filter': 'filter',
     'click .category-index-item': 'search'
   },
 
@@ -23,14 +22,6 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
       'bars', 'coffee', 'health'];
     this.renderCategories();
-  },
-
-  filter: function (event) {
-    this.order = $(event.currentTarget).find('input').attr('class');
-    Backbone.history.navigate(
-      "search/" + this.query + "/" + this.order,
-      { trigger: true }
-    );
   },
 
   render: function () {

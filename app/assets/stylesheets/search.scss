@@ -3,6 +3,30 @@
   color: #555;
 }
 
+.filters {
+  h1 {
+    font-size: 17px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  form {
+    display: inline-block;
+  }
+
+  .filter {
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5px;
+  }
+
+  .filter:hover, form input {
+    cursor: pointer;
+    background-color: rgb(202, 202, 202);
+  }
+}
+
 .businesses {
   position: relative;
   margin-top: 20px;

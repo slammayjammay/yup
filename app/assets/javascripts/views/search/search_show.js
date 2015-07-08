@@ -17,7 +17,10 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
 
   filter: function (event) {
     this.order = $(event.currentTarget).find('input').attr('class');
-    Backbone.history.navigate("search/" + this.query + "/" + this.order);
+    Backbone.history.navigate(
+      "search/" + this.query + "/" + this.order,
+      { trigger: true }
+    );
   },
 
   render: function () {
@@ -28,12 +31,6 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     });
     this.$el.html(content);
     this.attachSubviews();
-
-    // if (this.$('.map').length === 0) {
-    //   this.$('.businesses').prepend($('<div>').addClass('map'));
-    //   this.$('.map').html(this.map.$el);
-    // }
-
     return this;
   },
 
