@@ -33,6 +33,7 @@
   width: 100%;
 
   .business-index-item {
+    position: relative;
     transition: 500ms;
     border: 1px solid #CCC;
     background-color: #FFF;
@@ -45,8 +46,14 @@
     padding: 15px;
     padding-top: 0px;
 
+    .content-container {
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
     .star-rating {
-      float: right;
+      position: absolute;
+      right: 20px;
     }
 
     .rating-container {
