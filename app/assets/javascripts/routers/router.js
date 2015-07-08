@@ -59,7 +59,8 @@ Yup.Routers.Router = Backbone.Router.extend({
     if (this._currentView.$el.attr('class') == 'search-show') {
       this._currentView.collection.fetch({
         remove: false,
-        data: { searchKeys: this.query,
+        data: { bestOf: this._currentView.bestOf,
+                searchKeys: this.query,
                 order: this.order,
                 page: this._currentView.collection.page + 1
               },

@@ -8,7 +8,10 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.template = options.template || this.template;
+    if (options.template) {
+      this.template = options.template;
+      this.bestOf = true;
+    }
     this.query = options.query;
     this.order = options.order;
     this.map = options.map;
