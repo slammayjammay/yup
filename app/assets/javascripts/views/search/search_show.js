@@ -1,12 +1,14 @@
 Yup.Views.SearchShow = Backbone.CompositeView.extend({
   className: 'search-show',
   template: JST['search/search_show'],
+
   events: {
     "click .category-index-item": "switchBusinesses",
     "click .filter": "filter"
   },
 
   initialize: function (options) {
+    this.template = options.template || this.template;
     this.query = options.query;
     this.order = options.order;
     this.map = options.map;

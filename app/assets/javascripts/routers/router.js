@@ -39,18 +39,19 @@ Yup.Routers.Router = Backbone.Router.extend({
     $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
   },
 
-  userShow: function (id) {
-    var user = new Yup.Models.User({ id: id });
-    user.fetch();
-    var view = new Yup.Views.UserShow({
-      model: user,
-      collection: user.reviews()
+  renderBestOf: function () {
+    var businesses = new Yup.Collections.Businesses();
+    businesses.fetch({
+      data: { bestOf: true }
     });
+    this._swapSidebar({ collection: businesses });
 
+    var view = new Yup.Views.SearchShow({
+      template: JST['search/best_of'],
+      collection: businesses,
+      map: this.sidebarRight.map
+    });
     this._swapView(view);
-    this.sidebarRight && this.sidebarRight.remove();
-    $('#content').css('width', '70%');
-    $('#sidebar-right').css('border', 'none');
   },
 
   renderNextPage: function () {
@@ -69,6 +70,10 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query, order) {
+    if (!query || query == 'bestof') {
+      this.renderBestOf();
+      return;
+    }
     this.query = query || 'restaurants';
     this.order = order || 'id';
     var businesses = new Yup.Collections.Businesses();
@@ -78,8 +83,8 @@ Yup.Routers.Router = Backbone.Router.extend({
 
     this._swapSidebar({
       collection: businesses,
-      query: query,
-      order: order
+      query: this.query,
+      order: this.order
     });
 
     var view = new Yup.Views.SearchShow({
@@ -104,5 +109,19 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
-  }
+  },
+
+  userShow: function (id) {
+    var user = new Yup.Models.User({ id: id });
+    user.fetch();
+    var view = new Yup.Views.UserShow({
+      model: user,
+      collection: user.reviews()
+    });
+
+    this._swapView(view);
+    this.sidebarRight && this.sidebarRight.remove();
+    $('#content').css('width', '70%');
+    $('#sidebar-right').css('border', 'none');
+  },
 });

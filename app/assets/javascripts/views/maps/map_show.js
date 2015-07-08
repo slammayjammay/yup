@@ -1,3 +1,5 @@
+// TODO: Remove unnecessary methods
+
 Yup.Views.MapShow = Backbone.View.extend({
   attributes: {
     id: 'map'
