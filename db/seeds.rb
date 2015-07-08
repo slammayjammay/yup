@@ -1,3 +1,12 @@
+images = [
+  "https://s-media-cache-ak0.pinimg.com/736x/19/1a/21/191a21be2a2c3ab99735485a6513f9ed.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Eureka,_California_Storefront.jpg/640px-Eureka,_California_Storefront.jpg",
+  "https://redbeacon.s3.amazonaws.com/skillsprofile_work%2F23392%2FCommercial+SF+2.jpg.jpg",
+  "http://hdwpics.com/images/2C7514508802/Spandrel-Glass-Storefront-White-With-Insulated-Glass.jpg",
+  "https://s-media-cache-ak0.pinimg.com/736x/5c/29/71/5c297155e34b003355b43b78f1b9d8e3.jpg",
+  "http://storm-electric.com/wp-content/uploads/2011/10/storefronts2-692x304.jpg",
+  "http://s3-media1.fl.yelpcdn.com/bphoto/xLX4_pR93wKBrskSlme8rQ/o.jpg"
+]
 categories = %w(restaurants food nightlife shopping bars coffee health)
 categories.each do |category|
   10.times do |offset|
@@ -14,7 +23,7 @@ categories.each do |category|
           address_line_1 = address[0..1].join(' ')
         end
         address_line_2 = address[-1]
-        
+
         Business.create!(
           name: business.name.downcase,
           category: category,
@@ -26,7 +35,7 @@ categories.each do |category|
           longitude: business.location.coordinate.longitude,
           phone: business.phone,
           url: business.url,
-          image_url: Faker::Company.logo
+          image_url: images.sample
         )
       end
     end
