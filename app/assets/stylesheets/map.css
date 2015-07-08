@@ -5,8 +5,7 @@
 
 .business-show #map {
   position: fixed;
-  border: 1px solid black;
-  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
   height: 360px;
   margin-top: 1px;
 
@@ -15,8 +14,7 @@
 #sidebar-right #map {
   position: fixed !important;
   top: 200px;
-  border: 1px solid black;
-  box-shadow: 1px 3px 9px 3px rgba(0,0,0,0.63);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
   height: 360px;
   width: 400px;
 }
