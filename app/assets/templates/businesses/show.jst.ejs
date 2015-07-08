@@ -17,7 +17,10 @@
 
   <div class="business-reviews">
     <% if (business.get('review_count') === 0) { %>
-      <h1>Be the first to review this company!</h1>
+      <div class="review-item empty">
+        Be the first to review this company
+        <button class="add-review btn">Review</button>
+      </div>
     <% } %>
   </div>
 </div>
