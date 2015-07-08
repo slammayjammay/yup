@@ -63,31 +63,26 @@
 
   h2.title {
     position: fixed;
-    top: 540px;
+    top: 95px;
     width: 554px;
     font-size: 21px;
   }
 
   .categories {
     position: fixed;
-    top: 592px;
+    top: 145px;
     height: 50px;
     min-width: 554px;
 
     .category-index-item {
       float: left;
-      border: 1px solid black;
-      box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.63);
       border-radius: 5px;
       margin: 5px;
       font-size: 18px;
+      color: #b30000;
       padding: 5px;
       height: auto;
-    }
-
-    .category-index-item:last-child {
-      border-right: 1px solid black;
-    }
+      }
 
     .category-index-item:hover {
       background: #d3d3d3;
