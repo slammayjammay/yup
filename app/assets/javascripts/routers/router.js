@@ -10,7 +10,8 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "feed",
+    "": "search",
+    "feed": "feed",
     "users/:id": "userShow",
     "businesses/:id": "businessShow",
     "search(/:query)(/:order)": "search"
