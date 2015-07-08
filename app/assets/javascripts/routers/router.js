@@ -87,6 +87,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
+    $('#content').css('width', '43%');
   },
 
   _swapSidebar: function (options) {
