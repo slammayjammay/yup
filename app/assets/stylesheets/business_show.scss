@@ -23,6 +23,13 @@
   }
 }
 
+.business-image {
+  position: absolute;
+  left: 765px;
+  width: 500px;
+  height: auto;
+}
+
 .category {
   margin-left: 40px;
 }
@@ -59,7 +66,7 @@ button.add-review:hover {
 .business-reviews {
   float: right;
   margin-left: 50px;
-  margin-top: 20px;
+  margin-top: 100px;
   min-width: 600px;
 }
 
@@ -71,12 +78,6 @@ button.add-review:hover {
 
 .content-container {
   display: flex;
-
-  .business-image {
-    float: right;
-    // height: 200px;
-    // width: 200px;
-  }
 }
 
 .review-item {
