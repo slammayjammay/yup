@@ -7,10 +7,19 @@ categories.each do |category|
     20.times do |num|
       business = results.businesses[num]
       if business.respond_to?(:phone) && business.location.respond_to?(:coordinate)
+        address = business.location.display_address
+        if address.length == 2
+          address_line_1 = address[0]
+        else
+          address_line_1 = address[0..1].join(' ')
+        end
+        address_line_2 = address[-1]
+        
         Business.create!(
           name: business.name.downcase,
           category: category,
-          address: business.location.display_address.join(" "),
+          address_line_1: address_line_1,
+          address_line_2: address_line_2,
           city: business.location.city,
           state: business.location.country_code,
           latitude: business.location.coordinate.latitude,

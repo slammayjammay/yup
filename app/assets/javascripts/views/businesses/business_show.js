@@ -12,14 +12,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     setTimeout(function () {
       this.$('.map').prepend(this.map.$el);
       this.map.initDefaultMap();
-      // this.map.addBusinessMarkers();
-      var picture = this.map.map.getStreetView();
-      var pos = new google.maps.LatLng(
-        this.model.get('latitude'),
-        this.model.get('longitude')
-      );
-      picture.setPosition(pos);
-      picture.setVisible(true);
+      this.map.addBusinessMarkers();
     }.bind(this), 1000);
 
     this.listenTo(this.model, "sync", this.render);

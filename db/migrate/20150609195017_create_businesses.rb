@@ -5,7 +5,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.float  :rating, null: false, default: 0
       t.integer :review_count, null: false, default: 0
       t.string :category, null: false
-      t.string :address, null: false
+      t.string :address_line_1, null: false
+      t.string :address_line_2, null: false
       t.string :city, null: false
       t.string :state, null: false
       t.float :latitude, null: false

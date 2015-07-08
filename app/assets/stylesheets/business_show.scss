@@ -1,12 +1,6 @@
 .business-show {
   height: 100%;
 
-  .business-image {
-    float: right;
-    height: 200px;
-    width: 200px;
-  }
-
   .rating-container {
     font-size: .7em;
   }
@@ -77,6 +71,12 @@ button.add-review:hover {
 
 .content-container {
   display: flex;
+
+  .business-image {
+    float: right;
+    // height: 200px;
+    // width: 200px;
+  }
 }
 
 .review-item {

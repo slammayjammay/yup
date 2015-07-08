@@ -5,7 +5,10 @@
 <p class="review-count">(<%= business.get('review_count') %> reviews)</p>
 
 <br>
-<p class="address"><%= business.escape('address') %></p>
+<p class="address">
+  <%= business.escape('address_line_1') %><br>
+  <%= business.escape('address_line_2') %><br>
+</p>
 <div class="content-container">
   <div class="map">
     <button class="add-review btn">Review this business!</button>
