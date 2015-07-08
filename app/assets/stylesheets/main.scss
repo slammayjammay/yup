@@ -1,6 +1,5 @@
 #content {
   background-color: #EFEFEF;
-  border: none;
   padding: 20px 20px 40px 20px;
   width: 43%;
   min-width: 400px;
@@ -27,7 +26,9 @@
 }
 
 #sidebar-right {
-  padding: 10px;
+  margin-top: 20px;
+  border-left: 1px solid #c5bdbd;
+  padding-left: 35px;
 
   h1.title {
     font-size: 17px;
