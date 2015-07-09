@@ -11,17 +11,22 @@
   float: left;
   margin-top: 20px;
   margin-left: 20px;
-  min-width: 225px;
-  max-width: 225px;
+  min-width: 200px;
+  max-width: 200px;
   border-right: 1px solid #c5bdbd;
 
   img {
     width: 175px;
     height: 175px;
+    margin-bottom: 8px;
   }
 
   .user-info {
     float: left;
+  }
+
+  h4 {
+    font-size: 20px;
   }
 }
 
@@ -38,21 +43,21 @@
 
   h2.title {
     position: fixed;
-    top: 95px;
+    top: 90px;
     width: 554px;
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .categories {
     position: fixed;
     top: 145px;
     height: 50px;
-    min-width: 554px;
+    width: 400px;
 
     .category-index-item {
       float: left;
       border-radius: 5px;
-      margin: 5px;
+      margin-right: 5px;
       font-size: 18px;
       color: #b30000;
       padding: 5px;

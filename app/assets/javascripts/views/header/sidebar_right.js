@@ -19,8 +19,9 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
       this.$('.map').html(this.map.$el);
     }.bind(this), 0);
 
-    this.categories = ['restaurants', 'food', 'nightlife', 'shopping',
-      'bars', 'coffee', 'health'];
+    this.categories = [['restaurants', 'cutlery'], ['food', 'ice-lolly-tasted'],
+      ['nightlife', 'glass'], ['bars', 'glass'], ['shopping', 'shopping-cart'],
+      ['coffee', 'cutlery'], ['health', 'plus'], ['pets', 'home']];
     this.renderCategories();
   },
 
@@ -35,7 +36,8 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     var that = this;
     this.categories.forEach(function (category) {
       var view = new Yup.Views.CategoryIndexItem({
-        category: category
+        category: category[0],
+        glyph: category[1]
       });
       that.addSubview('.categories', view);
     });

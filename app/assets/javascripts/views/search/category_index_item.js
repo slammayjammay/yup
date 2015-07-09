@@ -4,10 +4,14 @@ Yup.Views.CategoryIndexItem = Backbone.View.extend({
 
   initialize: function (options) {
     this.category = options.category;
+    this.glyph = options.glyph;
   },
 
   render: function () {
-    var content = this.template({ category: this.category });
+    var content = this.template({
+      category: this.category,
+      glyph: this.glyph
+    });
     this.$el.html(content);
     return this;
   }

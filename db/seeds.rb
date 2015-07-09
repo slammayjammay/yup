@@ -7,7 +7,7 @@ images = [
   "http://storm-electric.com/wp-content/uploads/2011/10/storefronts2-692x304.jpg",
   "http://s3-media1.fl.yelpcdn.com/bphoto/xLX4_pR93wKBrskSlme8rQ/o.jpg"
 ]
-categories = %w(restaurants food nightlife shopping bars coffee health)
+categories = %w(restaurants food nightlife shopping bars coffee health pets)
 categories.each do |category|
   10.times do |offset|
     params = { category_filter: category, limit: 20, offset: 20 * offset }
@@ -90,7 +90,7 @@ User.create!(
   first_name: 'Guest',
   last_name: 'User',
   email: 'example@email.com',
-  image_url: 'http://s3.amazonaws.com/rapgenius/Steven%20Seagal%20StevenSeagal3.jpg',
+  image_url: 'http://captainkimo.com/wp-content/uploads/2012/01/Brown-Pelican-in-Winter-Plumage-Jupiter-Florida-490x326.jpg',
   password_digest: BCrypt::Password.create('password'),
   session_token: 'session_token'
 )
