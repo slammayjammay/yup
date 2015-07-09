@@ -22,18 +22,14 @@ nav.navbar.navbar-default {
   cursor: pointer;
 }
 
-.Yup {
-  font-size: 40px;
-  float: left;
-  color: white;
-  margin-top: 15px;
-  margin-left: 15px;
-}
-
 .navbar .logo-pic {
   float: left;
-  margin-top: 4px;
+  margin-top: 2px;
   margin-left: 20px;
+}
+
+.navbar .logo-pic:hover {
+  background: #8E0606;
 }
 
 .navbar input.form-control {
@@ -43,7 +39,6 @@ nav.navbar.navbar-default {
 }
 
 .navbar button {
-  transition: 500ms;
   background: #b30000;
   color: white;
 }
@@ -55,9 +50,15 @@ button.search {
 }
 
 .navbar button.btn:hover {
-  transition: 500ms;
   background: #8E0606;
   color: white;
+}
+
+.navbar button.btn.to-bestof {
+  float: right;
+  height: 37px;
+  margin-top: 37px;
+  margin-right: 5px;
 }
 
 .navbar button.btn.to-feed {

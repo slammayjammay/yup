@@ -5,6 +5,7 @@ Yup.Views.Navbar = Backbone.View.extend({
     "submit form.navbar-form": "search",
     "click .logo": "redirectToFeed",
     "click .to-feed": "redirectToFeed",
+    "click .to-bestof": "redirectToBestOf",
     "click .to-account": "redirectToProfile"
   },
 
@@ -18,18 +19,22 @@ Yup.Views.Navbar = Backbone.View.extend({
     return this;
   },
 
-  redirectToProfile: function () {
-    Backbone.history.navigate("#users/" + CURRENT_USER_ID, { trigger: true });
+  redirectToBestOf: function () {
+    Backbone.history.navigate("search/bestof", { trigger: true });
   },
 
   redirectToFeed: function () {
-    Backbone.history.navigate("", { trigger: true });
+    Backbone.history.navigate("feed", { trigger: true });
+  },
+
+  redirectToProfile: function () {
+    Backbone.history.navigate("users/" + CURRENT_USER_ID, { trigger: true });
   },
 
   search: function (event) {
     event.preventDefault();
     var searchKeys = $(event.currentTarget).find('.form-control').val();
-    Backbone.history.navigate("#search/" + searchKeys, { trigger: true });
+    Backbone.history.navigate("search/" + searchKeys, { trigger: true });
   },
 
   signOut: function (event) {
