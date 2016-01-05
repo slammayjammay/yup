@@ -9,15 +9,10 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.map = new Yup.Views.MapShow({
       collection: new Yup.Collections.Businesses([this.model])
     });
-    setTimeout(function () {
-      this.$('.map').prepend(this.map.$el);
-      this.map.initDefaultMap();
-      this.map.addBusinessMarkers();
-    }.bind(this), 1000);
 
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addReview);
-    this.listenTo(this.collection, "add", this.displayRating);
+    this.listenTo(this.model, "sync", this.renderMap);
+    // this.listenTo(this.collection, "add", this.addReview);
   },
 
   addReview: function (review) {
@@ -41,7 +36,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
       reviews: this.collection
     });
     this.$el.html(content);
-    this.attachSubviews();
+    // this.attachSubviews();
     this.displayRating();
     return this;
   },
@@ -51,5 +46,10 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
       model: this.model
     });
     $('body').prepend(view.render().$el);
+  },
+
+  renderMap: function () {
+    this.map.initDefaultMap();
+    this.$('.map').prepend(this.map.$el);
   }
 });
