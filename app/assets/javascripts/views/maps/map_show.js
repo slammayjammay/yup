@@ -5,6 +5,32 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
+    this.listenTo(this.collection, 'add', this.addBusinessMarker);
+  },
+
+  addBusinessMarker: function (business) {
+    var marker = new google.maps.Marker({
+      position: { lat: business.get('location').hash.coordinate.latitude,
+                  lng: business.get('location').hash.coordinate.longitude },
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      title: business.get('name')
+    });
+
+    var index = this.collection.indexOf(business);
+    $('#' + index).hover(
+      function () {
+        this.startBounce(index);
+      }.bind(this),
+      function () {
+        this.endBounce(index);
+      }.bind(this)
+    );
+
+    this._markers.push(marker);
+    google.maps.event.addListener(marker, 'click', function (event) {
+      this.showInfoWindow(event, marker);
+    }.bind(this));
   },
 
   addBusinessMarkers: function () {
@@ -24,12 +50,14 @@ Yup.Views.MapShow = Backbone.View.extend({
       });
 
       var index = this.collection.indexOf(business);
-      $('#' + index).hover(function () {
-        this.startBounce(index);
-      }.bind(this),
-      function () {
-        this.endBounce(index);
-      }.bind(this));
+      $('#' + index).hover(
+        function () {
+          this.startBounce(index);
+        }.bind(this),
+        function () {
+          this.endBounce(index);
+        }.bind(this)
+      );
 
       this._markers.push(marker);
       google.maps.event.addListener(marker, 'click', function (event) {
@@ -118,24 +146,6 @@ Yup.Views.MapShow = Backbone.View.extend({
     });
 
     infoWindow.open(this.map, marker);
-  },
-
-  showNewResults: function (businesses) {
-    businesses.forEach(function (business) {
-      var marker = new google.maps.Marker({
-        position: { lat: business.get('location').hash.coordinate.latitude,
-                    lng: business.get('location').hash.coordinate.longitude },
-        map: this.map,
-        animation: google.maps.Animation.DROP,
-        title: business.name
-      });
-
-      this._markers.push(marker);
-      google.maps.event.addListener(marker, 'click', function (event) {
-        this.showInfoWindow(event, marker);
-      }.bind(this));
-
-    }.bind(this));
   },
 
   startBounce: function (index) {
