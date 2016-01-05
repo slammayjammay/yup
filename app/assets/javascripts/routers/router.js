@@ -1,13 +1,6 @@
 Yup.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-
-    // $(window).scroll(function() {
-    //   // Check if scroll is near bottom
-    //   if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-    //     this.renderNextPage();
-    //   }
-    // }.bind(this));
   },
 
   routes: {
@@ -57,32 +50,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  renderNextPage: function () {
-    if (this._currentView.$el.attr('class') == 'search-show') {
-      this._currentView.collection.fetch({
-        remove: false,
-        data: { bestOf: this._currentView.bestOf,
-                searchKeys: this.query,
-                page: this._currentView.collection.page + 1
-              },
-        success: function (businesses) {
-          this._currentView.map.showNewResults(businesses.models);
-        }.bind(this)
-      });
-    }
-  },
-
   search: function (query, order) {
-    $(window).off('scroll');
-    $(window).scroll(function() {
-      // When user scrolls to the bottom, load more results
-      // TODO: Allow max of 20 results, then paginate
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-        this.renderNextPage();
-      }
-    }.bind(this));
-
-
     if (!query || query == 'bestof') {
       this.renderBestOf();
       return;
@@ -103,8 +71,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     var view = new Yup.Views.SearchShow({
       query: this.query,
       order: this.order,
-      collection: businesses,
-      map: this.sidebarRight.map
+      collection: businesses
     });
 
     this._swapView(view);
