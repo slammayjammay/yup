@@ -27,6 +27,7 @@ class Api::BusinessesController < ApplicationController
 
   def show
     # @business = Business.find(params[:id])
-    @business = Yelp.client.business(params[:id])
+    business_name = URLify.deaccentuate params[:id]
+    @business = Yelp.client.business(business_name)
   end
 end
