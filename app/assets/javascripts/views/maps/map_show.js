@@ -1,5 +1,3 @@
-// TODO: Remove unnecessary methods
-
 Yup.Views.MapShow = Backbone.View.extend({
   attributes: {
     id: 'map'
@@ -21,8 +19,8 @@ Yup.Views.MapShow = Backbone.View.extend({
 
     this.collection.each(function (business) {
       var marker = new google.maps.Marker({
-        position: { lat: business.get('latitude'),
-                  lng: business.get('longitude') },
+        position: { lat: business.get('location').hash.coordinate.latitude,
+                    lng: business.get('location').hash.coordinate.longitude },
         map: this.map,
         animation: google.maps.Animation.DROP,
         title: business.get('name')
@@ -33,7 +31,10 @@ Yup.Views.MapShow = Backbone.View.extend({
         this.showInfoWindow(event, marker);
       }.bind(this));
 
-      var bound = new google.maps.LatLng(business.get('latitude'), business.get('longitude'));
+      var bound = new google.maps.LatLng(
+        business.get('location').hash.coordinate.latitude, 
+        business.get('location').hash.coordinate.longitude
+      );
       bounds.extend(bound);
     }.bind(this));
 
