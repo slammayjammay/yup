@@ -1,15 +1,10 @@
 Yup.Views.BusinessIndexItem = Backbone.View.extend({
   className: "business-index-item",
   template: JST['businesses/index_item'],
-  events: {
-    "mouseenter": "startBounce",
-    "mouseleave": "endBounce"
-  },
 
   initialize: function (options) {
     this.review = options.review;
-    this.searchPage = options.searchPage;
-    this.index = options.index;
+    this.$el.attr('id', options.index);
 
     this.user = new Yup.Models.User();
     if (this.review) {
@@ -32,10 +27,6 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
     this.$("#input-id").rating('update', rating);
   },
 
-  endBounce: function () {
-    this.searchPage.map.endBounce(this.index);
-  },
-
   render: function () {
     var content = this.template({
       business: this.model,
@@ -46,9 +37,5 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
     this.$el.html(content);
     this.displayRating();
     return this;
-  },
-
-  startBounce: function () {
-    this.searchPage.map.startBounce(this.index);
   }
 });
