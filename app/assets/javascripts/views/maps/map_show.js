@@ -5,19 +5,10 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
-    this.listenTo(this.collection, 'add', this.addBusinessMarker);
+    this.listenTo(this.collection, 'add', this.createMapMarker);
   },
 
-  addBusinessMarker: function (business) {
-    var marker = new google.maps.Marker({
-      position: { lat: business.get('location').hash.coordinate.latitude,
-                  lng: business.get('location').hash.coordinate.longitude },
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      title: business.get('name')
-    });
-
-    var index = this.collection.indexOf(business);
+  addMarkerEvents: function (marker, index) {
     $('#' + index).hover(
       function () {
         this.startBounce(index);
@@ -27,42 +18,16 @@ Yup.Views.MapShow = Backbone.View.extend({
       }.bind(this)
     );
 
-    this._markers.push(marker);
     google.maps.event.addListener(marker, 'click', function (event) {
       this.showInfoWindow(event, marker);
     }.bind(this));
   },
 
   addBusinessMarkers: function () {
-    if (this.collection.length == 0) {
-      return;
-    }
-    this.removeMarkers();
     var bounds = new google.maps.LatLngBounds();
 
     this.collection.each(function (business) {
-      var marker = new google.maps.Marker({
-        position: { lat: business.get('location').hash.coordinate.latitude,
-                    lng: business.get('location').hash.coordinate.longitude },
-        map: this.map,
-        animation: google.maps.Animation.DROP,
-        title: business.get('name')
-      });
-
-      var index = this.collection.indexOf(business);
-      $('#' + index).hover(
-        function () {
-          this.startBounce(index);
-        }.bind(this),
-        function () {
-          this.endBounce(index);
-        }.bind(this)
-      );
-
-      this._markers.push(marker);
-      google.maps.event.addListener(marker, 'click', function (event) {
-        this.showInfoWindow(event, marker);
-      }.bind(this));
+      this.createMapMarker(business);
 
       var bound = new google.maps.LatLng(
         business.get('location').hash.coordinate.latitude,
@@ -73,6 +38,20 @@ Yup.Views.MapShow = Backbone.View.extend({
 
     this.map.fitBounds(bounds);
     this.map.setOptions({ maxZoom: 16 });
+  },
+
+  createMapMarker: function (business) {
+    var marker = new google.maps.Marker({
+      position: {
+        lat: business.get('location').hash.coordinate.latitude,
+        lng: business.get('location').hash.coordinate.longitude
+      },
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      title: business.get('name')
+    });
+    this.addMarkerEvents(marker, this.collection.indexOf(business));
+    this._markers.push(marker);
   },
 
   endBounce: function (index) {
