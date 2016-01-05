@@ -6,13 +6,8 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.map = new Yup.Views.MapShow({
-      collection: new Yup.Collections.Businesses([this.model])
-    });
-
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, "sync", this.renderMap);
-    // this.listenTo(this.collection, "add", this.addReview);
+    this.listenToOnce(this.model, "sync", this.renderMap);
   },
 
   addReview: function (review) {
@@ -49,6 +44,9 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
+    this.map = new Yup.Views.MapShow({
+      collection: new Yup.Collections.Businesses([this.model])
+    });
     this.map.initDefaultMap();
     this.$('.map').prepend(this.map.$el);
   }
