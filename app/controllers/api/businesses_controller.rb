@@ -18,13 +18,12 @@ class Api::BusinessesController < ApplicationController
 
     @businesses = Yelp.client.search(
       'San Francisco',
-      { term: params[:searchKeys] }
+      { term: params[:searchKeys], limit: 10 }
     ).businesses
   end
 
 
   def show
     @business = Business.find(params[:id])
-    render :show
   end
 end
