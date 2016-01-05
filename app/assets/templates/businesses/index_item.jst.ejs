@@ -2,9 +2,9 @@
 
 <div class="content-container">
   <h4>
-    <strong><a href="#businesses/<%= business.get('id') %>">
+    <div><a href="#businesses/<%= business.get('id') %>">
       <%= business.escape('name') %><br>
-    </a></strong>
+    </a></div>
     <% if (parseInt(business.escape('review_count')) === 1) { %>
       <small>(<%= business.escape('review_count') %> review)</small>
     <% } else { %>
