@@ -10,6 +10,10 @@
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 </div>
 
-<img class="image" src="<%= business.escape('image_url') %>">
+<% if (business.get('image_url')) { %>
+  <img class="image" src="<%= business.escape('image_url') %>">
+<% } else { %>
+  <img class="image" src="http://i.ebayimg.com/00/s/Mzg2WDUxOA==/z/6scAAOSwiwVWTkQp/$_35.JPG">
+<% } %>
 
 <p>"<%= business.escape('snippet_text') %>"</p>
