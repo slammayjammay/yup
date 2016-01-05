@@ -14,15 +14,14 @@ Yup.Routers.Router = Backbone.Router.extend({
     "": "search",
     "feed": "feed",
     "users/:id": "userShow",
-    "businesses/:name": "businessShow",
+    "businesses/:id": "businessShow",
     "search(/:query)(/:order)": "search"
   },
 
-  businessShow: function (name) {
-    var business = new Yup.Models.Business();
-    business.fetch({
-      data: { name: name }
-    });
+  businessShow: function (id) {
+    var business = new Yup.Models.Business({ id: id });
+    business.fetch();
+
     var view = new Yup.Views.BusinessShow({
       model: business,
       collection: business.reviews()
