@@ -32,7 +32,7 @@ Yup.Views.MapShow = Backbone.View.extend({
       }.bind(this));
 
       var bound = new google.maps.LatLng(
-        business.get('location').hash.coordinate.latitude, 
+        business.get('location').hash.coordinate.latitude,
         business.get('location').hash.coordinate.longitude
       );
       bounds.extend(bound);
@@ -137,8 +137,8 @@ Yup.Views.MapShow = Backbone.View.extend({
   showNewResults: function (businesses) {
     businesses.forEach(function (business) {
       var marker = new google.maps.Marker({
-        position: { lat: business.latitude,
-                  lng: business.longitude },
+        position: { lat: business.get('location').hash.coordinate.latitude,
+                    lng: business.get('location').hash.coordinate.longitude },
         map: this.map,
         animation: google.maps.Animation.DROP,
         title: business.name

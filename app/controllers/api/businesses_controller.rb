@@ -1,6 +1,6 @@
 class Api::BusinessesController < ApplicationController
   def index
-    @page = params[:page] || 1
+    @page = params[:page].to_i || 1
 
     # if params[:bestOf]
     #   @businesses = Business.all.order('rating DESC')
@@ -16,9 +16,11 @@ class Api::BusinessesController < ApplicationController
     #   ).includes(:reviews).order("#{order} #{dir}").page(params[:page]).per(10)
     # end
 
+    term = params[:searchKeys] || 'food'
+    result_limit = 5
     @businesses = Yelp.client.search(
       'San Francisco',
-      { term: params[:searchKeys], limit: 10 }
+      { term: term, limit: result_limit, offset: result_limit * @page }
     ).businesses
   end
 
