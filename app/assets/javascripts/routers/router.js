@@ -51,6 +51,16 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query, order) {
+    $(window).off('scroll');
+    $(window).scroll(function() {
+      // TODO: Allow max of 20 results, then paginate
+      // When user scrolls to the bottom, load more results
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+        this._currentView.fetchNextPage();
+      }
+    }.bind(this));
+
+
     if (!query || query == 'bestof') {
       this.renderBestOf();
       return;
