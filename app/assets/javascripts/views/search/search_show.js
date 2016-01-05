@@ -16,17 +16,18 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.order = options.order;
     this.map = options.map;
 
-    this.listenTo(this.collection, "sync", this.render);
+    this.listenToOnce(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
+  },
 
-    $(window).off('scroll');
-    $(window).scroll(function() {
-      // When user scrolls to the bottom, load more results
-      // TODO: Allow max of 20 results, then paginate
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
-        // render the next page...
+  fetchNextPage: function () {
+    this.collection.fetch({
+      remove: false,
+      data: {
+        searchKeys: this.query,
+        page: this.collection.page + 1
       }
-    }.bind(this));
+    });
   },
 
   filter: function (event) {
@@ -58,20 +59,20 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.addSubview('.businesses', view);
   },
 
-  addBusinesses: function () {
-    var that = this;
-    this.collection.each(function (business, index) {
-      var view = new Yup.Views.BusinessIndexItem({
-        model: business,
-        review: business.reviews().first(),
-        searchPage: that,
-        index: index
-      });
-      that.addSubview('.businesses', view);
-    });
-
-    this.render();
-  },
+  // addBusinesses: function () {
+    // var that = this;
+    // this.collection.each(function (business, index) {
+    //   var view = new Yup.Views.BusinessIndexItem({
+    //     model: business,
+    //     review: business.reviews().first(),
+    //     searchPage: that,
+    //     index: index
+    //   });
+    //   that.addSubview('.businesses', view);
+    // });
+    //
+    // this.render();
+  // },
 
   renderCategories: function () {
     var that = this;
