@@ -44,29 +44,6 @@ Yup.Views.MapShow = Backbone.View.extend({
     this._markers[index].setAnimation(null);
   },
 
-  initBusinessMap: function () {
-    var mapOptions = {
-      center: {
-        lat: this.model.get('latitude'),
-        lng: this.model.get('longitude')
-      },
-      zoom: 16
-    };
-
-    this.map = new google.maps.Map(this.el, mapOptions);
-    var marker = new google.maps.Marker({
-      position: { lat: this.model.get('latitude'),
-                lng: this.model.get('longitude') },
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      title: this.model.get('name')
-    });
-
-    google.maps.event.addListener(marker, 'click', function (event) {
-      this.showInfoWindow(event, marker);
-    }.bind(this));
-  },
-
   initDefaultMap: function () {
     var mapOptions = {
       center: {
