@@ -5,7 +5,6 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
-    this.listenTo(this.collection, 'sync', this.addBusinessMarkers);
   },
 
   addBusinessMarkers: function () {
@@ -23,6 +22,14 @@ Yup.Views.MapShow = Backbone.View.extend({
         animation: google.maps.Animation.DROP,
         title: business.get('name')
       });
+
+      var index = this.collection.indexOf(business);
+      $('#' + index).hover(function () {
+        this.startBounce(index);
+      }.bind(this),
+      function () {
+        this.endBounce(index);
+      }.bind(this));
 
       this._markers.push(marker);
       google.maps.event.addListener(marker, 'click', function (event) {
@@ -54,6 +61,10 @@ Yup.Views.MapShow = Backbone.View.extend({
     };
 
     this.map = new google.maps.Map(this.el, mapOptions);
+    setTimeout(function () {
+      google.maps.event.trigger(this.map, 'resize');
+      this.addBusinessMarkers();
+    }.bind(this), 0);
   },
 
   initSearchMap: function () {
