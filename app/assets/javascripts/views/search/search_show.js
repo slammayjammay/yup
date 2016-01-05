@@ -18,6 +18,15 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
 
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
+
+    $(window).off('scroll');
+    $(window).scroll(function() {
+      // When user scrolls to the bottom, load more results
+      // TODO: Allow max of 20 results, then paginate
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+        // render the next page...
+      }
+    }.bind(this));
   },
 
   filter: function (event) {
@@ -43,7 +52,6 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     var view = new Yup.Views.BusinessIndexItem({
       model: business,
       review: business.reviews().first(),
-      searchPage: this,
       index: this.collection.indexOf(business)
     });
 
