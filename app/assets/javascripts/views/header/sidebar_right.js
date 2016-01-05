@@ -9,7 +9,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     this.query = options.query;
     this.order = options.order;
 
-    this.listenTo(this.collection, 'sync', this.renderMap);
+    this.listenToOnce(this.collection, 'sync', this.renderMap);
 
     this.categories = [['restaurants', 'cutlery'], ['food', 'ice-lolly-tasted'],
       ['nightlife', 'glass'], ['bars', 'glass'], ['shopping', 'shopping-cart'],
