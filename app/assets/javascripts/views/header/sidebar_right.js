@@ -9,14 +9,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     this.query = options.query;
     this.order = options.order;
 
-    this.map = new Yup.Views.MapShow({
-      collection: this.collection
-    });
-    this.addSubview('.map', this.map);
-    $(document).ready(function () {
-      this.map.initDefaultMap();
-      // this.$('.map').html(this.map.$el);
-    }.bind(this));
+    this.listenTo(this.collection, 'sync', this.renderMap);
 
     this.categories = [['restaurants', 'cutlery'], ['food', 'ice-lolly-tasted'],
       ['nightlife', 'glass'], ['bars', 'glass'], ['shopping', 'shopping-cart'],
@@ -40,6 +33,14 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
       });
       that.addSubview('.categories', view);
     });
+  },
+
+  renderMap: function () {
+    this.mapView = new Yup.Views.MapShow({
+      collection: this.collection
+    });
+    this.mapView.initDefaultMap();
+    this.$('.map').prepend(this.mapView.$el);
   },
 
   search: function (event) {
