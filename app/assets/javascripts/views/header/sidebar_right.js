@@ -13,11 +13,10 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
       collection: this.collection
     });
     this.addSubview('.map', this.map);
-
-    setTimeout(function () {
+    $(document).ready(function () {
       this.map.initDefaultMap();
-      this.$('.map').html(this.map.$el);
-    }.bind(this), 0);
+      // this.$('.map').html(this.map.$el);
+    }.bind(this));
 
     this.categories = [['restaurants', 'cutlery'], ['food', 'ice-lolly-tasted'],
       ['nightlife', 'glass'], ['bars', 'glass'], ['shopping', 'shopping-cart'],
