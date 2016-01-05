@@ -5,7 +5,11 @@
     <strong><a href="#businesses/<%= business.get('id') %>">
       <%= business.escape('name') %><br>
     </a></strong>
-    <small>(<%= business.escape('review_count') %> reviews)</small>
+    <% if (parseInt(business.escape('review_count')) === 1) { %>
+      <small>(<%= business.escape('review_count') %> review)</small>
+    <% } else { %>
+      <small>(<%= business.escape('review_count') %> reviews)</small>
+    <% } %>
   </h4>
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 </div>
