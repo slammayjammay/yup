@@ -55,7 +55,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     $(window).scroll(function() {
       // TODO: Allow max of 20 results, then paginate
       // When user scrolls to the bottom, load more results
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
         this._currentView.fetchNextPage();
       }
     }.bind(this));
