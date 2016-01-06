@@ -1,14 +1,15 @@
 <div class="content-container">
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
   <p class="context">
-  <strong>
-    <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
-  </strong> <br>
-    <small>
-      (<%= $.timeago(review.get('created_at')) %>)
-    </small>
+    <strong>
+      <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
+    </strong> <br>
+      <small>
+        (<%= $.timeago(review.get('created_at')) %>)
+      </small>
   </p>
 </div>
+
 <div class="user-info">
 <% if (user.get('follow_id')) { %>
   <span class="glyphicon glyphicon-ok-sign">followed</span><br>

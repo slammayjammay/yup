@@ -16,8 +16,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     business.fetch();
 
     var view = new Yup.Views.BusinessShow({
-      model: business,
-      collection: business.reviews()
+      model: business
     });
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
