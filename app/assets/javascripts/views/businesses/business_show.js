@@ -18,6 +18,15 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.addSubview('.business-reviews', view);
   },
 
+  getBusinessAddress: function () {
+    if (!this.model.get('location')) return;
+
+    var street = this.model.get('location').hash.address[0];
+    var city = this.model.get('location').hash.city;
+    var country = this.model.get('location').hash.country_code;
+    return street + ', ' + city + ', ' + country;
+  },
+
   displayRating: function () {
     var rating = this.model.get('rating');
     rating = (Math.round(rating * 2) / 2).toFixed(1);
@@ -28,6 +37,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({
       business: this.model,
+      location: this.getBusinessAddress(),
       reviews: this.collection
     });
     this.$el.html(content);

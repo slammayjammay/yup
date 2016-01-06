@@ -1,14 +1,13 @@
 <img class="business-image" src="<%= business.escape('image_url') %>">
 <h1>
-  <%= business.escape('name') %>
+  <%= business.get('name') %>
 </h1>
 <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="md" >
 <p class="review-count">(<%= business.get('review_count') %> reviews)</p>
 
 <br>
 <p class="address">
-  <%= business.escape('address_line_1') %><br>
-  <%= business.escape('address_line_2') %><br>
+  <%= location %>
 </p>
 <div class="content-container">
   <div class="map">
