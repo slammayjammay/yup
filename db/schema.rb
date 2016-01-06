@@ -16,28 +16,6 @@ ActiveRecord::Schema.define(version: 20150614185431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "businesses", force: :cascade do |t|
-    t.string   "name",                         null: false
-    t.float    "rating",         default: 0.0, null: false
-    t.integer  "review_count",   default: 0,   null: false
-    t.string   "category",                     null: false
-    t.string   "address_line_1",               null: false
-    t.string   "address_line_2",               null: false
-    t.string   "city",                         null: false
-    t.string   "state",                        null: false
-    t.float    "latitude",                     null: false
-    t.float    "longitude",                    null: false
-    t.string   "url"
-    t.string   "phone"
-    t.string   "image_url"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "businesses", ["category"], name: "index_businesses_on_category", using: :btree
-  add_index "businesses", ["name"], name: "index_businesses_on_name", using: :btree
-  add_index "businesses", ["rating"], name: "index_businesses_on_rating", using: :btree
-
   create_table "followings", force: :cascade do |t|
     t.integer  "follower_id", null: false
     t.integer  "followed_id", null: false
@@ -47,8 +25,8 @@ ActiveRecord::Schema.define(version: 20150614185431) do
 
   create_table "reviews", force: :cascade do |t|
     t.float    "rating",      null: false
-    t.string   "content",     null: false
-    t.integer  "business_id", null: false
+    t.string   "excerpt",     null: false
+    t.string   "business_id", null: false
     t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
