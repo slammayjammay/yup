@@ -52,7 +52,6 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   addBusiness: function (business) {
     var view = new Yup.Views.BusinessIndexItem({
       model: business,
-      review: business.reviews().first(),
       index: this.collection.indexOf(business)
     });
 
