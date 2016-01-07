@@ -1,10 +1,20 @@
-#content {
+#main {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
   background-color: #EFEFEF;
-  padding: 20px 20px 40px 20px;
+  border-left: 1px solid rgb(160, 160, 160);
+  border-right: 1px solid rgb(160, 160, 160);
+}
+
+#content {
   width: 43%;
   min-width: 600px;
   height: 100%;
   min-height: 900px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 #sidebar-left {
@@ -31,9 +41,8 @@
 }
 
 #sidebar-right {
-  margin-top: 20px;
   border-left: 1px solid #c5bdbd;
-  padding-left: 35px;
+  padding-left: 20px;
 
   h1.title {
     position: fixed;
@@ -71,10 +80,6 @@ form.button_to {
 
 .welcome, .summary {
   text-align: center;
-}
-
-.main {
-  display: flex;
 }
 
 .glyphicon-ok-sign {
