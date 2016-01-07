@@ -2,26 +2,26 @@
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
   <p class="context">
     <strong>
-      <a href="#businesses/<%= business.get('id') %>"><%= business.escape('name') %></a>
+      <a href="#businesses/<%= business.get('id') %>"><%= business.get('name') %></a>
     </strong> <br>
       <small>
-        (<%= $.timeago(review.get('created_at')) %>)
+        (<%= $.timeago(timeCreated) %>)
       </small>
   </p>
 </div>
 
 <div class="user-info">
-<% if (user.get('follow_id')) { %>
-  <span class="glyphicon glyphicon-ok-sign">followed</span><br>
-<% } %>
-  <img class="user-image" src="<%= user.escape('image_url') %>"><br>
-  <strong>
-    <a href="#users/<%= user.get('id') %>">
-      <%= user.escape('first_name') %> <%= user.escape('last_name') %>
-    </a>
-  </strong>
-</div>
+  <% if (followed_user) { %>
+    <span class="glyphicon glyphicon-ok-sign">followed</span><br>
+  <% } %>
+    <img class="user-image" src="<%= userImage %>"><br>
+    <strong>
+      <a href="#users/<%= userId %>">
+        <%= userName %>
+      </a>
+    </strong>
+  </div>
 
-<div class="review-info">
-  <p><%= review.escape('content') %></p>
+  <div class="review-info">
+    <p><%= review.escape('excerpt') %></p>
 </div>
