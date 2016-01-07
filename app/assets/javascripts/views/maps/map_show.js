@@ -27,6 +27,8 @@ Yup.Views.MapShow = Backbone.View.extend({
     var bounds = new google.maps.LatLngBounds();
 
     this.collection.each(function (business) {
+      if (!business.get('location').hash.coordinate) return;
+
       this.createMapMarker(business);
 
       var bound = new google.maps.LatLng(
