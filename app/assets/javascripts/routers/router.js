@@ -8,7 +8,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     "feed": "feed",
     "users/:id": "userShow",
     "businesses/:id": "businessShow",
-    "search(/:query)(/:order)": "search"
+    "search(/:query)": "search"
   },
 
   businessShow: function (id) {
@@ -49,7 +49,9 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  search: function (query, order) {
+  search: function (query) {
+    if (!query) return;
+
     $(window).off('scroll');
     $(window).scroll(function() {
       // TODO: Allow max of 20 results, then paginate
@@ -59,27 +61,18 @@ Yup.Routers.Router = Backbone.Router.extend({
       }
     }.bind(this));
 
-
-    if (!query || query == 'bestof') {
-      this.renderBestOf();
-      return;
-    }
-    this.query = query || 'restaurants';
-    this.order = order || 'id';
     var businesses = new Yup.Collections.Businesses();
     businesses.fetch({
-      data: { searchKeys: this.query }
+      data: { searchKeys: query }
     });
 
     this._swapSidebar({
       collection: businesses,
-      query: this.query,
-      order: this.order
+      query: query,
     });
 
     var view = new Yup.Views.SearchShow({
-      query: this.query,
-      order: this.order,
+      query: query,
       collection: businesses
     });
 
