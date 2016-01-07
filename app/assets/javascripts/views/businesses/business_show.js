@@ -7,15 +7,18 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync", this.addReviews);
     this.listenToOnce(this.model, "sync", this.renderMap);
   },
 
-  addReview: function (review) {
-    var view = new Yup.Views.ReviewIndexItem({
-      model: review,
-      className: "user review-item"
-    });
-    this.addSubview('.business-reviews', view);
+  addReviews: function (business) {
+    business.yelpReviews().each(function (review) {
+      var view = new Yup.Views.ReviewIndexItem({
+        model: review,
+        business: this.model
+      });
+      this.addSubview('.business-reviews', view);
+    }.bind(this));
   },
 
   displayRating: function () {
@@ -52,7 +55,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
       reviews: this.collection
     });
     this.$el.html(content);
-    // this.attachSubviews();
+    this.attachSubviews();
     this.displayRating();
     return this;
   },
