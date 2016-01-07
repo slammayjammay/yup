@@ -69,3 +69,11 @@ User.create(
 #     followed_id: user_ids.sample
 #   )
 # end
+
+
+Review.create(
+  rating: 2,
+  excerpt: 'Away alone alast along the riverrun...',
+  business_id: 'the-codmother-fish-and-chips-san-francisco',
+  user_id: User.first.id
+)
