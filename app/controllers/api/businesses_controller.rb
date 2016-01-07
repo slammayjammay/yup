@@ -23,15 +23,15 @@ class Api::BusinessesController < ApplicationController
     # Yelp's API only responds with a max. of one review per business. For
     # seeding purposes, call for several businesses in the same category
     # and use each of their reviews. TODO: make this async
-    @reviews = []
     other_businesses = Yelp.client.search(
       @business.location.city,
-      { category_filter: category, limit: 7 }
+      { category_filter: category, limit: 3 }
     )
 
+    @yelp_reviews = []
     other_businesses.businesses.each do |business|
       sample = Yelp.client.business(business.id)
-      @reviews.push(sample.reviews.first)
+      @yelp_reviews.push(sample.reviews.first)
     end
   end
 end
