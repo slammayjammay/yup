@@ -73,7 +73,7 @@ User.create(
 
 Review.create(
   rating: 2,
-  excerpt: 'Away alone alast along the riverrun...',
+  excerpt: 'A way a lone a last a loved a long the riverrun...',
   business_id: 'the-codmother-fish-and-chips-san-francisco',
   user_id: User.first.id
 )
