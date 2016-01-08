@@ -1,5 +1,6 @@
 Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   template: JST['header/sidebar_right'],
+  id: 'sidebar-right',
   events: {
     'click .category-index-item': 'search'
   },
