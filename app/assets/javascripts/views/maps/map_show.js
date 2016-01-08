@@ -22,7 +22,7 @@ Yup.Views.MapShow = Backbone.View.extend({
   },
 
   addBusinessMarkers: function () {
-    var bounds = new google.maps.LatLngBounds();
+    this.bounds = new google.maps.LatLngBounds();
 
     this.collection.each(function (business) {
       if (!business.get('location').hash.coordinate) return;
@@ -33,11 +33,10 @@ Yup.Views.MapShow = Backbone.View.extend({
         business.get('location').hash.coordinate.latitude,
         business.get('location').hash.coordinate.longitude
       );
-      bounds.extend(bound);
+      this.bounds.extend(bound);
     }.bind(this));
 
-    this.map.fitBounds(bounds);
-    this.map.setOptions({ maxZoom: 16 });
+    this.map.fitBounds(this.bounds);
   },
 
   createMapMarker: function (business) {
@@ -52,6 +51,14 @@ Yup.Views.MapShow = Backbone.View.extend({
     });
     this.addMarkerEvents(marker, this.collection.indexOf(business));
     this._markers.push(marker);
+
+    // extend map to show these new markers
+    var bound = new google.maps.LatLng(
+      business.get('location').hash.coordinate.latitude,
+      business.get('location').hash.coordinate.longitude
+    );
+    this.bounds.extend(bound);
+    this.map.fitBounds(this.bounds);
   },
 
   endBounce: function (index) {
