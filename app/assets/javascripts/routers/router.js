@@ -117,8 +117,6 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
-    // $('#content').css('width', '43%');
-    // $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
   },
 
   _swapSidebar: function (options) {
@@ -144,7 +142,5 @@ Yup.Routers.Router = Backbone.Router.extend({
 
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
-    // $('#content').css('width', '70%');
-    // $('#sidebar-right').css('border', 'none');
   },
 });
