@@ -39,7 +39,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
     this.mapView = new Yup.Views.MapShow({
       collection: this.collection
     });
-    this.mapView.initDefaultMap();
+    this.mapView.init();
     this.$('#map').html(this.mapView.$el);
   },
 
