@@ -49,6 +49,24 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  scrollOrFixMap: function () {
+    // do stuff if map hasn't rendered yet
+    var headerHeight = $('#navbar').height();
+    if ($(window).scrollTop() > headerHeight) {
+      $('#map').addClass('fixed-map');
+
+      // fix to proper left position
+      var width = $('#sidebar-right').width() - $('#map').width();
+      var leftPosition = $('#sidebar-right').offset().left + (width / 2) + 1;
+      $('#map').css('left', leftPosition + 'px');
+
+      // fix to proper right position
+      $('#map').css('top', 20 + 'px');
+    } else {
+      $('#map').removeClass('fixed-map');
+    }
+  },
+
   search: function (query) {
     if (!query) return;
 
@@ -59,6 +77,8 @@ Yup.Routers.Router = Backbone.Router.extend({
       if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
         this._currentView.fetchNextPage();
       }
+
+      this.scrollOrFixMap();
     }.bind(this));
 
     var businesses = new Yup.Collections.Businesses();
@@ -77,14 +97,18 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
-    $('#content').css('width', '43%');
-    $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
+    // $('#content').css('width', '43%');
+    // $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
   },
 
   _swapSidebar: function (options) {
     this.sidebarRight && this.sidebarRight.remove();
     this.sidebarRight = new Yup.Views.SidebarRight(options);
-    $('#sidebar-right').html(this.sidebarRight.render().$el);
+
+    var $sidebar = $('<div id="sidebar-right">');
+    $sidebar.html(this.sidebarRight.render().$el);
+
+    $('#main').append($sidebar);
   },
 
   _swapView: function (view) {
@@ -103,7 +127,7 @@ Yup.Routers.Router = Backbone.Router.extend({
 
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
-    $('#content').css('width', '70%');
-    $('#sidebar-right').css('border', 'none');
+    // $('#content').css('width', '70%');
+    // $('#sidebar-right').css('border', 'none');
   },
 });
