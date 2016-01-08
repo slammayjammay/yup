@@ -1,3 +1,5 @@
+// TODO: Remove info windows on click
+
 Yup.Views.MapShow = Backbone.View.extend({
   className: 'map',
 
