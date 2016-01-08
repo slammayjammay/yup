@@ -32,7 +32,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     var content = this.template({
       business: this.model,
       location: this.model.address(),
-      image_url: this.model.get('image_url'),
+      image_url: this.model.largeImageUrl(),
       reviews: this.collection
     });
     this.$el.html(content);
