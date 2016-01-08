@@ -1,6 +1,5 @@
 Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   template: JST['header/sidebar_right'],
-
   events: {
     'click .category-index-item': 'search'
   },
@@ -40,7 +39,7 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
       collection: this.collection
     });
     this.mapView.initDefaultMap();
-    this.$('.map').prepend(this.mapView.$el);
+    this.$('#map').html(this.mapView.$el);
   },
 
   search: function (event) {
