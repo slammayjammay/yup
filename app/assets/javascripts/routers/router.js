@@ -125,10 +125,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     this.sidebarRight && this.sidebarRight.remove();
     this.sidebarRight = new Yup.Views.SidebarRight(options);
 
-    var $sidebar = $('<div id="sidebar-right">');
-    $sidebar.html(this.sidebarRight.render().$el);
-
-    $('#main').append($sidebar);
+    $('#main').append(this.sidebarRight.render().$el);
   },
 
   _swapView: function (view) {
