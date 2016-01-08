@@ -28,30 +28,11 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.$("#input-id").rating('update', rating);
   },
 
-  getBusinessAddress: function () {
-    if (!this.model.get('location')) return;
-
-    var street = this.model.get('location').hash.address[0];
-    var city = this.model.get('location').hash.city;
-    var country = this.model.get('location').hash.country_code;
-    return street + ', ' + city + ', ' + country;
-  },
-
-  getBusinessImage: function () {
-    if (!this.model.get('location')) return;
-
-    var image_url = this.model.get('image_url');
-    var reg = /\/([a-zA-Z]*)\.jpg/;
-    var pictureSize = image_url.match(reg)[1];
-
-    return image_url.replace(pictureSize, 'o');
-  },
-
   render: function () {
     var content = this.template({
       business: this.model,
-      location: this.getBusinessAddress(),
-      image_url: this.getBusinessImage(),
+      location: this.model.address(),
+      image_url: this.model.get('image_url'),
       reviews: this.collection
     });
     this.$el.html(content);
@@ -68,10 +49,10 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
-    this.map = new Yup.Views.MapShow({
+    var mapView = new Yup.Views.MapShow({
       collection: new Yup.Collections.Businesses([this.model])
     });
-    this.map.initDefaultMap();
-    this.$('.map').prepend(this.map.$el);
+    mapView.init({ maxZoom: 16 });
+    this.$('#map').prepend(mapView.$el);
   }
 });
