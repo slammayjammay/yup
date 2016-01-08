@@ -1,7 +1,5 @@
 Yup.Views.MapShow = Backbone.View.extend({
-  attributes: {
-    id: 'map'
-  },
+  className: 'map',
 
   initialize: function () {
     this._markers = [];
