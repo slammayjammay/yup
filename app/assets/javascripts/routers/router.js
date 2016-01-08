@@ -11,6 +11,26 @@ Yup.Routers.Router = Backbone.Router.extend({
     "search(/:query)": "search"
   },
 
+  addSearchEvents: function () {
+    $(window).off('scroll');
+    $(window).off('resize');
+
+    $(window).scroll(function() {
+      // TODO: Allow max of 20 results, then paginate
+      // When user scrolls to the bottom, load more results
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        this._currentView.fetchNextPage();
+      }
+
+      this.scrollOrFixMap();
+    }.bind(this));
+
+    $(window).resize(function () {
+      var leftPosition = this.findMapLeftPosition();
+      $('#map').css('left', leftPosition + 'px');
+    }.bind(this));
+  },
+
   businessShow: function (id) {
     var business = new Yup.Models.Business({ id: id });
     business.fetch();
@@ -32,6 +52,13 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapSidebar({ collection: new Yup.Collections.Businesses() });
     $('#content').css('width', '43%');
     $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
+  },
+
+  findMapLeftPosition: function () {
+    var width = $('#sidebar-right').width() - $('#map').width();
+    if (width < 0) width = 0;
+
+    return $('#sidebar-right').offset().left + (width / 2) + 1;
   },
 
   renderBestOf: function () {
@@ -56,12 +83,15 @@ Yup.Routers.Router = Backbone.Router.extend({
       $('#map').addClass('fixed-map');
 
       // fix to proper left position
-      var width = $('#sidebar-right').width() - $('#map').width();
-      var leftPosition = $('#sidebar-right').offset().left + (width / 2) + 1;
+      var leftPosition = this.findMapLeftPosition();
       $('#map').css('left', leftPosition + 'px');
 
       // fix to proper right position
       $('#map').css('top', 20 + 'px');
+
+      // keep proper sidebar width
+      var mapWidth = $('#map').width();
+      $('#sidebar-right').css('min-width', mapWidth + 5);
     } else {
       $('#map').removeClass('fixed-map');
     }
@@ -69,17 +99,7 @@ Yup.Routers.Router = Backbone.Router.extend({
 
   search: function (query) {
     if (!query) return;
-
-    $(window).off('scroll');
-    $(window).scroll(function() {
-      // TODO: Allow max of 20 results, then paginate
-      // When user scrolls to the bottom, load more results
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-        this._currentView.fetchNextPage();
-      }
-
-      this.scrollOrFixMap();
-    }.bind(this));
+    this.addSearchEvents();
 
     var businesses = new Yup.Collections.Businesses();
     businesses.fetch({
