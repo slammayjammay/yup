@@ -12,9 +12,6 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   addSearchEvents: function () {
-    $(window).off('scroll');
-    $(window).off('resize');
-
     $(window).scroll(function() {
       // TODO: Allow max of 20 results, then paginate
       // When user scrolls to the bottom, load more results
@@ -32,6 +29,8 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   businessShow: function (id) {
+    this.removeEvents();
+
     var business = new Yup.Models.Business({ id: id });
     business.fetch();
 
@@ -45,6 +44,8 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   feed: function () {
+    this.removeEvents();
+
     var reviews = new Yup.Collections.Reviews();
     reviews.fetch();
     var view = new Yup.Views.FeedShow({ collection: reviews });
@@ -59,6 +60,11 @@ Yup.Routers.Router = Backbone.Router.extend({
     if (width < 0) width = 0;
 
     return $('#sidebar-right').offset().left + (width / 2) + 1;
+  },
+
+  removeEvents: function () {
+    $(window).off('scroll');
+    $(window).off('resize');
   },
 
   renderBestOf: function () {
@@ -98,6 +104,8 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query) {
+    this.removeEvents();
+
     if (!query) return;
     this.addSearchEvents();
 
@@ -133,6 +141,8 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
+    this.removeEvents();
+
     var user = new Yup.Models.User({ id: id });
     user.fetch();
     var view = new Yup.Views.UserShow({
