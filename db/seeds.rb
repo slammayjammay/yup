@@ -1,3 +1,4 @@
+# Create sample users
 50.times do
   User.create!(
     first_name: Faker::Name.first_name,
@@ -11,8 +12,8 @@ end
 
 users = User.all
 user_ids = (User.first.id..User.last.id).to_a
-# business_ids = (Business.first.id..Business.last.id).to_a
 
+# Create sample follows
 users.each do |user|
   5.times do |num|
     Following.create!(
@@ -22,26 +23,7 @@ users.each do |user|
   end
 end
 
-# 2000.times do
-#   business = Business.find(business_ids.sample)
-#   rating = (1..5).to_a.sample
-#   content = Faker::Hacker.say_something_smart
-#   (0..10).to_a.sample.times do |num|
-#     content += " #{Faker::Hacker.say_something_smart}"
-#   end
-#
-#   review = Review.create!(
-#     rating: rating,
-#     content: content,
-#     business_id: business.id,
-#     user_id: user_ids.sample
-#   )
-#   business.review_count += 1
-#   diff = rating - business.rating
-#   business.rating += diff.fdiv(business.review_count)
-#   business.save!
-# end
-
+# Create guest user
 User.create(
   first_name: 'Guest',
   last_name: 'User',
@@ -51,29 +33,42 @@ User.create(
   session_token: 'session_token'
 )
 
-# 10.times do
-#   content = Faker::Hacker.say_something_smart
-#   (0..10).to_a.sample.times do |num|
-#     content += " #{Faker::Hacker.say_something_smart}"
-#   end
-#
-#   Review.create!(
-#     rating: (1..5).to_a.sample,
-#     content: content,
-#     business_id: business_ids.sample,
-#     user_id: User.last.id
-#   )
-#
-#   Following.create!(
-#     follower_id: User.last.id,
-#     followed_id: user_ids.sample
-#   )
-# end
-
-
+# Sample review
 Review.create(
   rating: 2,
   excerpt: 'A way a lone a last a loved a long the riverrun...',
   business_id: 'the-codmother-fish-and-chips-san-francisco',
   user_id: User.first.id
 )
+
+# Create images
+sample_cats = [
+  "ethiopian", "falafel", "vegan", "chocolate", "coffee", "creperies",
+  "newamerican", "delis", "landmarks", "venues", "japanese", "bakeries",
+  "hawaiian", "chinese", "sandwiches", "pizza", "tea", "mexican", "foodstands"
+]
+
+sample_cats.each do |cat|
+  businesses = Yelp.client.search(
+    'San Francisco',
+    { category_filter: cat, limit: 3 }
+  ).businesses
+
+  businesses.each do |bus|
+    bus_data = Yelp.client.business(URLify.deaccentuate(bus.id))
+    Image.create(url: bus_data.image_url)
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+#
