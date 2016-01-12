@@ -10,7 +10,7 @@
 }
 
 #content {
-  flex-basis: 150%;
+  flex: 5;
   padding: 0px 25px 0px 25px;
 }
 
@@ -38,8 +38,7 @@
 }
 
 #sidebar-right {
-  // margin-top: 10px;
-  width: 100%;
+  flex: 4;
   border-left: 1px solid #c5bdbd;
 
   #map {
