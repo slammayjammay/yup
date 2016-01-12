@@ -1,16 +1,11 @@
-<!-- TODO: remove text on review stars -->
-
 <div class="content-container">
-  <h4>
-    <div><a href="#businesses/<%= business.get('id') %>">
-      <%= business.escape('name') %><br>
-    </a></div>
-    <% if (parseInt(business.escape('review_count')) === 1) { %>
-      <small>(<%= business.escape('review_count') %> review)</small>
-    <% } else { %>
-      <small>(<%= business.escape('review_count') %> reviews)</small>
-    <% } %>
-  </h4>
+  <div class="info">
+    <a class="name" href="#businesses/<%= business.get('id') %>">
+      <%= business.escape('name') %>
+    </a>
+    <div class="num-reviews"><%= numReviews %></div>
+  </div>
+
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 </div>
 

@@ -36,7 +36,7 @@
   .business-index-item {
     transition: 500ms;
     position: relative;
-    padding: 0px 15px 0px 15px;
+    padding: 10px 15px 10px 15px;
     border: 1px solid #CCC;
     background-color: #FFF;
     border-radius: 3px;
@@ -44,12 +44,27 @@
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.54);
     font-size: 15px;
 
+    a.name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
     .content-container {
-      margin-bottom: 15px;
+      margin-bottom: 5px;
+    }
+
+    .info {
+      width: 75%;
+    }
+
+    .num-reviews {
+      font-size: 13px;
+      color: gray;
     }
 
     .star-rating {
       position: absolute;
+      top: 0px;
       right: 20px;
     }
 
@@ -59,23 +74,19 @@
 
     .image {
       float: left;
-      height: 80px;
+      margin-right: 10px;
       width: 80px;
-    }
-
-    h4 {
-      float: left;
-      margin-bottom: 0px;
-      max-width: 50%;
-    }
-
-    .test {
-      float: left;
+      height: 80px;
     }
 
     p {
-      margin-left: 100px;
-      min-height: 80px;
+      overflow: hidden;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
     }
   }
 
