@@ -464,7 +464,7 @@
         rtl: false,
         size: 'md',
         showClear: false,
-        showCaption: true,
+        showCaption: false,
         defaultCaption: '{rating} Stars',
         starCaptions: {
             0.5: 'Half Star',
