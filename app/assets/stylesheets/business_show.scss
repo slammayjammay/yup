@@ -1,170 +1,171 @@
 .business-show {
-  height: 100%;
-
-  .rating-container {
-    font-size: .7em;
-  }
-
-  h1 {
-    font-size: 24px;
-    color: #555;
-    margin-bottom: -10px;
-  }
-
-  p.review-count {
-    margin-left: 15px;
-    font-size: 14px;
-  }
-
-  p.address {
-    margin-left: 15px;
-    font-size: 16px;
-    font-weight: 500px;
-  }
-}
-
-.business-image {
-  position: absolute;
-  left: 765px;
-  width: 300px;
-  height: auto;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.54);
-}
-
-.category {
-  margin-left: 40px;
-}
-
-#map {
-  width: 400px;
-  height: 360px;
-  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
-}
-
-.map {
-  width: 100%;
-  height: 100%;
-}
-
-.review-company {
-  width: 700px;
-  height: 80px;
-}
-
-button.add-review {
-  transition: 200ms;
-  margin-left: 138px;
-  background: #b30000;
-  width: 175px;
-  height: 45px;
-  margin-top: 20px;
-  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
-  font-size: 15px;
-  color: white;
-}
-
-button.add-review:hover {
-  transition: 200ms;
-  color: white;
-  background: #AE100C;
-}
-
-.group:after {
-  content: "";
-  clear: both;
-  display: block;
-}
-
-.business-reviews {
-  float: right;
-  margin-left: 50px;
-  margin-top: 100px;
-  min-width: 600px;
-}
-
-.business-show:after {
-  content: "";
-  clear: both;
-  display: block;
-}
-
-.content-container {
-  display: flex;
-}
-
-.review-item {
-  transition: 500ms;
-  margin-top: 25px;
-  background-color: #FFF;
-  color: #777;
-  border: 1px solid #CCC;
-  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
-  border-radius: 5px;
-  padding: 10px 24px 24px;
-  min-height: 220px;
-  max-width: 670px;
-
   .content-container {
-    position: relative;
-    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .context {
-    position: absolute;
-    right: 0px;
+  .title {
+    flex: 3;
+
+    h1 {
+      margin: 0px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .star-rating {
+      display: inline-block;
+      font-size: 1.3em;
+    }
+
+    small {
+      font-size: 15px;
+    }
   }
 
-  .rating-container {
-    font-size: .7em;
-  }
-
-  img {
-    margin-bottom: 10px;
-  }
-
-  small {
-    margin-top: -15px;
-  }
-
-  .review-info {
-    padding-left: 30px;
-  }
-
-  .user-info {
-    margin-right: 10px;
-    float: left;
-    text-align: center;
-  }
-
-  .user-image {
-    width: 96px;
-    height: 96px;
-  }
-}
-
-.empty {
-  min-height: 120px;
-  width: 520px;
-  font-size: 19px;
-}
-
-.business-show h1 {
-  margin-top: 0px;
-  padding-top: 45px;
-
-  small {
+  button.add-review {
+    flex: 1;
+    background: #e50000;
+    height: 35px;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
     font-size: 18px;
+    font-weight: bold;
+    color: white;
   }
 
-  .logo {
-    float: right;
-    width: 250px;
-    height: auto;
-    margin-top: -33px;
-    margin-right: 33px;
+  button.add-review:hover {
+    background: #AE100C;
   }
-}
 
-.followed {
+  .container {
+    flex: 1;
+  }
 
+  .location {
+    float: left;
+    padding: 10px 10px 0px 10px;
+    background: white;
+    border: 1px solid #ccccc8;
+
+    #map {
+      width: 350px;
+      height: 200px;
+      box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
+    }
+
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+
+    p.address {
+      margin: 10px auto;
+      width: 300px;
+      text-align: center;
+    }
+  }
+
+  .images  {
+    // float: right;
+
+    img {
+      margin-left: 3px;
+      width: 175px;
+      height: auto;
+      box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.54);
+    }
+  }
+
+  .group {
+    margin-top: 10px;
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
+  .business-reviews {
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .review-item {
+    transition: 500ms;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 190px;
+    background-color: #FFF;
+    color: #777;
+    border: 1px solid #CCC;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
+    border-radius: 5px;
+
+    .content-container {
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .context {
+      position: absolute;
+      top: 4px;
+      right: 0px;
+    }
+
+    .rating-container {
+      font-size: .7em;
+    }
+
+    img {
+      margin-bottom: 10px;
+    }
+
+    .user-info {
+      margin-right: 10px;
+      float: left;
+      text-align: center;
+
+      // img {
+      //   float: left;
+      // }
+
+      a {
+        font-weight: bold;
+      }
+    }
+
+    .user-image {
+      // width: 96px;
+      // height: 96px;
+    }
+  }
+
+  .empty {
+    min-height: 120px;
+    width: 520px;
+    font-size: 19px;
+  }
+
+  .business-show h1 {
+    margin-top: 0px;
+    padding-top: 45px;
+
+    small {
+      font-size: 18px;
+    }
+
+    .logo {
+      float: right;
+      width: 250px;
+      height: auto;
+      margin-top: -33px;
+      margin-right: 33px;
+    }
+  }
+
+  .followed {
+
+  }
 }
