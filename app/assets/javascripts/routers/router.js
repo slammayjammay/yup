@@ -39,8 +39,6 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
-    $('#content').css('width', '70%');
-    $('#sidebar-right').css('border', 'none');
   },
 
   feed: function () {
@@ -51,11 +49,10 @@ Yup.Routers.Router = Backbone.Router.extend({
     var view = new Yup.Views.FeedShow({ collection: reviews });
     this._swapView(view);
     this._swapSidebar({ collection: new Yup.Collections.Businesses() });
-    $('#content').css('width', '43%');
-    $('#sidebar-right').css('border-left', '1px solid #c5bdbd');
   },
 
   findMapLeftPosition: function () {
+    // TODO: FIX
     var width = $('#sidebar-right').width() - $('#map').width();
     if (width < 0) width = 0;
 
