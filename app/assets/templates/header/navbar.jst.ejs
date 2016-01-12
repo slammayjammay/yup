@@ -1,32 +1,32 @@
 <nav class="navbar navbar-default">
-  <div class="logo">
+  <div class="content-container">
     <img class="logo-pic" src="<%= LOGO_SOURCE %>">
-  </div>
 
-  <div class="search-forms">
-    <form class="navbar-form" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search: e.g. pizza">
-      </div>
-      <button type="submit" class="search btn">
-        <div class="glyphicon glyphicon-search"></div>
+    <div class="search-forms">
+      <form class="navbar-form" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search: e.g. pizza">
+        </div>
+
+        <button type="submit" class="search btn">
+          <div class="glyphicon glyphicon-search"></div>
+        </button>
+      </form>
+    </div>
+
+    <div class="buttons">
+      <button class="btn to-account">
+        <div class="glyphicon glyphicon-user"></div>Profile
       </button>
-    </form>
+
+      <button class="btn to-feed">
+        <div class="glyphicon glyphicon-globe"></div>Feed
+      </button>
+
+      <button class="sign-out btn">
+        <div class="glyphicon glyphicon-log-out"></div>Sign out
+      </button>
+    </div>
+    
   </div>
-
-  <button class="sign-out btn">
-    <div class="glyphicon glyphicon-log-out"></div> Sign out
-  </button>
-
-  <button class="btn to-account">
-    <div class="glyphicon glyphicon-user"></div> Profile
-  </button>
-
-  <button class="btn to-feed">
-    <div class="glyphicon glyphicon-globe"></div> Feed
-  </button>
-
-  <button class="btn to-bestof">
-    <div class="glyphicon glyphicon-thumbs-up"></div> Best of Yup!
-  </button>
 </nav>

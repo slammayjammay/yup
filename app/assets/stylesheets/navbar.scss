@@ -1,82 +1,41 @@
 nav.navbar.navbar-default {
-  height: 80px;
-  min-width: 1100px;
   margin-bottom: 0px;
   background-color: #b30000;
 }
 
-.navbar .navbar-form {
-  width: 500px;
-  margin-top: 28px;
-  float: left;
-}
+.navbar {
+  .content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    min-width: 1000px;
+    margin: auto;
+  }
 
-.navbar .logo {
-  float: left;
-  margin-right: 30px;
-  left: 20px;
-  top: 4px;
-}
+  .logo-pic:hover {
+    cursor: pointer;
+    background: #8E0606;
+  }
 
-.navbar .logo:hover {
-  cursor: pointer;
-}
+  input.form-control {
+    width: 400px;
+    height: 40px;
+    font-size: 17px;
+  }
 
-.navbar .logo-pic {
-  float: left;
-  margin-top: 2px;
-  margin-left: 20px;
-}
+  button {
+    background: #b30000;
+    color: white;
+    font-size: 16px;
+  }
 
-.navbar .logo-pic:hover {
-  background: #8E0606;
-}
+  .buttons {
+    align-self: flex-end;
+  }
 
-.navbar input.form-control {
-  width: 400px;
-  height: 40px;
-  font-size: 17px;
-}
-
-.navbar button {
-  background: #b30000;
-  color: white;
-}
-
-button.search {
-  transition: 500ms;
-  height: 35px;
-  font-size: 16px;
-}
-
-.navbar button.btn:hover {
-  background: #8E0606;
-  color: white;
-}
-
-.navbar button.btn.to-bestof {
-  float: right;
-  height: 37px;
-  margin-top: 37px;
-  margin-right: 5px;
-}
-
-.navbar button.btn.to-feed {
-  float: right;
-  height: 37px;
-  margin-top: 37px;
-  margin-right: 5px;
-}
-
-.navbar button.btn.to-account {
-  float: right;
-  height: 37px;
-  margin-top: 37px;
-}
-
-.navbar button.sign-out {
-  float: right;
-  height: 37px;
-  margin-right: 10px;
-  margin-top: 37px;
+  button:hover {
+    background: #8E0606;
+    color: white;
+  }
 }
