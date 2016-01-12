@@ -24,8 +24,12 @@ Yup.Views.MapShow = Backbone.View.extend({
   },
 
   addBusinessMarkers: function () {
-    this.bounds = new google.maps.LatLngBounds();
+    if (this.collection.length === 0) {
+      this.centerMap();
+      return;
+    }
 
+    this.bounds = new google.maps.LatLngBounds();
     this.collection.each(function (business) {
       if (!business.get('location').hash.coordinate) return;
 
@@ -39,6 +43,12 @@ Yup.Views.MapShow = Backbone.View.extend({
     }.bind(this));
 
     this.map.fitBounds(this.bounds);
+  },
+
+  centerMap: function () {
+    var center = new google.maps.LatLng(37.75593775475197, -122.4258449736328);
+    this.map.setCenter(center);
+    this.map.setZoom(11);
   },
 
   createMapMarker: function (business) {
@@ -71,6 +81,7 @@ Yup.Views.MapShow = Backbone.View.extend({
     if (!mapOptions) mapOptions = {};
 
     this.map = new google.maps.Map(this.el, mapOptions);
+
     setTimeout(function () {
       google.maps.event.trigger(this.map, 'resize');
       this.addBusinessMarkers();
