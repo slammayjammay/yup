@@ -17,13 +17,9 @@ window.Yup = {
     user.fetch();
 
     Backbone.history.start();
-
   }
 };
 
 $(document).ready(function(){
   Yup.initialize();
-  $(window).resize(function () {
-    $('#main').css('min-height', $(window).height() + 'px');
-  });
 });
