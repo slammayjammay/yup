@@ -16,13 +16,14 @@ window.Yup = {
     var user = new Yup.Models.User({ id: CURRENT_USER_ID });
     user.fetch();
 
-    router.on('route', function() {
-      $(document).scrollTop(0);
-    });
     Backbone.history.start();
+
   }
 };
 
 $(document).ready(function(){
   Yup.initialize();
+  $(window).resize(function () {
+    $('#main').css('min-height', $(window).height() + 'px');
+  });
 });
