@@ -52,7 +52,6 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   findMapLeftPosition: function () {
-    // TODO: FIX
     var width = $('#sidebar-right').width() - $('#map').width();
     if (width < 0) width = 0;
 
