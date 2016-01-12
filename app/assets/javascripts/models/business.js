@@ -2,7 +2,8 @@ Yup.Models.Business = Backbone.Model.extend({
   urlRoot: "/api/businesses",
 
   address: function () {
-    return this._address;
+    if (this._address) return this._address;
+    return [];
   },
 
   largeImageUrl: function () {
@@ -12,16 +13,9 @@ Yup.Models.Business = Backbone.Model.extend({
   parse: function (response) {
     if (response.yelp_reviews) {
       this.yelpReviews().set(response.yelp_reviews)
-      delete response.yelp_reviews;
     }
 
-    if (response.image_url) {
-      // Get the large version of image_url. Urls take the form of .../ms.jpg.
-      // Replace ms with o to get the original size of the image.
-      this._largeImageUrl = response.image_url.slice().replace('ms.jpg', 'o.jpg');
-
-      delete response.image_url;
-    } else {
+    if (!response.image_url) {
       this.set(
         'image_url',
         'http://i.ebayimg.com/00/s/Mzg2WDUxOA==/z/6scAAOSwiwVWTkQp/$_35.JPG'
@@ -29,10 +23,7 @@ Yup.Models.Business = Backbone.Model.extend({
     }
 
     if (response.location) {
-      var street = response.location.hash.address[0];
-      var city = response.location.hash.city;
-      var country = response.location.hash.country_code;
-      this._address = street + ', ' + city + ', ' + country;
+      this._address = response.location.hash.display_address;
     }
 
     return response;
