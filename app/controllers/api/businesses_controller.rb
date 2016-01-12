@@ -12,6 +12,7 @@ class Api::BusinessesController < ApplicationController
 
 
   def show
+    # TODO: clean up
     business_name = URLify.deaccentuate(params[:id])
     @business = Yelp.client.business(business_name)
 
@@ -22,7 +23,8 @@ class Api::BusinessesController < ApplicationController
 
     # Yelp's API only responds with a max. of one review per business. For
     # seeding purposes, call for several businesses in the same category
-    # and use each of their reviews. TODO: make this async
+    # and use each of their reviews.
+    # TODO: make this async
     other_businesses = Yelp.client.search(
       @business.location.city,
       { category_filter: category, limit: 3 }
@@ -33,5 +35,8 @@ class Api::BusinessesController < ApplicationController
       sample = Yelp.client.business(business.id)
       @yelp_reviews.push(sample.reviews.first)
     end
+
+    @images = []
+    2.times { @images.push Image.find(rand(Image.count)).url }
   end
 end
