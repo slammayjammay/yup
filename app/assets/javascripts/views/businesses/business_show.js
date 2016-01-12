@@ -8,6 +8,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.addReviews);
+    this.listenTo(this.model, "sync", this.addImages);
     this.listenToOnce(this.model, "sync", this.renderMap);
   },
 
@@ -21,6 +22,18 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
+  addImages: function () {
+    var $img = $('<img>').attr('src', this.model.get('sample_images')[0])
+    $('.images').append($img);
+
+    var $img = $('<img>').attr('src', this.model.get('image_url'));
+    $img.addClass('selected');
+    $('.images').append($img);
+
+    var $img = $('<img>').attr('src', this.model.get('sample_images')[1])
+    $('.images').append($img);
+  },
+
   displayRating: function () {
     var rating = this.model.get('rating');
     rating = (Math.round(rating * 2) / 2).toFixed(1);
@@ -31,10 +44,10 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({
       business: this.model,
-      location: this.model.address(),
-      image_url: this.model.largeImageUrl(),
+      address: this.model.address().join(', '),
       reviews: this.collection
     });
+
     this.$el.html(content);
     this.attachSubviews();
     this.displayRating();
