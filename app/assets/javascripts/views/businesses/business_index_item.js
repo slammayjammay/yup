@@ -20,6 +20,13 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
     }.bind(this), 90);
   },
 
+  getNumReviews: function () {
+    var numReviews = '(' + this.model.get('review_count') + ' review';
+    if (numReviews !== 1) numReviews += 's';
+    numReviews += ')';
+    return numReviews;
+  },
+
   displayRating: function () {
     var rating = this.model.get('rating');
     rating = (Math.round(rating * 2) / 2).toFixed(1);
@@ -30,6 +37,7 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
   render: function () {
     var content = this.template({
       business: this.model,
+      numReviews: this.getNumReviews(),
       review: this.review,
       user: this.user
     });
