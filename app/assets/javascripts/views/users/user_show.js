@@ -1,15 +1,28 @@
 Yup.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
+  id: 'user-show',
   events: {
-    "click li.edit": "renderEdit",
-    "click li.followers": "renderFollowings",
-    "click li.reviews": "renderReviews",
+    "click li#edit": "renderEdit",
+    "click li#followers": "renderFollowers",
+    "click li#reviews": "renderReviews",
     "submit form": "edit"
   },
 
   initialize: function () {
     this.renderReviews();
     this.listenTo(this.model, "sync change", this.render);
+  },
+
+  addSidebar: function () {
+    var view = new Yup.Views.SidebarLeft({
+      model: this.model
+    });
+    this.$el.prepend(view.render().$el);
+  },
+
+  changeSelectedTab: function (selector) {
+    this.$('li').removeClass('selected');
+    this.$('#' + selector).addClass('selected');
   },
 
   edit: function (event) {
@@ -34,6 +47,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderEdit: function () {
+    this.changeSelectedTab('edit');
     var view = new Yup.Views.UserEdit({
       model: this.model
     });
@@ -41,7 +55,8 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     this._swapMainContent(view);
   },
 
-  renderFollowings: function () {
+  renderFollowers: function () {
+    this.changeSelectedTab('followers');
     var view = new Yup.Views.UserFollowers({
       model: this.model
     });
@@ -50,6 +65,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderReviews: function () {
+    this.changeSelectedTab('reviews');
     var view = new Yup.Views.UserReviews({
       model: this.model,
       collection: this.collection
@@ -59,11 +75,20 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderSuccess: function () {
-    this.$('.edit-success').removeClass('invisible');
-    this.$('.edit-success').text('-Successfully updated your profile');
+    var $success = $('<div>').addClass('edit-success');
+    $success.text('Successfully updated your profile');
+    this.$('.user-content').prepend($success);
+
     setTimeout(function () {
-      this.$('.edit-success').addClass('invisible');
-    }.bind(this), 3000);
+      $success.css('opacity', 1);
+    }, 100);
+
+    setTimeout(function () {
+      $success.css('opacity', 0);
+      $success.one('transitionend', function () {
+        $success.remove();
+      });
+    }, 3000);
   },
 
   _swapMainContent: function (view) {
