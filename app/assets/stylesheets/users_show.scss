@@ -1,19 +1,108 @@
+#user-show {
+  display: flex;
+  height: 100%;
+  background-color: #EFEFEF;
+  border-left: 1px solid rgb(160, 160, 160);
+  border-right: 1px solid rgb(160, 160, 160);
+
+
+  #sidebar-left {
+    flex: 1;
+    height: 100%;
+    padding: 10px;
+    border-right: 1px solid #c5bdbd;
+
+    .container {
+      margin: auto
+    }
+
+    img {
+      width: 175px;
+      height: 175px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+
+  .user-content {
+    position: relative;
+    flex: 4;
+    padding: 10px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  ul.tabs {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 5px;
+      font-size: 18px;
+
+      span:hover {
+        cursor: pointer;
+      }
+    }
+
+    li.selected {
+      border-bottom: 1px solid black;
+      border-radius: 6px;
+      color: red;
+    }
+  }
+
+  .user-main {
+    margin-top: 30px;
+  }
+
+  #user-edit {
+    label {
+      margin-left: 5px;
+    }
+
+    input {
+      width: 500px;
+      margin-bottom: 5px;
+    }
+
+    form {
+      margin: auto;
+      width: 70%;
+    }
+  }
+}
+
 .edit-success {
-  opacity: 1;
-  transition: 1s;
+  opacity: 0;
+  transition: opacity 1s;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  width: 240px;
+  padding: 5px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-align: center;
   font-size: 22px;
-  float: left;
-  margin-top: -20px;
-  margin-left: 40px;
   color: green;
 }
 
-.invisible {
-  opacity: 0;
-  transition: 1s;
-}
-
 .title {
+  text-align: center;
   font-size: 24px;
   color: #555;
 }
@@ -22,12 +111,6 @@
   button {
     font-size: 24px;
   }
-}
-
-.user-main:after {
-  content: "";
-  display: block;
-  clear: both;
 }
 
 .user-index-item {
@@ -61,22 +144,4 @@
   background: #d3d3d3;
   transition: 150ms;
   cursor: pointer;
-}
-
-.user-edit {
-  transition: 1s;
-  opacity: 1;
-
-  label {
-    margin-left: 5px;
-  }
-
-  input {
-    width: 500px;
-    margin-bottom: 5px;
-  }
-
-  form {
-    margin-left: 50px;
-  }
 }

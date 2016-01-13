@@ -1,26 +1,36 @@
-<div class="edit-success invisible"></div>
+<div id="sidebar-left">
+  <h1 class="title">
+    <%= user.escape('first_name') %> <%= user.escape('last_name') %> <br>
+  </h1 class="title">
 
-<ul class="nav nav-tabs">
-  <li class="reviews" role="presentation">
-    <a href="#users/<%= user.get('id') %>">
-      <div class="glyphicon glyphicon-star"></div> Reviews
-    </a>
-  </li>
+  <div class="container">
+    <img src="<%= user.escape('image_url') %>">
+    <div class="user-info">
+      Following: <%= user.follows().length %><br>
+      Followers: <%= user.followers().length %><br>
+      Number of Reviews: <%= user.reviews().length %><br>
+    </div>
+  </div>
+</div>
 
-  <li class="followers" role="presentation">
-    <a href="#users/<%= user.get('id') %>">
-      <div class="glyphicon glyphicon-user"></div> Followed Users
-    </a>
-  </li>
+<div class="user-content">
+  <div class="center">
+    <ul class="tabs">
+      <li id="reviews" class="selected">
+        <span><div class="glyphicon glyphicon-star"></div>Reviews</span>
+      </li>
 
-  <% if (user.get('id') == CURRENT_USER_ID) { %>
-    <li class="edit" role="presentation">
-      <a href="#users/<%= user.get('id') %>">
-        <div class="glyphicon glyphicon-wrench"></div> Edit Profile
-      </a>
-    </li>
-  <% } %>
-</ul>
+      <li id="followers">
+        <span><div class="glyphicon glyphicon-user"></div>Followed Users</span>
+      </li>
 
-<div class="user-sidebar"></div>
-<div class="user-main"></div>
+      <% if (user.get('id') == CURRENT_USER_ID) { %>
+        <li id="edit">
+          <span><div class="glyphicon glyphicon-wrench"></div>Edit Profile</span>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div class="user-main"></div>
+</div>
