@@ -11,7 +11,15 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.query = options.query;
 
     this.listenToOnce(this.collection, "sync", this.render);
+    this.listenToOnce(this.collection, "sync", this.addSidebar);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
+  },
+
+  addSidebar: function () {
+    var sidebar = new Yup.Views.SidebarRight({
+      collection: this.collection
+    });
+    this.$el.append(sidebar.render().$el);
   },
 
   fetchNextPage: function () {
