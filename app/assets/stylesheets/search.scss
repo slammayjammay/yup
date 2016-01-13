@@ -1,37 +1,21 @@
-.query {
-  font-size: 24px;
-  color: #555;
-}
+.search-show {
+  display: flex;
 
-.filters {
-  h1 {
-    font-size: 17px;
-    margin-top: 0px;
-    display: inline-block;
-    margin-right: 10px;
+  .results {
+    flex: 8;
+    padding: 10px;
   }
 
-  form {
-    display: inline-block;
+  .query {
+    font-size: 24px;
+    color: #555;
   }
 
-  .filter {
-    display: inline-block;
-    font-size: 15px;
-    border-radius: 4px;
-    padding: 5px;
+  .businesses {
+    position: relative;
+    margin: 10px auto;
+    margin-bottom: 300px;
   }
-
-  .filter:hover, form input {
-    cursor: pointer;
-    background-color: rgb(202, 202, 202);
-  }
-}
-
-.businesses {
-  position: relative;
-  margin-top: 10px;
-  width: 100%;
 
   .business-index-item {
     transition: 500ms;
@@ -88,18 +72,61 @@
       display: block;
       clear: both;
     }
+
+    &:hover {
+      background: #d3d3d3;
+      transition: 150ms;
+    }
   }
 
-  .business-index-item:hover {
-    background: #d3d3d3;
-    transition: 150ms;
-  }
+  #sidebar-right {
+    flex: 6;
+    position: relative;
+    border-left: 1px solid #c5bdbd;
 
-  .business-index-item:last-child {
-    margin-bottom: 300px;
-  }
-}
+    #map {
+      position: absolute;
+      top: 15px;
+      right: 0px;
+      left: 0px;
+      margin: auto;
+      width: 400px;
+      height: 360px;
+      box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
+    }
 
-.prev-page, .next-page {
-  margin: 10px;
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+
+    h1.title {
+      position: fixed;
+      top: 99px;
+      width: 554px;
+      font-size: 22px;
+    }
+
+    .categories {
+      position: fixed;
+      top: 154px;
+      height: 50px;
+      width: 400px;
+
+      .category-index-item {
+        float: left;
+        border-radius: 5px;
+        margin-right: 5px;
+        font-size: 18px;
+        color: #b30000;
+        padding: 5px;
+        height: auto;
+        }
+
+      .category-index-item:hover {
+        background: #d3d3d3;
+        cursor: pointer;
+      }
+    }
+  }
 }
