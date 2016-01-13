@@ -1,28 +1,28 @@
 <div class="content-container">
-  <div class="title">
+  <div class="info">
     <h1><%= business.get('name') %></h1>
-
     <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="md">
-
     <small>(<%= business.get('review_count') %> reviews)</small>
   </div>
 
-  <button class="add-review btn">Write a Review</button>
+  <div class="review">
+    <button class="add-review btn">Write a Review</button>
+  </div>
 </div>
 
-<div class="group content-container">
-  <div class="location">
-    <div id="map"></div>
+<div class="content-container">
+  <div>
+    <div class="location">
+      <div id="map"></div>
 
-    <p class="address">
-      <strong><%= address %></strong>
-    </p>
+      <p class="address"><%= address %></p>
+    </div>
   </div>
-  
+
   <div class="images"></div>
 </div>
 
-</div>
+
 
 <div class="business-reviews">
   <% if (business.get('review_count') === 0) { %>
