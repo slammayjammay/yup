@@ -5,7 +5,7 @@ window.Yup = {
   Routers: {},
   initialize: function() {
     var router = new Yup.Routers.Router({
-      $rootEl: $('#content')
+      $rootEl: $('#main')
     });
 
     var navbar = new Yup.Views.Navbar({
