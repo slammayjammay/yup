@@ -20,12 +20,25 @@
 
 .review-form {
   opacity: 1;
-  padding: 15px;
-  width: 40%;
-  min-width: 600px;
-  left: 30%;
+  position: absolute;
+  margin: auto;
+  top: 15%;
+  left: 0;
+  right: 0;
+  width: 50%;
+  transition: 500ms;
+  z-index: 100;
+  border: 1px solid black;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 1px 3px 9px 3px rgba(0, 0, 0, 0.63);
+  padding: 0px 15px 15px 15px;
   border: none;
   border-radius: 0px;
+
+  form {
+    height: 100%;
+  }
 
   #input-id {
     margin: auto;
@@ -37,7 +50,10 @@
   }
 
   button.close {
-    margin-top: -4px;
+    float: none;
+    position: absolute;
+    top: 4px;
+    right: 8px;
   }
 
   h3 {
@@ -45,10 +61,8 @@
   }
 
   textarea {
-    display: block;
-    margin: auto;
-    width: 80%;
-    height: 150px;
+    width: 100%;
+    height: 140px;
   }
 
   button.submit {
@@ -56,8 +70,7 @@
     color: white;
     background: #b30000;
     width: 175px;
-    height: 50px;
-    margin: 20px auto;
+    margin: auto;
     display: block;
   }
 }
