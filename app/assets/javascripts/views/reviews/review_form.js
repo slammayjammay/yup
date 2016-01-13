@@ -1,5 +1,5 @@
 Yup.Views.ReviewForm = Backbone.View.extend({
-  className: "backdrop",
+  className: "review-form",
   template: JST['reviews/form'],
   events: {
     "submit form": "save",
@@ -8,15 +8,14 @@ Yup.Views.ReviewForm = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    setTimeout(function () {
-      $('.backdrop').click(this.close);
-    }.bind(this), 0);
+    $('.backdrop').click(this.close.bind(this));
   },
 
   close: function (event) {
     if ($(event.target).attr('class') === 'backdrop' ||
         $(event.target).attr('class') === 'close') {
       event.preventDefault();
+      $('.backdrop').remove();
       this.remove();
     }
   },
@@ -48,9 +47,6 @@ Yup.Views.ReviewForm = Backbone.View.extend({
       this.rating = parseFloat(v);
     }.bind(this));
 
-    setTimeout(function () {
-      this.$('form').addClass('popup review-form');
-    }.bind(this), 0);
     this.displayRating();
     return this;
   },
