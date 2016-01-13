@@ -1,5 +1,8 @@
 .business-show {
   padding: 10px;
+  background-color: #EFEFEF;
+  border-left: 1px solid rgb(160, 160, 160);
+  border-right: 1px solid rgb(160, 160, 160);
 
   .content-container {
     display: flex;
@@ -8,10 +11,11 @@
 
   .info {
     flex: 2;
-    text-align: center;
+    // text-align: center;
 
     h1 {
       margin: 0px;
+      word-wrap: break-word;
       font-weight: bold;
       color: #555;
     }
