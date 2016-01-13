@@ -55,10 +55,11 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   renderForm: function () {
+    $('body').prepend('<div class="backdrop">');
     var view = new Yup.Views.ReviewForm({
       model: this.model
     });
-    $('body').prepend(view.render().$el);
+    $('.backdrop').append(view.render().$el);
   },
 
   renderMap: function () {
