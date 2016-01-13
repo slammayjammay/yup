@@ -80,18 +80,18 @@
   }
 
   #sidebar-right {
-    flex: 6;
+    flex: 5;
     position: relative;
     border-left: 1px solid #c5bdbd;
 
     #map {
       position: absolute;
-      top: 15px;
+      top: 25px;
       right: 0px;
       left: 0px;
       margin: auto;
-      width: 400px;
-      height: 360px;
+      width: 340px;
+      height: 340px;
       box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
     }
 

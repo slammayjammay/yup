@@ -67,7 +67,7 @@ Yup.Routers.Router = Backbone.Router.extend({
 
   scrollOrFixMap: function () {
     var headerHeight = $('#navbar').height();
-    var distTop = 15;
+    var distTop = 25;
     var fixedTopPos = $(window).scrollTop() - headerHeight + distTop;
 
     if ($(window).scrollTop() > headerHeight) {
