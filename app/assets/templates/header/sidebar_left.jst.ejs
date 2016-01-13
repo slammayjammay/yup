@@ -1,9 +1,0 @@
-<h1 class="title">
-  <%= user.escape('first_name') %> <%= user.escape('last_name') %> <br>
-</h1 class="title">
-<img src="<%= user.escape('image_url') %>">
-<div class="user-info">
-  Following: <%= user.follows().length %><br>
-  Followers: <%= user.followers().length %><br>
-  Number of Reviews: <%= user.reviews().length %><br>
-</div>
