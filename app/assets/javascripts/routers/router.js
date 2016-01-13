@@ -21,11 +21,6 @@ Yup.Routers.Router = Backbone.Router.extend({
 
       this.scrollOrFixMap();
     }.bind(this));
-
-    $(window).resize(function () {
-      var leftPosition = this.findMapLeftPosition();
-      $('#map').css('left', leftPosition + 'px');
-    }.bind(this));
   },
 
   businessShow: function (id) {
@@ -51,16 +46,8 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapSidebar({ collection: new Yup.Collections.Businesses() });
   },
 
-  findMapLeftPosition: function () {
-    var width = $('#sidebar-right').width() - $('#map').width();
-    if (width < 0) width = 0;
-
-    return $('#sidebar-right').offset().left + (width / 2) + 1;
-  },
-
   removeEvents: function () {
     $(window).off('scroll');
-    $(window).off('resize');
   },
 
   renderBestOf: function () {
@@ -79,30 +66,20 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   scrollOrFixMap: function () {
-    // do stuff if map hasn't rendered yet
     var headerHeight = $('#navbar').height();
+    var distTop = 15;
+    var fixedTopPos = $(window).scrollTop() - headerHeight + distTop;
+    
     if ($(window).scrollTop() > headerHeight) {
-      $('#map').addClass('fixed-map');
-
-      // fix to proper left position
-      var leftPosition = this.findMapLeftPosition();
-      $('#map').css('left', leftPosition + 'px');
-
-      // fix to proper right position
-      $('#map').css('top', 20 + 'px');
-
-      // keep proper sidebar width
-      var mapWidth = $('#map').width();
-      $('#sidebar-right').css('min-width', mapWidth + 5);
+      $('#map').css('top', fixedTopPos + 'px');
     } else {
-      $('#map').removeClass('fixed-map');
+      $('#map').css('top', distTop + 'px');
     }
   },
 
   search: function (query) {
+    if (!query) query = '';
     this.removeEvents();
-
-    if (!query) return;
     this.addSearchEvents();
 
     var businesses = new Yup.Collections.Businesses();
@@ -110,14 +87,14 @@ Yup.Routers.Router = Backbone.Router.extend({
       data: { searchKeys: query }
     });
 
-    this._swapSidebar({
-      collection: businesses,
-      query: query,
-    });
+    // this._swapSidebar({
+    //   collection: businesses,
+    //   query: query,
+    // });
 
     var view = new Yup.Views.SearchShow({
-      query: query,
-      collection: businesses
+      collection: businesses,
+      query: query
     });
 
     this._swapView(view);
@@ -127,7 +104,7 @@ Yup.Routers.Router = Backbone.Router.extend({
     this.sidebarRight && this.sidebarRight.remove();
     this.sidebarRight = new Yup.Views.SidebarRight(options);
 
-    $('#main').append(this.sidebarRight.render().$el);
+    this.$rootEl.append(this.sidebarRight.render().$el);
   },
 
   _swapView: function (view) {
@@ -147,6 +124,6 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
-    this.sidebarRight && this.sidebarRight.remove();
+    // this.sidebarRight && this.sidebarRight.remove();
   },
 });
