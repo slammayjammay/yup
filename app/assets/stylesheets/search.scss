@@ -1,5 +1,9 @@
 .search-show {
   display: flex;
+  min-height: 100%;
+  background-color: #EFEFEF;
+  border-left: 1px solid rgb(160, 160, 160);
+  border-right: 1px solid rgb(160, 160, 160);
 
   .results {
     flex: 8;

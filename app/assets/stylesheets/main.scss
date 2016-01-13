@@ -1,15 +1,12 @@
 #main {
   width: 75%;
   min-width: 1000px;
-  min-height: 100%;
+  height: 100%;
   margin: auto;
-  background-color: #EFEFEF;
-  border-left: 1px solid rgb(160, 160, 160);
-  border-right: 1px solid rgb(160, 160, 160);
 }
 
 #sidebar-left {
-  float: left;
+  // float: left;
   margin-top: 20px;
   margin-left: 20px;
   min-width: 200px;
@@ -23,7 +20,7 @@
   }
 
   .user-info {
-    float: left;
+    // float: left;
   }
 
   h1 {
