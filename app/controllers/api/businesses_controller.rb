@@ -37,6 +37,6 @@ class Api::BusinessesController < ApplicationController
     end
 
     @images = []
-    2.times { @images.push Image.find(rand(Image.count)).url }
+    2.times { @images.push Image.find(rand(Image.count - 1) + 1).url }
   end
 end
