@@ -14,10 +14,10 @@
   <% if (followed_user) { %>
     <span class="glyphicon glyphicon-ok-sign">followed</span><br>
   <% } %>
-  <img class="user-image" src="<%= userImage %>"><br>
+  <img class="user-image" src="<%= userImageUrl %>"><br>
   <a href="#users/<%= userId %>"><%= userName %></a>
 </div>
 
-  <div class="review-info">
-    <p><%= review.escape('excerpt') %></p>
+<div class="review-info">
+  <p><%= review.escape('excerpt') %></p>
 </div>
