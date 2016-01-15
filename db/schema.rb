@@ -42,8 +42,7 @@ ActiveRecord::Schema.define(version: 20160111205231) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",                                                                                                               null: false
-    t.string   "last_name",                                                                                                                null: false
+    t.string   "name",                                                                                                                     null: false
     t.string   "email",                                                                                                                    null: false
     t.string   "password_digest",                                                                                                          null: false
     t.string   "session_token",                                                                                                            null: false

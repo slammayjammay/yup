@@ -1,8 +1,7 @@
 # Create sample users
 50.times do
   User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: Faker::Internet.email,
     image_url: Faker::Avatar.image,
     password_digest: BCrypt::Password.create('password'),
@@ -25,8 +24,7 @@ end
 
 # Create guest user
 User.create(
-  first_name: 'Guest',
-  last_name: 'User',
+  name: 'Guest User',
   email: 'example@email.com',
   image_url: 'http://captainkimo.com/wp-content/uploads/2012/01/Brown-Pelican-in-Winter-Plumage-Jupiter-Florida-490x326.jpg',
   password_digest: BCrypt::Password.create('password'),
@@ -59,16 +57,3 @@ sample_cats.each do |cat|
     Image.create(url: bus_data.image_url)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-#

@@ -1,5 +1,5 @@
-json.extract! @user, :id, :first_name, :last_name, :email, :image_url, :reviews,
-  :followers, :follows
+json.extract! @user, :id, :name, :email, :image_url, :reviews, :followers,
+  :follows
 
 if current_user
   following = @user.followings.where(follower_id: current_user.id)
