@@ -16,7 +16,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     business.yelpReviews().each(function (review) {
       var view = new Yup.Views.ReviewIndexItem({
         model: review,
-        business: this.model
+        businessId: this.model.get('id')
       });
       this.addSubview('.business-reviews', view);
     }.bind(this));
