@@ -1,15 +1,1 @@
-<% if (user.get('id') == CURRENT_USER_ID) { %>
-  <% if (user.reviews().length == 0) { %>
-    <h1 class="title">You have no reviews!</h1>
-  <% } else { %>
-    <h1 class="title">Your reviews:</h1>
-  <% } %>
-<% } else { %>
-  <% if (user.reviews().length == 0) { %>
-    <h1 class="title"><%= user.escape('first_name') %> has no reviews!</h1>
-  <% } else { %>
-    <h1 class="title"><%= user.escape('first_name') %>'s reviews:</h1>
-  <% } %>
-<% } %>
-<div class="user-reviews">
-</div>
+<div class="user-reviews"></div>
