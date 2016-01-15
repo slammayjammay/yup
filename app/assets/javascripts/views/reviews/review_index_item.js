@@ -1,19 +1,38 @@
 Yup.Views.ReviewIndexItem = Backbone.View.extend({
   template: JST['reviews/index_item'],
-  className: "user review-item",
+  className: "review-item",
 
   initialize: function (options) {
-    this.business = options.business;
-    // this.user = new Yup.Models.User({ id: this.model.get('user_id') });
-    // this.user.fetch();
+    this.business = new Yup.Models.Business({ id: options.businessId });
+    this.business.fetch();
 
-    this.listenTo(this.model, "sync", this.render);
-    // this.listenTo(this.user, "sync", this.render);
+    // If this model is a yup review, we need to fetch the correct user and
+    // store the info in an instance variable. Otherwise, this model has all
+    // relevant user info.
+    if (this.model.isYupReview()) {
+      this.userInfo = {}; // avoid rendering issues
+      this.user = new Yup.Models.User({ id: this.model.get('user_id') });
+      this.user.fetch({
+        success: this.getUserInfo.bind(this, true)
+      });
+      this.listenTo(this.user, "sync", this.render);
+    } else {
+      this.getUserInfo();
+    }
 
     this.$el.addClass('begin');
     setTimeout(function () {
       this.$el.removeClass('begin');
     }.bind(this), 100);
+  },
+
+  getUserInfo: function (isYupReview) {
+    var user = isYupReview ? this.user.attributes : this.model.get('user').hash;
+    this.userInfo = {
+      id: user.id,
+      imageUrl: user.image_url,
+      name: user.name
+    };
   },
 
   displayRating: function () {
@@ -31,10 +50,10 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
       business: this.business,
       followed_user: false,
       review: this.model,
-      timeCreated: this.model.get('time_created') * 1000,
-      userId: 1,
-      userImage: this.model.get('user').hash.image_url,
-      userName: this.model.get('user').hash.name
+      timeCreated: this.model.getTimeCreated(),
+      userId: this.userInfo.id,
+      userImageUrl: this.userInfo.imageUrl,
+      userName: this.userInfo.name
     });
     this.$el.html(content);
     this.displayRating();
