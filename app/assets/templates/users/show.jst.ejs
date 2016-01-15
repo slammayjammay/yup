@@ -3,7 +3,7 @@
     <%= user.escape('first_name') %> <%= user.escape('last_name') %> <br>
   </h1 class="title">
 
-  <div class="container">
+  <div class="content">
     <img src="<%= user.escape('image_url') %>">
     <div class="user-info">
       Following: <%= user.follows().length %><br>
