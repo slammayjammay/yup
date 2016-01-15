@@ -2,15 +2,13 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   id: 'user-show',
   events: {
-    "click li#edit": "renderEdit",
-    "click li#followers": "renderFollowers",
-    "click li#reviews": "renderReviews",
+    "click ul.tabs li": "swapView",
     "submit form": "edit"
   },
 
   initialize: function () {
-    this.renderReviews();
-    this.listenTo(this.model, "sync change", this.render);
+    this.listenTo(this.model, "sync", this.render);
+    this.listenToOnce(this.model, "sync", this.prepareSubviews);
   },
 
   addSidebar: function () {
@@ -39,39 +37,22 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     });
   },
 
-  render: function () {
-    var content = this.template({ user: this.model });
-    this.$el.html(content);
-    this.attachSubviews();
-    return this;
-  },
-
-  renderEdit: function () {
-    this.changeSelectedTab('edit');
-    var view = new Yup.Views.UserEdit({
-      model: this.model
-    });
-    this.addSubview('.user-main', view, true);
-    this._swapMainContent(view);
-  },
-
-  renderFollowers: function () {
-    this.changeSelectedTab('followers');
-    var view = new Yup.Views.UserFollowers({
-      model: this.model
-    });
-    this.addSubview('.user-main', view, true);
-    this._swapMainContent(view);
-  },
-
-  renderReviews: function () {
-    this.changeSelectedTab('reviews');
-    var view = new Yup.Views.UserReviews({
+  prepareSubviews: function () {
+    this.editView = new Yup.Views.UserEdit({ model: this.model });
+    this.followersView = new Yup.Views.UserFollowers({ model: this.model });
+    this.reviewsView = new Yup.Views.UserReviews({
       model: this.model,
       collection: this.collection
     });
-    this.addSubview('.user-main', view, true);
-    this._swapMainContent(view);
+
+    this.changeSelectedTab('reviews');
+    this.$('.user-main').html(this.reviewsView.render().$el);
+  },
+
+  render: function () {
+    var content = this.template({ user: this.model });
+    this.$el.html(content);
+    return this;
   },
 
   renderSuccess: function () {
@@ -91,11 +72,9 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     }, 3000);
   },
 
-  _swapMainContent: function (view) {
-    this._mainView && this.removeSubview('.user-main', this._mainView);
-    this._mainView = view;
-    this.attachSubviews();
-    this.$('.user-main').html(view.$el)
-    view.render();
+  swapView: function (event) {
+    var selector = $(event.currentTarget).attr('id');
+    this.changeSelectedTab(selector);
+    this.$('.user-main').html(this[selector + 'View'].render().$el);
   }
 });
