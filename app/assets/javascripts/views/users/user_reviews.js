@@ -5,8 +5,6 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, "sync", this.renderReviews);
     this.renderReviews();
   },
 
@@ -22,14 +20,12 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
   },
 
   renderReviews: function () {
-    var that = this;
-    this.collection.each(function (review, index) {
+    this.collection.each(function (review) {
       var view = new Yup.Views.ReviewIndexItem({
-        model: review,
-        className: "business review-item"
+        model: review
       });
 
-      that.addSubview('.user-reviews', view);
-    });
+      this.addSubview('.user-reviews', view);
+    }.bind(this));
   },
 });
