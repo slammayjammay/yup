@@ -3,7 +3,6 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.addFollows);
-    this.addFollows();
   },
 
   addFollows: function () {
@@ -21,4 +20,18 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   },
+
+  seedFollows: function (collection, name) {
+    collection.each(function (model) {
+      if (model.get('user').hash.name === name) {
+        // make sure followed user is not the same as following user
+        return;
+      }
+      var view = new Yup.Views.UserIndexItem({
+        model: model.get('user').hash,
+        yelpUser: true
+      });
+      this.addSubview('.followers', view);
+    }.bind(this));
+  }
 });
