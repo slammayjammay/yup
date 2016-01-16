@@ -29,9 +29,9 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
     this.model.save(data, {
       success: function () {
-        this.renderReviews();
         setTimeout(function () {
           this.renderSuccess();
+          this.swapView('reviews');
         }.bind(this), 0);
       }.bind(this)
     });
@@ -45,8 +45,9 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       collection: this.collection
     });
 
-    this.changeSelectedTab('reviews');
-    this.$('.user-main').html(this.reviewsView.render().$el);
+    this.swapView('reviews');
+    // this.changeSelectedTab('reviews');
+    // this.$('.user-main').html(this.reviewsView.render().$el);
   },
 
   render: function () {
@@ -72,8 +73,10 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     }, 3000);
   },
 
-  swapView: function (event) {
-    var selector = $(event.currentTarget).attr('id');
+  swapView: function (selector) {
+    if (typeof selector !== 'string') {
+      selector = $(selector.currentTarget).attr('id');
+    }
     this.changeSelectedTab(selector);
     this.$('.user-main').html(this[selector + 'View'].render().$el);
   }
