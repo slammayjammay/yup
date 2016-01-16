@@ -29,13 +29,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
-  addSidebar: function () {
-    var view = new Yup.Views.SidebarLeft({
-      model: this.model
-    });
-    this.$el.prepend(view.render().$el);
-  },
-
   changeSelectedTab: function (selector) {
     this.$('li').removeClass('selected');
     this.$('#' + selector).addClass('selected');
