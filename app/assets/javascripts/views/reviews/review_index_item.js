@@ -12,6 +12,7 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
       id: this.model.get('business_id')
     });
     this.business.fetch();
+    this.listenTo(this.business, 'sync', this.render);
 
     // If this model is a yup review, we need to fetch the correct user and
     // store the info in an instance variable. Otherwise, this model has all
