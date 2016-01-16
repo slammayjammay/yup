@@ -109,8 +109,7 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   yelpUserShow: function (name, imageUrl) {
-    var randId = parseInt(Math.random() * 100);
-    var user = new Yup.Models.User({ id: randId });
+    var user = new Yup.Models.User({ id: parseInt(Math.random() * 100) });
     user.fetch({
       data: {
         imageUrl: imageUrl,
@@ -125,7 +124,6 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
-    Backbone.history.navigate('users/' + randId, { replace: true });
   },
 
   _swapView: function (view) {
