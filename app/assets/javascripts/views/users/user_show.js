@@ -11,7 +11,10 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       this.collection = new Yup.Collections.Reviews();
       this.collection.fetch({
         url: 'api/reviews/sample',
-        success: this.addReviews.bind(this)
+        success: function (collection) {
+          this.updateSidebarReviews(collection.length);
+          this.addReviews();
+        }.bind(this)
       });
     }
 
@@ -57,8 +60,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     });
 
     this.swapView('reviews');
-    // this.changeSelectedTab('reviews');
-    // this.$('.user-main').html(this.reviewsView.render().$el);
   },
 
   render: function () {
@@ -90,5 +91,9 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     }
     this.changeSelectedTab(selector);
     this.$('.user-main').html(this[selector + 'View'].render().$el);
+  },
+
+  updateSidebarReviews: function (num) {
+    this.$('#num-reviews').html(num);
   }
 });
