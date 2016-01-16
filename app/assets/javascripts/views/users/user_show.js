@@ -8,18 +8,34 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     if (options.yelpUser) {
-      this.collection = new Yup.Collections.Reviews();
-      this.collection.fetch({
-        url: 'api/reviews/sample',
-        success: function (collection) {
-          this.updateSidebarReviews(collection.length);
-          this.addReviews();
-        }.bind(this)
-      });
+      this.initYelpUser();
     }
 
     this.listenTo(this.model, "sync", this.render);
     this.listenToOnce(this.model, "sync", this.prepareSubviews);
+  },
+
+  initYelpUser: function () {
+    // get sample reviews
+    this.collection = new Yup.Collections.Reviews();
+    this.collection.fetch({
+      url: 'api/reviews/sample',
+      data: { limit: 10 },
+      success: function (collection) {
+        this.updateSidebarReviews(collection.length);
+        this.addReviews();
+      }.bind(this)
+    });
+
+    // get sample followers
+    this.followings = new Yup.Collections.Reviews();
+    this.followings.fetch({
+      url: 'api/reviews/sample',
+      data: { limit: 10 },
+      success: function (collection) {
+        this.followingsView.seedFollows(collection, this.model.get('name'));
+      }.bind(this)
+    });
   },
 
   addReviews: function () {
@@ -53,7 +69,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   prepareSubviews: function () {
     this.editView = new Yup.Views.UserEdit({ model: this.model });
-    this.followersView = new Yup.Views.UserFollowers({ model: this.model });
+    this.followingsView = new Yup.Views.UserFollowers({ model: this.model });
     this.reviewsView = new Yup.Views.UserReviews({
       model: this.model,
       collection: this.collection
