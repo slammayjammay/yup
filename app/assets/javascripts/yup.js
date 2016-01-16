@@ -7,6 +7,9 @@ window.Yup = {
     var router = new Yup.Routers.Router({
       $rootEl: $('#main')
     });
+    router.on('route', function () {
+      $(window).scrollTop(0);
+    });
 
     var navbar = new Yup.Views.Navbar({
       router: router
