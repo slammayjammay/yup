@@ -6,9 +6,12 @@
   <div class="content">
     <img src="<%= user.escape('image_url') %>">
     <div class="user-info">
-      Following: <%= user.follows().length %><br>
-      Followers: <%= user.followers().length %><br>
-      Number of Reviews: <%= user.reviews().length %><br>
+      <p id="num-following">Following: <%= user.follows().length %></p>
+      <p id="num-followers">Followers: <%= user.followers().length %></p>
+      <p>
+        Number of Reviews:
+        <span id="num-reviews"><%= user.reviews().length %></span>
+      </p>
     </div>
   </div>
 </div>
