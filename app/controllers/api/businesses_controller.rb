@@ -10,31 +10,9 @@ class Api::BusinessesController < ApplicationController
     ).businesses
   end
 
-
   def show
-    # TODO: clean up
     business_name = URLify.deaccentuate(params[:id])
     @business = Yelp.client.business(business_name)
-
-    # Get a random category @business fits into. A category is a list of the
-    # English writing of category and one for use in an API request, e.g.
-    # ['Fish & Chips', 'fishnchips']
-    category = @business.categories.sample[1]
-
-    # Yelp's API only responds with a max. of one review per business. For
-    # seeding purposes, call for several businesses in the same category
-    # and use each of their reviews.
-    # TODO: make this async
-    other_businesses = Yelp.client.search(
-      @business.location.city,
-      { category_filter: category, limit: 3 }
-    )
-
-    @yelp_reviews = []
-    other_businesses.businesses.each do |business|
-      sample = Yelp.client.business(URLify.deaccentuate(business.id))
-      @yelp_reviews.push(sample.reviews.first)
-    end
 
     @images = []
     2.times { @images.push Image.find(rand(Image.count - 1) + 1).url }
