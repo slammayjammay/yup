@@ -1,7 +1,16 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.where(id: params[:id]).includes(:reviews, :followers, :follows).first
-    render :show
+    if params[:yelpUser]
+      render json: {
+        name: params[:name],
+        image_url: params[:imageUrl],
+        reviews: [],
+        followers: [],
+        followings: []
+      }
+    else
+      @user = User.where(id: params[:id]).includes(:reviews, :followers, :follows).first
+    end
   end
 
   def update
