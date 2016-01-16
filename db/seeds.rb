@@ -9,19 +9,6 @@
   )
 end
 
-users = User.all
-user_ids = (User.first.id..User.last.id).to_a
-
-# Create sample follows
-users.each do |user|
-  5.times do |num|
-    Following.create!(
-      follower_id: user.id,
-      followed_id: user_ids.sample
-    )
-  end
-end
-
 # Create guest user
 User.create(
   name: 'Guest User',
@@ -30,6 +17,19 @@ User.create(
   password_digest: BCrypt::Password.create('password'),
   session_token: 'session_token'
 )
+
+# Create sample follows
+users = User.all
+user_ids = (User.first.id..User.last.id).to_a
+
+users.each do |user|
+  5.times do |num|
+    Following.create!(
+      follower_id: user.id,
+      followed_id: user_ids.sample
+    )
+  end
+end
 
 # Sample review
 Review.create(
