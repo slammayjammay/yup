@@ -22,7 +22,9 @@ class Api::ReviewsController < ApplicationController
     @sample_reviews = []
     sample_businesses.businesses.each do |business|
       sample = Yelp.client.business(URLify.deaccentuate(business.id))
-      @sample_reviews.push(sample.reviews.first)
+      sample_review = sample.reviews.first
+      sample_review.instance_variable_set(:@business_id, business.id)
+      @sample_reviews.push(sample_review)
     end
   end
 
