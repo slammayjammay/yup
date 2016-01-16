@@ -6,9 +6,27 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     "submit form": "edit"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    if (options.yelpUser) {
+      this.collection = new Yup.Collections.Reviews();
+      this.collection.fetch({
+        url: 'api/reviews/sample',
+        success: this.addReviews.bind(this)
+      });
+    }
+
     this.listenTo(this.model, "sync", this.render);
     this.listenToOnce(this.model, "sync", this.prepareSubviews);
+  },
+
+  addReviews: function () {
+    this.collection.each(function (review) {
+      var view = new Yup.Views.ReviewIndexItem({
+        model: review,
+        yelpUser: this.model
+      });
+      this.addSubview('.user-reviews', view);
+    }.bind(this));
   },
 
   addSidebar: function () {
