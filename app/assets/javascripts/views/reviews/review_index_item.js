@@ -1,6 +1,9 @@
 Yup.Views.ReviewIndexItem = Backbone.View.extend({
   template: JST['reviews/index_item'],
   className: "review-item",
+  events: {
+    'click .user-info a': 'redirectToUser'
+  },
 
   initialize: function (options) {
     this.business = new Yup.Models.Business({ id: options.businessId });
@@ -40,6 +43,17 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     rating = (Math.round(rating * 2) / 2).toFixed(1);
     this.$("#input-id").rating({ disabled: true });
     this.$("#input-id").rating('update', rating);
+  },
+
+  redirectToUser: function (event) {
+    if (!this.model.isYupReview()) {
+      event.preventDefault();
+      var imageUrl = encodeURIComponent(this.userInfo.imageUrl);
+      Backbone.history.navigate(
+        'yelpUsers/' + this.userInfo.name + '/' + imageUrl,
+        { trigger: true }
+      );
+    }
   },
 
   render: function () {

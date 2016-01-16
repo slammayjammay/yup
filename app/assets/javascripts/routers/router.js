@@ -5,16 +5,16 @@ Yup.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "search",
-    "feed": "feed",
-    "users/:id": "userShow",
     "businesses/:id": "businessShow",
-    "search(/:query)": "search"
+    "feed": "feed",
+    "search(/:query)": "search",
+    "users/:id": "userShow",
+    "yelpUsers/:name/:imageUrl": "yelpUserShow"
   },
 
   addSearchEvents: function () {
     $(window).scroll(function() {
       // TODO: Allow max of 20 results, then paginate
-      // When user scrolls to the bottom, load more results
       if ($(window).scrollTop() + $(window).height() > $(document).height() - 1) {
         this._currentView.fetchNextPage();
       }
@@ -106,6 +106,26 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
+  },
+
+  yelpUserShow: function (name, imageUrl) {
+    var randId = parseInt(Math.random() * 100);
+    var user = new Yup.Models.User({ id: randId });
+    user.fetch({
+      data: {
+        imageUrl: imageUrl,
+        name: name,
+        yelpUser: true
+      }
+    });
+
+    var view = new Yup.Views.UserShow({
+      model: user,
+      collection: user.reviews()
+    });
+
+    this._swapView(view);
+    Backbone.history.navigate('users/' + randId, { replace: true });
   },
 
   _swapView: function (view) {
