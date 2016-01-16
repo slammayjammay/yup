@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace 'api', defaults: { format: :json } do
     resources 'users', only: [:show, :update, :destroy]
     resources 'businesses', only: [:index, :show]
+    get 'reviews/sample' => 'reviews#sample'
     resources 'reviews', only: [:index, :create, :show]
     resources 'followings', only: [:create, :show, :destroy]
   end
