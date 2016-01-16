@@ -6,7 +6,11 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.business = new Yup.Models.Business({ id: options.businessId });
+    this.yelpUser = options.yelpUser;
+
+    this.business = new Yup.Models.Business({
+      id: this.model.get('business_id')
+    });
     this.business.fetch();
 
     // If this model is a yup review, we need to fetch the correct user and
@@ -36,6 +40,11 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
       imageUrl: user.image_url,
       name: user.name
     };
+
+    if (this.yelpUser) {
+      this.userInfo.name = this.yelpUser.get('name');
+      this.userInfo.imageUrl = this.yelpUser.get('image_url');
+    }
   },
 
   displayRating: function () {
