@@ -53,7 +53,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   createEditView: function () {
     this.editView = new Yup.Views.UserEdit({ model: this.model });
-    this.$('.user-main').html(this.editView.render().$el);
+    this.$('#user-main').html(this.editView.render().$el);
   },
 
   createFollowingsView: function () {
@@ -64,7 +64,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       options.collection = this.collection;
     }
     this.followingsView = new Yup.Views.UserFollowers(options);
-    this.$('.user-main').html(this.followingsView.render().$el);
+    this.$('#user-main').html(this.followingsView.render().$el);
   },
 
   createReviewsView: function () {
@@ -119,7 +119,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     }
     this.changeSelectedTab(selector);
     if (this[selector + 'View']) {
-      this.$('.user-main').html(this[selector + 'View'].render().$el);
+      this.$('#user-main').html(this[selector + 'View'].render().$el);
     } else {
       this.createView(selector);
     }

@@ -9,7 +9,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
   addFollows: function () {
     this.model.follows().each(function (follower) {
       var view = new Yup.Views.UserIndexItem({ model: follower });
-      this.addSubview('.followers', view);
+      this.addSubview('#followers', view);
     }.bind(this));
 
     this.render();
@@ -32,7 +32,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
         model: model.get('user').hash,
         yelpUser: true
       });
-      this.addSubview('.followers', view);
+      this.addSubview('#followers', view);
     }.bind(this));
   }
 });
