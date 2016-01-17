@@ -1,12 +1,11 @@
 class Api::UsersController < ApplicationController
   def show
-    if params[:yelpUser]
+    if params[:isYelpUser]
       render json: {
+        id: params[:id],
         name: params[:name],
         image_url: params[:imageUrl],
-        reviews: [],
-        followers: [],
-        followings: []
+        isYelpUser: true
       }
     else
       @user = User.where(id: params[:id]).includes(:reviews, :followers, :follows).first
