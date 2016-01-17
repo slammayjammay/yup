@@ -5,11 +5,16 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-  this.isYelpUser = options.isYelpUser;
-    this.listenTo(this.collection, 'sync', function () {
-      this.renderReviews();
-      this.render();
-    });
+    if (options.isYelpUser) {
+      this.listenTo(this.collection, 'sync', this.seedReviews);
+    } else {
+      this.listenTo(this.collection, 'add', this.addReview);
+    }
+  },
+
+  addReview: function (review) {
+    var view = new Yup.Views.ReviewIndexItem({ model: review });
+    this.addSubview('.user-reviews', view);
   },
 
   redirectToSearch: function () {
@@ -23,7 +28,7 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     return this;
   },
 
-  renderReviews: function () {
+  seedReviews: function () {
     this.collection.each(function (review) {
       var view = new Yup.Views.ReviewIndexItem({
         model: review,
@@ -32,5 +37,5 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
 
       this.addSubview('.user-reviews', view);
     }.bind(this));
-  },
+  }
 });

@@ -8,6 +8,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     if (options.isYelpUser) {
+      this.isYelpUser = options.isYelpUser;
       this.collection = new Yup.Collections.Reviews();
       this.getSampleReviews();
     }
@@ -48,7 +49,8 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     if (selector === 'reviews') {
       this.reviewsView = new Yup.Views.UserReviews({
         model: this.model,
-        collection: this.collection
+        collection: this.collection,
+        isYelpUser: this.isYelpUser
       });
     } else if (selector === 'followings') {
       this.followingsView = new Yup.Views.UserFollowers({
