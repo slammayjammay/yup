@@ -1,4 +1,9 @@
-json.extract! @user, :id, :name, :email, :image_url, :reviews, :followers,
+json.reviews @user.reviews do |review|
+  json.extract! review, :id, :excerpt, :rating, :business_id, :created_at
+  json.user @user, :id, :image_url, :name
+end
+
+json.extract! @user, :id, :name, :email, :image_url, :followers,
   :follows
 
 if current_user
