@@ -1,12 +1,11 @@
 <div class="content-container">
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
   <p class="context">
-    <strong>
-      <a href="#businesses/<%= business.get('id') %>"><%= business.get('name') %></a>
-    </strong> <br>
-      <small>
-        (<%= $.timeago(timeCreated) %>)
-      </small>
+    <a href="#businesses/<%= business.get('id') %>">
+      <%= business.get('name') %></a><br>
+    <small>
+      (<%= $.timeago(timeCreated) %>)
+    </small>
   </p>
 </div>
 

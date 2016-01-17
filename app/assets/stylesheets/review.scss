@@ -36,13 +36,13 @@
     height: auto;
   }
 
+  a {
+    font-weight: bold;
+  }
+
   .user-info {
     margin-right: 10px;
     float: left;
     text-align: center;
-
-    a {
-      font-weight: bold;
-    }
   }
 }
