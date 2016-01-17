@@ -120,7 +120,7 @@ Yup.Routers.Router = Backbone.Router.extend({
 
     var view = new Yup.Views.UserShow({
       model: user,
-      yelpUser: true
+      isYelpUser: true
     });
 
     this._swapView(view);

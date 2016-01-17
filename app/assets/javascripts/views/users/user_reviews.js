@@ -4,8 +4,12 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     "click button": "redirectToSearch"
   },
 
-  initialize: function () {
-    this.renderReviews();
+  initialize: function (options) {
+  this.isYelpUser = options.isYelpUser;
+    this.listenTo(this.collection, 'sync', function () {
+      this.renderReviews();
+      this.render();
+    });
   },
 
   redirectToSearch: function () {
@@ -22,7 +26,8 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
   renderReviews: function () {
     this.collection.each(function (review) {
       var view = new Yup.Views.ReviewIndexItem({
-        model: review
+        model: review,
+        yelpUser: this.model
       });
 
       this.addSubview('.user-reviews', view);

@@ -7,50 +7,57 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    if (options.yelpUser) {
+    if (options.isYelpUser) {
+      this.collection = new Yup.Collections.Reviews();
       this.initYelpUser();
     }
 
     this.listenTo(this.model, "sync", this.render);
-    this.listenToOnce(this.model, "sync", this.prepareSubviews);
+    this.listenTo(this.model, 'sync', this.swapView.bind(this, 'reviews'));
+    this.swapView('reviews');
   },
 
   initYelpUser: function () {
-    // get sample reviews
-    this.collection = new Yup.Collections.Reviews();
-    this.collection.fetch({
-      url: 'api/reviews/sample',
-      data: { limit: 10 },
-      success: function (collection) {
-        this.updateSidebarReviews(collection.length);
-        this.addReviews();
-      }.bind(this)
-    });
+    // Set Timeout: allow rendering of the rest of the page
+    setTimeout(function () {
+      this.collection.fetch({
+        url: 'api/reviews/sample',
+        data: { limit: 10 },
+        success: function (collection) {
+          this.updateSidebarReviews(collection.length);
+        }.bind(this)
+      });
+    }.bind(this), 0);
 
     // get sample followers
-    this.followings = new Yup.Collections.Reviews();
-    this.followings.fetch({
-      url: 'api/reviews/sample',
-      data: { limit: 10 },
-      success: function (collection) {
-        this.followingsView.seedFollows(collection, this.model.get('name'));
-      }.bind(this)
-    });
-  },
-
-  addReviews: function () {
-    this.collection.each(function (review) {
-      var view = new Yup.Views.ReviewIndexItem({
-        model: review,
-        yelpUser: this.model
-      });
-      this.addSubview('.user-reviews', view);
-    }.bind(this));
+    // this.followings = new Yup.Collections.Reviews();
+    // this.followings.fetch({
+    //   url: 'api/reviews/sample',
+    //   data: { limit: 10 },
+    //   success: function (collection) {
+    //     this.followingsView.seedFollows(collection, this.model.get('name'));
+    //   }.bind(this)
+    // });
   },
 
   changeSelectedTab: function (selector) {
     this.$('li').removeClass('selected');
     this.$('#' + selector).addClass('selected');
+  },
+
+  createView: function (selector) {
+    if (selector === 'reviews') {
+      this.reviewsView = new Yup.Views.UserReviews({
+        model: this.model,
+        collection: this.collection
+      });
+    } else if (selector === 'followings') {
+      this.followingsView = new Yup.Views.UserFollowers({ model: this.model });
+      this.$('.user-main').html(this.followingsView.render().$el);
+    } else if (selector === 'edit') {
+      this.editView = new Yup.Views.UserEdit({ model: this.model });
+      this.$('.user-main').html(this.editView.render().$el);
+    }
   },
 
   edit: function (event) {
@@ -67,20 +74,10 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     });
   },
 
-  prepareSubviews: function () {
-    this.editView = new Yup.Views.UserEdit({ model: this.model });
-    this.followingsView = new Yup.Views.UserFollowers({ model: this.model });
-    this.reviewsView = new Yup.Views.UserReviews({
-      model: this.model,
-      collection: this.collection
-    });
-
-    this.swapView('reviews');
-  },
-
   render: function () {
     var content = this.template({ user: this.model });
     this.$el.html(content);
+    this.attachSubviews();
     return this;
   },
 
@@ -106,7 +103,11 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       selector = $(selector.currentTarget).attr('id');
     }
     this.changeSelectedTab(selector);
-    this.$('.user-main').html(this[selector + 'View'].render().$el);
+    if (this[selector + 'View']) {
+      this.$('.user-main').html(this[selector + 'View'].render().$el);
+    } else {
+      this.createView(selector);
+    }
   },
 
   updateSidebarReviews: function (num) {
