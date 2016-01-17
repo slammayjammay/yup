@@ -5,16 +5,23 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    if (options.isYelpUser) {
-      this.listenTo(this.collection, 'sync', this.seedReviews);
-    } else {
-      this.listenTo(this.collection, 'add', this.addReview);
-    }
+    this.listenTo(this.model, 'sync', function () {
+      if (this.model.isYelpUser) {
+        this.getSeedReviews();
+      } else {
+        this.addReviews();
+      }
+    });
   },
 
-  addReview: function (review) {
-    var view = new Yup.Views.ReviewIndexItem({ model: review });
-    this.addSubview('.user-reviews', view);
+  addReviews: function (userData) {
+    this.model.reviews().each(function (review) {
+      var view = new Yup.Views.ReviewIndexItem({
+        model: review,
+        userData: userData
+      });
+      this.addSubview('.user-reviews', view);
+    }.bind(this));
   },
 
   redirectToSearch: function () {
@@ -28,14 +35,16 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     return this;
   },
 
-  seedReviews: function () {
-    this.collection.each(function (review) {
-      var view = new Yup.Views.ReviewIndexItem({
-        model: review,
-        yelpUser: this.model
-      });
-
-      this.addSubview('.user-reviews', view);
-    }.bind(this));
+  getSeedReviews: function () {
+    var seedReviews = new Yup.Collections.Reviews();
+    seedReviews.fetch({
+      url: 'api/reviews/sample',
+      data: { limit: 10 },
+      success: function (collection, models) {
+        this.model.reviews().set(models, { parse: true });
+        this.addReviews(this.model);
+        $('#num-reviews').html(collection.length);
+      }.bind(this)
+    });
   }
 });

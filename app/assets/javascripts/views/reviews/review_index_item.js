@@ -6,7 +6,8 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.yelpUser = options.yelpUser;
+    // Overwrites review's user data -- used for seeding yelp users' show page
+    this.userData = options.userData;
 
     this.business = new Yup.Models.Business({
       id: this.model.get('business_id')
@@ -14,38 +15,10 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     this.business.fetch();
     this.listenTo(this.business, 'sync', this.render);
 
-    // If this model is a yup review, we need to fetch the correct user and
-    // store the info in an instance variable. Otherwise, this model has all
-    // relevant user info.
-    if (this.model.isYupReview()) {
-      this.userInfo = {}; // avoid rendering issues
-      this.user = new Yup.Models.User({ id: this.model.get('user_id') });
-      this.user.fetch({
-        success: this.getUserInfo.bind(this, true)
-      });
-      this.listenTo(this.user, "sync", this.render);
-    } else {
-      this.getUserInfo();
-    }
-
     this.$el.addClass('begin');
     setTimeout(function () {
       this.$el.removeClass('begin');
     }.bind(this), 100);
-  },
-
-  getUserInfo: function (isYupReview) {
-    var user = isYupReview ? this.user.attributes : this.model.get('user').hash;
-    this.userInfo = {
-      id: user.id,
-      imageUrl: user.image_url,
-      name: user.name
-    };
-
-    if (this.yelpUser) {
-      this.userInfo.name = this.yelpUser.get('name');
-      this.userInfo.imageUrl = this.yelpUser.get('image_url');
-    }
   },
 
   displayRating: function () {
@@ -56,11 +29,11 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
   },
 
   redirectToUser: function (event) {
-    if (!this.model.isYupReview()) {
+    if (this.model.isYelpReview) {
       event.preventDefault();
-      var imageUrl = encodeURIComponent(this.userInfo.imageUrl);
+      var imageUrl = encodeURIComponent(this.model.user().get('image_url'));
       Backbone.history.navigate(
-        'yelpUsers/' + this.userInfo.name + '/' + imageUrl,
+        'users/' + this.model.user().get('name') + '/' + imageUrl,
         { trigger: true }
       );
     }
@@ -70,14 +43,16 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     // if (this.user.get('follow_id')) {
     //   this.$('user-info').prepend('<div>').addClass('glyphicon glyphicon-ok');
     // }
+    var user = this.userData || this.model.user();
+
     var content = this.template({
       business: this.business,
       followed_user: false,
       review: this.model,
       timeCreated: this.model.getTimeCreated(),
-      userId: this.userInfo.id,
-      userImageUrl: this.userInfo.imageUrl,
-      userName: this.userInfo.name
+      userId: user.get('id'),
+      userImageUrl: user.get('image_url'),
+      userName: user.get('name')
     });
     this.$el.html(content);
     this.displayRating();

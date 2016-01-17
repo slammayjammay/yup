@@ -7,12 +7,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    if (options.isYelpUser) {
-      this.isYelpUser = options.isYelpUser;
-      this.collection = new Yup.Collections.Reviews();
-      this.getSampleReviews();
-    }
-
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, 'sync', this.swapView.bind(this, 'reviews'));
     this.swapView('reviews');
@@ -25,19 +19,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       data: { limit: 10 }
     });
     return followings;
-  },
-
-  getSampleReviews: function () {
-    // Set Timeout: allow rendering of the rest of the page
-    setTimeout(function () {
-      this.collection.fetch({
-        url: 'api/reviews/sample',
-        data: { limit: 10 },
-        success: function (collection) {
-          this.updateSidebarReviews(collection.length);
-        }.bind(this)
-      });
-    }.bind(this), 0);
   },
 
   changeSelectedTab: function (selector) {
@@ -69,9 +50,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   createReviewsView: function () {
     this.reviewsView = new Yup.Views.UserReviews({
-      model: this.model,
-      collection: this.collection,
-      isYelpUser: this.isYelpUser
+      model: this.model
     });
   },
 
