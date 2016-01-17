@@ -9,7 +9,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     if (options.isYelpUser) {
       this.collection = new Yup.Collections.Reviews();
-      this.initYelpUser();
+      this.getSampleReviews();
     }
 
     this.listenTo(this.model, "sync", this.render);
@@ -17,7 +17,16 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     this.swapView('reviews');
   },
 
-  initYelpUser: function () {
+  getSampleFollowings: function () {
+    followings = new Yup.Collections.Reviews();
+    followings.fetch({
+      url: 'api/reviews/sample',
+      data: { limit: 10 }
+    });
+    return followings;
+  },
+
+  getSampleReviews: function () {
     // Set Timeout: allow rendering of the rest of the page
     setTimeout(function () {
       this.collection.fetch({
@@ -28,16 +37,6 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
         }.bind(this)
       });
     }.bind(this), 0);
-
-    // get sample followers
-    // this.followings = new Yup.Collections.Reviews();
-    // this.followings.fetch({
-    //   url: 'api/reviews/sample',
-    //   data: { limit: 10 },
-    //   success: function (collection) {
-    //     this.followingsView.seedFollows(collection, this.model.get('name'));
-    //   }.bind(this)
-    // });
   },
 
   changeSelectedTab: function (selector) {
@@ -52,7 +51,10 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
         collection: this.collection
       });
     } else if (selector === 'followings') {
-      this.followingsView = new Yup.Views.UserFollowers({ model: this.model });
+      this.followingsView = new Yup.Views.UserFollowers({
+        model: this.model,
+        collection: this.getSampleFollowings()
+      });
       this.$('.user-main').html(this.followingsView.render().$el);
     } else if (selector === 'edit') {
       this.editView = new Yup.Views.UserEdit({ model: this.model });
