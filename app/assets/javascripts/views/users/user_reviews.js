@@ -24,17 +24,6 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
-  redirectToSearch: function () {
-    Backbone.history.navigate("search", { trigger: true });
-  },
-
-  render: function () {
-    var content = this.template({ user: this.model });
-    this.$el.html(content);
-    this.attachSubviews();
-    return this;
-  },
-
   getSeedReviews: function () {
     var seedReviews = new Yup.Collections.Reviews();
     seedReviews.fetch({
@@ -46,5 +35,16 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
         $('#num-reviews').html(collection.length);
       }.bind(this)
     });
+  },
+
+  redirectToSearch: function () {
+    Backbone.history.navigate("search", { trigger: true });
+  },
+
+  render: function () {
+    var content = this.template({ user: this.model });
+    this.$el.html(content);
+    this.attachSubviews();
+    return this;
   }
 });
