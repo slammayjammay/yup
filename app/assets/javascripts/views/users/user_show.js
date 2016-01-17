@@ -46,25 +46,33 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   createView: function (selector) {
-    if (selector === 'reviews') {
-      this.reviewsView = new Yup.Views.UserReviews({
-        model: this.model,
-        collection: this.collection,
-        isYelpUser: this.isYelpUser
-      });
-    } else if (selector === 'followings') {
-      var options = { model: this.model };
-      if (this.isYelpUser) {
-        options.collection = this.getSampleFollowings();
-      } else {
-        options.collection = this.collection;
-      }
-      this.followingsView = new Yup.Views.UserFollowers(options);
-      this.$('.user-main').html(this.followingsView.render().$el);
-    } else if (selector === 'edit') {
-      this.editView = new Yup.Views.UserEdit({ model: this.model });
-      this.$('.user-main').html(this.editView.render().$el);
+    if (selector === 'reviews')         this.createReviewsView();
+    else if (selector === 'followings') this.createFollowingsView();
+    else if (selector === 'edit')       this.createEditView();
+  },
+
+  createEditView: function () {
+    this.editView = new Yup.Views.UserEdit({ model: this.model });
+    this.$('.user-main').html(this.editView.render().$el);
+  },
+
+  createFollowingsView: function () {
+    var options = { model: this.model };
+    if (this.isYelpUser) {
+      options.collection = this.getSampleFollowings();
+    } else {
+      options.collection = this.collection;
     }
+    this.followingsView = new Yup.Views.UserFollowers(options);
+    this.$('.user-main').html(this.followingsView.render().$el);
+  },
+
+  createReviewsView: function () {
+    this.reviewsView = new Yup.Views.UserReviews({
+      model: this.model,
+      collection: this.collection,
+      isYelpUser: this.isYelpUser
+    });
   },
 
   edit: function (event) {
