@@ -2,7 +2,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
   template: JST['users/followers'],
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.addFollows);
+    this.addFollows();
     this.listenTo(this.collection, 'sync', this.seedFollows);
   },
 

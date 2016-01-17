@@ -53,10 +53,13 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
         isYelpUser: this.isYelpUser
       });
     } else if (selector === 'followings') {
-      this.followingsView = new Yup.Views.UserFollowers({
-        model: this.model,
-        collection: this.getSampleFollowings()
-      });
+      var options = { model: this.model };
+      if (this.isYelpUser) {
+        options.collection = this.getSampleFollowings();
+      } else {
+        options.collection = this.collection;
+      }
+      this.followingsView = new Yup.Views.UserFollowers(options);
       this.$('.user-main').html(this.followingsView.render().$el);
     } else if (selector === 'edit') {
       this.editView = new Yup.Views.UserEdit({ model: this.model });
