@@ -2,17 +2,27 @@ Yup.Models.Review = Backbone.Model.extend({
   urlRoot: '/api/reviews',
 
   getTimeCreated: function () {
-    if (this.isYupReview()) {
+    if (this.get('created_at')) {
       return new Date(this.get('created_at'));
     } else {
       return this.get('time_created') * 1000;
     }
   },
 
-  isYupReview: function () {
-    if (!this._isYupReview) {
-      this._isYupReview = this.get('created_at');
+  parse: function (res) {
+    if (res.user) {
+      this._user = new Yup.Models.User(res.user);
     }
-    return this._isYupReview;
+
+    if (res.user.hash) {
+      this._user = new Yup.Models.User(res.user.hash);
+      this.isYelpReview = true;
+    }
+
+    return res;
+  },
+
+  user: function () {
+    return this._user;
   }
 });
