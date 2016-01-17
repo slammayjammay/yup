@@ -3,6 +3,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.addFollows);
+    this.listenTo(this.collection, 'sync', this.seedFollows);
   },
 
   addFollows: function () {
@@ -21,9 +22,9 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     return this;
   },
 
-  seedFollows: function (collection, name) {
-    collection.each(function (model) {
-      if (model.get('user').hash.name === name) {
+  seedFollows: function () {
+    this.collection.each(function (model) {
+      if (model.get('user').hash.name === this.model.get('name')) {
         // make sure followed user is not the same as following user
         return;
       }
