@@ -20,15 +20,15 @@ Yup.Views.UserIndexItem = Backbone.View.extend({
     }.bind(this), 0)
   },
 
-  redirectToUser: function (event) {
+  redirectToUser: function () {
+    var url;
     if (this.isYelpUser) {
-      event.preventDefault();
       var imageUrl = encodeURIComponent(this.userImage);
-      Backbone.history.navigate(
-        'yelpUsers/' + this.userName + '/' + imageUrl,
-        { trigger: true }
-      );
+      url = 'yelpUsers/' + this.userName + '/' + imageUrl;
+    } else {
+      url = 'users/' + this.model.get('id');
     }
+    Backbone.history.navigate(url, { trigger: true });
   },
 
   render: function () {
