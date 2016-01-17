@@ -8,8 +8,8 @@ Yup.Routers.Router = Backbone.Router.extend({
     "businesses/:id": "businessShow",
     "feed": "feed",
     "search(/:query)": "search",
-    "users/:id": "userShow",
-    "yelpUsers/:name/:imageUrl": "yelpUserShow"
+    "users/:name/:imageUrl": "userShow",
+    "users/:id": "userShow"
   },
 
   addSearchEvents: function () {
@@ -95,34 +95,25 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  userShow: function (id) {
+  userShow: function (id, imageUrl) {
     this.removeEvents();
+    var data = {};
+
+    // if user is a yup user, id is a number. if user is a yelp user, id is the
+    // name of the user
+    if (!parseInt(id) > 0) {
+      data = {
+        name: id,
+        imageUrl: imageUrl,
+        isYelpUser: true
+      };
+      id = parseInt(Math.random() * 100);
+    }
 
     var user = new Yup.Models.User({ id: id });
-    user.fetch();
-    var view = new Yup.Views.UserShow({
-      model: user,
-      collection: user.reviews()
-    });
+    user.fetch({ data: data });
 
-    this._swapView(view);
-  },
-
-  yelpUserShow: function (name, imageUrl) {
-    var user = new Yup.Models.User({ id: parseInt(Math.random() * 100) });
-    user.fetch({
-      data: {
-        imageUrl: imageUrl,
-        name: name,
-        yelpUser: true
-      }
-    });
-
-    var view = new Yup.Views.UserShow({
-      model: user,
-      isYelpUser: true
-    });
-
+    var view = new Yup.Views.UserShow({ model: user });
     this._swapView(view);
   },
 
