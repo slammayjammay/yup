@@ -24,7 +24,7 @@ Yup.Views.UserIndexItem = Backbone.View.extend({
     var url;
     if (this.isYelpUser) {
       var imageUrl = encodeURIComponent(this.userImage);
-      url = 'yelpUsers/' + this.userName + '/' + imageUrl;
+      url = 'users/' + this.userName + '/' + imageUrl;
     } else {
       url = 'users/' + this.model.get('id');
     }
