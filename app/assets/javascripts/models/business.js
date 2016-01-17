@@ -2,17 +2,13 @@ Yup.Models.Business = Backbone.Model.extend({
   urlRoot: "/api/businesses",
 
   address: function () {
-    if (this._address) return this._address;
-    return [];
-  },
-
-  largeImageUrl: function () {
-    return this._largeImageUrl;
+    if (!this._address) return [];
+    return this._address;
   },
 
   parse: function (response) {
-    if (response.yelp_reviews) {
-      this.yelpReviews().set(response.yelp_reviews)
+    if (response.reviews) {
+      this.reviews().set(response.reviews)
     }
 
     if (!response.image_url) {
@@ -29,11 +25,11 @@ Yup.Models.Business = Backbone.Model.extend({
     return response;
   },
 
-  yelpReviews: function () {
-    if (!this._yelpReviews) {
-      this._yelpReviews = new Yup.Collections.Reviews();
+  reviews: function () {
+    if (!this._reviews) {
+      this._reviews = new Yup.Collections.Reviews();
     }
 
-    return this._yelpReviews;
+    return this._reviews;
   }
 });
