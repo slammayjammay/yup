@@ -6,19 +6,12 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     "submit form": "edit"
   },
 
-  initialize: function (options) {
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, 'sync', this.swapView.bind(this, 'reviews'));
-    this.swapView('reviews');
-  },
-
-  getSampleFollowings: function () {
-    followings = new Yup.Collections.Reviews();
-    followings.fetch({
-      url: 'api/reviews/sample',
-      data: { limit: 10 }
+  initialize: function () {
+    this.listenTo(this.model, 'sync', function () {
+      this.render();
+      this.swapView('reviews');
     });
-    return followings;
+    this.swapView('reviews');
   },
 
   changeSelectedTab: function (selector) {
@@ -38,13 +31,10 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   createFollowingsView: function () {
-    var options = { model: this.model };
-    if (this.isYelpUser) {
-      options.collection = this.getSampleFollowings();
-    } else {
-      options.collection = this.collection;
-    }
-    this.followingsView = new Yup.Views.UserFollowers(options);
+    this.followingsView = new Yup.Views.UserFollowers({
+      model: this.model,
+      numFollowing: this.numFollows
+    });
     this.$('#user-main').html(this.followingsView.render().$el);
   },
 
@@ -68,8 +58,26 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
     });
   },
 
+  getNumFollows: function () {
+    if (this.model.isYelpUser) {
+      this.numFollows = ~~(Math.random() * 15);
+      this.numFollowers = ~~(Math.random() * 15);
+    } else {
+      this.numFollows = this.model.follows().length;
+      this.numFollowers = this.model.followers().length;
+    }
+  },
+
   render: function () {
-    var content = this.template({ user: this.model });
+    this.getNumFollows();
+    var content = this.template({
+      numFollows: this.numFollows,
+      numFollowers: this.numFollowers,
+      numReviews: this.model.reviews().length,
+      userId: this.model.get('id'),
+      userImage: this.model.get('image_url'),
+      userName: this.model.get('name')
+    });
     this.$el.html(content);
     this.attachSubviews();
     return this;
