@@ -1,3 +1,12 @@
+# Create guest user
+User.create(
+  name: 'Guest User',
+  email: 'example@email.com',
+  image_url: 'http://captainkimo.com/wp-content/uploads/2012/01/Brown-Pelican-in-Winter-Plumage-Jupiter-Florida-490x326.jpg',
+  password_digest: BCrypt::Password.create('password'),
+  session_token: 'session_token'
+)
+
 # Create sample users
 50.times do
   User.create!(
@@ -8,15 +17,6 @@
     session_token: User.generate_session_token
   )
 end
-
-# Create guest user
-User.create(
-  name: 'Guest User',
-  email: 'example@email.com',
-  image_url: 'http://captainkimo.com/wp-content/uploads/2012/01/Brown-Pelican-in-Winter-Plumage-Jupiter-Florida-490x326.jpg',
-  password_digest: BCrypt::Password.create('password'),
-  session_token: 'session_token'
-)
 
 # Create sample follows
 users = User.all
