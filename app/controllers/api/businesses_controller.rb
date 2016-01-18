@@ -11,8 +11,9 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    business_name = URLify.deaccentuate(params[:id])
-    @business = Yelp.client.business(business_name)
+    business_id = URLify.deaccentuate(params[:id])
+    @business = Yelp.client.business(business_id)
+    @reviews = Review.where(business_id: business_id).includes(:user)
 
     @images = []
     2.times { @images.push Image.find(rand(Image.count - 1) + 1).url }
