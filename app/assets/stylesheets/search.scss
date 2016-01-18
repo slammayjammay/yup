@@ -15,6 +15,13 @@
     color: #555;
   }
 
+  .suggestions {
+    font-weight: bold;
+    ul {
+      font-weight: normal;
+    }
+  }
+
   .businesses {
     position: relative;
     margin: 10px auto;
