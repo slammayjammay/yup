@@ -2,7 +2,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   className: "business-show",
   template: JST['businesses/show'],
   events: {
-    "click .add-review": "renderForm",
+    "click .add-review": "renderForm"
   },
 
   initialize: function () {
@@ -22,7 +22,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     var view = new Yup.Views.ReviewIndexItem({
       model: review
     });
-    this.addSubview('.business-reviews', view, false);
+    this.addSubview('.business-reviews', view, !review.isYelpReview);
   },
 
   addImages: function () {
@@ -64,7 +64,8 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
       $backdrop.removeClass('begin');
     }, 0);
     var view = new Yup.Views.ReviewForm({
-      model: this.model
+      model: this.model,
+      collection: this.collection
     });
     $('.backdrop').append(view.render().$el);
   },
