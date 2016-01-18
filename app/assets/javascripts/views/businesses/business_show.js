@@ -6,24 +6,23 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.collection = new Yup.Collections.Reviews();
     this.collection.fetch({
       url: 'api/reviews/sample',
-      success: this.addReviews.bind(this)
+      remove: false
     });
 
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, "sync", this.addImages);
-    this.listenToOnce(this.model, "sync", this.renderMap);
+    this.listenTo(this.collection, 'add', this.addReview);
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.addImages);
+    this.listenToOnce(this.model, 'sync', this.renderMap);
   },
 
-  addReviews: function (business) {
-    this.collection.each(function (review) {
-      var view = new Yup.Views.ReviewIndexItem({
-        model: review
-      });
-      this.addSubview('.business-reviews', view);
-    }.bind(this));
+  addReview: function (review) {
+    review.set('business_id', this.model.get('id'));
+    var view = new Yup.Views.ReviewIndexItem({
+      model: review
+    });
+    this.addSubview('.business-reviews', view, false);
   },
 
   addImages: function () {
