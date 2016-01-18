@@ -88,13 +88,8 @@ Yup.Views.ReviewForm = Backbone.View.extend({
 
     review.save({}, {
       success: function () {
+        this.collection.add(review);
         this.renderSuccess();
-      //   this.model.fetch();
-      //   this.remove();
-      //   Backbone.history.navigate(
-      //     "businesses/" + this.model.get('id'),
-      //     { trigger: true }
-      //   );
       }.bind(this),
 
       error: function (model, response) {
