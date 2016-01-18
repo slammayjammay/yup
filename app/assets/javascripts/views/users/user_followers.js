@@ -1,18 +1,43 @@
 Yup.Views.UserFollowers = Backbone.CompositeView.extend({
   template: JST['users/followers'],
 
-  initialize: function () {
-    this.addFollows();
-    this.listenTo(this.collection, 'sync', this.seedFollows);
+  initialize: function (options) {
+    this.numFollowing = options.numFollowing;
+
+    if (this.model.isYelpUser) {
+      this.getSeedFollows();
+    } else {
+      this.addFollows();
+    }
   },
 
   addFollows: function () {
+    var actualNumFollowing = 0;
     this.model.follows().each(function (follower) {
+      // make sure follower and followed are not the same user
+      if (this.model.get('name') === follower.get('name')) {
+        return;
+      }
+
       var view = new Yup.Views.UserIndexItem({ model: follower });
       this.addSubview('#followers', view);
+
+      actualNumFollowing += 1;
     }.bind(this));
 
-    this.render();
+    $('#num-following').text(actualNumFollowing);
+  },
+
+  getSeedFollows: function () {
+    var seedFollows = new Yup.Collections.Users();
+    seedFollows.fetch({
+      url: 'api/users/sample',
+      data: { limit: this.numFollowing },
+      success: function (collection, models) {
+        this.model.follows().set(models, { parse: true });
+        this.addFollows();
+      }.bind(this)
+    });
   },
 
   render: function () {
@@ -20,19 +45,5 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  },
-
-  seedFollows: function () {
-    this.collection.each(function (model) {
-      if (model.get('user').hash.name === this.model.get('name')) {
-        // make sure followed user is not the same as following user
-        return;
-      }
-      var view = new Yup.Views.UserIndexItem({
-        model: model.get('user').hash,
-        yelpUser: true
-      });
-      this.addSubview('#followers', view);
-    }.bind(this));
   }
 });
