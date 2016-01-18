@@ -6,35 +6,26 @@ Yup.Views.UserIndexItem = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    if (options.yelpUser) {
-      this.isYelpUser = true;
-      this.userName = this.model.name;
-      this.userImage = this.model.image_url
-    } else {
-      this.listenTo(this.model, "sync", this.render);
-    }
-
     this.$el.addClass('user-index-item');
     setTimeout(function () {
       this.$el.removeClass('begin');
     }.bind(this), 0)
   },
 
-  redirectToUser: function () {
-    var url;
-    if (this.isYelpUser) {
-      var imageUrl = encodeURIComponent(this.userImage);
-      url = 'users/' + this.userName + '/' + imageUrl;
-    } else {
-      url = 'users/' + this.model.get('id');
+  redirectToUser: function (event) {
+    if (this.model.isYelpUser) {
+      event.preventDefault();
+      var imageUrl = encodeURIComponent(this.model.get('user_image'));
+      Backbone.history.navigate(
+        'users/' + this.model.get('name') + '/' + imageUrl
+      );
     }
-    Backbone.history.navigate(url, { trigger: true });
   },
 
   render: function () {
     var content = this.template({
-      userName: this.userName || this.model.get('name'),
-      userImage: this.userImage || this.model.get('image_url')
+      userName: this.model.get('name'),
+      userImage: this.model.get('image_url')
     });
     this.$el.html(content);
     return this;
