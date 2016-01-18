@@ -5,10 +5,7 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     'click .user-info a': 'redirectToUser'
   },
 
-  initialize: function (options) {
-    // Overwrites review's user data -- used for seeding yelp users' show page
-    this.userData = options.userData;
-
+  initialize: function () {
     this.business = new Yup.Models.Business({
       id: this.model.get('business_id')
     });
@@ -43,16 +40,14 @@ Yup.Views.ReviewIndexItem = Backbone.View.extend({
     // if (this.user.get('follow_id')) {
     //   this.$('user-info').prepend('<div>').addClass('glyphicon glyphicon-ok');
     // }
-    var user = this.userData || this.model.user();
-
     var content = this.template({
       business: this.business,
       followed_user: false,
       review: this.model,
       timeCreated: this.model.getTimeCreated(),
-      userId: user.get('id'),
-      userImageUrl: user.get('image_url'),
-      userName: user.get('name')
+      userId: this.model.user().get('id'),
+      userImageUrl: this.model.user().get('image_url'),
+      userName: this.model.user().get('name')
     });
     this.$el.html(content);
     this.displayRating();

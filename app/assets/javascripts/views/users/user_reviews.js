@@ -14,11 +14,15 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     });
   },
 
-  addReviews: function (userData) {
+  addReviews: function () {
     this.model.reviews().each(function (review) {
+      // make sure all reviews are by this user
+      review.user().set('id', this.model.get('id'));
+      review.user().set('name', this.model.get('name'));
+      review.user().set('image_url', this.model.get('image_url'));
+
       var view = new Yup.Views.ReviewIndexItem({
-        model: review,
-        userData: userData
+        model: review
       });
       this.addSubview('.user-reviews', view);
     }.bind(this));
@@ -31,7 +35,7 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
       data: { limit: 10 },
       success: function (collection, models) {
         this.model.reviews().set(models, { parse: true });
-        this.addReviews(this.model);
+        this.addReviews();
         $('#num-reviews').html(collection.length);
       }.bind(this)
     });
