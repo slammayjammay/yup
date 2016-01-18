@@ -17,7 +17,7 @@ class Api::ReviewsController < ApplicationController
   def sample
     limit = params[:limit] || 3
     sample_businesses = Yelp.client.search(
-      'San Francisco', { limit: limit, offset: 3 * rand(5) }
+      'San Francisco', { limit: limit, offset: 3 * rand(10) }
     )
 
     @sample_reviews = []
