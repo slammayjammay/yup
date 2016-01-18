@@ -30,7 +30,8 @@ Yup.Routers.Router = Backbone.Router.extend({
     business.fetch();
 
     var view = new Yup.Views.BusinessShow({
-      model: business
+      model: business,
+      collection: business.reviews()
     });
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
@@ -107,7 +108,7 @@ Yup.Routers.Router = Backbone.Router.extend({
         imageUrl: imageUrl,
         isYelpUser: true
       };
-      id = parseInt(Math.random() * 100);
+      id = parseInt(Math.random() * 100) + 2;
     }
 
     var user = new Yup.Models.User({ id: id });
