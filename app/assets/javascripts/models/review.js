@@ -10,13 +10,18 @@ Yup.Models.Review = Backbone.Model.extend({
   },
 
   parse: function (res) {
-    if (res.user) {
-      this._user = new Yup.Models.User(res.user);
+    if (res.user_id) {
+      this._user = new Yup.Models.User({ id: res.user_id });
+      this._user.fetch();
     }
 
-    if (res.user.hash) {
-      this._user = new Yup.Models.User(res.user.hash);
-      this.isYelpReview = true;
+    if (res.user) {
+      this._user = new Yup.Models.User(res.user);
+
+      if (res.user.hash) {
+        this._user = new Yup.Models.User(res.user.hash);
+        this.isYelpReview = true;
+      }
     }
 
     return res;
