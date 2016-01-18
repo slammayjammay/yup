@@ -8,7 +8,7 @@ Yup.Models.Business = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.reviews) {
-      this.reviews().set(response.reviews)
+      this.reviews().set(response.reviews, { parse: true });
     }
 
     if (!response.image_url) {
