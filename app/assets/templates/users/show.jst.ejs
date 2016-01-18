@@ -1,16 +1,22 @@
 <div id="sidebar-left">
   <h1 class="title">
-    <%= user.escape('name') %>
+    <%= userName %>
   </h1 class="title">
 
   <div class="content">
-    <img src="<%= user.escape('image_url') %>">
+    <img src="<%= userImage %>">
     <div class="user-info">
-      <p id="num-following">Following: <%= user.follows().length %></p>
-      <p id="num-followers">Followers: <%= user.followers().length %></p>
+      <p>
+        Following:
+        <span id="num-following"><%= numFollows %></span>
+      </p>
+      <p>
+        Followers:
+        <span id="num-followers"><%= numFollowers %></span>
+      </p>
       <p>
         Number of Reviews:
-        <span id="num-reviews"><%= user.reviews().length %></span>
+        <span id="num-reviews"><%= numReviews %></span>
       </p>
     </div>
   </div>
@@ -27,7 +33,7 @@
         <span><div class="glyphicon glyphicon-user"></div>Followed Users</span>
       </li>
 
-      <% if (user.get('id') == CURRENT_USER_ID) { %>
+      <% if (userId == CURRENT_USER_ID) { %>
         <li id="edit">
           <span><div class="glyphicon glyphicon-wrench"></div>Edit Profile</span>
         </li>
