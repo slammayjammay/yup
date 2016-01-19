@@ -4,7 +4,7 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "search",
+    "": "bestOf",
     "businesses/:id": "businessShow",
     "feed": "feed",
     "search(/:query)": "search",
@@ -21,6 +21,11 @@ Yup.Routers.Router = Backbone.Router.extend({
 
       this.scrollOrFixMap();
     }.bind(this));
+  },
+
+  bestOf: function () {
+    var view = new Yup.Views.BestOf();
+    this._swapView(view);
   },
 
   businessShow: function (id) {
@@ -49,21 +54,6 @@ Yup.Routers.Router = Backbone.Router.extend({
 
   removeEvents: function () {
     $(window).off('scroll');
-  },
-
-  renderBestOf: function () {
-    var businesses = new Yup.Collections.Businesses();
-    businesses.fetch({
-      data: { bestOf: true }
-    });
-    this._swapSidebar({ collection: businesses });
-
-    var view = new Yup.Views.SearchShow({
-      template: JST['search/best_of'],
-      collection: businesses,
-      map: this.sidebarRight.map
-    });
-    this._swapView(view);
   },
 
   scrollOrFixMap: function () {

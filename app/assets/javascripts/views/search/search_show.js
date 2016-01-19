@@ -3,7 +3,6 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   template: JST['search/search_show'],
 
   events: {
-    "click .category-index-item": "switchBusinesses",
     "click .filter": "filter"
   },
 
@@ -13,6 +12,15 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.listenToOnce(this.collection, "sync", this.render);
     this.listenToOnce(this.collection, "sync", this.addSidebar);
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
+  },
+
+  addBusiness: function (business) {
+    var view = new Yup.Views.BusinessIndexItem({
+      model: business,
+      index: this.collection.indexOf(business)
+    });
+
+    this.addSubview('.businesses', view);
   },
 
   addSidebar: function () {
@@ -49,29 +57,5 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  },
-
-  addBusiness: function (business) {
-    var view = new Yup.Views.BusinessIndexItem({
-      model: business,
-      index: this.collection.indexOf(business)
-    });
-
-    this.addSubview('.businesses', view);
-  },
-
-  renderCategories: function () {
-    var that = this;
-    this.categories.forEach(function (category) {
-      var view = new Yup.Views.CategoryIndexItem({
-        category: category
-      });
-      that.addSubview('.categories', view);
-    });
-  },
-
-  switchBusinesses: function (event) {
-    var category = $(event.currentTarget).text().trim();
-    Backbone.history.navigate("search/" + category, { trigger: true });
   }
 });
