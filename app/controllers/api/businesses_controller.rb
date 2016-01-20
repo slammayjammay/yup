@@ -6,7 +6,12 @@ class Api::BusinessesController < ApplicationController
     term = params[:searchKeys] || 'food'
     @businesses = Yelp.client.search(
       'San Francisco',
-      { term: term, limit: result_limit, offset: result_limit * @page }
+      {
+        term: term,
+        limit: result_limit,
+        offset: result_limit * @page,
+        category_filter: params[:category]
+      }
     ).businesses
   end
 
