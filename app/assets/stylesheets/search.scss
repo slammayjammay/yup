@@ -27,95 +27,21 @@
     margin: 10px auto;
     margin-bottom: 300px;
   }
+}
 
-  .business-index-item {
-    transition: 500ms;
-    position: relative;
-    padding: 10px 15px 10px 15px;
-    border: 1px solid #CCC;
-    background-color: #FFF;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.54);
-    font-size: 15px;
+#sidebar-right {
+  flex: 5;
+  position: relative;
+  border-left: 1px solid #c5bdbd;
 
-    a.name {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .content-container {
-      margin-bottom: 5px;
-    }
-
-    .info {
-      width: 75%;
-    }
-
-    .num-reviews {
-      font-size: 13px;
-      color: gray;
-    }
-
-    .star-rating {
-      position: absolute;
-      top: 0px;
-      right: 20px;
-    }
-
-    .rating-container {
-      font-size: .7em;
-    }
-
-    .image {
-      float: left;
-      margin-right: 10px;
-      width: 80px;
-      height: 80px;
-    }
-
-    p {
-      overflow: hidden;
-    }
-
-    &:after {
-      content: '';
-      display: block;
-      clear: both;
-    }
-
-    &:hover {
-      background: #d3d3d3;
-      transition: 150ms;
-    }
-  }
-
-  #sidebar-right {
-    flex: 5;
-    position: relative;
-    border-left: 1px solid #c5bdbd;
-
-    #map {
-      position: absolute;
-      top: 25px;
-      right: 0px;
-      left: 0px;
-      margin: auto;
-      width: 340px;
-      height: 340px;
-      box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
-    }
-
-    .map {
-      width: 100%;
-      height: 100%;
-    }
-
-    h1.title {
-      position: fixed;
-      top: 99px;
-      width: 554px;
-      font-size: 22px;
-    }
+  #map {
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+    width: 340px;
+    height: 340px;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.54);
   }
 }
