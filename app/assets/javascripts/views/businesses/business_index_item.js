@@ -3,18 +3,14 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
   template: JST['businesses/index_item'],
 
   initialize: function (options) {
-    this.review = options.review;
-    this.$el.attr('id', options.index);
-
-    this.user = new Yup.Models.User();
-    if (this.review) {
-      this.user.set('id', this.review.get('user_id'));
-      this.user.fetch({ success: function () {
-        this.render();
-      }.bind(this)});
+    if (options.mini) {
+      this.template = JST['businesses/mini_item'];
+      this.$el.attr('class', 'business-mini-item');
     }
 
+    this.$el.attr('id', options.index);
     this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
+
     setTimeout(function () {
       this.$el.removeAttr('style');
     }.bind(this), 90);
@@ -36,10 +32,12 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      business: this.model,
+      id: this.model.get('id'),
+      imageUrl: this.model.get('image_url'),
+      name: this.model.get('name'),
       numReviews: this.getNumReviews(),
       review: this.review,
-      user: this.user
+      snippet: this.model.get('snippet_text')
     });
 
     this.$el.html(content);
