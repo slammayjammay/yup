@@ -24,7 +24,13 @@ Yup.Routers.Router = Backbone.Router.extend({
   },
 
   bestOf: function () {
-    var view = new Yup.Views.BestOf();
+    var businesses = new Yup.Collections.Businesses();
+    businesses.fetch({
+      data: { category: 'food' }
+    });
+    var view = new Yup.Views.BestOf({
+      collection: businesses
+    });
     this._swapView(view);
   },
 
