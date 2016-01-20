@@ -1,6 +1,82 @@
 #best-of {
+  display: flex;
   min-height: 100%;
   background-color: #EFEFEF;
   border-left: 1px solid rgb(160, 160, 160);
   border-right: 1px solid rgb(160, 160, 160);
+
+  #best-of-main {
+    flex: 8;
+    padding: 10px;
+
+    .title {
+      font-size: 24px;
+      color: #555;
+    }
+
+    .category-title {
+      margin-bottom: 2px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #b30000;
+    }
+
+    .outer {
+      display: flex;
+      justify-content: center;
+    }
+
+    #categories {
+      position: relative;
+      flex: 2;
+      border: 1px solid #bdbdbd;
+      border-right: none;
+    }
+
+    .category {
+      background: white;
+      padding: 5px;
+      height: 32px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #337ab7;
+
+      .name {
+        position: absolute;
+        z-index: 10;
+      }
+
+      &.selected {
+        color: #b20000;
+      }
+
+      &:not(:first-child) {
+        border-top: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .category#outline {
+      top: -1px;
+      left: -1px;
+      transition: 400ms ease;
+      position: absolute;
+      width: calc(100% + 2px);
+      z-index: 1;
+      border: 1px solid #bdbdbd;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-right: none;
+    }
+
+    #best-of-businesses {
+      flex: 5;
+      padding: 10px;
+      background: white;
+      border: 1px solid #bdbdbd;
+    }
+  }
 }
