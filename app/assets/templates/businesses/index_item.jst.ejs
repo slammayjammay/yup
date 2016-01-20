@@ -1,7 +1,7 @@
 <div class="content-container">
   <div class="info">
-    <a class="name" href="#businesses/<%= business.get('id') %>">
-      <%= business.escape('name') %>
+    <a class="name" href="#businesses/<%= id %>">
+      <%= name %>
     </a>
     <div class="num-reviews"><%= numReviews %></div>
   </div>
@@ -9,6 +9,6 @@
   <input default="false" id="input-id" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
 </div>
 
-<img class="image" src="<%= business.escape('image_url') %>">
+<img class="image" src="<%= imageUrl %>">
 
-<p>"<%= business.escape('snippet_text') %>"</p>
+<p>"<%= snippet %>"</p>
