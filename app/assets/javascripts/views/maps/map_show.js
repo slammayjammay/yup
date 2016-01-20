@@ -5,22 +5,10 @@ Yup.Views.MapShow = Backbone.View.extend({
 
   initialize: function () {
     this._markers = [];
+    this.bounds = new google.maps.LatLngBounds();
     this.listenTo(this.collection, 'add', this.createMapMarker);
-  },
-
-  addMarkerEvents: function (marker, index) {
-    $('#' + index).hover(
-      function () {
-        this.startBounce(index);
-      }.bind(this),
-      function () {
-        this.endBounce(index);
-      }.bind(this)
-    );
-
-    google.maps.event.addListener(marker, 'click', function (event) {
-      this.showInfoWindow(event, marker);
-    }.bind(this));
+    this.listenTo(this.collection, 'sync', this.addMarkerHover);
+    this.listenTo(this.collection, 'remove', this.removeMapMarker);
   },
 
   addBusinessMarkers: function () {
@@ -29,20 +17,37 @@ Yup.Views.MapShow = Backbone.View.extend({
       return;
     }
 
-    this.bounds = new google.maps.LatLngBounds();
     this.collection.each(function (business) {
-      if (!business.get('location').hash.coordinate) return;
+      var loc = business.get('location').hash.coordinate;
+      if (!loc) return;
 
       this.createMapMarker(business);
 
-      var bound = new google.maps.LatLng(
-        business.get('location').hash.coordinate.latitude,
-        business.get('location').hash.coordinate.longitude
-      );
+      var bound = new google.maps.LatLng(loc.latitude, loc.longitude);
       this.bounds.extend(bound);
     }.bind(this));
 
     this.map.fitBounds(this.bounds);
+  },
+
+  addMarkerEvents: function (marker, index) {
+    $('#' + index).hover(
+      this.startBounce.bind(this, index),
+      this.endBounce.bind(this, index)
+    );
+
+    google.maps.event.addListener(marker, 'click', function (event) {
+      this.showInfoWindow(event, marker);
+    }.bind(this));
+  },
+
+  addMarkerHover: function () {
+    this._markers.forEach(function (marker, index) {
+      $('#' + index).hover(
+        this.startBounce.bind(this, index),
+        this.endBounce.bind(this, index)
+      );
+    }.bind(this))
   },
 
   centerMap: function () {
@@ -88,11 +93,21 @@ Yup.Views.MapShow = Backbone.View.extend({
     }.bind(this), 0);
   },
 
-  removeMarkers: function () {
-    for (var i = 0; i < this._markers.length; i++) {
-      this._markers[i].setMap(null);
-    }
-    this._markers = [];
+  removeMapMarker: function (model) {
+    var removedMarkers = [];
+    this._markers.forEach(function (marker, index) {
+      if (model.get('name') === marker.title) {
+        marker.setMap(null);
+        removedMarkers.push(marker);
+      }
+    });
+
+    removedMarkers.forEach(function (marker) {
+      this._markers.splice(this._markers.indexOf(marker), 1);
+    }.bind(this));
+
+    // TODO: fix
+    this.bounds = new google.maps.LatLngBounds();
   },
 
 
