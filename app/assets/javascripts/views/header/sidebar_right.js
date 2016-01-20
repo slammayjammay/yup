@@ -9,7 +9,6 @@ Yup.Views.SidebarRight = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({ order: this.order });
     this.$el.html(content);
-    this.attachSubviews();
     this.renderMap();
     return this;
   },
