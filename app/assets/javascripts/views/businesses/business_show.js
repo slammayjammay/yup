@@ -8,12 +8,13 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.collection.fetch({
       url: 'api/reviews/sample',
-      remove: false
+      remove: false,
+      data: { limit: ~~(Math.random() * 10) }
     });
 
     this.listenTo(this.collection, 'add', this.addReview);
+    this.listenTo(this.collection, 'sync', this.displayRating);
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.addImages);
     this.listenToOnce(this.model, 'sync', this.renderMap);
   },
 
@@ -23,9 +24,17 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
       model: review
     });
     this.addSubview('.business-reviews', view, !review.isYelpReview);
+
+    // Update review count
+    if (!review.isYelpReview) {
+      var numReviews = parseInt(this.$('#num-reviews').text());
+      this.$('#num-reviews').text(numReviews + 1);
+    }
   },
 
   addImages: function () {
+    if (!this.model.get('sample_images')) return;
+
     var $img = $('<img>').attr('src', this.model.get('sample_images')[0])
     $('.images').append($img);
 
@@ -39,20 +48,38 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
 
   displayRating: function () {
     var rating = this.model.get('rating');
+    // update the rating based on any yup reviews made
+    this.collection.each(function (review) {
+      if (review.isYelpReview) return;
+      var diff = review.get('rating') - rating;
+      rating += diff / this.model.get('review_count');
+    }.bind(this));
+
     rating = (Math.round(rating * 2) / 2).toFixed(1);
     this.$("#input-id").rating({ disabled: true });
     this.$("#input-id").rating('update', rating);
   },
 
+  getNumReviews: function () {
+    var numReviews = this.model.get('review_count');
+    this.collection.each(function (review) {
+      if (!review.isYelpReview) {
+        numReviews += 1;
+      }
+    });
+    return numReviews;
+  },
+
   render: function () {
     var content = this.template({
-      business: this.model,
       address: this.model.address().join(', '),
-      reviews: this.collection
+      name: this.model.get('name'),
+      numReviews: this.getNumReviews(),
     });
 
     this.$el.html(content);
     this.attachSubviews();
+    this.addImages();
     this.displayRating();
     return this;
   },
