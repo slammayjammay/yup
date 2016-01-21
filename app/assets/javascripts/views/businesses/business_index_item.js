@@ -9,7 +9,7 @@ Yup.Views.BusinessIndexItem = Backbone.View.extend({
     }
 
     this.$el.attr('id', options.index);
-    this.$el.attr('style', 'transform: translateX(' + (50 + Math.floor(Math.random() * 150)) + '%);');
+    this.$el.attr('style', 'transform: translateX(' + (10 + Math.floor(Math.random() * 150)) + '%);');
 
     setTimeout(function () {
       this.$el.removeAttr('style');
