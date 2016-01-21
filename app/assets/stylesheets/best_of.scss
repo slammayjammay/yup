@@ -15,7 +15,7 @@
     }
 
     .category-title {
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       font-size: 20px;
       font-weight: bold;
       color: #b30000;
@@ -62,20 +62,24 @@
     .category#outline {
       top: -1px;
       left: -1px;
-      transition: 400ms ease;
+      transition: 600ms ease;
       position: absolute;
-      width: calc(100% + 2px);
       z-index: 1;
+      width: calc(100% + 2px);
+      background: #efefef;
       border: 1px solid #bdbdbd;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
       border-right: none;
+      border-left-color: #bdbdbd;
+    }
+
+    .category#outline.hide-left-border {
+      border-left-color: #efefef;
     }
 
     #best-of-businesses {
       flex: 5;
-      padding: 10px;
-      background: white;
+      padding: 0px 10px 10px 10px;
+      background: #efefef;
       border: 1px solid #bdbdbd;
     }
   }
