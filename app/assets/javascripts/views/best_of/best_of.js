@@ -39,27 +39,21 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
   },
 
   searchCategory: function (event) {
-    var $div = $(event.currentTarget);
-    if ($div.attr('id') === 'outline') {
+    var $selectedCat = $(event.currentTarget);
+    if ($selectedCat.attr('id') === 'outline') {
       return;
     }
 
-    $('.category.selected').removeClass('selected');
-    $div.addClass('selected');
+    this.updateCategoriesStyle($selectedCat);
 
-    var newHeight = $div.outerHeight() * ($div.index() - 1);
-    if ($div.is(':last-child')) newHeight += 1;
-    if ($div.is(':nth-child(2)')) newHeight -= 1;
-    $('#outline').css('top', newHeight + 'px');
-
-    var title = $div.text().trim().split(' ');
+    var title = $selectedCat.text().trim().split(' ');
     title.forEach(function (word, index) {
       title[index] = word[0].toUpperCase() + word.slice(1);
     });
     this.$('.category-title').text(title.join(' '));
 
     this.collection.fetch({
-      data: { category: $div.attr('filter') }
+      data: { category: $selectedCat.attr('filter') }
     });
   },
 
@@ -72,5 +66,22 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
       });
       this.addSubview('#best-of-businesses', view);
     }.bind(this));
+  },
+
+  updateCategoriesStyle: function ($selectedCat) {
+    $('.category.selected').removeClass('selected');
+    $selectedCat.addClass('selected');
+
+    var newHeight = $selectedCat.outerHeight() * ($selectedCat.index() - 1);
+    if ($selectedCat.is(':nth-child(2)')) {
+      newHeight -= 1;
+      $('#outline').removeClass('hide-left-border');
+    } else if ($selectedCat.is(':last-child')) {
+      newHeight += 1;
+      $('#outline').removeClass('hide-left-border');
+    } else {
+      $('#outline').addClass('hide-left-border');
+    }
+    $('#outline').css('top', newHeight + 'px');
   }
 });
