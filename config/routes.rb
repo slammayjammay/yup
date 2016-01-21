@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'static_pages#root'
-  get 'about' => 'static_pages#about'
 
   resources :users, only: [:create, :new]
   resource :session, only: [:create, :destroy, :new]
