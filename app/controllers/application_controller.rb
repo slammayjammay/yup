@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_log_in
-    redirect_to about_url unless current_user
+    redirect_to new_session_url unless current_user
   end
 
   private
