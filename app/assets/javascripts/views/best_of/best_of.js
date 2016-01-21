@@ -16,9 +16,6 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     ];
 
     this.listenTo(this.collection, 'sync', this.showBusinesses);
-    this.listenTo(this.collection, 'remove', function (model) {
-      this.removeModelSubview('#best-of-businesses', model);
-    });
     setTimeout(function () {
       $('.category').eq(1).addClass('selected');
     }, 0);
@@ -38,34 +35,45 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     return this;
   },
 
+  renderBusinessesForCategory: function (category) {
+    this.$('#searched-businesses').html(this[category]);
+  },
+
   searchCategory: function (event) {
     var $selectedCat = $(event.currentTarget);
     if ($selectedCat.attr('id') === 'outline') {
       return;
     }
 
+    var searchedCategory = $selectedCat.attr('filter');
     this.updateCategoriesStyle($selectedCat);
+    this.updateCategoriesTitle($selectedCat);
 
-    var title = $selectedCat.text().trim().split(' ');
-    title.forEach(function (word, index) {
-      title[index] = word[0].toUpperCase() + word.slice(1);
-    });
-    this.$('.category-title').text(title.join(' '));
-
-    this.collection.fetch({
-      data: { category: $selectedCat.attr('filter') }
-    });
+    // fetch collection and store the business views in an instance variable.
+    // if they have already been stored, render the instance variable
+    if (this[searchedCategory]) {
+      this.renderBusinessesForCategory(searchedCategory);
+    } else {
+      this.collection.fetch({
+        data: { category: searchedCategory }
+      });
+    }
   },
 
-  showBusinesses: function () {
+  showBusinesses: function (_, _, res) {
+    // store these business views in an instance variable to be used later
+    var subview = this[res.data.category] = $('<div>');
+
     this.collection.each(function (business, index) {
       var view = new Yup.Views.BusinessIndexItem({
         model: business,
         index: index,
         mini: true
       });
-      this.addSubview('#best-of-businesses', view);
+      subview.append(view.render().$el);
     }.bind(this));
+
+    this.renderBusinessesForCategory(res.data.category);
   },
 
   updateCategoriesStyle: function ($selectedCat) {
@@ -83,5 +91,13 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
       $('#outline').addClass('hide-left-border');
     }
     $('#outline').css('top', newHeight + 'px');
+  },
+
+  updateCategoriesTitle: function ($selectedCat) {
+    var title = $selectedCat.text().trim().split(' ');
+    title.forEach(function (word, index) {
+      title[index] = word[0].toUpperCase() + word.slice(1);
+    });
+    this.$('.category-title').text(title.join(' '));
   }
 });
