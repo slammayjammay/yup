@@ -14,8 +14,12 @@ form.button_to {
   float: left;
 }
 
-.welcome, .summary {
+.welcome, .summary, .small {
   text-align: center;
+}
+
+.small {
+  color: gray;
 }
 
 .glyphicon-ok-sign {

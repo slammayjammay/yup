@@ -1,38 +1,27 @@
-.errors {
-  transition: 1s;
-  float: left;
-  color: red;
-}
-
 .sign-in {
   width: 40%;
   margin: auto;
+  font-size: 18px;
+
+  .errors {
+    margin: 3px;
+    color: red;
+    text-align: center;
+  }
 
   h1 {
     text-align: center;
   }
 
-  h3 {
+  .auth {
+    width: 100%;
     text-align: center;
   }
 
-  .auth {
-    width: 100%
-  }
-
   input.form-control {
+    width: 100%;
     margin-bottom: 10px;
     height: 50px;
-  }
-
-  input.first-name {
-    float: left;
-    width: 49%;
-  }
-
-  input.last-name {
-    float: right;
-    width: 49%;
   }
 
   input.btn {
@@ -43,8 +32,14 @@
   }
 
   input.btn-primary {
+    margin: auto;
     width: 50%;
-    margin-left: 25%;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
   }
 }
 
@@ -62,7 +57,7 @@
   padding: 5px;
   transition: 500ms;
   opacity: 1;
-  position: absolute;
+  // position: absolute;
   left: 25%;
   right: 25%;
   top: 15%;
@@ -73,8 +68,4 @@
   width: 560px;
   background: white;
   box-shadow: 1px 3px 9px 3px rgba(0, 0, 0, 0.63);
-}
-
-.sign-up {
-  height: 400px;
 }
