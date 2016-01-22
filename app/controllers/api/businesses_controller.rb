@@ -1,15 +1,15 @@
 class Api::BusinessesController < ApplicationController
   def index
     @page = params[:page].to_i || 1
-    result_limit = 5
+    result_limit = params[:limit] || 5
 
     term = params[:searchKeys] || 'food'
     @businesses = Yelp.client.search(
       'San Francisco',
       {
         term: term,
-        limit: result_limit,
-        offset: result_limit * @page,
+        limit: result_limit.to_i,
+        offset: result_limit.to_i * @page,
         category_filter: params[:category]
       }
     ).businesses
