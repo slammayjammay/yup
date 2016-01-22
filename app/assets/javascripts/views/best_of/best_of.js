@@ -51,7 +51,10 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     this.updateCategoriesTitle($selectedCat);
 
     this.collection.fetch({
-      data: { category: searchedCategory }
+      data: {
+        category: searchedCategory,
+        limit: 5
+      }
     });
   },
 
