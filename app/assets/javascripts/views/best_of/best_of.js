@@ -16,6 +16,7 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     ];
 
     this.listenTo(this.collection, 'sync', this.showBusinesses);
+    this.listenTo(this.collection, 'remove', this.removeBusiness);
     setTimeout(function () {
       $('.category').eq(1).addClass('selected');
     }, 0);
@@ -35,8 +36,8 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     return this;
   },
 
-  renderBusinessesForCategory: function (category) {
-    this.$('#searched-businesses').html(this[category]);
+  removeBusiness: function (business) {
+    this.removeModelSubview('#best-of-businesses', business);
   },
 
   searchCategory: function (event) {
@@ -49,31 +50,20 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     this.updateCategoriesStyle($selectedCat);
     this.updateCategoriesTitle($selectedCat);
 
-    // fetch collection and store the business views in an instance variable.
-    // if they have already been stored, render the instance variable
-    if (this[searchedCategory]) {
-      this.renderBusinessesForCategory(searchedCategory);
-    } else {
-      this.collection.fetch({
-        data: { category: searchedCategory }
-      });
-    }
+    this.collection.fetch({
+      data: { category: searchedCategory }
+    });
   },
 
-  showBusinesses: function (_, _, res) {
-    // store these business views in an instance variable to be used later
-    var subview = this[res.data.category] = $('<div>');
-
+  showBusinesses: function () {
     this.collection.each(function (business, index) {
       var view = new Yup.Views.BusinessIndexItem({
         model: business,
         index: index,
         mini: true
       });
-      subview.append(view.render().$el);
+      this.addSubview('#best-of-businesses', view);
     }.bind(this));
-
-    this.renderBusinessesForCategory(res.data.category);
   },
 
   updateCategoriesStyle: function ($selectedCat) {
