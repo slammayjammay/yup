@@ -19,6 +19,11 @@ Yup.Views.UserIndexItem = Backbone.View.extend({
       Backbone.history.navigate(
         'users/' + this.model.get('name') + '/' + imageUrl
       );
+    } else {
+      Backbone.history.navigate(
+        'users/' + this.model.get('id'),
+        { trigger: true }
+      );
     }
   },
 
