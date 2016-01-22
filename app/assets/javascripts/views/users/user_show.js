@@ -76,6 +76,7 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
       numReviews: this.model.reviews().length,
       userId: this.model.get('id'),
       userImage: this.model.get('image_url'),
+      userImage: this.model.getLargerImage(),
       userName: this.model.get('name')
     });
     this.$el.html(content);
