@@ -39,7 +39,7 @@ end
   User.create(
     name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     email: Faker::Internet.email,
-    image_url: user_images[n],
+    image_url: user_images.sample,
     password_digest: BCrypt::Password.create('password'),
     session_token: User.generate_session_token
   )
@@ -50,7 +50,7 @@ user_ids = (User.first.id..User.last.id).to_a
 
 users.each do |user|
   # Create sample follows
-  5.times do |num|
+  (rand(5) + 5).times do |num|
     Following.create!(
       follower_id: user.id,
       followed_id: user_ids.sample
