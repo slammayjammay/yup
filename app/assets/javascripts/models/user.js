@@ -17,6 +17,13 @@ Yup.Models.User = Backbone.Model.extend({
     return this._follows;
   },
 
+  getLargerImage: function () {
+    var img = this.get('image_url');
+    if (!img) return;
+    
+    return img.replace('ms.jpg', 'o.jpg');
+  },
+
   parse: function (response) {
     if (response.reviews) {
       this.reviews().set(response.reviews, { parse: true });
