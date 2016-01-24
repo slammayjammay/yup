@@ -1,6 +1,36 @@
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url('http://www.ambwallpapers.com/wp-content/uploads/2015/03/Street-hd-images-5.jpg');
+}
+
+.background {
+  margin: 50px auto;
+  width: 60%;
+  padding: 15px;
+  background: black;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcome, .summary {
+  color: white;
+  text-align: center;
+}
+
+.welcome {
+  margin-top: 0px;
+}
+
+.summary {
+  width: 55%;
+  margin: 10px auto;
+}
+
 .sign-in {
-  width: 40%;
-  margin: auto;
   font-size: 18px;
 
   .errors {
@@ -14,7 +44,9 @@
   }
 
   .auth {
-    width: 100%;
+    float: none;
+    width: 60%;
+    margin: auto;
     text-align: center;
   }
 
@@ -51,21 +83,4 @@
   background: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%;
-}
-
-.popup {
-  padding: 5px;
-  transition: 500ms;
-  opacity: 1;
-  // position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 15%;
-  z-index: 100;
-  border: 1px solid black;
-  border-radius: 4px;
-  height: 430px;
-  width: 560px;
-  background: white;
-  box-shadow: 1px 3px 9px 3px rgba(0, 0, 0, 0.63);
 }
