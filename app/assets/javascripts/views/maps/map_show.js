@@ -57,10 +57,13 @@ Yup.Views.MapShow = Backbone.View.extend({
   },
 
   createMapMarker: function (business) {
+    var coord = business.get('location').hash.coordinate;
+    if (!coord) return;
+
     var marker = new google.maps.Marker({
       position: {
-        lat: business.get('location').hash.coordinate.latitude,
-        lng: business.get('location').hash.coordinate.longitude
+        lat: coord.latitude,
+        lng: coord.longitude
       },
       map: this.map,
       animation: google.maps.Animation.DROP,
@@ -71,8 +74,8 @@ Yup.Views.MapShow = Backbone.View.extend({
 
     // extend map to show these new markers
     var bound = new google.maps.LatLng(
-      business.get('location').hash.coordinate.latitude,
-      business.get('location').hash.coordinate.longitude
+      coord.latitude,
+      coord.longitude
     );
     this.bounds.extend(bound);
     this.map.fitBounds(this.bounds);
