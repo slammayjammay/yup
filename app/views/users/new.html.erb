@@ -6,55 +6,55 @@
   </div>
 </nav>
 
+<div class="background-image"></div>
 
-<h1 class="welcome">Welcome to Yup! -- Inspired by Yelp</h1>
-<h3 class="summary">
-  Create an account and start browsing local businesses today!
-</h3>
+<div class="background">
+  <h1 class="welcome">Welcome to Yup!</h1>
+  <h3 class="summary">
+    Create an account and start browsing local businesses today!
+  </h3>
 
-<div class="sign-in">
-  <div class="errors">
-    <% if flash[:errors] %>
-      <% flash[:errors].each do |error| %>
-        <%= error %><br>
+  <div class="sign-in">
+    <div class="errors">
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <%= error %><br>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <form class="auth col-md-4" action="<%= users_url %>" method="post">
+      <%= auth_token %>
+
+      <input class="form-control"
+             type="text"
+             name="user[name]"
+             placeholder="Name">
+
+      <input class="form-control"
+             type="text"
+             name="user[email]"
+             placeholder="Email">
+
+      <input class="form-control"
+             type="password"
+             name="user[password]"
+             placeholder="Password">
+
+      <input class="btn btn-success" type="submit" value="Sign up!">
+    </form>
+
+    <form class="auth col-md-4" action="<%= session_url %>" method="post">
+      <%= auth_token %>
+
+      <input type="hidden" name="user[email]" value="example@email.com">
+      <input type="hidden" name="user[password]" value="password">
+
+      <input class="btn btn-primary" type="submit" value="Sign in as guest">
+    </form>
   </div>
 
-  <form class="auth col-md-4" action="<%= users_url %>" method="post">
-    <%= auth_token %>
-
-    <input class="form-control"
-           type="text"
-           name="user[name]"
-           placeholder="Name">
-
-    <input class="form-control"
-           type="text"
-           name="user[email]"
-           placeholder="Email">
-
-    <input class="form-control"
-           type="password"
-           name="user[password]"
-           placeholder="Password">
-
-    <input class="btn btn-success" type="submit" value="Sign up!">
-  </form>
-
-  <form class="auth col-md-4" action="<%= session_url %>" method="post">
-    <%= auth_token %>
-
-    <input type="hidden" name="user[email]" value="example@email.com">
-    <input type="hidden" name="user[password]" value="password">
-
-    <input class="btn btn-primary" type="submit" value="Sign in as guest">
-  </form>
+  <h3 class="summary">
+    Already have an account? <a href="<%= new_session_url %>">Log in!</a>
+  </h3>
 </div>
-
-<h3 class="summary">
-  Already have an account? <a href="<%= new_session_url %>">Log in!</a>
-</h3>
-
-<div class="small">Developed by Scott McKenzie</div>
-<div class="small">scott4mckenzie2@gmail.com</div>

@@ -6,37 +6,37 @@
   </div>
 </nav>
 
+<div class="background-image"></div>
 
-<h1 class="welcome">Welcome to Yup! -- Inspired by Yelp</h1>
-<h3 class="summary">
-  Sign-in and start browsing local businesses today!
-</h3>
+<div class="background">
+  <h1 class="welcome">Welcome to Yup!</h1>
+  <h3 class="summary">
+    Sign-in and start browsing local businesses today!
+  </h3>
 
-<div class="sign-in">
-  <div class="errors"><%= flash[:errors] %></div>
+  <div class="sign-in">
+    <div class="errors"><%= flash[:errors] %></div>
 
-  <form class="auth col-md-4" action="<%= session_url %>" method="post">
-    <%= auth_token %>
+    <form class="auth col-md-4" action="<%= session_url %>" method="post">
+      <%= auth_token %>
 
-    <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
-    <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
+      <input class="form-control" type="text" name="user[email]" id="email" placeholder="Email">
+      <input class="form-control" type="password" name="user[password]" id="password" placeholder="Password">
 
-    <input class="btn btn-success" type="submit" value="Log in!">
-  </form>
+      <input class="btn btn-success" type="submit" value="Log in!">
+    </form>
 
-  <form class="auth col-md-4" action="<%= session_url %>" method="post">
-    <%= auth_token %>
+    <form class="auth col-md-4" action="<%= session_url %>" method="post">
+      <%= auth_token %>
 
-    <input type="hidden" name="user[email]" value="example@email.com">
-    <input type="hidden" name="user[password]" value="password">
+      <input type="hidden" name="user[email]" value="example@email.com">
+      <input type="hidden" name="user[password]" value="password">
 
-    <input class="btn btn-primary" type="submit" value="Sign in as guest">
-  </form>
+      <input class="btn btn-primary" type="submit" value="Sign in as guest">
+    </form>
+  </div>
+
+  <h3 class="summary">
+    Or <a href="<%= new_user_url %>">Sign Up</a> to create your new account!
+  </h3>
 </div>
-
-<h3 class="summary">
-  Or <a href="<%= new_user_url %>">Sign Up</a> to create your new account!
-</h3>
-
-<div class="small">Developed by Scott McKenzie</div>
-<div class="small">scott4mckenzie2@gmail.com</div>
