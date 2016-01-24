@@ -6,7 +6,6 @@ Yup.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "bestOf",
     "businesses/:id": "businessShow",
-    "feed": "feed",
     "search(/:query)": "search",
     "users/:name/:imageUrl": "userShow",
     "users/:id": "userShow"
@@ -46,16 +45,6 @@ Yup.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(view);
     this.sidebarRight && this.sidebarRight.remove();
-  },
-
-  feed: function () {
-    this.removeEvents();
-
-    var reviews = new Yup.Collections.Reviews();
-    reviews.fetch();
-    var view = new Yup.Views.FeedShow({ collection: reviews });
-    this._swapView(view);
-    this._swapSidebar({ collection: new Yup.Collections.Businesses() });
   },
 
   removeEvents: function () {
@@ -118,5 +107,5 @@ Yup.Routers.Router = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
-  },
+  }
 });
