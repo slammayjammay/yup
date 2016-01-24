@@ -84,6 +84,11 @@
     font-weight: bold;
   }
 
+  &:hover {
+    background: #d3d3d3;
+    transition: 150ms;
+  }
+
   &:after {
     content: '';
     display: block;
