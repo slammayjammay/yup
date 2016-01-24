@@ -12,7 +12,8 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
       ['arts'], ['automotive', 'auto'], ['beauty & spas', 'beautysvc'], ['education'],
       ['event services', 'eventservices'], ['home services', 'homeservices'],
       ['local services', 'localservices'], ['active life', 'active'],
-      ['health & medicine', 'health']
+      ['health & medicine', 'health'], ['hotels & travel', 'hotelstravel'],
+      ['real estate', 'realestate'], ['pets']
     ];
 
     this.listenTo(this.collection, 'sync', this.showBusinesses);
@@ -53,7 +54,7 @@ Yup.Views.BestOf = Backbone.CompositeView.extend({
     this.collection.fetch({
       data: {
         category: searchedCategory,
-        limit: 5
+        limit: 6
       }
     });
   },
