@@ -11,9 +11,7 @@ window.Yup = {
       $(window).scrollTop(0);
     });
 
-    var navbar = new Yup.Views.Navbar({
-      router: router
-    });
+    var navbar = new Yup.Views.Navbar();
     $('#navbar').html(navbar.render().$el);
 
     var user = new Yup.Models.User({ id: CURRENT_USER_ID });
