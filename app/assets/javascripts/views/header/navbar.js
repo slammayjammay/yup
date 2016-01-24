@@ -3,14 +3,8 @@ Yup.Views.Navbar = Backbone.View.extend({
   events: {
     "click button.sign-out": "signOut",
     "submit form.navbar-form": "search",
-    "click .logo": "redirectToFeed",
-    "click .to-feed": "redirectToFeed",
     "click .to-bestof": "redirectToBestOf",
     "click .to-account": "redirectToProfile"
-  },
-
-  initialize: function (options) {
-    this.router = options.router;
   },
 
   render: function () {
@@ -20,11 +14,7 @@ Yup.Views.Navbar = Backbone.View.extend({
   },
 
   redirectToBestOf: function () {
-    Backbone.history.navigate("search/bestof", { trigger: true });
-  },
-
-  redirectToFeed: function () {
-    Backbone.history.navigate("feed", { trigger: true });
+    Backbone.history.navigate("", { trigger: true });
   },
 
   redirectToProfile: function () {
