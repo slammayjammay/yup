@@ -9,7 +9,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.collection.fetch({
       url: 'api/reviews/sample',
       remove: false,
-      data: { limit: ~~(Math.random() * 10) }
+      data: { limit: ~~(Math.random() * 10) + 5 }
     });
 
     this.listenTo(this.collection, 'add', this.addReview);
