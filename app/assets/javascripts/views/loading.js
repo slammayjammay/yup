@@ -46,7 +46,7 @@ Yup.Views.Loading = Backbone.View.extend({
 
       if (index === $letters.length - 1) {
         $(letter).one('transitionend', function () {
-          setTimeout(callback, 500);
+          setTimeout(callback, 0);
         });
       }
     });
