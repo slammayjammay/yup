@@ -22,3 +22,22 @@ form.button_to {
 .glyphicon::before {
   margin-right: 5px;
 }
+
+.loading {
+  width: 5000px;
+  text-align: center;
+  font-size: 28px;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.loading-letter {
+  transition: 800ms;
+  float: left;
+  opacity: 0;
+  margin-left: 100px;
+}
