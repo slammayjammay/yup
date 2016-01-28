@@ -3,6 +3,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.numFollowing = options.numFollowing;
+    this.isLoadingContent = true;
 
     if (this.model.isYelpUser) {
       this.getSeedFollows();
@@ -34,6 +35,9 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
       url: 'api/users/sample',
       data: { limit: this.numFollowing },
       success: function (collection, models) {
+        this.isLoadingContent = false;
+        $('.loading').remove();
+
         this.model.follows().set(models, { parse: true });
         this.addFollows();
       }.bind(this)
@@ -44,6 +48,12 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+
+    if (this.isLoadingContent) {
+      var $loading = new Yup.Views.Loading();
+      this.$el.prepend($loading.$el);
+    }
+
     return this;
   }
 });
