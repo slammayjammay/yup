@@ -60,8 +60,8 @@ Yup.Views.UserShow = Backbone.CompositeView.extend({
 
   getNumFollows: function () {
     if (this.model.isYelpUser) {
-      this.numFollows = ~~(Math.random() * 15);
-      this.numFollowers = ~~(Math.random() * 15);
+      this.numFollows = ~~(Math.random() * 15) + 3;
+      this.numFollowers = ~~(Math.random() * 15) + 3;
     } else {
       this.numFollows = this.model.follows().length;
       this.numFollowers = this.model.followers().length;
