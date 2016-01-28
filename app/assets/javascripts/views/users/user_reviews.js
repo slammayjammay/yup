@@ -4,13 +4,10 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     "click button": "redirectToSearch"
   },
 
-  initialize: function (options) {
+  initialize: function () {
+    this.isLoadingContent = true;
     this.listenTo(this.model, 'sync', function () {
-      if (this.model.isYelpUser) {
-        this.getSeedReviews();
-      } else {
-        this.addReviews();
-      }
+      this.model.isYelpUser ? this.getSeedReviews() : this.addReviews();
     });
   },
 
@@ -34,9 +31,12 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
       url: 'api/reviews/sample',
       data: { limit: 10 },
       success: function (collection, models) {
+        this.isLoadingContent = false;
+
         this.model.reviews().set(models, { parse: true });
         this.addReviews();
         $('#num-reviews').html(collection.length);
+        this.render();
       }.bind(this)
     });
   },
@@ -49,6 +49,12 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+
+    if (this.isLoadingContent) {
+      var $loading = new Yup.Views.Loading();
+      this.$el.prepend($loading.$el);
+    }
+
     return this;
   }
 });
