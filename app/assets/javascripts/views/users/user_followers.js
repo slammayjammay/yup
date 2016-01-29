@@ -5,11 +5,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     this.numFollowing = options.numFollowing;
     this.isLoadingContent = true;
 
-    if (this.model.isYelpUser) {
-      this.getSeedFollows();
-    } else {
-      this.addFollows();
-    }
+    this.model.isYelpUser ? this.getSeedFollows() : this.addFollows();
   },
 
   addFollows: function () {
