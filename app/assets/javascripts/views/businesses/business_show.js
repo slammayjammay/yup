@@ -6,10 +6,16 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
+    this.isLoadingContent = true;
+
     this.collection.fetch({
       url: 'api/reviews/sample',
       remove: false,
-      data: { limit: ~~(Math.random() * 10) + 5 }
+      data: { limit: ~~(Math.random() * 10) + 5 },
+      success: function () {
+        this.isLoadingContent = false;
+        $('.loading').remove();
+      }.bind(this)
     });
 
     this.listenTo(this.collection, 'add', this.addReview);
@@ -81,6 +87,12 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.attachSubviews();
     this.addImages();
     this.displayRating();
+
+    if (this.isLoadingContent) {
+      var loading = new Yup.Views.Loading();
+      this.$('.business-reviews').prepend(loading.$el);
+    }
+
     return this;
   },
 
