@@ -89,7 +89,7 @@ Yup.Views.BusinessShow = Backbone.CompositeView.extend({
     this.displayRating();
 
     if (this.isLoadingContent) {
-      var loading = new Yup.Views.Loading();
+      var loading = new Yup.Views.Loading({ text: 'Loading reviews...' });
       this.$('.business-reviews').prepend(loading.$el);
     }
 

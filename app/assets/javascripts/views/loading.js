@@ -1,14 +1,16 @@
 Yup.Views.Loading = Backbone.View.extend({
   className: 'loading',
 
-  initialize: function () {
+  initialize: function (options) {
+    this.text = options.text || 'Loading...';
     this.loopTransition();
   },
 
   createLetters: function () {
-    var text = 'Loading...';
-    for (var i = 0; i < text.length; i++) {
-      var $letter = $('<div>').addClass('loading-letter').text(text[i]);
+    for (var i = 0; i < this.text.length; i++) {
+      var $letter = $('<div>').addClass('loading-letter').text(this.text[i]);
+
+      if (this.text[i] === ' ') $letter.html('&nbsp');
       this.$el.append($letter);
     }
   },
@@ -46,7 +48,7 @@ Yup.Views.Loading = Backbone.View.extend({
 
       if (index === $letters.length - 1) {
         $(letter).one('transitionend', function () {
-          setTimeout(callback, 0);
+          // setTimeout(callback, 0);
         });
       }
     });
