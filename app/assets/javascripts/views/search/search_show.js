@@ -8,9 +8,15 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.query = options.query;
+    this.isLoadingContent = true;
 
-    this.listenToOnce(this.collection, "sync", this.render);
-    this.listenToOnce(this.collection, "sync", this.addSidebar);
+    this.listenToOnce(this.collection, "sync", function () {
+      this.isLoadingContent = false;
+      $('.loading').remove();
+      this.foundResults = this.collection.length !== 0;
+      this.render();
+      this.addSidebar();
+    });
     this.listenTo(this.collection, "add", this.addBusiness.bind(this));
   },
 
@@ -51,11 +57,19 @@ Yup.Views.SearchShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({
       businesses: this.collection,
-      query: this.query,
-      order: this.order
+      order: this.order,
+      foundResults: this.foundResults,
+      query: this.query
     });
     this.$el.html(content);
     this.attachSubviews();
+
+    if (this.isLoadingContent) {
+      var loading = new Yup.Views.Loading('Fetching results...');
+      loading.$el.addClass('query');
+      this.$('.results').prepend(loading.$el);
+    }
+
     return this;
   }
 });
