@@ -27,6 +27,8 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     }.bind(this));
 
     $('#num-following').text(actualNumFollowing);
+    this.isLoadingContent = false;
+    $('.loading').remove();
   },
 
   getSeedFollows: function () {
@@ -50,7 +52,7 @@ Yup.Views.UserFollowers = Backbone.CompositeView.extend({
     this.attachSubviews();
 
     if (this.isLoadingContent) {
-      var $loading = new Yup.Views.Loading();
+      var $loading = new Yup.Views.Loading({ text: 'Loading followers...' });
       this.$el.prepend($loading.$el);
     }
 

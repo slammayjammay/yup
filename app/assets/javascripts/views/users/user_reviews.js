@@ -23,6 +23,9 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
       });
       this.addSubview('.user-reviews', view);
     }.bind(this));
+
+    this.isLoadingContent = false;
+    $('.loading').remove();
   },
 
   getSeedReviews: function () {
@@ -51,7 +54,7 @@ Yup.Views.UserReviews = Backbone.CompositeView.extend({
     this.attachSubviews();
 
     if (this.isLoadingContent) {
-      var $loading = new Yup.Views.Loading();
+      var $loading = new Yup.Views.Loading({ text: 'Loading reviews...' });
       this.$el.prepend($loading.$el);
     }
 
