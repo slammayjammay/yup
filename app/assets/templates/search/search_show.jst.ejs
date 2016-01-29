@@ -1,9 +1,9 @@
 <div class="results">
 
-  <% if (businesses.length > 0) { %>
+  <% if (foundResults) { %>
     <span class="query">Searched for "<%= query %>"</span>
     <small>(Showing first <%= businesses.length %> results)</small>
-  <% } else { %>
+  <% } else if (foundResults === false) { %>
     <span class="query">No results found for "<%= query %>".</span>
     <div class="suggestions">
       Suggestions:
